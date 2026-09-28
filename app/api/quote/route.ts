@@ -1,0 +1,4 @@
+import {publicProduct} from '@/lib/product-display';
+import {getProducts} from '@/lib/products';import {quote} from '@/lib/pricing';import {z} from 'zod';
+const schema=z.array(z.object({id:z.string().max(150),size:z.string().max(20),quantity:z.number().int().min(1).max(100)}).strict()).min(1).max(100);
+export async function POST(request:Request){try{const raw=await request.text();if(raw.length>24000)return Response.json({error:'Solicitud demasiado grande'},{status:413});const lines=schema.parse(JSON.parse(raw));const keys=lines.map(l=>l.id+':'+l.size);if(new Set(keys).size!==keys.length)return Response.json({error:'Líneas duplicadas'},{status:400});const result=quote(lines,await getProducts());return Response.json({...result,rows:result.rows.map(row=>({...row,product:publicProduct(row.product)}))},{headers:{'Cache-Control':'no-store'}})}catch{return Response.json({error:'No se pudo cotizar. Revisa talla, cantidad y catálogo.'},{status:400})}}

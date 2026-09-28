@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.vscode
+.env*
+*.log
+coverage
+dist
+.sites-runtime
+.next-native
+*.tsbuildinfo
+docs/vistas-v2

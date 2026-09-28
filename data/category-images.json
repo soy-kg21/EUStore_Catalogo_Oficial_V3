@@ -1,0 +1,17 @@
+{
+  "camisetas": [
+    "/media/categorias/categoria_camisetas_img1.webp",
+    "/media/categorias/categoria_camisetas_img2.webp",
+    "/media/categorias/categoria_camisetas_img3.webp"
+  ],
+  "zapatillas": [
+    "/media/categorias/categoria_zapatillas_img1.webp",
+    "/media/categorias/categoria_zapatillas_img2.webp",
+    "/media/categorias/categoria_zapatillas_img3.webp"
+  ],
+  "conjuntos": [
+    "/media/categorias/categoria_conjunto_cp_img1.webp",
+    "/media/categorias/categoria_conjunto_cp_img2.webp",
+    "/media/categorias/categoria_conjunto_cp_img3.webp"
+  ]
+}

@@ -1,0 +1,1 @@
+import {ORIGIN} from '@/lib/config';export default function robots(){return {rules:process.env.INDEXING_ENABLED==='true'?{userAgent:'*',allow:'/',disallow:['/api/','/carrito']}:{userAgent:'*',disallow:'/'},sitemap:ORIGIN+'/sitemap.xml'}}

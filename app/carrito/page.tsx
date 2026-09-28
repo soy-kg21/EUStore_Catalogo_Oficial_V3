@@ -1,0 +1,1 @@
+import Cart from '@/components/store/Cart';export const metadata={title:'Mi selección | Evolución Urbana Store',robots:{index:false,follow:false}};export default function Page(){return <main id="contenido" className="page-main"><p className="eyebrow">A TU MANERA</p><h1 className="page-title">Mi selección.</h1><Cart/></main>}

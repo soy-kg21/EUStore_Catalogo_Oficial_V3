@@ -1,0 +1,50 @@
+[
+  {
+    "file": "public/media/curaduria/curaduria-mobile.mp4",
+    "original_bytes": 8588910,
+    "web_bytes": 2239090,
+    "reduction_percent": 73.9,
+    "width": 720,
+    "height": 1280,
+    "duration": 10.0,
+    "codec": "h264",
+    "audio": false,
+    "decoded_without_errors": true
+  },
+  {
+    "file": "public/media/curaduria/curaduria-pc.mp4",
+    "original_bytes": 11717451,
+    "web_bytes": 2763478,
+    "reduction_percent": 76.4,
+    "width": 1280,
+    "height": 720,
+    "duration": 10.0,
+    "codec": "h264",
+    "audio": false,
+    "decoded_without_errors": true
+  },
+  {
+    "file": "public/media/hero/hero-desktop.mp4",
+    "original_bytes": 6430917,
+    "web_bytes": 1605170,
+    "reduction_percent": 75.0,
+    "width": 1080,
+    "height": 608,
+    "duration": 10.041667,
+    "codec": "h264",
+    "audio": false,
+    "decoded_without_errors": true
+  },
+  {
+    "file": "public/media/hero/hero-mobile.mp4",
+    "original_bytes": 7429617,
+    "web_bytes": 1428971,
+    "reduction_percent": 80.8,
+    "width": 720,
+    "height": 1280,
+    "duration": 10.083333,
+    "codec": "h264",
+    "audio": false,
+    "decoded_without_errors": true
+  }
+]

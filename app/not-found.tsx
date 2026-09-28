@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function NotFound(){return <main id="contenido" className="error-box"><p className="eyebrow">404</p><h1 className="page-title">Esta referencia no está disponible.</h1><p>Puede estar retirada del catálogo o el enlace puede ser incorrecto.</p><br/><Link className="button" href="/catalogo">EXPLORAR CATÁLOGO</Link></main>}

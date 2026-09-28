@@ -1,0 +1,1 @@
+'use client';export default function ErrorPage({reset}:{reset:()=>void}){return <main id="contenido" className="error-box"><h1 className="page-title">No pudimos cargar el catálogo.</h1><p>Inténtalo de nuevo en unos instantes.</p><br/><button onClick={reset} className="button">REINTENTAR</button></main>}

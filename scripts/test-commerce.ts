@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import {quote} from '../lib/pricing.ts';import type {Product} from '../lib/types.ts';
+const p=JSON.parse(fs.readFileSync(new URL('../data/catalog.json',import.meta.url),'utf8')) as Product[];
+const b1=p.find(x=>x.warehouse==='B1'&&x.price===99900)!,b2=p.find(x=>x.warehouse==='B2')!,t=p.find(x=>x.category==='camisetas')!,s=p.find(x=>x.category==='conjuntos')!;
+const line=(x:Product,n:number)=>({id:x.id,size:x.sizes[0],quantity:n});
+assert.equal(quote([line(b1,2)],p).subtotal,199800);
+assert.equal(quote([line(b1,4)],p).total,402000);
+assert.equal(quote([line(t,1),line(s,1)],p).subtotal,183372);
+assert.equal(quote([line(t,2),line(s,1)],p).subtotal,215900);
+assert.equal(quote([line(t,3),line(s,1)],p).subtotal,264900);
+assert.equal(quote([line(t,6)],p).total,313000);
+assert.equal(quote([line(t,24)],p).total,906000);
+assert.equal(quote([line(t,41)],p).requiresQuote,true);
+assert.equal(quote([line(b2,6)],p).requiresQuote,true);
+assert.equal(quote([line(b1,1),line(b2,1)],p).subtotal,b1.price+b2.price);
+assert.throws(()=>quote([{id:t.id,size:'INVALID',quantity:1}],p));
+assert.throws(()=>quote([line(t,0)],p));
+assert.throws(()=>quote([line(t,1.5)],p));
+assert.equal(new Set(p.map(x=>x.slug)).size,253);
+for(const x of p.filter(x=>x.state!=='inactive')){assert.ok(x.images.length);for(const im of x.images)assert.ok(fs.existsSync(new URL('../public'+im,import.meta.url)));assert.ok(x.seoTitle&&x.seoDescription);}
+console.log('PASS: 13 commercial/validation cases; 253 unique slugs; 251 active records, image paths and SEO verified.');

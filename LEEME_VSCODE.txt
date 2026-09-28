@@ -1,0 +1,4 @@
+Esta versión se instala y publica siguiendo LEEME_PRIMERO_V2.txt.
+Abre en VS Code la carpeta que contiene package.json.
+Los comandos dev, build y start ahora utilizan Next.js para Vercel.
+No utilices el CSS independiente ni la guía de preparación anteriores.

@@ -1,0 +1,25 @@
+Archivos modificados respecto al ZIP original
+
+.vercelignore
+LEEME_VSCODE.txt
+README.md
+app/api/products/route.ts
+app/api/quote/route.ts
+app/contacto/page.tsx
+app/layout.tsx
+app/ofertas/page.tsx
+app/page.tsx
+app/premium.css
+app/producto/[slug]/page.tsx
+components/store/Header.tsx
+components/store/ProductCard.tsx
+components/store/ProductPrice.tsx
+components/ui/dialog.tsx
+components/ui/sheet.tsx
+components/ui/theme-toggle.tsx
+lib/commercial.ts
+next-env.d.ts
+package.json
+tsconfig.json
+
+Archivos nuevos: lib/product-display.ts, scripts/check-v2.mjs, LEEME_PRIMERO_V2.txt y vistas de referencia.

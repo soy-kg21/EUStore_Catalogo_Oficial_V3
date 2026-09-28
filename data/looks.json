@@ -1,0 +1,29 @@
+[
+  {
+    "id": "esencial-grafico",
+    "name": "Esencial gráfico",
+    "eyebrow": "CONTRASTE / COTIDIANO",
+    "description": "Un gráfico con carácter. Blanco y negro para llevarlo a tu manera.",
+    "image": "/media/looks/esencial-grafico.webp",
+    "productIds": ["camiseta_270g_025_rostrodeoso_blanco", "zap_nac_b2_025"],
+    "note": "El pantalón es un complemento de estilismo. Explora la camiseta y el calzado."
+  },
+  {
+    "id": "codigo-nocturno",
+    "name": "Código nocturno",
+    "eyebrow": "ACTITUD / DESPUÉS DEL SOL",
+    "description": "El negro como punto de partida. Un estampado que cambia toda la escena.",
+    "image": "/media/looks/codigo-nocturno.webp",
+    "productIds": ["camiseta_270g_031_edenmade_negro", "zap_nac_b1_030"],
+    "note": "El pantalón es un complemento de estilismo. Explora la camiseta y el calzado."
+  },
+  {
+    "id": "azul-en-movimiento",
+    "name": "Azul en movimiento",
+    "eyebrow": "COLOR / FIN DE SEMANA",
+    "description": "Azul protagonista, negro que equilibra. Una combinación para salir de la rutina.",
+    "image": "/media/looks/azul-en-movimiento.webp",
+    "productIds": ["conjunto_cp_b5_044_losangelesusa_negro", "zap_nac_b1_022"],
+    "note": "El conjunto incluye camiseta y pantaloneta. El calzado se selecciona por separado."
+  }
+]

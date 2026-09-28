@@ -1,0 +1,3 @@
+import {notFound} from 'next/navigation';import Catalog from '@/components/store/Catalog';import {categories} from '@/lib/config';import {metadata} from '@/lib/seo';import type {Params} from '@/lib/products';
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const{slug}=await params;const c=categories.find(c=>c.slug===slug);return c?metadata(c.name+' | Evolución Urbana Store',c.detail,'/categoria/'+slug):{title:'Categoría no encontrada'}}
+export default async function Page({params,searchParams}:{params:Promise<{slug:string}>;searchParams:Promise<Params>}){const{slug}=await params;if(!categories.some(c=>c.slug===slug))notFound();return <Catalog category={slug} params={await searchParams}/>}

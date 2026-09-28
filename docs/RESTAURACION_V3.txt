@@ -1,0 +1,27 @@
+RESTAURACIÓN VISUAL — 27 DE SEPTIEMBRE DE 2026
+
+Fuente: premium.css recuperado y capturas del catálogo original aportadas.
+El CSS del paquete previo estaba recortado: faltaban los estilos de portada,
+curaduría, tarjetas de confianza y redes. No era un fallo de instalación de pnpm.
+
+Esta entrega conserva premium.css recuperado íntegro. Los ajustes solicitados
+se aplican con enhancements.css, importado al final desde app/layout.tsx.
+El CSS del vídeo se carga antes del premium original para que no recorte
+el título de portada en móvil.
+
+Diferencias corregidas respecto al paquete anterior:
+- Títulos y espaciados desproporcionados.
+- Productos destacados escalonados.
+- Tarjetas de confianza sin su fondo, borde y distribución.
+- Redes sociales sin tarjetas alineadas.
+- Pie de página con contraste incorrecto.
+
+Se mantienen Inicio primero, logo, menú móvil, claro/oscuro y las correcciones
+comerciales previamente verificadas. Los precios y datos no se cambian en V3.
+
+No se ha publicado en Vercel. Seguir LEEME_PRIMERO_V2.txt, que es la guía
+actualizada incluida para instalación y publicación de esta restauración.
+El nombre de carpeta se mantiene por compatibilidad; el ZIP se llama V3.
+
+Las capturas de docs/vistas-restauradas muestran esta entrega. Las de
+vistas-v2 son históricas y corresponden a la entrega anterior.

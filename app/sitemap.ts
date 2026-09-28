@@ -1,0 +1,1 @@
+import {getProducts} from '@/lib/products';import {ORIGIN,categories} from '@/lib/config';export default async function sitemap(){return [...['','/catalogo','/ofertas','/nosotros','/contacto'].map(path=>({url:ORIGIN+path})),...categories.map(c=>({url:ORIGIN+'/categoria/'+c.slug})),...(await getProducts()).map(p=>({url:ORIGIN+'/producto/'+p.slug}))]}
