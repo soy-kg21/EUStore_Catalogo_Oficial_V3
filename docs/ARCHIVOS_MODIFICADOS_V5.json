@@ -1,0 +1,49 @@
+{
+  "baselineArchive": "EUStore_Anime_Universe_V4_Completo.zip",
+  "baselineSha256": "7f63d5932d6196c6f5b4ca69d2f6eb7accecb9b8a4bf468ec0351ec52f4609af",
+  "added": [
+    "LEEME_ANIME_UNIVERSE_V5.txt",
+    "docs/VERIFICACION_ANIME_UNIVERSE_V5.json",
+    "docs/history/LEEME_ANIME_UNIVERSE_V4.txt",
+    "lib/anime-cinema-effects.ts",
+    "lib/anime-cinema-runtime.ts",
+    "lib/anime-cinema.ts",
+    "public/anime/cinema/category-atlas.webp",
+    "public/anime/cinema/gojo-atlas.webp",
+    "public/anime/cinema/urbanas.webp",
+    "public/anime/universe/all.webp",
+    "public/fonts/cinema/barlow-condensed-500.woff",
+    "public/fonts/cinema/barlow-condensed-600.woff",
+    "public/fonts/cinema/barlow-condensed-700.woff",
+    "public/fonts/cinema/barlow-condensed-OFL.txt",
+    "public/fonts/cinema/space-grotesk-400.woff",
+    "public/fonts/cinema/space-grotesk-500.woff",
+    "public/fonts/cinema/space-grotesk-600.woff",
+    "public/fonts/cinema/space-grotesk-700.woff",
+    "public/fonts/cinema/space-grotesk-OFL.txt",
+    "scripts/check-anime-cinema-runtime.mjs",
+    "scripts/check-anime-cinema.mjs"
+  ],
+  "changed": [
+    "README.md",
+    "components/anime/AnimeShopClient.tsx",
+    "components/anime/AnimeUniverseHero.tsx",
+    "components/anime/shop-premium.module.css",
+    "components/anime/universe.module.css",
+    "components/store/ScrollProgress.tsx",
+    "docs/LEEME.txt",
+    "lib/anime-experience.ts",
+    "package.json",
+    "pnpm-lock.yaml",
+    "public/anime/universe/anime.webp",
+    "public/anime/universe/cartoon.webp",
+    "public/anime/universe/rock.webp",
+    "public/anime/universe/urbanas.webp",
+    "scripts/check-anime-hero.mjs"
+  ],
+  "removed": [
+    "LEEME_ANIME_UNIVERSE_V4.txt"
+  ],
+  "unchangedCount": 5242,
+  "note": "Este manifiesto se excluye a sí mismo. La guía V4 se trasladó a docs/history; V4 original sigue intacto."
+}

@@ -14,6 +14,7 @@ import {
 import { money, ORIGIN, wa } from '@/lib/config';
 import type { quote } from '@/lib/pricing';
 import type { CartLine } from '@/lib/types';
+import QuantityControl from './QuantityControl';
 
 type Quote = ReturnType<typeof quote>;
 type QuoteState = { key: string; data: Quote | null; error: string };
@@ -35,7 +36,7 @@ export default function Cart() {
     if (!ready || !lines.length) return;
 
     const controller = new AbortController();
-    fetch('/api/quote', {
+    const timer = setTimeout(() => fetch('/api/quote', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: quoteKey,
@@ -43,19 +44,20 @@ export default function Cart() {
     })
       .then(async (response) => {
         const data = (await response.json()) as Quote & { error?: string };
+        if (controller.signal.aborted) return;
         if (!response.ok) throw new Error(data.error || 'No fue posible actualizar la cotización.');
         setQuoteState({ key: quoteKey, data, error: '' });
       })
       .catch((error: unknown) => {
-        if (error instanceof DOMException && error.name === 'AbortError') return;
+        if (controller.signal.aborted) return;
         setQuoteState({
           key: quoteKey,
           data: null,
           error: error instanceof Error ? error.message : 'No fue posible actualizar la cotización.',
         });
-      });
+      }), 150);
 
-    return () => controller.abort();
+    return () => { clearTimeout(timer); controller.abort(); };
   }, [lines.length, quoteKey, ready, retry]);
 
   const change = (next: CartLine[]) => {
@@ -80,7 +82,9 @@ export default function Cart() {
 
   const currentQuote = quoteState.key === quoteKey ? quoteState : null;
   const error = actionError || currentQuote?.error || '';
-  const data = currentQuote?.data;
+  // Keep controls mounted while the latest prices are being fetched.
+  const data = quoteState.data;
+  const pending = !currentQuote?.data;
 
   if (error) {
     return (
@@ -93,13 +97,18 @@ export default function Cart() {
     );
   }
   if (!data) return <p role="status">Actualizando precios de tu selección…</p>;
+  const rows = lines.map(line => {
+    const row = data.rows.find(row => row.id === line.id && row.size === line.size);
+    return row ? { ...row, quantity: line.quantity } : null;
+  });
+  if (rows.some(row => row === null)) return <p role="status">Actualizando precios de tu selección…</p>;
 
   const message = `Hola Evolución Urbana, quisiera asesoría para esta selección:\n\n${data.rows.map(row => `${row.product.name}\nSKU: ${row.product.sku} | Talla: ${row.size} | Cantidad: ${row.quantity}\n${row.total===null?'Precio por confirmar':money(row.total)+' COP'}\n${ORIGIN}/producto/${row.product.slug}`).join('\n\n')}\n\n${data.subtotal===null?'Solicito cotización personalizada.':'Productos: '+money(data.subtotal)+' COP'}\n${data.shippingPending?'Envío por cotizar con asesor':'Envío incluido'}\n${data.total===null?'Total pendiente de confirmación':'Total: '+money(data.total)+' COP'}\n${data.warehouses.length>1?'Despachos separados por bodega, conservando beneficios y descuentos.':''}\n${data.advance?'Pago anticipado para los despachos mayoristas; confirmar condiciones de cada despacho.':'Pago contra entrega.'}\nMi ciudad es: \nPor favor confirmar disponibilidad y total.`;
 
   return (
     <div className="cart-grid">
       <section>
-        {data.rows.map((row, index) => (
+        {rows.map((row) => row && (
           <article key={`${row.id}:${row.size}`} className="cart-line">
             <Link href={`/producto/${row.product.slug}`}>
               <Image src={row.product.images[0].replace('.webp', '-480.webp')} alt={row.product.name} width={480} height={600} sizes="(max-width: 700px) 28vw, 160px" />
@@ -107,33 +116,20 @@ export default function Cart() {
             <div>
               <Link href={`/producto/${row.product.slug}`}><h2>{row.product.name}</h2></Link>
               <p>Talla {row.size} · {row.product.color}</p>
-              <strong>{row.total===null ? 'A cotizar' : money(row.total)}</strong>
-              <p>
-                <label>
-                  Cantidad{' '}
-                  <input
-                    aria-label={`Cantidad ${row.product.name}`}
-                    type="number"
-                    min="1"
-                    max="100"
-                    value={row.quantity}
-                    onChange={(event) => {
-                      const quantity = Number(event.target.value);
-                      if (Number.isInteger(quantity) && quantity >= 1 && quantity <= 100) {
-                        change(lines.map((line, lineIndex) => lineIndex === index ? { ...line, quantity } : line));
-                      }
-                    }}
-                  />
-                </label>
-                <button onClick={() => change(lines.filter((_, lineIndex) => lineIndex !== index))}>Eliminar</button>
-              </p>
+              <strong aria-busy={pending}>{pending ? 'Actualizando…' : row.total===null ? 'A cotizar' : money(row.total)}</strong>
+              <div className="cart-line-actions">
+                <span className="quantity-label">Cantidad</span>
+                <QuantityControl quantity={row.quantity} name={row.product.name} onChange={quantity => change(lines.map(line => line.id === row.id && line.size === row.size ? { ...line, quantity } : line))} />
+                <button type="button" className="cart-remove" onClick={() => change(lines.filter(line => line.id !== row.id || line.size !== row.size))}>Eliminar</button>
+              </div>
             </div>
           </article>
         ))}
       </section>
-      <aside className="cart-summary">
+      <aside className="cart-summary" aria-busy={pending}>
         <h2>Tu selección</h2>
         <p>Los beneficios por cantidad se calculan por bodega.</p>
+        {pending ? <p role="status" className="cart-updating">Actualizando precios y beneficios…</p> : <>
         {data.requiresQuote&&<div className="quote-alert" role="status"><h3>Una selección a tu medida.</h3><p>{data.pricePending?'Un asesor te ayudará a confirmar la mejor tarifa para tu selección.':'Tus productos ya tienen precio; falta cotizar el envío.'}</p>{data.reasons.map(reason=><p key={reason}>{reason}</p>)}</div>}
         {data.subtotal!==null&&<div className="summary-total"><span>Productos</span><strong>{money(data.subtotal)}</strong></div>}
         <p>{data.shippingPending?'Envío: cotización con asesor.':'Envío incluido.'}</p>
@@ -143,7 +139,8 @@ export default function Cart() {
         {data.b2>0&&<p>Tu calzado de B2 incluye seguro de transporte.</p>}
         {data.warehouses.length>1&&<div className="logistics-note"><h3>Tu look, en entregas separadas.</h3><p>Elegiste productos de {data.warehouses.length} bodegas. Llegarán en despachos separados y conservarás los beneficios, ofertas y descuentos que correspondan a cada uno.</p><a href={wa('Hola, quisiera entender cómo funcionan los despachos separados y los beneficios de mi selección.')} target="_blank" rel="noopener noreferrer">Resolver una duda por WhatsApp ↗</a></div>}
         <p>Confirmaremos existencias y cobertura contigo antes de cerrar el pedido.</p>
-        <a className="button whatsapp" href={wa(message)} target="_blank" rel="noopener noreferrer"><MessageCircle size={18}/>{data.requiresQuote?'RECIBIR ASESORÍA PERSONALIZADA':'CONTINUAR POR WHATSAPP'}</a>
+        </>}
+        <a className="button whatsapp" href={pending ? undefined : wa(message)} aria-disabled={pending || undefined} onClick={event => { if(pending) event.preventDefault(); }} target="_blank" rel="noopener noreferrer"><MessageCircle size={18}/>{pending ? 'ACTUALIZANDO SELECCIÓN…' : data.requiresQuote?'RECIBIR ASESORÍA PERSONALIZADA':'CONTINUAR POR WHATSAPP'}</a>
         <Link className="reset" href="/catalogo">Seguir explorando</Link>
       </aside>
     </div>

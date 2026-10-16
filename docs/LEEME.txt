@@ -1,0 +1,12 @@
+EVOLUCIÓN URBANA · ANIME UNIVERSE V5
+
+Este ZIP contiene el proyecto completo. Empieza por README.md y
+LEEME_ANIME_UNIVERSE_V5.txt en la carpeta principal.
+
+VERIFICACION_ANIME_UNIVERSE_V5_1.json documenta las comprobaciones de esta entrega
+y su límite: todavía falta la inspección visual en navegador y teléfono real.
+ARCHIVOS_MODIFICADOS_V5.json conserva la comparación histórica V4 → V5.
+MANIFIESTO_PARCHE_V5_1.json enumera los archivos del parche V5 → V5.1.
+
+Las auditorías y guías anteriores se conservan como historial. Sus notas de
+integración o compilación describen esas versiones, no el estado de V5.

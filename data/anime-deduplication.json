@@ -1,0 +1,192 @@
+[
+  {
+    "canonicalId": "EU-ANIME-004",
+    "aliasIds": [
+      "EU-ANIME-413"
+    ],
+    "line": "anime",
+    "reason": "Mismo grupo Akatsuki monocromo sobre camiseta negra; 004 conserva imagen fuente de mayor detalle.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-011",
+    "aliasIds": [
+      "EU-ANIME-252"
+    ],
+    "line": "anime",
+    "reason": "Mismo Shenlong rojo y blanco sobre negro; 011 tiene mayor detalle.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-015",
+    "aliasIds": [
+      "EU-ANIME-407"
+    ],
+    "line": "anime",
+    "reason": "Mismo retrato Gaara marrón sobre negro; 015 conserva imagen fuente de mayor detalle.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-016",
+    "aliasIds": [
+      "EU-ANIME-395"
+    ],
+    "line": "anime",
+    "reason": "Mismo Gojo blanco/cian sobre negro; misma composición del estampado.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-023",
+    "aliasIds": [
+      "EU-ANIME-246"
+    ],
+    "line": "anime",
+    "reason": "Mismo Maestro Roshi anciano en silla sobre negro.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-037",
+    "aliasIds": [
+      "EU-ANIME-426"
+    ],
+    "line": "anime",
+    "reason": "Mismo Tsugikuni/Yoriichi negro y rojo sobre blanco.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-040",
+    "aliasIds": [
+      "EU-ANIME-420"
+    ],
+    "line": "anime",
+    "reason": "Mismo Tanjiro / Danza del fuego en panel vertical sobre blanco.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-052",
+    "aliasIds": [
+      "EU-ANIME-253"
+    ],
+    "line": "anime",
+    "reason": "Mismo Freezer blanco sobre negro con líneas radiantes.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-076",
+    "aliasIds": [
+      "EU-ANIME-274"
+    ],
+    "line": "anime",
+    "reason": "Mismo Dalai Krillin y texto Spiritual Master sobre blanco.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-093",
+    "aliasIds": [
+      "EU-ANIME-545"
+    ],
+    "line": "anime",
+    "reason": "Mismo Gear 5 blanco/rojo sobre camiseta roja. Se conserva 093 porque muestra frente y espalda.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-112",
+    "aliasIds": [
+      "EU-ANIME-146",
+      "EU-ANIME-287"
+    ],
+    "line": "anime",
+    "reason": "Mismo Ryuk y L sobre negro; se conserva 112 por mostrar frente y espalda.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-121",
+    "aliasIds": [
+      "EU-ANIME-255"
+    ],
+    "line": "anime",
+    "reason": "Mismo Roshi fumando con gorra Master sobre blanco.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-742",
+    "aliasIds": [
+      "EU-ANIME-133"
+    ],
+    "line": "anime",
+    "reason": "Misma Nezuko y texto NEZUKO KAMADO sobre blanco; conservar 742 con frente y espalda.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-135",
+    "aliasIds": [
+      "EU-ANIME-445"
+    ],
+    "line": "anime",
+    "reason": "Mismo Gojo blanco/púrpura en panel sobre blanco; 135 muestra frente y espalda.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-145",
+    "aliasIds": [
+      "EU-ANIME-215"
+    ],
+    "line": "anime",
+    "reason": "Mismo Luffy Gear 5 en blanco, imagen de origen similar con mismo arte.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-164",
+    "aliasIds": [
+      "EU-ANIME-908"
+    ],
+    "line": "rock",
+    "reason": "Mismo Led Zeppelin grupo sobre negro; 164 muestra frente y espalda.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-167",
+    "aliasIds": [
+      "EU-ANIME-218"
+    ],
+    "line": "anime",
+    "reason": "Mismo Luffy/Gear Second y figuras sobre blanco; misma composición y color.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-192",
+    "aliasIds": [
+      "EU-ANIME-422"
+    ],
+    "line": "anime",
+    "reason": "Mismo collage Naruto Sexy Jutsu en panel rosa sobre blanco.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-201",
+    "aliasIds": [
+      "EU-ANIME-256"
+    ],
+    "line": "anime",
+    "reason": "Mismo Goku dorado en fondo negro; mismo dibujo y color.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-732",
+    "aliasIds": [
+      "EU-ANIME-292"
+    ],
+    "line": "anime",
+    "reason": "Mismo Eva01 blanco/púrpura sobre negro; 732 muestra frente y espalda.",
+    "confidence": "visual-confirmed"
+  },
+  {
+    "canonicalId": "EU-ANIME-538",
+    "aliasIds": [
+      "EU-ANIME-300"
+    ],
+    "line": "anime",
+    "reason": "Misma sonrisa Statue Of God monocroma sobre negro; 538 muestra frente y espalda.",
+    "confidence": "visual-confirmed"
+  }
+]

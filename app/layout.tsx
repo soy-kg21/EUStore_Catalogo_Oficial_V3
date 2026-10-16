@@ -3,21 +3,23 @@ import './globals.css';
 import '@/components/experience/editorial-video.css';
 import './premium.css';
 import './enhancements.css';
+import './integrated-navigation.css';
 import Header from '@/components/store/Header';
 import Footer from '@/components/store/Footer';
 import ScrollProgress from '@/components/store/ScrollProgress';
-import {metadata as meta} from '@/lib/seo';
+import {metadata as meta,isIndexingEnabled} from '@/lib/seo';
+import {ORIGIN} from '@/lib/config';
 
 export const metadata:Metadata={
   ...meta(
-    'Evolución Urbana Store | Moda urbana en Colombia',
-    'Camisetas oversize, zapatillas y conjuntos. Encuentra tu estilo y compra con asesoría por WhatsApp.'
+    'Evolución Urbana | Tienda de moda urbana en Colombia',
+    'Descubre Evolución Urbana: camisetas oversize, zapatillas y conjuntos. Explora nuestro catálogo y compra con asesoría por WhatsApp. Envíos en Colombia.'
   ),
-  metadataBase:new URL('https://www.evolucionurbana.store'),
-  icons:{
-    icon:'/imagenes/logo.png'
-  },
-  robots:process.env.INDEXING_ENABLED==='true'
+  metadataBase:new URL(ORIGIN),
+  verification:process.env.GOOGLE_SITE_VERIFICATION
+    ? {google:process.env.GOOGLE_SITE_VERIFICATION}
+    : undefined,
+  robots:isIndexingEnabled()
     ? {
         index:true,
         follow:true

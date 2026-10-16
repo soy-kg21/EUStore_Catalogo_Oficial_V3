@@ -1,0 +1,1 @@
+export default function Loading(){return <main id="contenido" style={{minHeight:'80vh',background:'#090a0b',color:'#f5f7f1',display:'grid',placeItems:'center'}}><p style={{fontSize:11,letterSpacing:'.16em',textTransform:'uppercase'}}>Cargando Anime Collection…</p></main>}

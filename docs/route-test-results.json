@@ -1,0 +1,20 @@
+{
+  "products": 251,
+  "metadata": 251,
+  "schema": 251,
+  "inactive404": 2,
+  "checks": [
+    "/",
+    "/catalogo",
+    "/categoria/camisetas",
+    "/categoria/zapatillas",
+    "/categoria/conjuntos",
+    "/ofertas",
+    "/nosotros",
+    "/contacto",
+    "/privacidad",
+    "/carrito",
+    "/sitemap.xml",
+    "/robots.txt"
+  ]
+}

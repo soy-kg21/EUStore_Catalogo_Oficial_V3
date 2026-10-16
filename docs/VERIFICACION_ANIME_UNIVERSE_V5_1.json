@@ -1,0 +1,92 @@
+{
+  "patch": "V5.1",
+  "appliesTo": "EUStore_Anime_Universe_V5_Completo.zip",
+  "baselineSha256": "7a748e68df2ddeec3de9d7c1118b287bcea2ee9bbd1f760bb7631da91119ae19",
+  "verifiedAtUTC": "2026-10-16T19:34:45.665949+00:00",
+  "changes": {
+    "scroll": "Nativo; posición de la página = avance de la escena, sin temporizador ni cola de gestos.",
+    "fixedDuration": false,
+    "wheelTouchKeyboardIntercepted": false,
+    "nativeJourneyDistancePx": {
+      "min": 2400,
+      "max": 4000
+    },
+    "reverse": true,
+    "categoryToProductsNativeScroll": true,
+    "localHomeSmoothReturn": true,
+    "compactLinePickerAmongProducts": true,
+    "productFiltersOutsideHero": true,
+    "cardButton": "VER DISEÑO",
+    "cardBadge": "Franquicia o colección real del producto",
+    "reference": "REF: número, columna derecha",
+    "prices": "Mismas tarifas y condiciones, nueva presentación"
+  },
+  "verification": {
+    "typeScript": "PASS",
+    "productionBuild": "PASS",
+    "pureTimeline": {
+      "result": "PASS",
+      "checks": 51,
+      "mode": "native-scroll",
+      "fixedDuration": false,
+      "testedWidths": [
+        308,
+        320,
+        390,
+        700,
+        1024,
+        1440,
+        1920
+      ],
+      "scope": "Timeline and geometry, not browser rendering."
+    },
+    "runtime": "PASS: 93 comprobaciones del controlador real: scroll manual, pausa sin desplazamiento, reversa, rueda/táctil/teclado libres, salida a productos, filtros sin reinicio e Inicio local. Adaptadores de DOM y reloj; sin navegador.",
+    "suites": [
+      {
+        "suite": "test:anime-hero",
+        "exit": 0,
+        "summary": "PASS: 20 comprobaciones del hero real renderizado: tres camisetas diferentes por línea, enlaces individuales y acceso directo a colección y precios. Sin navegador."
+      },
+      {
+        "suite": "test:anime-journey",
+        "exit": 0,
+        "summary": "PASS: 9 comprobaciones del recorrido: cinco rutas renderizadas, conteos reales, selector entre productos, título fuera del hero y clic real de categoría con historial/UTM y scroll conservados. Sin navegador."
+      },
+      {
+        "suite": "test:anime-integration",
+        "exit": 0,
+        "summary": "PASS: 22 comprobaciones de integración: mismo menú original, Inicio y tres categorías generales accesibles desde once rutas; ticker conservado; datos, reglas, estilos generales y pie original intactos."
+      },
+      {
+        "suite": "test:anime-shop",
+        "exit": 0,
+        "summary": "PASS: tarifas públicas/habituales, fronteras mayoristas, rutas limpias, compatibilidad y 41 alias sin ciclos."
+      },
+      {
+        "suite": "test:anime-merchandising",
+        "exit": 0,
+        "summary": "PASS: 5659 comprobaciones de merchandising; 5 dobles + 1 diseño restante desde posición 1, filtros y paginación; 1209 referencias sin pérdidas ni duplicados."
+      },
+      {
+        "suite": "test:anime-premium",
+        "exit": 0,
+        "summary": "PASS: 6342 comprobaciones premium: 1250 referencias y alias, rutas, filtros compartibles, cantidades/tallas, fusiones y mensaje con precios reales y dominio independiente."
+      }
+    ],
+    "production": "PASS: 1246 comprobaciones de producción: HTML, canonicals y previews de 1209 fichas; APIs, IA, 38 cotizaciones generales y dos PNG sociales de 1200×630. Sin servidor de vista previa.",
+    "sourceCatalogProducts": 1209,
+    "compiledHtmlFiles": 1218
+  },
+  "integrity": {
+    "dependenciesUnchanged": true,
+    "productAssetsUnchanged": true,
+    "generalHeaderFooterDataAndStylesUnchanged": true,
+    "deploymentPerformed": false,
+    "databaseOrWhatsappAgentChanged": false
+  },
+  "limits": {
+    "providedVideosAndScreenshots": "Revisados como evidencia de V5, con extracción de fotogramas de ambos vídeos.",
+    "patchedBrowserVisualQA": "Pendiente; este entorno no dispone de navegador de prueba.",
+    "runtimeTests": "Controlador real con adaptadores de DOM, GSAP e inputs. No es una simulación de píxeles ni una prueba en teléfono real."
+  }
+}

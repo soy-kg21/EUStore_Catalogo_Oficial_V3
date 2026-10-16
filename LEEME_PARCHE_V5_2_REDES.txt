@@ -1,0 +1,46 @@
+EVOLUCIÓN URBANA · PARCHE V5.2 · REDES SOCIALES
+Aplicar sobre tu V5 con el parche V5.1 ya instalado.
+
+INSTALAR EL PARCHE
+1. Detén el servidor local con Ctrl+C.
+2. Extrae este ZIP y copia su contenido a la raíz del proyecto, donde está package.json.
+3. Combina las carpetas y acepta reemplazar AnimeShopPage.tsx. Conserva los demás archivos.
+4. No hay nuevas dependencias. Ejecuta:
+
+   pnpm.cmd dev
+
+5. Abre http://localhost:5178/anime y recarga con Ctrl+F5.
+
+El ZIP contiene:
+- components/anime/AnimeShopPage.tsx (reemplazar)
+- components/anime/AnimeSocialLinks.tsx (nuevo)
+- components/anime/anime-social.module.css (nuevo)
+- Esta guía
+
+RESULTADO
+Debajo de los combos aparece el título «Sigue la evolución» y las tarjetas
+originales de Instagram, Facebook, TikTok y WhatsApp, con sus iconos, cuentas,
+enlaces y colores originales. Se utiliza el mismo componente del inicio general.
+La cuadrícula conserva cuatro columnas en PC y dos en móvil.
+El bloque también aparece en las otras líneas de Anime Shop y en /shop.
+
+VERCEL
+Para comprobar la versión de producción en tu terminal:
+
+   pnpm.cmd build:vercel
+
+Después sube estos cambios al mismo proyecto o repositorio que utilizas en Vercel.
+La configuración existente del proyecto usa:
+- Framework: Next.js
+- Build command: pnpm run build:vercel
+- Output directory: .next-native
+- Install command: npx --yes pnpm@11.25.0 install --frozen-lockfile
+
+VERIFICACIÓN DE ESTA ENTREGA
+TypeScript: aprobado.
+Compilación de producción: aprobada.
+Componente de redes, inicio y estilos generales: conservados sin cambios.
+Inspección visual de la corrección en navegador o teléfono real: pendiente;
+este entorno no dispone de navegador de prueba.
+
+Este archivo es un parche, no el proyecto completo. No se realizó un despliegue.

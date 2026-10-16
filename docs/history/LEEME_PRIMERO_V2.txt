@@ -1,0 +1,137 @@
+EVOLUCIÓN URBANA — ORIGINAL RESTAURADO V3
+Entrega completa para extraer y publicar con Vercel
+
+QUÉ RECIBES
+Proyecto Next.js completo con código, catálogo, imágenes, configuración y pruebas.
+Se trabajó sobre EUStore_Premium_25_09__2016_PRUEBA(1).zip.
+El CSS independiente anterior y el paquete de preparación quedan descartados.
+Se recuperó premium.css completo y se contrastó la portada con las capturas originales.
+app/premium.css conserva esa base; app/enhancements.css contiene los ajustes de
+Inicio, menú móvil, tema claro/oscuro y beneficios. Ambos se cargan automáticamente.
+No debes copiar ni pegar ningún CSS por separado.
+
+INICIO EN WINDOWS CON VS CODE
+1. Conserva tu carpeta anterior como respaldo.
+2. Extrae EUStore_Original_Restaurado_V3.zip en una carpeta nueva. Abre en VS Code la carpeta
+   EUStore_Premium_Catalogo_Oficial_V2 que contiene package.json.
+   No basta con abrir un archivo HTML: este catálogo utiliza Next.js.
+3. Abre Terminal > Nueva terminal. Comprueba tu Node:
+   node --version
+   Debe cumplir la versión indicada en package.json (>=22.13.0).
+4. Instala las dependencias:
+   npx.cmd --yes pnpm@11.25.0 install --frozen-lockfile
+5. Inicia la vista local:
+   npx.cmd --yes pnpm@11.25.0 dev
+6. Abre http://localhost:5173
+   Mantén esa terminal abierta. Ctrl+C detiene el servidor.
+
+No se incluyen node_modules ni cachés de compilación: se regeneran al instalar
+las dependencias. Todos los archivos de código y recursos del proyecto están
+incluidos. Conserva las rutas internas y los nombres de sus archivos.
+
+PUBLICAR EN TU PROYECTO EXISTENTE DE VERCEL
+1. Desde la misma carpeta, compila:
+   npx.cmd --yes pnpm@11.25.0 build:vercel
+2. Accede a tu cuenta desde tu equipo:
+   npx.cmd vercel login
+3. Vincula la carpeta:
+   npx.cmd vercel link
+   Selecciona tu equipo y responde que SÍ quieres vincular un proyecto existente.
+   Elige el proyecto que actualmente contiene tu tienda.
+   Cambiar el nombre de la carpeta no exige crear otro proyecto ni perder el dominio.
+4. Revisa los ajustes del proyecto en Vercel:
+   Framework: Next.js
+   Build Command: pnpm run build:vercel
+   Output Directory: .next-native
+   Install Command: npx --yes pnpm@11.25.0 install --frozen-lockfile
+   Estos ajustes ya están declarados en vercel.json.
+   Si importas mediante Git, Root Directory debe señalar la carpeta con package.json.
+5. Crea una vista previa:
+   npx.cmd vercel deploy
+6. Abre la URL que devuelve Vercel. Revisa Inicio, menú móvil, ambos temas,
+   imágenes, búsqueda, talla, carrito y precios por cantidad.
+7. Publica la versión revisada:
+   npx.cmd vercel deploy --prod
+8. Abre el dominio de producción que muestra Vercel en el proyecto.
+   Una URL de un despliegue antiguo puede seguir mostrando aquella versión:
+   comparte el dominio estable del proyecto que aparece en Settings > Domains.
+
+DOMINIO Y VARIABLES
+- Se conserva la dirección del proyecto original:
+  https://www.evolucionurbana.store
+  Aparece en lib/config.ts (ORIGIN) y app/layout.tsx (metadataBase).
+  Si tu dominio oficial es otro, cambia ambas direcciones antes de compilar y publicar.
+  ORIGIN también se usa en enlaces de productos enviados por WhatsApp y SEO.
+  No se ha comprobado desde esta entrega que ese dominio esté conectado a tu Vercel.
+- Sin SUPABASE_URL y SUPABASE_ANON_KEY se utiliza data/catalog.json incluido.
+  Si ya utilizas Supabase, conserva ambas variables en Vercel; esta entrega se probó
+  con el catálogo local, no contra tu base de datos externa.
+- INDEXING_ENABLED=false mantiene el bloqueo de indexación de la versión original.
+  Establece true solo para el lanzamiento en tu dominio oficial, después de revisarlo.
+- No compartas contraseñas ni archivos .env en el chat.
+
+PRUEBAS REPRODUCIBLES
+Con el servidor local encendido, abre otra terminal en la misma carpeta:
+   npx.cmd --yes pnpm@11.25.0 test:pricing
+   npx.cmd --yes pnpm@11.25.0 test:v2
+Estas pruebas consultan la API local: no envían mensajes ni realizan pedidos.
+Para otra URL local usa la variable CATALOG_TEST_URL.
+
+RESTAURACIÓN VISUAL
+- Se recupera la hoja premium.css completa de 32.357 bytes.
+- Se recuperan proporciones de portada, categorías compactas, bloque editorial,
+  productos alineados, tarjetas de confianza y tarjetas de redes sociales.
+- Se centraliza el orden de carga de CSS para evitar que los estilos de vídeo
+  reemplacen el tamaño de los títulos en móvil.
+- El modo oscuro inicial reproduce la composición original. El claro adapta
+  navegación, catálogo y categorías; los vídeos y bloques finales mantienen contraste.
+- El enlace del despliegue original dirige a inicio de sesión de Vercel desde
+  esta sesión. La comparación visual se realizó con las capturas aportadas y
+  el CSS recuperado; no se obtuvo acceso al código de ese despliegue.
+
+CAMBIOS PRINCIPALES
+- Inicio es el primer enlace en escritorio y móvil; la sección activa se distingue.
+- Menú móvil con tipografía de 15 px, controles táctiles, panel desplazable,
+  sugerencias organizadas y adaptación a ambos temas.
+- Modo claro cálido, tarjetas y filtros legibles, búsqueda y carrito coordinados.
+- Logo original conservado sobre una base oscura en modo claro.
+- Tema recordado entre visitas, protección cuando el navegador bloquea almacenamiento
+  y aplicación temprana del tema para reducir el destello inicial.
+- Regalo de medias explicado para todas las zapatillas de B1, sin limitarlo a una tabla
+  de precios. B1-A a B1-G continúan cubiertos internamente.
+- Grupos comerciales eliminados de la página de combos y de los productos enviados
+  por las API y a la ficha interactiva. La tabla de grupos ya no se importa al cliente.
+- Precios y escalas originales conservados, incluido el precio propio de B1-A.
+- Condiciones de B3 aclaradas: el código original aplica recargo de $16.000 a $20.000
+  a 4–5 pares. Se conserva esa excepción y no se anuncia envío sin recargo para ellos.
+- Comandos dev/build/start preparados para Next.js. La configuración antigua de Vite
+  se conserva como archivo heredado, pero no interviene en la compilación de Vercel.
+
+RESULTADO DE VERIFICACIÓN
+- Compilación de producción y TypeScript: correctos.
+- 38 pruebas de precios originales: correctas.
+- 30 pruebas nuevas de beneficios y datos públicos: correctas.
+- 8 comprobaciones adicionales con datos de prueba de B3/B6/B7: correctas.
+  Esos casos no son productos reales añadidos al catálogo.
+- 253 referencias conservadas; 251 activas visibles según el estado original.
+- Todas las imágenes declaradas en el catálogo están presentes.
+- Revisión en Chromium de temas, persistencia, menú, Escape, búsqueda,
+  selección de talla, añadir al carrito y persistencia del carrito: correcta.
+- Catálogo sin desbordamiento horizontal a 360, 390, 768 y 1440 píxeles.
+- Sin errores JavaScript de página en el recorrido probado.
+- Capturas de esta restauración en docs/vistas-restauradas.
+
+ALCANCE
+No se ha desplegado esta versión en tu cuenta de Vercel. La publicación requiere
+los comandos anteriores desde tu cuenta. Las pruebas no sustituyen la revisión final
+en tu dominio ni confirman inventario, cobertura logística o disponibilidad real.
+No se envió ningún mensaje de WhatsApp ni se realizó ninguna compra.
+
+SI NECESITAS VOLVER A LA VERSIÓN ANTERIOR
+Conserva el ZIP y la carpeta previos. En Vercel puedes volver al despliegue de
+producción anterior desde el historial del proyecto. No borres ese historial.
+
+REFERENCIAS OFICIALES
+https://vercel.com/docs/projects/deploy-from-cli
+https://vercel.com/docs/cli/deploy
+https://vercel.com/docs/cli/project-linking

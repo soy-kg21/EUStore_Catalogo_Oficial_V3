@@ -1,0 +1,112 @@
+{
+  "patch": "V5.1",
+  "applyAt": "Raíz de la carpeta V5, donde está package.json; combinar carpetas y reemplazar archivos.",
+  "baselineArchive": "EUStore_Anime_Universe_V5_Completo.zip",
+  "baselineSha256": "7a748e68df2ddeec3de9d7c1118b287bcea2ee9bbd1f760bb7631da91119ae19",
+  "deletedFiles": [],
+  "files": [
+    {
+      "path": "LEEME_ANIME_UNIVERSE_V5.txt",
+      "bytes": 3392,
+      "beforeSha256": "97839c5fdcfeea2ccd44a641edb0aaadccf048404c4583cf5528ec839c006683",
+      "afterSha256": "c6e92b5cef87e684ee483a746c14e7fd009f0475be9bdaf2206e394529b4a2c7"
+    },
+    {
+      "path": "LEEME_PARCHE_V5_1.txt",
+      "bytes": 2478,
+      "beforeSha256": null,
+      "afterSha256": "85f5f887d7645011e8f7aa70c278cd87fac557e9a82e7c49227934e386e7baf9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4470,
+      "beforeSha256": "251dec35151cf6c2b5fac04f84d1ecb81e7c1770afe1f19659eb548ebc669488",
+      "afterSha256": "2cb743692ec6a19f8fc5e91d60f4e328ff82f5b71f20d37e336ec54f3514c498"
+    },
+    {
+      "path": "components/anime/AnimePrices.tsx",
+      "bytes": 2147,
+      "beforeSha256": "ff4d58637c0c3d864234085788acf774bdc81451ae7ab08c5566bf81d52264e1",
+      "afterSha256": "8cc98bcf528db911ea749afd19a1970ea2b6d1fa6e0983d41ee999200170c2db"
+    },
+    {
+      "path": "components/anime/AnimeProductCard.tsx",
+      "bytes": 1750,
+      "beforeSha256": "510c8a560dc3301c90fa3a916d283148091f0ded67fbe4e28127f89fc6e4e1cd",
+      "afterSha256": "58af8d58b9af4b6fcb5c0d70f934f3d8f9e26fb604e67a142be540467471978f"
+    },
+    {
+      "path": "components/anime/AnimeShopClient.tsx",
+      "bytes": 12754,
+      "beforeSha256": "ea49dc18bdf4248494e4b27fe522cd76ddf70d6d2dc0451ce43c54999008e50b",
+      "afterSha256": "fc57db423fe6083c12398b0839df41cc71d38e2d6bbf33564884e167e6f8c455"
+    },
+    {
+      "path": "components/anime/AnimeUniverseHero.tsx",
+      "bytes": 4787,
+      "beforeSha256": "cc8d17411f482ae3963f077944b3a2dc0ad04c42d496ca9aa1f82bc8d749a5a4",
+      "afterSha256": "be946c7a69be423f956a34f3d3f569be5e49db1d66568ed7fd2b922b1255567b"
+    },
+    {
+      "path": "components/anime/shop-premium.module.css",
+      "bytes": 64638,
+      "beforeSha256": "f17edf2ff28b2507313dad4aea4d58c51629a25b55ad250b80fb008b775e2c1e",
+      "afterSha256": "9ce33b09cc1507bc55318c95e76d481afd38bd245d6c19de9fce6840bf1d7a43"
+    },
+    {
+      "path": "components/anime/universe.module.css",
+      "bytes": 10086,
+      "beforeSha256": "12ec63a108334bf3e604f0ba5a346ffcd7a467f1c5dfcdda8a211b8bf3f69479",
+      "afterSha256": "8d5cbcf2f670e21e254f64860e82321c20dd3cb2972b7c2d5dea12c6a402b30c"
+    },
+    {
+      "path": "docs/LEEME.txt",
+      "bytes": 625,
+      "beforeSha256": "f3f064cfa9b131a3e73a4714b5169cb3127fca71ccfa7a1ce6a055299c40276a",
+      "afterSha256": "605e7fdc7bd709cf714560f4bbdeff01c1c33a8fabb2a015c7cac556247a230c"
+    },
+    {
+      "path": "docs/VERIFICACION_ANIME_UNIVERSE_V5_1.json",
+      "bytes": 4042,
+      "beforeSha256": null,
+      "afterSha256": "55b7a6fe885464b22fc2098d785032370df1c1c305afb8459027407b6ca20826"
+    },
+    {
+      "path": "lib/anime-cinema-runtime.ts",
+      "bytes": 8126,
+      "beforeSha256": "1416f796060ddcbc92b12abf3c1b416a9878a654b3a7a14634d8c633ac9ae260",
+      "afterSha256": "bb7886d400051a50ff882716b7d988ebd7d0a23b2b8189a45abb731cde4779ed"
+    },
+    {
+      "path": "lib/anime-cinema.ts",
+      "bytes": 2309,
+      "beforeSha256": "90d329c275e08e308cdf546ad51919a1a40f26f8fd81aa999f330aae9322cf06",
+      "afterSha256": "f9da004022408cff64736c4bcf13d43382bf8fdc4034a979902afc628942a8fa"
+    },
+    {
+      "path": "scripts/check-anime-cinema-runtime.mjs",
+      "bytes": 7295,
+      "beforeSha256": "893e50561784df1ec172afe27f2796881b5301bc681d24d8cfc06c0b0a853f3f",
+      "afterSha256": "2b1424ac98d36a111d01299113887d604abd25cd1395d0e963346c87ecc69ad3"
+    },
+    {
+      "path": "scripts/check-anime-cinema.mjs",
+      "bytes": 2238,
+      "beforeSha256": "11779332997a19a84ac2696cb55b2afd42775000419c813e09fdb9334a52d765",
+      "afterSha256": "393b97612a41b871778a9ffb156fe6615e8cb13d6f114fe7012513ead53aa325"
+    },
+    {
+      "path": "scripts/check-anime-hero.mjs",
+      "bytes": 3026,
+      "beforeSha256": "0acf53f3b76c493c7da272e99478ce0baf79d1beac6e92baf74a3bc09713537f",
+      "afterSha256": "dc7b9557b6a6ef565a63e1dcb791cdd23652449376d5cb84c1fd24cc94ca2ddf"
+    },
+    {
+      "path": "scripts/check-anime-journey.mjs",
+      "bytes": 5731,
+      "beforeSha256": "830d80eb23524ce376ed8643ca64a488d8821dc6a15997ff0f6f47bab3c5d126",
+      "afterSha256": "c118c3a791cedf370387fb84f7da8ed60547d85135408c39d732b6fd90d192d3"
+    }
+  ],
+  "note": "El manifiesto se excluye a sí mismo."
+}

@@ -1,0 +1,84 @@
++{
+  "version": "Anime Universe V4",
+  "date": "2026-10-16",
+  "source": "EUStore_Anime_Integrado_V3_Completo.zip",
+  "source_sha256": "4205a3b4e22ffaacb365531fa68d475793ee1a8cc2c63e8b0b3df509c9a9d60c",
+  "checks": [
+    {
+      "script": "test:anime",
+      "exit_code": 0,
+      "output": "$ node scripts/check-anime.mjs\nPASS: 1209 diseños únicos, 41 alias, archivos e IDs íntegros, ofertas y 60 bloques 76/24.\n"
+    },
+    {
+      "script": "test:anime-shop",
+      "exit_code": 0,
+      "output": "$ node scripts/check-anime-shop.mjs\nPASS: tarifas públicas/habituales, fronteras mayoristas, rutas limpias, compatibilidad y 41 alias sin ciclos.\n(node:19) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "script": "test:anime-merchandising",
+      "exit_code": 0,
+      "output": "$ node scripts/check-anime-merchandising.mjs\nPASS: 5659 comprobaciones de merchandising; 5 dobles + 1 diseño restante desde posición 1, filtros y paginación; 1209 referencias sin pérdidas ni duplicados.\n(node:19) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "script": "test:anime-premium",
+      "exit_code": 0,
+      "output": "$ node scripts/check-anime-premium.mjs\n(node:19) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nPASS: 6342 comprobaciones premium: 1250 referencias y alias, rutas, filtros compartibles, cantidades/tallas, fusiones y mensaje con precios reales y dominio independiente.\n"
+    },
+    {
+      "script": "test:universe",
+      "exit_code": 0,
+      "output": "$ node scripts/check-universe.mjs\nPASS: 13403 comprobaciones Universe V2: 1209 slugs legibles, sin colisiones, 3627 imágenes, alias y consultas IA sin resultados inventados.\n(node:19) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "script": "test:anime-hero",
+      "exit_code": 0,
+      "output": "$ node scripts/check-anime-hero.mjs\n(node:19) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nPASS: 20 comprobaciones del hero real renderizado: tres camisetas diferentes por línea, enlaces individuales y acceso directo a colección y precios. Sin navegador.\n"
+    },
+    {
+      "script": "test:anime-integration",
+      "exit_code": 0,
+      "output": "$ node scripts/check-anime-integration.mjs\nPASS: 22 comprobaciones de integración: mismo menú original, Inicio y tres categorías generales accesibles desde once rutas; ticker conservado; datos, reglas, estilos generales y pie original intactos.\n"
+    },
+    {
+      "script": "test:anime-scene",
+      "exit_code": 0,
+      "output": "$ node scripts/check-anime-scene.mjs\nPASS: 30 comprobaciones 3D: nueve poses reproducibles en reversa, apoyo de pies, flexión de piernas, cámara, cursor, lanzamiento continuo y 292 vértices deformados. Sin navegador/WebGL.\n(node:19) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "script": "test:anime-journey",
+      "exit_code": 0,
+      "output": "$ node scripts/check-anime-journey.mjs\nPASS: 9 comprobaciones del recorrido: cinco rutas renderizadas, conteos reales, una navegación de líneas, título fuera del hero y clic real de categoría con historial/UTM y scroll conservados. Sin navegador.\n"
+    }
+  ],
+  "typescript": "PASS",
+  "production_build": "PASS",
+  "compiled_production_checks": 1246,
+  "general_commercial_quote_cases": 38,
+  "unchanged_original_photos": 4928,
+  "unchanged_lockfile": true,
+  "category_counts": {
+    "all": 1209,
+    "anime": 644,
+    "cartoon": 163,
+    "rock": 170,
+    "urbanas": 232
+  },
+  "public_catalog_payload": {
+    "bytes": 453666,
+    "gzip_bytes": 33760
+  },
+  "visual_inspection": {
+    "browser": "Not available. Browser/WebGL and device performance remain pending.",
+    "software_model_render": "Four deformed textured poses inspected; not a browser screenshot.",
+    "prototype": "Category-to-product spacing uses measured content height; real catalog product list uses normal document flow."
+  },
+  "scope": {
+    "general_catalog": "Preserved",
+    "pricing": "Preserved",
+    "product_urls": "Preserved",
+    "merchandising": "5 confirmed double print + 1 remaining design",
+    "whatsapp_agent": "Not connected or changed",
+    "deployment": "Not published"
+  },
+  "local_port": 5177
+}

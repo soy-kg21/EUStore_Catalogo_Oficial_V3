@@ -1,0 +1,125 @@
+EVOLUCIÓN URBANA — ANIME UNIVERSE V2
+Guía vigente de esta entrega
+
+1. COPIA INDEPENDIENTE
+
+Extrae el ZIP en una carpeta nueva, por ejemplo C:\Proyectos\EUStore_Anime_Universe_V2.
+Abre esa carpeta con Archivo > Abrir carpeta en VS Code. No extraigas encima del original ni de Premium V1.
+Los archivos de esta entrega son copias físicas. No hay enlaces simbólicos ni enlaces duros al original. Modificar un archivo de esta carpeta no modifica otra carpeta.
+No se incluye vinculación a Vercel, repositorio Git ni variables privadas. Las rutas del catálogo usan los datos locales cuando Supabase no está configurado.
+Si posteriormente configuras una misma base de datos o publicas dos copias en un mismo proyecto de alojamiento, ambas pueden consultar esos mismos datos o reemplazar ese mismo despliegue. Para un entorno independiente usa su propio proyecto y credenciales. Copiar carpetas no duplica una base de datos remota.
+Conserva también el ZIP original como respaldo cerrado.
+
+2. INSTALAR Y ABRIR EN VS CODE
+
+Instala Node >=22.13.0 y pnpm 11.25.0. Esta entrega fue compilada con Node 24.19.0.
+En la terminal PowerShell de VS Code, dentro de la carpeta del proyecto:
+
+  Copy-Item .env.example .env.local
+  pnpm install --frozen-lockfile
+  pnpm dev
+
+Si pnpm no está disponible, puedes instalar la versión indicada mediante:
+  npm install --global pnpm@11.25.0
+
+Abrir: http://localhost:5175/anime
+Todas las líneas: http://localhost:5175/shop
+Cartoon: http://localhost:5175/cartoon
+Rock: http://localhost:5175/rock
+Urbanas: http://localhost:5175/urbanas
+Catálogo general: http://localhost:5175/catalogo
+
+El puerto 5175 permite mantener otra copia en 5173 o 5174. Detener el servidor con Ctrl+C.
+No se incluyen node_modules, .next-native, build ni cachés. Se regeneran al instalar o compilar; las fotografías reales y el código completo sí están en el ZIP.
+.env.example no contiene secretos; .env.local se crea solo en tu computador.
+
+3. ENLACES INDIVIDUALES PARA TODAS LAS CAMISETAS
+
+Cada uno de los 1.209 productos únicos tiene su propio enlace. Por ejemplo:
+  /anime/hellsing-negro
+  /anime/gojo-diseno-2
+  /anime/monkey-d-luffy-diseno-3
+
+Son ejemplos de la misma función para todos los productos, no referencias especiales.
+La lista completa está en data/anime-public-routes.json y en ia/catalogo-anime-shop.csv.
+Las categorías también tienen sus páginas, para ver todos los diseños del mismo universo; no sustituyen las fichas individuales.
+El menú principal usa /anime, /cartoon, /rock, /urbanas y /shop.
+No se generan enlaces públicos /p/. Si alguien conserva uno antiguo, el servidor lo redirige permanentemente a la ficha legible correspondiente. /urbanos también redirige a /urbanas. Los 41 códigos históricos duplicados conducen a su producto canónico.
+Los slugs se guardan en un registro estable: editar un nombre no cambia automáticamente su enlace. Para incorporar nuevas referencias, actualizar primero los datos y ejecutar pnpm routes:sync; solo añade enlaces faltantes. Un cambio de línea de una referencia publicada necesita una migración explícita.
+
+4. NUEVA EXPERIENCIA ANIME SHOP
+
+El hero presenta tres diseños reales. En Anime y Shop: Hellsing Negro, Gojo Diseño 2 y Monkey D Luffy Diseño 3. Las otras líneas tienen su propia selección real.
+El desplazamiento del visitante controla la apertura de las tarjetas, el fondo y la profundidad. No se intercepta la rueda ni el gesto de scroll. En pantallas cortas, el contenido conserva su altura natural para que no se corten los controles.
+Si el sistema del visitante tiene activada la opción de accesibilidad “reducir movimiento”, se mantiene el mismo contenido sin giros ni desplazamientos decorativos.
+Se conservan las fotografías del proveedor; no se generan estampados ficticios ni vistas traseras inventadas.
+
+El botón del sol/luna cambia el modo claro/oscuro. La preferencia se guarda en ese navegador con la misma clave de tema del catálogo general. Los colores de las fotografías no reciben filtros ni inversiones. Los colores de la marca permanecen; los textos y fondos tienen valores propios para cada tema.
+El ajuste está limitado a los estilos de Anime Shop y sus ventanas: las hojas de estilo globales y los colores del catálogo general no se modificaron.
+
+La colección mantiene búsqueda, filtros por franquicia y doble estampado, carga de 24 en 24, vista rápida, tallas y cantidades por referencia, y un combo entre las cuatro líneas. Una misma camiseta en tallas diferentes se conserva como líneas separadas. WhatsApp abre el mensaje para que el cliente lo revise y lo envíe.
+Orden: cinco dobles estampados confirmados, luego un diseño restante, repitiendo mientras existan dobles. Los diseños restantes no se etiquetan como estampado sencillo sin confirmación. Al terminar los dobles aparecen todos los demás, sin pérdidas ni duplicados.
+
+5. COMPARTIR CON FOTO Y MARCA
+
+Cada ficha tiene botón “Compartir camiseta”, canonical propio y metadatos Open Graph/Twitter con nombre, fotografía real y marca. Si el dispositivo no ofrece menú nativo para compartir, se copia el enlace o se muestra para copiarlo manualmente.
+La imagen de la vista previa no es el favicon de la pestaña: el favicon sigue representando la tienda.
+WhatsApp y otras redes necesitan acceder al dominio público. localhost no se puede consultar desde esas plataformas. No se garantiza que todas las aplicaciones muestren la tarjeta: depende del rastreador y su caché.
+La imagen social se genera en /social/LINEA/SLUG. Solo usa activos del dominio configurado, no direcciones introducidas por visitantes.
+Las 192 imágenes originales WebP tienen copias JPEG compatibles en public/anime/social. Si cambias esas fotografías, puedes regenerarlas con python scripts/prepare-anime-social.py (requiere Pillow). Las originales permanecen intactas.
+Si el activo no responde temporalmente, se sirve una tarjeta de marca y nombre sin inventar una fotografía.
+
+En local, .env.local tiene NEXT_PUBLIC_SITE_URL=http://localhost:5175.
+Antes de publicar, cambiarlo al dominio HTTPS que realmente aloje esta versión y volver a compilar. INDEXING_ENABLED=false mantiene esta copia fuera de buscadores durante las pruebas. El cambio a producción y la publicación no se hicieron en esta entrega.
+
+6. BASE DE CONOCIMIENTO PARA WHATSAPP IA
+
+ia/catalogo-anime-shop.json: datos estructurados de las 1.209 referencias canónicas y sus alias.
+ia/catalogo-anime-shop.csv: la misma información para importar o revisar.
+ia/INSTRUCCIONES_IA.txt: reglas de respuesta comercial y de exactitud.
+API de lectura: /api/anime-reference?q=Naruto
+Ejemplos de consulta: nombre, personaje, universo, banda, código o película que exista en el catálogo. Si hay varias opciones, devuelve varias fichas y obliga a concretar cuál desea el cliente. Si no encuentra coincidencias, no inventa una referencia.
+No es una enciclopedia de argumentos de anime/películas ni un modelo de IA por sí mismo. Material, gramaje, horma o inventario desconocidos deben confirmarse; las tallas del catálogo no son stock en tiempo real.
+La fuente está preparada, pero el agente WhatsApp existente NO se conectó ni actualizó. Falta configurar su integración con la plataforma que uses. Primero publicar estas rutas en el dominio correcto y luego conectar el conocimiento.
+Para regenerar los archivos después de cambios de datos o dominio:
+  pnpm export:ia --origin https://TU-DOMINIO-PUBLICADO
+
+7. PRECIOS Y CONDICIONES CONSERVADOS
+
+1: $68.000 COP
+2: $99.000 COP
+3: $129.000 COP
+4: $159.000 COP
+5: $195.000 COP
+De 6 a 11: $38.400 por unidad.
+De 12 a 23: $33.300 por unidad.
+Desde 24: cotización personalizada.
+1–5: envío estándar incluido y contraentrega sujetos a cobertura y validación.
+Desde 6: pago anticipado, sin contraentrega, transporte separado por cotizar.
+No se promete envío internacional: la nueva estética no cambia la cobertura comercial real.
+Las promociones de Anime Shop son independientes de las del catálogo general.
+
+8. PRUEBAS
+
+Comprobaciones de datos, rutas, imágenes, orden, alias, selección y precios:
+  pnpm test:universe
+  pnpm test:anime-hero
+  pnpm test:anime
+  pnpm test:anime-shop
+  pnpm test:anime-merchandising
+  pnpm test:anime-premium
+
+Compilación y comprobación de salida real:
+  pnpm build:vercel
+  pnpm test:anime-build
+
+Para probar una compilación de producción en tu computador:
+  pnpm start
+  http://localhost:5175/anime
+
+Este entorno no dispuso de navegador para QA. Se verificaron compilación, TypeScript, las 1.209 fichas generadas, sus metadatos, APIs compiladas y cotizaciones; la revisión interactiva y visual en navegador queda pendiente en tu computador.
+Revisar /anime y /shop a 360, 390, 768 y 1440 px; probar scroll, menú, búsqueda, filtros, vista rápida, zoom, tallas, cantidades, vuelta desde una ficha, compartir, combo y WhatsApp.
+Repetir con modo claro/oscuro y al recargar; revisar las ventanas de filtros y combo en ambos temas. Comprobar que /catalogo conserva su presentación. Probar reducir movimiento desde los ajustes del sistema o las herramientas del navegador.
+No se dispararon campañas ni mensajes a clientes. Los eventos locales preparados no equivalen a una conexión activa con Meta Pixel o GA.
+
+Los documentos anteriores se conservan como historial. Esta guía y el reporte docs/VERIFICACION_UNIVERSE_V2.json describen esta versión.

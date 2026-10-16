@@ -1,0 +1,141 @@
+EVOLUCIÓN URBANA — ANIME SHOP INTEGRADO V3
+Guía vigente de esta entrega
+
+1. UN MISMO CATÁLOGO
+
+Esta entrega corrige la interpretación de “independiente”: la copia completa del proyecto es independiente de tu versión anterior; Anime Shop sigue siendo una sección dentro del mismo catálogo web.
+Todas las páginas comparten el menú original, el logotipo que vuelve a Inicio, la búsqueda general, el anuncio de texto móvil y el pie original. El menú incluye Inicio, Catálogo, Camisetas, Zapatillas, Conjuntos, Anime Shop y Combos; en pantallas estrechas se abre desde el botón de menú.
+Desde Anime Shop puedes volver a las camisetas del catálogo general, los oversize, las zapatillas y los conjuntos usando ese menú. No necesitas editar la URL.
+Las líneas Anime / Cartoon / Rock / Urbanas y Todas aparecen en una sola sección visual al iniciar los productos. No sustituyen el menú general.
+
+Inicio: /
+Catálogo general: /catalogo
+Camisetas generales: /categoria/camisetas
+Zapatillas: /categoria/zapatillas
+Conjuntos: /categoria/conjuntos
+Anime: /anime
+Todas las líneas de Anime Shop: /shop
+Cartoon: /cartoon
+Rock: /rock
+Urbanas: /urbanas
+
+Las promociones de Anime Shop y del catálogo general mantienen sus reglas propias. El carrito general permite abrir el combo Anime y el combo Anime permite volver al carrito general. No se mezclan cantidades para aplicar una promoción incorrecta.
+
+2. INSTALAR EN VS CODE
+
+Extrae el ZIP en una carpeta NUEVA: EUStore_Anime_Integrado_V3.
+Abre esa carpeta en VS Code. Debe contener package.json.
+Conserva intactas las carpetas anteriores para comparar o volver atrás.
+
+Ya tienes Node 24.21 y pnpm 11.25 según la terminal que compartiste. En la nueva carpeta, abre PowerShell y ejecuta:
+
+  if (!(Test-Path .env.local)) { Copy-Item .env.example .env.local }
+  pnpm.cmd install --frozen-lockfile
+  pnpm.cmd dev
+
+Abrir: http://localhost:5176/
+Anime Shop: http://localhost:5176/anime
+Todas las líneas: http://localhost:5176/shop
+
+El puerto 5176 permite comparar con V2 en 5175, sin reemplazarla.
+Detener con Ctrl+C.
+Requiere Node >=22.13.0 y pnpm 11.25.0. La compilación se verificó con Node 24.19.0.
+Si no tienes pnpm en otro computador: npm.cmd install --global pnpm@11.25.0
+
+No se incluyen dependencias instaladas, builds, cachés, vinculación a Vercel ni variables privadas. El código y las fotografías originales sí están completos.
+No copies una configuración de producción para esta prueba. .env.example usa datos locales y NEXT_PUBLIC_SITE_URL=http://localhost:5176, con INDEXING_ENABLED=false.
+No se publicó esta versión ni se modificó ninguna base de datos externa, campaña o agente WhatsApp.
+
+3. HERO CON SUKUNA Y SCROLL REVERSIBLE
+
+El personaje es Sukuna, de Jujutsu Kaisen. Se utiliza un modelo 3D con esqueleto, materiales y texturas; no es una tarjeta que gira ni un video.
+Three.js se importa cuando la escena se acerca a la pantalla. El modelo local optimizado ocupa aproximadamente 2,95 MB frente a 15,6 MB del archivo de origen.
+Las poses de los brazos y la flecha de fuego dependen del avance del scroll: preparación, energía, liberación y recorrido. Al volver hacia arriba se reproducen en orden inverso. La interpolación suaviza los cambios sin bloquear la rueda ni el gesto táctil.
+La escena tiene su área delimitada, con recorte propio. Título, descripción, precios, botones y camisetas ocupan áreas separadas. No se aplica desplazamiento ni giro a los textos del hero.
+En pantallas cortas o móviles, el hero sigue la altura natural del contenido para evitar cortar controles. La animación continúa vinculada al scroll, aunque no se fije el hero.
+El render se detiene al salir de pantalla o al ocultar la pestaña. La resolución se limita para reducir el trabajo gráfico. No se promete una tasa de FPS sin medirla en cada dispositivo.
+Si WebGL 2 no está disponible o el modelo no logra cargarse, queda una imagen del mismo personaje y pose. Con reducir movimiento activado, se conserva una pose estable.
+
+Modelo 3D: Wing, bajo CC BY 4.0. Se incluye crédito visible y public/anime/hero/CREDITS.txt con la fuente, licencia y cambios. Se conservan los datos de autor en el GLB. No se afirma que Evolución Urbana haya creado el modelo ni que exista patrocinio oficial.
+
+4. IDENTIDAD Y PRESENTACIÓN
+
+Se recupera el verde original #CCFF00 mediante la variable compartida --eu-accent. El anuncio conserva sus frases y movimiento; la línea de progreso usa el mismo verde y se alinea con el borde del anuncio al subir y bajar. Una vez que el anuncio sale de vista, el progreso continúa en el borde superior.
+El pie original, las hojas de estilo generales, los datos y los precios del catálogo general se conservan. Se añadieron estilos específicos para la integración y los controles Anime.
+El tema claro/oscuro conserva la preferencia del navegador y adapta hero, filtros, fichas, vista rápida y combo. Las fotografías no reciben inversiones ni filtros de color.
+Las nuevas tarjetas tienen bordes suaves, paneles y botones con radios moderados. Las tres camisetas del hero conservan sus estampados reales; se solicitan imágenes de mejor calidad mediante el optimizador de Next, con tamaño según pantalla. No se inventaron estampados ni imágenes de producto.
+
+5. RUTAS, PRODUCTOS Y PEDIDOS
+
+Las 1.209 camisetas únicas conservan sus enlaces legibles de V2 y sus 41 alias históricos. No cambiaron los slugs públicos al actualizar el diseño.
+Ejemplos:
+  /anime/hellsing-negro
+  /anime/gojo-diseno-2
+  /anime/monkey-d-luffy-diseno-3
+
+Registro completo: data/anime-public-routes.json.
+Cada camiseta tiene ficha, botón para compartir y metadatos con nombre/fotografía. Las vistas previas de WhatsApp necesitan un dominio público accesible; localhost no se puede consultar desde esas plataformas.
+Los enlaces antiguos /p/ solo redirigen al enlace legible correspondiente. No se generan como enlaces públicos nuevos.
+
+Se conserva búsqueda, filtro por universo y doble estampado, carga de 24 en 24, vista rápida, zoom, talla y cantidad por producto. El combo mezcla las cuatro líneas dentro de Anime Shop y conserva una misma referencia en tallas diferentes.
+Orden: 5 dobles estampados confirmados + 1 diseño restante por bloque. Al agotarse los dobles se muestran todos los demás. No se afirma que los diseños no confirmados sean estampado sencillo.
+
+6. PRECIOS CONSERVADOS
+
+1 camiseta: $68.000 COP
+2: $99.000 COP
+3: $129.000 COP
+4: $159.000 COP
+5: $195.000 COP
+6–11: $38.400 por unidad
+12–23: $33.300 por unidad
+24 o más: cotización personalizada
+
+1–5: envío estándar incluido y contraentrega sujetos a cobertura y validación.
+Desde 6: pago anticipado, sin contraentrega y transporte separado por cotizar.
+No se modificó la cobertura comercial ni se prometen envíos internacionales.
+
+7. CONOCIMIENTO PARA IA
+
+ia/catalogo-anime-shop.json y CSV contienen las 1.209 referencias con nombres, enlaces, alias y atributos conocidos. ia/INSTRUCCIONES_IA.txt define las reglas de exactitud y venta.
+La API /api/anime-reference?q=Naruto devuelve opciones concretas y reconoce códigos históricos. Si hay varias referencias pide concretar; si no hay coincidencias, no inventa productos. Las tallas no equivalen a inventario en tiempo real.
+El conocimiento está preparado; el agente WhatsApp existente no se conectó ni se actualizó.
+Después de publicar en el dominio correcto y de cambiar datos:
+  pnpm.cmd export:ia --origin https://TU-DOMINIO-PUBLICADO
+Para añadir referencias nuevas al registro sin cambiar enlaces existentes:
+  pnpm.cmd routes:sync
+
+8. COMPROBACIONES Y LÍMITES DE ESTA ENTREGA
+
+  pnpm.cmd test:anime-integration
+  pnpm.cmd test:anime-hero
+  pnpm.cmd test:anime-scene
+  pnpm.cmd test:universe
+  pnpm.cmd test:anime
+  pnpm.cmd test:anime-shop
+  pnpm.cmd test:anime-merchandising
+  pnpm.cmd test:anime-premium
+
+Luego, en orden y con el servidor de desarrollo detenido:
+  pnpm.cmd build:vercel
+  pnpm.cmd test:anime-build
+  pnpm.cmd start
+
+build:vercel solo compila. No publica.
+No ejecutes dos compilaciones al mismo tiempo ni una comprobación de la salida mientras se está regenerando.
+Se verifican las 1.209 fichas generadas, sus canonicals, sus previews, el menú general presente en ellas, las APIs compiladas y 38 cotizaciones del catálogo general.
+La prueba 3D carga el GLB y su esqueleto en Node, verifica nueve poses en ambas direcciones, matrices/vértices finitos y continuidad de la flecha. Se inspeccionaron también renders del modelo obtenidos por software. Esto NO sustituye una prueba real de WebGL en navegador.
+Este entorno no dispuso de la herramienta de navegador necesaria: queda pendiente revisar la presentación e interacción final en tu PC y móvil. No se presenta una medición Lighthouse ni un resultado de velocidad que no se haya medido.
+
+Lista para revisar en tu equipo:
+- Desde /anime, usar Inicio y el logotipo para volver al inicio; abrir Camisetas, Zapatillas y Conjuntos.
+- Confirmar anuncio móvil, mismo verde, progreso al bajar/subir y pie original.
+- Probar a 360, 390, 768, 1440 y 1920 px, en claro y oscuro.
+- Verificar que el modelo, la flecha y los efectos no cubran título, oferta ni botones, y que las tres camisetas tengan imágenes nítidas.
+- Bajar y volver al hero despacio y rápido; comprobar la reversa.
+- Probar búsqueda, categorías de la sección, doble estampado, cargar más, vista rápida, tallas, cantidades, zoom, compartir y combo.
+- Probar los accesos entre el combo Anime y el carrito general.
+- Revisar /catalogo y sus categorías para confirmar su presentación habitual.
+
+Reporte: docs/VERIFICACION_ANIME_INTEGRADO_V3.json.
+Los documentos anteriores quedan como historial y no definen esta versión.

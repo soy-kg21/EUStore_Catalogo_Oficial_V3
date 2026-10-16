@@ -1,0 +1,7 @@
+Auditoría de la copia extraída del ZIP
+
+APROBADO: instalación con pnpm 11.25.0 y lockfile congelado; compilación Next.js para Vercel; TypeScript; integridad ZIP; 253 registros con identificadores y slugs únicos; imágenes originales y miniaturas presentes; nueve imágenes de categorías.
+
+CORREGIDO: vite.config.ts dependía de .openai/hosting.json ausente en la entrega. Ahora los metadatos de Sites son opcionales; la compilación del proyecto exportado pasó tras el ajuste.
+
+LÍMITES: la revisión de navegador de esta nueva extracción no se completó antes de la entrega rápida solicitada. No se ha desplegado en la cuenta Vercel del propietario ni probado en Windows físico o Supabase real. La revisión visual y 38 pruebas comerciales anteriores se documentan en ACTUALIZACION_25-09-2026.md. No se garantiza ausencia absoluta de errores.

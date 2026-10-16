@@ -15,10 +15,10 @@ import {
 } from 'lucide-react';
 import HomeMotion from '@/components/home/HomeMotion';
 import ProductCard from '@/components/store/ProductCard';
-import { categories, ORIGIN, wa, money } from '@/lib/config';
+import { categories, wa, money } from '@/lib/config';
 import { getProducts } from '@/lib/products';
 import {discount} from '@/lib/product-display';
-import { jsonLd } from '@/lib/seo';
+import { jsonLd, siteSchema } from '@/lib/seo';
 
 export default async function Home() {
   const all = await getProducts();
@@ -177,13 +177,7 @@ export default async function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: jsonLd({
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'Evolución Urbana Store',
-            url: ORIGIN,
-            logo: `${ORIGIN}/imagenes/logo.png`,
-          }),
+          __html: jsonLd(siteSchema()),
         }}
       />
     </main>

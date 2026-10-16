@@ -1,0 +1,146 @@
+{
+  "version": "5.0.0",
+  "verifiedAtUTC": "2026-10-16T18:05:24.437285+00:00",
+  "source": {
+    "archive": "EUStore_Anime_Universe_V4_Completo.zip",
+    "sha256": "7f63d5932d6196c6f5b4ca69d2f6eb7accecb9b8a4bf468ec0351ec52f4609af",
+    "unchanged": true,
+    "independentPhysicalCopy": true
+  },
+  "scope": {
+    "deploymentPerformed": false,
+    "campaignsChanged": false,
+    "databaseOrWhatsappAgentChanged": false,
+    "generalCatalogRetained": true,
+    "port": 5178
+  },
+  "cinema": {
+    "pipeline": "Mismas imágenes del prototipo aprobado, planos por capas, GSAP/ScrollTrigger y efectos Canvas 2D. Sin nuevo rig o modelo articulado de Gojo.",
+    "guidedScroll": true,
+    "fullForwardVisibleSeconds": 32,
+    "chapterStops": [
+      0,
+      0.39,
+      0.62,
+      1
+    ],
+    "largeGesturesQueueChapters": true,
+    "normalScrollAfterSequence": true,
+    "reversible": true,
+    "categoryAndFilterChangesPreserveScene": true,
+    "reducedMotionPresentation": true,
+    "progressIntroShare": 0.16,
+    "assets": {
+      "public/anime/cinema/gojo-atlas.webp": {
+        "bytes": 254560,
+        "sha256": "ec27a17d6ee8c96c943006120a1b833a2ba05dc91bcc9b1fa946bd04ef7b8a11"
+      },
+      "public/anime/cinema/urbanas.webp": {
+        "bytes": 37936,
+        "sha256": "5e30de4be1a41e0e10c481f830bb30c81733c021ee7a13bbe51d66f9ad50f640"
+      },
+      "public/anime/cinema/category-atlas.webp": {
+        "bytes": 159220,
+        "sha256": "67f4074630d4a774263c72c8f22d11842cca6e5b5bd4da2aa5b4123b51f9afb8"
+      }
+    }
+  },
+  "catalog": {
+    "canonicalProducts": 1209,
+    "aliases": 41,
+    "categories": {
+      "anime": 644,
+      "cartoon": 163,
+      "rock": 170,
+      "urbanas": 232
+    },
+    "individualReadableProductSlugs": true,
+    "animeMerchandising": "5 dobles + 1 diseño restante, sin pérdidas ni duplicados",
+    "productPhotoFilesUnchangedFromV4": true
+  },
+  "validation": {
+    "typeScript": "PASS",
+    "productionBuild": "PASS",
+    "generatedStaticPages": 1398,
+    "suites": [
+      {
+        "suite": "test:anime",
+        "exit": 0,
+        "summary": "PASS: 1209 diseños únicos, 41 alias, archivos e IDs íntegros, ofertas y 60 bloques 76/24."
+      },
+      {
+        "suite": "test:anime-shop",
+        "exit": 0,
+        "summary": "PASS: tarifas públicas/habituales, fronteras mayoristas, rutas limpias, compatibilidad y 41 alias sin ciclos."
+      },
+      {
+        "suite": "test:anime-merchandising",
+        "exit": 0,
+        "summary": "PASS: 5659 comprobaciones de merchandising; 5 dobles + 1 diseño restante desde posición 1, filtros y paginación; 1209 referencias sin pérdidas ni duplicados."
+      },
+      {
+        "suite": "test:anime-premium",
+        "exit": 0,
+        "summary": "PASS: 6342 comprobaciones premium: 1250 referencias y alias, rutas, filtros compartibles, cantidades/tallas, fusiones y mensaje con precios reales y dominio independiente."
+      },
+      {
+        "suite": "test:universe",
+        "exit": 0,
+        "summary": "PASS: 13403 comprobaciones Universe V2: 1209 slugs legibles, sin colisiones, 3627 imágenes, alias y consultas IA sin resultados inventados."
+      },
+      {
+        "suite": "test:anime-cinema",
+        "exit": 0,
+        "summary": "{\"result\":\"PASS\",\"checks\":64,\"sequenceSeconds\":32,\"testedWidths\":[308,320,390,700,1024,1440,1920],\"scope\":\"Timeline, input-rate control, geometry and original artwork integrity; not a browser pixel/rendering test.\"}"
+      },
+      {
+        "suite": "test:anime-cinema-runtime",
+        "exit": 0,
+        "summary": "PASS: 17 comprobaciones del controlador real: ráfagas de scroll, tiempo mínimo, filtros sin reinicio, liberación al final, reversa, precios, movimiento reducido y limpieza; PC y móvil simulados, sin navegador."
+      },
+      {
+        "suite": "test:anime-hero",
+        "exit": 0,
+        "summary": "PASS: 20 comprobaciones del hero real renderizado: tres camisetas diferentes por línea, enlaces individuales y acceso directo a colección y precios. Sin navegador."
+      },
+      {
+        "suite": "test:anime-journey",
+        "exit": 0,
+        "summary": "PASS: 9 comprobaciones del recorrido: cinco rutas renderizadas, conteos reales, una navegación de líneas, título fuera del hero y clic real de categoría con historial/UTM y scroll conservados. Sin navegador."
+      },
+      {
+        "suite": "test:anime-integration",
+        "exit": 0,
+        "summary": "PASS: 22 comprobaciones de integración: mismo menú original, Inicio y tres categorías generales accesibles desde once rutas; ticker conservado; datos, reglas, estilos generales y pie original intactos."
+      },
+      {
+        "suite": "test:anime-build",
+        "exit": 0,
+        "summary": "38 commercial integration cases passed. PASS: 1246 comprobaciones de producción: HTML, canonicals y previews de 1209 fichas; APIs, IA, 38 cotizaciones generales y dos PNG sociales de 1200×630. Sin servidor de vista previa."
+      }
+    ]
+  },
+  "limitations": {
+    "browserVisualQA": "Pendiente: este entorno no proporciona navegador de prueba.",
+    "deviceQA": "Pendiente en Chrome/Safari y teléfonos reales.",
+    "runtimeTestMethod": "Controlador real con adaptadores de DOM, GSAP, reloj e inputs; no equivale a renderizar píxeles en un navegador.",
+    "geometryFixtureWidths": [
+      308,
+      320,
+      390,
+      700,
+      1024,
+      1440,
+      1920
+    ]
+  },
+  "delivery": {
+    "fullSource": true,
+    "dependenciesAndBuildCachesExcluded": true,
+    "privateEnvFilesExcluded": true,
+    "envExampleIncluded": true,
+    "node": ">=22.13.0",
+    "testedNode": "24.19.0",
+    "pnpm": "11.25.0"
+  }
+}

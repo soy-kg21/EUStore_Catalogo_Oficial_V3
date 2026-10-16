@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {stripTypeScriptTypes} from 'node:module';
+import {normalizeAnimeText} from '../lib/anime-catalog-core.ts';
+import {animePublicTotals,animeQuote} from '../lib/anime-commercial.ts';
+const root=new URL('../',import.meta.url),read=file=>fs.readFileSync(new URL(file,root),'utf8'),json=file=>JSON.parse(read(file));
+const load=(file,bindings,exports)=>new Function(...Object.keys(bindings),stripTypeScriptTypes(read(file)).replace(/^import .*;\s*$/gm,'').replace(/^export /gm,'')+`\nreturn {${exports}};`)(...Object.values(bindings));
+const {publicReferenceFacts}=load('lib/anime-reference-search.ts',{normalizeAnimeText},'publicReferenceFacts');
+const originArg=process.argv.indexOf('--origin'),origin=new URL(originArg>=0?process.argv[originArg+1]:'https://www.evolucionurbana.store').origin;
+const catalog=json('data/anime-catalog.json'),routes=json('data/anime-public-routes.json'),merch=json('data/anime-merchandising.json'),doubles=new Set(merch.doublePrintIds);
+const items=catalog.filter(p=>!p.canonicalId).map(product=>publicReferenceFacts({...product,searchAliases:catalog.filter(alias=>alias.canonicalId===product.id).map(alias=>alias.id)},routes[product.id].path,origin,doubles.has(product.id)));
+const source={version:'EU Anime Integrado V3',generatedAt:new Date().toISOString(),origin,status:'Fuente preparada. Conectar al agente y publicar estas rutas antes de usarlas con clientes.',inventoryIsLive:false,publicCombosCOP:animePublicTotals.map((total,index)=>({quantity:index+1,total})),wholesale:[{from:6,to:11,unitCOP:animeQuote(6).unit},{from:12,to:23,unitCOP:animeQuote(12).unit},{from:24,humanQuote:true}],conditions:'1–5: envío estándar incluido y contraentrega sujetos a cobertura y validación. Desde 6: pago anticipado, sin contraentrega, transporte separado por cotizar.',items};
+fs.mkdirSync(new URL('ia/',root),{recursive:true});fs.writeFileSync(new URL('ia/catalogo-anime-shop.json',root),JSON.stringify(source,null,2)+'\n');
+fs.writeFileSync(new URL('docs/meta-catalog-context.json',root),JSON.stringify(source,null,2)+'\n');
+const columns=['id','aliases','name','line','universe','path','url','image','priceCOP','doublePrint','material','weightGrams','fit','catalogSizes','availability'];
+const escape=value=>'"'+String(Array.isArray(value)?value.join(' | '):value??'').replaceAll('"','""')+'"';
+fs.writeFileSync(new URL('ia/catalogo-anime-shop.csv',root),'\uFEFF'+[columns,...items.map(item=>columns.map(key=>item[key]))].map(row=>row.map(escape).join(',')).join('\r\n')+'\r\n');
+console.log(`PASS: ${items.length} referencias exportadas, enlaces individuales, ${origin}. Fuente IA preparada; no conectada.`);

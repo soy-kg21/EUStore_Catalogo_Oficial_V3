@@ -1,0 +1,59 @@
+EVOLUCIÓN URBANA · ANIME UNIVERSE V5 · PARCHE 5.1
+
+1. EXTRAER COMO COPIA INDEPENDIENTE
+Extrae el ZIP en una carpeta NUEVA: EUStore_Anime_Universe_V5.
+No lo extraigas encima de V4 ni de la carpeta original.
+Son archivos físicos independientes; no hay enlaces simbólicos ni carpetas compartidas entre versiones.
+Si abres la copia en un editor, revisa que VS Code muestre la carpeta V5.
+
+2. INSTALAR Y ABRIR
+Ya tienes Node 24 y pnpm 11.25.0. En la terminal PowerShell de VS Code:
+
+if (!(Test-Path .env.local)) { Copy-Item .env.example .env.local }
+pnpm.cmd install --frozen-lockfile
+pnpm.cmd dev
+
+Inicio: http://localhost:5178/
+Catálogo general: http://localhost:5178/catalogo
+Anime Shop: http://localhost:5178/anime
+Todas las líneas: http://localhost:5178/shop
+
+Para detener: Ctrl+C.
+Para otra sesión: pnpm.cmd dev.
+Si necesitas las variables privadas de tu instalación anterior, traslada sus valores manualmente a la nueva .env.local. No se incluyen credenciales en el ZIP.
+
+3. CÓMO FUNCIONA EL RECORRIDO
+El desplazamiento de la página controla la escena directamente.
+Cuando la página deja de desplazarse, la escena se detiene; al subir, retrocede.
+No hay reproducción por tiempo, cola de gestos ni duración obligatoria.
+La distancia de scroll se redujo, manteniendo la misma secuencia visual.
+La rueda, el táctil, el teclado y la barra lateral funcionan de manera nativa.
+Inicio vuelve al comienzo de Anime Shop con scroll suave y escena en reversa.
+Explorar la colección desplaza suavemente hasta las categorías.
+Entre los productos puedes cambiar de línea y abrir filtros sin volver al hero.
+El menú y los enlaces de producto siguen disponibles durante la experiencia.
+No se requiere instalar Blender para ejecutar esta versión.
+Gojo se representa con las imágenes y capas del prototipo, no con un nuevo modelo 3D articulado.
+
+4. PRUEBA LOCAL RECOMENDADA
+- Recorrer hacia abajo con scroll lento y con gestos rápidos.
+- Detener el desplazamiento a mitad de una transición y comprobar que la escena se detiene.
+- Continuar de las categorías a los productos con la rueda, sin recurrir a la barra lateral.
+- Volver hacia arriba y revisar la reversa.
+- Comparar móvil estrecho y PC: título, botón y tres camisetas separados.
+- Abrir filtros y cambiar Anime/Cartoon/Rock/Urbanas desde el selector entre los productos, sin reiniciar la escena.
+- Buscar un personaje, elegir franquicia y probar doble estampado.
+- Abrir una ficha, compartir su enlace legible y volver a la colección.
+- Elegir talla y cantidad; comprobar el combo y el mensaje de WhatsApp sin enviar si solo estás probando.
+- Comprobar Inicio, Catálogo, Camisetas, Zapatillas, Conjuntos, sol/luna y pie original.
+
+Las comprobaciones automáticas incluyen la compilación de producción. La inspección visual en navegador/dispositivo real no pudo ejecutarse en el entorno de entrega y debe revisarse localmente. Ver docs/VERIFICACION_ANIME_UNIVERSE_V5_1.json.
+
+5. PRODUCCIÓN LOCAL
+pnpm.cmd build:vercel
+pnpm.cmd start
+
+6. PESO Y COPIAS
+Se incluyen los archivos fuente y las fotografías completas. No se incluyen node_modules, .next-native, .vercel, .sites-runtime, build, archivos .env privados ni cachés.
+La instalación vuelve a crear dependencias y compilaciones; su tamaño en disco no es lo que descarga cada visitante.
+El ZIP no está publicado ni conectado a una aplicación de producción.

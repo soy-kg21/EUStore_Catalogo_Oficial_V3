@@ -1,0 +1,6047 @@
+{
+  "EU-ANIME-001": {
+    "slug": "abuelo-de-goku",
+    "line": "anime",
+    "path": "/anime/abuelo-de-goku"
+  },
+  "EU-ANIME-002": {
+    "slug": "bob-patino",
+    "line": "cartoon",
+    "path": "/cartoon/bob-patino"
+  },
+  "EU-ANIME-003": {
+    "slug": "ac-dc-rock-clasico",
+    "line": "rock",
+    "path": "/rock/ac-dc-rock-clasico"
+  },
+  "EU-ANIME-004": {
+    "slug": "akatsuki-opcion-1",
+    "line": "anime",
+    "path": "/anime/akatsuki-opcion-1"
+  },
+  "EU-ANIME-005": {
+    "slug": "bart",
+    "line": "cartoon",
+    "path": "/cartoon/bart"
+  },
+  "EU-ANIME-006": {
+    "slug": "broly",
+    "line": "anime",
+    "path": "/anime/broly"
+  },
+  "EU-ANIME-007": {
+    "slug": "bugs-bunny",
+    "line": "cartoon",
+    "path": "/cartoon/bugs-bunny"
+  },
+  "EU-ANIME-008": {
+    "slug": "careta",
+    "line": "urbanos",
+    "path": "/urbanas/careta"
+  },
+  "EU-ANIME-009": {
+    "slug": "coraje",
+    "line": "cartoon",
+    "path": "/cartoon/coraje"
+  },
+  "EU-ANIME-010": {
+    "slug": "deadpool-2",
+    "line": "cartoon",
+    "path": "/cartoon/deadpool-2"
+  },
+  "EU-ANIME-011": {
+    "slug": "dragon-ball-camiseta",
+    "line": "anime",
+    "path": "/anime/dragon-ball-camiseta"
+  },
+  "EU-ANIME-012": {
+    "slug": "eren",
+    "line": "anime",
+    "path": "/anime/eren"
+  },
+  "EU-ANIME-013": {
+    "slug": "erradicate-llamas",
+    "line": "urbanos",
+    "path": "/urbanas/erradicate-llamas"
+  },
+  "EU-ANIME-014": {
+    "slug": "fearless-fuego-neon",
+    "line": "urbanos",
+    "path": "/urbanas/fearless-fuego-neon"
+  },
+  "EU-ANIME-015": {
+    "slug": "gaara",
+    "line": "anime",
+    "path": "/anime/gaara"
+  },
+  "EU-ANIME-016": {
+    "slug": "gojo",
+    "line": "anime",
+    "path": "/anime/gojo"
+  },
+  "EU-ANIME-017": {
+    "slug": "human-calavera",
+    "line": "urbanos",
+    "path": "/urbanas/human-calavera"
+  },
+  "EU-ANIME-018": {
+    "slug": "killer-mascara",
+    "line": "urbanos",
+    "path": "/urbanas/killer-mascara"
+  },
+  "EU-ANIME-019": {
+    "slug": "kiss-rock",
+    "line": "rock",
+    "path": "/rock/kiss-rock"
+  },
+  "EU-ANIME-020": {
+    "slug": "korn-edicion-2",
+    "line": "rock",
+    "path": "/rock/korn-edicion-2"
+  },
+  "EU-ANIME-021": {
+    "slug": "luffy",
+    "line": "anime",
+    "path": "/anime/luffy"
+  },
+  "EU-ANIME-022": {
+    "slug": "maestro-roshi",
+    "line": "anime",
+    "path": "/anime/maestro-roshi"
+  },
+  "EU-ANIME-023": {
+    "slug": "maestro",
+    "line": "anime",
+    "path": "/anime/maestro"
+  },
+  "EU-ANIME-024": {
+    "slug": "all-might-opcion-1",
+    "line": "anime",
+    "path": "/anime/all-might-opcion-1"
+  },
+  "EU-ANIME-025": {
+    "slug": "armin-arlert",
+    "line": "anime",
+    "path": "/anime/armin-arlert"
+  },
+  "EU-ANIME-026": {
+    "slug": "attack-on-titan-emblema",
+    "line": "anime",
+    "path": "/anime/attack-on-titan-emblema"
+  },
+  "EU-ANIME-027": {
+    "slug": "baby-yoda-negra",
+    "line": "cartoon",
+    "path": "/cartoon/baby-yoda-negra"
+  },
+  "EU-ANIME-028": {
+    "slug": "baki-camiseta",
+    "line": "anime",
+    "path": "/anime/baki-camiseta"
+  },
+  "EU-ANIME-029": {
+    "slug": "baki-fight",
+    "line": "anime",
+    "path": "/anime/baki-fight"
+  },
+  "EU-ANIME-030": {
+    "slug": "black-sabbath-camiseta",
+    "line": "rock",
+    "path": "/rock/black-sabbath-camiseta"
+  },
+  "EU-ANIME-031": {
+    "slug": "bleach-edicion-2",
+    "line": "anime",
+    "path": "/anime/bleach-edicion-2"
+  },
+  "EU-ANIME-032": {
+    "slug": "breakout",
+    "line": "urbanos",
+    "path": "/urbanas/breakout"
+  },
+  "EU-ANIME-033": {
+    "slug": "cartoon",
+    "line": "cartoon",
+    "path": "/cartoon/cartoon"
+  },
+  "EU-ANIME-034": {
+    "slug": "catpool",
+    "line": "cartoon",
+    "path": "/cartoon/catpool"
+  },
+  "EU-ANIME-035": {
+    "slug": "chopper-2",
+    "line": "anime",
+    "path": "/anime/chopper-2"
+  },
+  "EU-ANIME-036": {
+    "slug": "contaminacion",
+    "line": "urbanos",
+    "path": "/urbanas/contaminacion"
+  },
+  "EU-ANIME-037": {
+    "slug": "demon-slayer-arte-japones",
+    "line": "anime",
+    "path": "/anime/demon-slayer-arte-japones"
+  },
+  "EU-ANIME-038": {
+    "slug": "luffy-daaamn",
+    "line": "anime",
+    "path": "/anime/luffy-daaamn"
+  },
+  "EU-ANIME-039": {
+    "slug": "dabi",
+    "line": "anime",
+    "path": "/anime/dabi"
+  },
+  "EU-ANIME-040": {
+    "slug": "danza-del-fuego",
+    "line": "anime",
+    "path": "/anime/danza-del-fuego"
+  },
+  "EU-ANIME-041": {
+    "slug": "deadmoon",
+    "line": "urbanos",
+    "path": "/urbanas/deadmoon"
+  },
+  "EU-ANIME-042": {
+    "slug": "deadpool-edicion-1",
+    "line": "cartoon",
+    "path": "/cartoon/deadpool-edicion-1"
+  },
+  "EU-ANIME-043": {
+    "slug": "death-note-rem-y-misa-amane",
+    "line": "anime",
+    "path": "/anime/death-note-rem-y-misa-amane"
+  },
+  "EU-ANIME-044": {
+    "slug": "death-note-edicion-3",
+    "line": "anime",
+    "path": "/anime/death-note-edicion-3"
+  },
+  "EU-ANIME-045": {
+    "slug": "deku-midoriya-2",
+    "line": "anime",
+    "path": "/anime/deku-midoriya-2"
+  },
+  "EU-ANIME-046": {
+    "slug": "demon-slayer-3",
+    "line": "anime",
+    "path": "/anime/demon-slayer-3"
+  },
+  "EU-ANIME-047": {
+    "slug": "demon-slayer-camiseta",
+    "line": "anime",
+    "path": "/anime/demon-slayer-camiseta"
+  },
+  "EU-ANIME-048": {
+    "slug": "denji-chainsaw-man",
+    "line": "anime",
+    "path": "/anime/denji-chainsaw-man"
+  },
+  "EU-ANIME-049": {
+    "slug": "dpikes",
+    "line": "urbanos",
+    "path": "/urbanas/dpikes"
+  },
+  "EU-ANIME-050": {
+    "slug": "draken",
+    "line": "anime",
+    "path": "/anime/draken"
+  },
+  "EU-ANIME-051": {
+    "slug": "escanor",
+    "line": "anime",
+    "path": "/anime/escanor"
+  },
+  "EU-ANIME-052": {
+    "slug": "freezer",
+    "line": "anime",
+    "path": "/anime/freezer"
+  },
+  "EU-ANIME-053": {
+    "slug": "deadpool-parodia-negra",
+    "line": "cartoon",
+    "path": "/cartoon/deadpool-parodia-negra"
+  },
+  "EU-ANIME-054": {
+    "slug": "fullmetal-alchemist-edicion-2",
+    "line": "anime",
+    "path": "/anime/fullmetal-alchemist-edicion-2"
+  },
+  "EU-ANIME-055": {
+    "slug": "fullmetal-alchemist-ilustracion",
+    "line": "anime",
+    "path": "/anime/fullmetal-alchemist-ilustracion"
+  },
+  "EU-ANIME-056": {
+    "slug": "gear-5-luffy",
+    "line": "anime",
+    "path": "/anime/gear-5-luffy"
+  },
+  "EU-ANIME-057": {
+    "slug": "gon-freecss",
+    "line": "anime",
+    "path": "/anime/gon-freecss"
+  },
+  "EU-ANIME-058": {
+    "slug": "gorillaz-edicion-3",
+    "line": "rock",
+    "path": "/rock/gorillaz-edicion-3"
+  },
+  "EU-ANIME-059": {
+    "slug": "gorillaz-blanco",
+    "line": "rock",
+    "path": "/rock/gorillaz-blanco"
+  },
+  "EU-ANIME-060": {
+    "slug": "guns-n-roses-clasico",
+    "line": "rock",
+    "path": "/rock/guns-n-roses-clasico"
+  },
+  "EU-ANIME-061": {
+    "slug": "haikyuu-equipo",
+    "line": "anime",
+    "path": "/anime/haikyuu-equipo"
+  },
+  "EU-ANIME-062": {
+    "slug": "hinata-shoyo-haikyuu",
+    "line": "anime",
+    "path": "/anime/hinata-shoyo-haikyuu"
+  },
+  "EU-ANIME-063": {
+    "slug": "wolverine-hugh-jackman",
+    "line": "cartoon",
+    "path": "/cartoon/wolverine-hugh-jackman"
+  },
+  "EU-ANIME-064": {
+    "slug": "ichigo",
+    "line": "anime",
+    "path": "/anime/ichigo"
+  },
+  "EU-ANIME-065": {
+    "slug": "ichigo-kurosaki-edicion-1",
+    "line": "anime",
+    "path": "/anime/ichigo-kurosaki-edicion-1"
+  },
+  "EU-ANIME-066": {
+    "slug": "inosuke",
+    "line": "anime",
+    "path": "/anime/inosuke"
+  },
+  "EU-ANIME-067": {
+    "slug": "iron-maiden-clasico",
+    "line": "rock",
+    "path": "/rock/iron-maiden-clasico"
+  },
+  "EU-ANIME-068": {
+    "slug": "jojo-edicion-4",
+    "line": "anime",
+    "path": "/anime/jojo-edicion-4"
+  },
+  "EU-ANIME-069": {
+    "slug": "joseph-joestar",
+    "line": "anime",
+    "path": "/anime/joseph-joestar"
+  },
+  "EU-ANIME-070": {
+    "slug": "jujutsu-kaisen-edicion-3",
+    "line": "anime",
+    "path": "/anime/jujutsu-kaisen-edicion-3"
+  },
+  "EU-ANIME-071": {
+    "slug": "kaneki",
+    "line": "anime",
+    "path": "/anime/kaneki"
+  },
+  "EU-ANIME-072": {
+    "slug": "katsuki-bakugo",
+    "line": "anime",
+    "path": "/anime/katsuki-bakugo"
+  },
+  "EU-ANIME-073": {
+    "slug": "killua-edicion-2",
+    "line": "anime",
+    "path": "/anime/killua-edicion-2"
+  },
+  "EU-ANIME-074": {
+    "slug": "kimetsu-no-yaiba-personajes",
+    "line": "anime",
+    "path": "/anime/kimetsu-no-yaiba-personajes"
+  },
+  "EU-ANIME-075": {
+    "slug": "kokushibo",
+    "line": "anime",
+    "path": "/anime/kokushibo"
+  },
+  "EU-ANIME-076": {
+    "slug": "krillin-dragon-ball",
+    "line": "anime",
+    "path": "/anime/krillin-dragon-ball"
+  },
+  "EU-ANIME-077": {
+    "slug": "levi",
+    "line": "anime",
+    "path": "/anime/levi"
+  },
+  "EU-ANIME-078": {
+    "slug": "bullet-for-my-valentine-camiseta",
+    "line": "rock",
+    "path": "/rock/bullet-for-my-valentine-camiseta"
+  },
+  "EU-ANIME-079": {
+    "slug": "foo-fighters-camiseta",
+    "line": "rock",
+    "path": "/rock/foo-fighters-camiseta"
+  },
+  "EU-ANIME-080": {
+    "slug": "heroes-del-silencio-camiseta",
+    "line": "rock",
+    "path": "/rock/heroes-del-silencio-camiseta"
+  },
+  "EU-ANIME-081": {
+    "slug": "imagine-dragons-camiseta",
+    "line": "rock",
+    "path": "/rock/imagine-dragons-camiseta"
+  },
+  "EU-ANIME-082": {
+    "slug": "cyber-luffy-negra",
+    "line": "anime",
+    "path": "/anime/cyber-luffy-negra"
+  },
+  "EU-ANIME-083": {
+    "slug": "luigi-mario-kart",
+    "line": "cartoon",
+    "path": "/cartoon/luigi-mario-kart"
+  },
+  "EU-ANIME-084": {
+    "slug": "furious-negro",
+    "line": "urbanos",
+    "path": "/urbanas/furious-negro"
+  },
+  "EU-ANIME-085": {
+    "slug": "giorno-giovanna",
+    "line": "anime",
+    "path": "/anime/giorno-giovanna"
+  },
+  "EU-ANIME-086": {
+    "slug": "gojo-lover-blanco",
+    "line": "anime",
+    "path": "/anime/gojo-lover-blanco"
+  },
+  "EU-ANIME-087": {
+    "slug": "goku-skate-negro",
+    "line": "anime",
+    "path": "/anime/goku-skate-negro"
+  },
+  "EU-ANIME-088": {
+    "slug": "hunter-x-hunter-blanco",
+    "line": "anime",
+    "path": "/anime/hunter-x-hunter-blanco"
+  },
+  "EU-ANIME-089": {
+    "slug": "sailor-mars-unisex",
+    "line": "anime",
+    "path": "/anime/sailor-mars-unisex"
+  },
+  "EU-ANIME-090": {
+    "slug": "bulbasaur-evoluciones-verde",
+    "line": "anime",
+    "path": "/anime/bulbasaur-evoluciones-verde"
+  },
+  "EU-ANIME-091": {
+    "slug": "cazador-de-piratas",
+    "line": "anime",
+    "path": "/anime/cazador-de-piratas"
+  },
+  "EU-ANIME-092": {
+    "slug": "eren-jaeger-2",
+    "line": "anime",
+    "path": "/anime/eren-jaeger-2"
+  },
+  "EU-ANIME-093": {
+    "slug": "gear-5-roja",
+    "line": "anime",
+    "path": "/anime/gear-5-roja"
+  },
+  "EU-ANIME-094": {
+    "slug": "gear-5-negra",
+    "line": "anime",
+    "path": "/anime/gear-5-negra"
+  },
+  "EU-ANIME-095": {
+    "slug": "gojo-vinotinto",
+    "line": "anime",
+    "path": "/anime/gojo-vinotinto"
+  },
+  "EU-ANIME-096": {
+    "slug": "harley-1",
+    "line": "cartoon",
+    "path": "/cartoon/harley-1"
+  },
+  "EU-ANIME-097": {
+    "slug": "hawks",
+    "line": "anime",
+    "path": "/anime/hawks"
+  },
+  "EU-ANIME-098": {
+    "slug": "iron-maiden-est-1975",
+    "line": "rock",
+    "path": "/rock/iron-maiden-est-1975"
+  },
+  "EU-ANIME-099": {
+    "slug": "killua-blanco",
+    "line": "anime",
+    "path": "/anime/killua-blanco"
+  },
+  "EU-ANIME-100": {
+    "slug": "attack-on-titan-edicion-2",
+    "line": "anime",
+    "path": "/anime/attack-on-titan-edicion-2"
+  },
+  "EU-ANIME-101": {
+    "slug": "attack-on-titan-edicion-3",
+    "line": "anime",
+    "path": "/anime/attack-on-titan-edicion-3"
+  },
+  "EU-ANIME-102": {
+    "slug": "bad-religion-negro",
+    "line": "rock",
+    "path": "/rock/bad-religion-negro"
+  },
+  "EU-ANIME-103": {
+    "slug": "one-piece-tripulacion",
+    "line": "anime",
+    "path": "/anime/one-piece-tripulacion"
+  },
+  "EU-ANIME-104": {
+    "slug": "caballeros-del-zodiaco-ilustracion",
+    "line": "anime",
+    "path": "/anime/caballeros-del-zodiaco-ilustracion"
+  },
+  "EU-ANIME-105": {
+    "slug": "usopp-edicion-negra",
+    "line": "anime",
+    "path": "/anime/usopp-edicion-negra"
+  },
+  "EU-ANIME-106": {
+    "slug": "guns-n-roses-verde",
+    "line": "rock",
+    "path": "/rock/guns-n-roses-verde"
+  },
+  "EU-ANIME-107": {
+    "slug": "slayer-verde",
+    "line": "rock",
+    "path": "/rock/slayer-verde"
+  },
+  "EU-ANIME-108": {
+    "slug": "therion-negro",
+    "line": "rock",
+    "path": "/rock/therion-negro"
+  },
+  "EU-ANIME-109": {
+    "slug": "choso-jujutsu-kaisen",
+    "line": "anime",
+    "path": "/anime/choso-jujutsu-kaisen"
+  },
+  "EU-ANIME-110": {
+    "slug": "dandadan-edicion-negra",
+    "line": "anime",
+    "path": "/anime/dandadan-edicion-negra"
+  },
+  "EU-ANIME-111": {
+    "slug": "dandadan-doble-vista",
+    "line": "anime",
+    "path": "/anime/dandadan-doble-vista"
+  },
+  "EU-ANIME-112": {
+    "slug": "death-note-ryuk",
+    "line": "anime",
+    "path": "/anime/death-note-ryuk"
+  },
+  "EU-ANIME-113": {
+    "slug": "goku-ultra-instinto",
+    "line": "anime",
+    "path": "/anime/goku-ultra-instinto"
+  },
+  "EU-ANIME-114": {
+    "slug": "ghost-calavera",
+    "line": "rock",
+    "path": "/rock/ghost-calavera"
+  },
+  "EU-ANIME-115": {
+    "slug": "kurapika-hunter-x-hunter",
+    "line": "anime",
+    "path": "/anime/kurapika-hunter-x-hunter"
+  },
+  "EU-ANIME-116": {
+    "slug": "linkin-park-rojo",
+    "line": "rock",
+    "path": "/rock/linkin-park-rojo"
+  },
+  "EU-ANIME-117": {
+    "slug": "linkin-park-logo",
+    "line": "rock",
+    "path": "/rock/linkin-park-logo"
+  },
+  "EU-ANIME-118": {
+    "slug": "welcome-to-jungle-blanco",
+    "line": "rock",
+    "path": "/rock/welcome-to-jungle-blanco"
+  },
+  "EU-ANIME-119": {
+    "slug": "attack-on-titan-kanji-negro",
+    "line": "anime",
+    "path": "/anime/attack-on-titan-kanji-negro"
+  },
+  "EU-ANIME-121": {
+    "slug": "maestro-roshi-blanco",
+    "line": "anime",
+    "path": "/anime/maestro-roshi-blanco"
+  },
+  "EU-ANIME-122": {
+    "slug": "berserk-marca-del-sacrificio",
+    "line": "anime",
+    "path": "/anime/berserk-marca-del-sacrificio"
+  },
+  "EU-ANIME-123": {
+    "slug": "samurai-anime-rojo-y-negro",
+    "line": "anime",
+    "path": "/anime/samurai-anime-rojo-y-negro"
+  },
+  "EU-ANIME-124": {
+    "slug": "guerrero-monocromo-negro",
+    "line": "urbanos",
+    "path": "/urbanas/guerrero-monocromo-negro"
+  },
+  "EU-ANIME-125": {
+    "slug": "hellsing-negro",
+    "line": "anime",
+    "path": "/anime/hellsing-negro"
+  },
+  "EU-ANIME-126": {
+    "slug": "ichigo-kurosaki-negro",
+    "line": "anime",
+    "path": "/anime/ichigo-kurosaki-negro"
+  },
+  "EU-ANIME-127": {
+    "slug": "requiem-gotico-negro",
+    "line": "urbanos",
+    "path": "/urbanas/requiem-gotico-negro"
+  },
+  "EU-ANIME-128": {
+    "slug": "akatsuki-nube-roja",
+    "line": "anime",
+    "path": "/anime/akatsuki-nube-roja"
+  },
+  "EU-ANIME-129": {
+    "slug": "bulma-capsule-corp-negra",
+    "line": "anime",
+    "path": "/anime/bulma-capsule-corp-negra"
+  },
+  "EU-ANIME-130": {
+    "slug": "kakashi-retrato-blanco",
+    "line": "anime",
+    "path": "/anime/kakashi-retrato-blanco"
+  },
+  "EU-ANIME-131": {
+    "slug": "one-piece-emblema-pirata",
+    "line": "anime",
+    "path": "/anime/one-piece-emblema-pirata"
+  },
+  "EU-ANIME-134": {
+    "slug": "one-piece-tripulacion-camel",
+    "line": "anime",
+    "path": "/anime/one-piece-tripulacion-camel"
+  },
+  "EU-ANIME-135": {
+    "slug": "gojo-satoru-blanco",
+    "line": "anime",
+    "path": "/anime/gojo-satoru-blanco"
+  },
+  "EU-ANIME-136": {
+    "slug": "itachi-uchiha-blanco",
+    "line": "anime",
+    "path": "/anime/itachi-uchiha-blanco"
+  },
+  "EU-ANIME-138": {
+    "slug": "no-me-gustan-los-humanos-gris",
+    "line": "urbanos",
+    "path": "/urbanas/no-me-gustan-los-humanos-gris"
+  },
+  "EU-ANIME-140": {
+    "slug": "dragon-ball-guerrero-rojo",
+    "line": "anime",
+    "path": "/anime/dragon-ball-guerrero-rojo"
+  },
+  "EU-ANIME-141": {
+    "slug": "dandadan-doble-estampado",
+    "line": "anime",
+    "path": "/anime/dandadan-doble-estampado"
+  },
+  "EU-ANIME-142": {
+    "slug": "pirate-bandera-negra",
+    "line": "anime",
+    "path": "/anime/pirate-bandera-negra"
+  },
+  "EU-ANIME-145": {
+    "slug": "luffy-gear-5-blanco",
+    "line": "anime",
+    "path": "/anime/luffy-gear-5-blanco"
+  },
+  "EU-ANIME-147": {
+    "slug": "anbu-naruto",
+    "line": "anime",
+    "path": "/anime/anbu-naruto"
+  },
+  "EU-ANIME-148": {
+    "slug": "simbolo-solar-camel",
+    "line": "urbanos",
+    "path": "/urbanas/simbolo-solar-camel"
+  },
+  "EU-ANIME-150": {
+    "slug": "deku-midoriya-negro",
+    "line": "anime",
+    "path": "/anime/deku-midoriya-negro"
+  },
+  "EU-ANIME-151": {
+    "slug": "gol-d-roger-one-piece",
+    "line": "anime",
+    "path": "/anime/gol-d-roger-one-piece"
+  },
+  "EU-ANIME-152": {
+    "slug": "berserk-marca-roja",
+    "line": "anime",
+    "path": "/anime/berserk-marca-roja"
+  },
+  "EU-ANIME-153": {
+    "slug": "kaiju-no-8-negro",
+    "line": "anime",
+    "path": "/anime/kaiju-no-8-negro"
+  },
+  "EU-ANIME-154": {
+    "slug": "usopp-camel",
+    "line": "anime",
+    "path": "/anime/usopp-camel"
+  },
+  "EU-ANIME-155": {
+    "slug": "deadpool-collage-blanco",
+    "line": "cartoon",
+    "path": "/cartoon/deadpool-collage-blanco"
+  },
+  "EU-ANIME-157": {
+    "slug": "anime-crossover-negro",
+    "line": "anime",
+    "path": "/anime/anime-crossover-negro"
+  },
+  "EU-ANIME-159": {
+    "slug": "goku-nino-blanco",
+    "line": "anime",
+    "path": "/anime/goku-nino-blanco"
+  },
+  "EU-ANIME-160": {
+    "slug": "nanatsu-no-taizai-negro",
+    "line": "anime",
+    "path": "/anime/nanatsu-no-taizai-negro"
+  },
+  "EU-ANIME-161": {
+    "slug": "bart-diablo-negro",
+    "line": "cartoon",
+    "path": "/cartoon/bart-diablo-negro"
+  },
+  "EU-ANIME-162": {
+    "slug": "bulma-capsule-corp-blanca",
+    "line": "anime",
+    "path": "/anime/bulma-capsule-corp-blanca"
+  },
+  "EU-ANIME-163": {
+    "slug": "blue-lock-ilustracion-crema",
+    "line": "anime",
+    "path": "/anime/blue-lock-ilustracion-crema"
+  },
+  "EU-ANIME-164": {
+    "slug": "led-zeppelin-negro",
+    "line": "rock",
+    "path": "/rock/led-zeppelin-negro"
+  },
+  "EU-ANIME-165": {
+    "slug": "dragon-ball-bulma-y-amigos",
+    "line": "anime",
+    "path": "/anime/dragon-ball-bulma-y-amigos"
+  },
+  "EU-ANIME-166": {
+    "slug": "calavera-urbana-blanco",
+    "line": "urbanos",
+    "path": "/urbanas/calavera-urbana-blanco"
+  },
+  "EU-ANIME-167": {
+    "slug": "one-piece-tripulacion-blanca",
+    "line": "anime",
+    "path": "/anime/one-piece-tripulacion-blanca"
+  },
+  "EU-ANIME-168": {
+    "slug": "demon-slayer-chibi-blanco",
+    "line": "anime",
+    "path": "/anime/demon-slayer-chibi-blanco"
+  },
+  "EU-ANIME-170": {
+    "slug": "attack-on-titan-rojo-y-negro",
+    "line": "anime",
+    "path": "/anime/attack-on-titan-rojo-y-negro"
+  },
+  "EU-ANIME-172": {
+    "slug": "harley-quinn-negro",
+    "line": "cartoon",
+    "path": "/cartoon/harley-quinn-negro"
+  },
+  "EU-ANIME-174": {
+    "slug": "hanako-kun-negro",
+    "line": "anime",
+    "path": "/anime/hanako-kun-negro"
+  },
+  "EU-ANIME-175": {
+    "slug": "eren-jaeger-blanco",
+    "line": "anime",
+    "path": "/anime/eren-jaeger-blanco"
+  },
+  "EU-ANIME-177": {
+    "slug": "kakashi-blanco",
+    "line": "anime",
+    "path": "/anime/kakashi-blanco"
+  },
+  "EU-ANIME-178": {
+    "slug": "dragon-ball-gt-beige",
+    "line": "anime",
+    "path": "/anime/dragon-ball-gt-beige"
+  },
+  "EU-ANIME-179": {
+    "slug": "black-clover-asta-negro",
+    "line": "anime",
+    "path": "/anime/black-clover-asta-negro"
+  },
+  "EU-ANIME-180": {
+    "slug": "dandadan-okarun-blanco",
+    "line": "anime",
+    "path": "/anime/dandadan-okarun-blanco"
+  },
+  "EU-ANIME-182": {
+    "slug": "dragon-ball-goku-y-bulma",
+    "line": "anime",
+    "path": "/anime/dragon-ball-goku-y-bulma"
+  },
+  "EU-ANIME-184": {
+    "slug": "demon-slayer-manga-negro",
+    "line": "anime",
+    "path": "/anime/demon-slayer-manga-negro"
+  },
+  "EU-ANIME-186": {
+    "slug": "bocchi-the-rock-negro",
+    "line": "anime",
+    "path": "/anime/bocchi-the-rock-negro"
+  },
+  "EU-ANIME-187": {
+    "slug": "nirvana-rosa",
+    "line": "rock",
+    "path": "/rock/nirvana-rosa"
+  },
+  "EU-ANIME-190": {
+    "slug": "ac-dc-rock-negro",
+    "line": "rock",
+    "path": "/rock/ac-dc-rock-negro"
+  },
+  "EU-ANIME-191": {
+    "slug": "deidara-naruto",
+    "line": "anime",
+    "path": "/anime/deidara-naruto"
+  },
+  "EU-ANIME-192": {
+    "slug": "naruto-harem-no-jutsu",
+    "line": "anime",
+    "path": "/anime/naruto-harem-no-jutsu"
+  },
+  "EU-ANIME-193": {
+    "slug": "doraemon-blanco",
+    "line": "anime",
+    "path": "/anime/doraemon-blanco"
+  },
+  "EU-ANIME-194": {
+    "slug": "nirvana-negro",
+    "line": "rock",
+    "path": "/rock/nirvana-negro"
+  },
+  "EU-ANIME-195": {
+    "slug": "goku-emblema-negro",
+    "line": "anime",
+    "path": "/anime/goku-emblema-negro"
+  },
+  "EU-ANIME-196": {
+    "slug": "samurai-amarillo-blanco",
+    "line": "anime",
+    "path": "/anime/samurai-amarillo-blanco"
+  },
+  "EU-ANIME-197": {
+    "slug": "jujutsu-kaisen-gojo-neon",
+    "line": "anime",
+    "path": "/anime/jujutsu-kaisen-gojo-neon"
+  },
+  "EU-ANIME-198": {
+    "slug": "angel-monocromo-negro",
+    "line": "urbanos",
+    "path": "/urbanas/angel-monocromo-negro"
+  },
+  "EU-ANIME-199": {
+    "slug": "grabado-gotico-negro",
+    "line": "urbanos",
+    "path": "/urbanas/grabado-gotico-negro"
+  },
+  "EU-ANIME-200": {
+    "slug": "sepultura-negro",
+    "line": "rock",
+    "path": "/rock/sepultura-negro"
+  },
+  "EU-ANIME-201": {
+    "slug": "goku-dorado-negro",
+    "line": "anime",
+    "path": "/anime/goku-dorado-negro"
+  },
+  "EU-ANIME-202": {
+    "slug": "gorillaz-negro",
+    "line": "rock",
+    "path": "/rock/gorillaz-negro"
+  },
+  "EU-ANIME-204": {
+    "slug": "invincible-rojo",
+    "line": "cartoon",
+    "path": "/cartoon/invincible-rojo"
+  },
+  "EU-ANIME-205": {
+    "slug": "joker-morado-blanco",
+    "line": "cartoon",
+    "path": "/cartoon/joker-morado-blanco"
+  },
+  "EU-ANIME-206": {
+    "slug": "kreator-negro",
+    "line": "rock",
+    "path": "/rock/kreator-negro"
+  },
+  "EU-ANIME-207": {
+    "slug": "usopp-captain-blanco",
+    "line": "anime",
+    "path": "/anime/usopp-captain-blanco"
+  },
+  "EU-ANIME-208": {
+    "slug": "recompensa-diseno-1-luffy",
+    "line": "anime",
+    "path": "/anime/recompensa-diseno-1-luffy"
+  },
+  "EU-ANIME-209": {
+    "slug": "real-mugiwara-negra",
+    "line": "anime",
+    "path": "/anime/real-mugiwara-negra"
+  },
+  "EU-ANIME-210": {
+    "slug": "gear-5-diseno-2",
+    "line": "anime",
+    "path": "/anime/gear-5-diseno-2"
+  },
+  "EU-ANIME-211": {
+    "slug": "zoro",
+    "line": "anime",
+    "path": "/anime/zoro"
+  },
+  "EU-ANIME-212": {
+    "slug": "ace",
+    "line": "anime",
+    "path": "/anime/ace"
+  },
+  "EU-ANIME-213": {
+    "slug": "piece-zoro-diseno-1-diseno-2-diseno-3",
+    "line": "anime",
+    "path": "/anime/piece-zoro-diseno-1-diseno-2-diseno-3"
+  },
+  "EU-ANIME-214": {
+    "slug": "recompensa-zoro",
+    "line": "anime",
+    "path": "/anime/recompensa-zoro"
+  },
+  "EU-ANIME-216": {
+    "slug": "gear-5-diseno-1-negra",
+    "line": "anime",
+    "path": "/anime/gear-5-diseno-1-negra"
+  },
+  "EU-ANIME-217": {
+    "slug": "tripulantes-one-piece",
+    "line": "anime",
+    "path": "/anime/tripulantes-one-piece"
+  },
+  "EU-ANIME-219": {
+    "slug": "mugiwara",
+    "line": "anime",
+    "path": "/anime/mugiwara"
+  },
+  "EU-ANIME-220": {
+    "slug": "roronoa-diseno-1",
+    "line": "anime",
+    "path": "/anime/roronoa-diseno-1"
+  },
+  "EU-ANIME-221": {
+    "slug": "portgas-d-ace",
+    "line": "anime",
+    "path": "/anime/portgas-d-ace"
+  },
+  "EU-ANIME-222": {
+    "slug": "kuma",
+    "line": "anime",
+    "path": "/anime/kuma"
+  },
+  "EU-ANIME-223": {
+    "slug": "yonkos",
+    "line": "anime",
+    "path": "/anime/yonkos"
+  },
+  "EU-ANIME-224": {
+    "slug": "roronoa-diseno-2",
+    "line": "anime",
+    "path": "/anime/roronoa-diseno-2"
+  },
+  "EU-ANIME-225": {
+    "slug": "tripulacion-come-come",
+    "line": "anime",
+    "path": "/anime/tripulacion-come-come"
+  },
+  "EU-ANIME-226": {
+    "slug": "emperadores",
+    "line": "anime",
+    "path": "/anime/emperadores"
+  },
+  "EU-ANIME-227": {
+    "slug": "sombreros-de-paja",
+    "line": "anime",
+    "path": "/anime/sombreros-de-paja"
+  },
+  "EU-ANIME-228": {
+    "slug": "sanji",
+    "line": "anime",
+    "path": "/anime/sanji"
+  },
+  "EU-ANIME-229": {
+    "slug": "monkey-d-luffy",
+    "line": "anime",
+    "path": "/anime/monkey-d-luffy"
+  },
+  "EU-ANIME-230": {
+    "slug": "pirate-king",
+    "line": "anime",
+    "path": "/anime/pirate-king"
+  },
+  "EU-ANIME-231": {
+    "slug": "one-piece-logo-personaje",
+    "line": "anime",
+    "path": "/anime/one-piece-logo-personaje"
+  },
+  "EU-ANIME-232": {
+    "slug": "shirohige",
+    "line": "anime",
+    "path": "/anime/shirohige"
+  },
+  "EU-ANIME-233": {
+    "slug": "luffy-power",
+    "line": "anime",
+    "path": "/anime/luffy-power"
+  },
+  "EU-ANIME-234": {
+    "slug": "gear-fourth",
+    "line": "anime",
+    "path": "/anime/gear-fourth"
+  },
+  "EU-ANIME-235": {
+    "slug": "piratas-corazon",
+    "line": "anime",
+    "path": "/anime/piratas-corazon"
+  },
+  "EU-ANIME-236": {
+    "slug": "estandarte-one-piece",
+    "line": "anime",
+    "path": "/anime/estandarte-one-piece"
+  },
+  "EU-ANIME-237": {
+    "slug": "one-piece-logo-luffy-vinotinto",
+    "line": "anime",
+    "path": "/anime/one-piece-logo-luffy-vinotinto"
+  },
+  "EU-ANIME-238": {
+    "slug": "goma-goma-verde",
+    "line": "anime",
+    "path": "/anime/goma-goma-verde"
+  },
+  "EU-ANIME-239": {
+    "slug": "goma-goma-morada",
+    "line": "anime",
+    "path": "/anime/goma-goma-morada"
+  },
+  "EU-ANIME-240": {
+    "slug": "chopper-diseno-3",
+    "line": "anime",
+    "path": "/anime/chopper-diseno-3"
+  },
+  "EU-ANIME-241": {
+    "slug": "dragon-ball-diseno-4",
+    "line": "anime",
+    "path": "/anime/dragon-ball-diseno-4"
+  },
+  "EU-ANIME-242": {
+    "slug": "mi-vecino-saiyan",
+    "line": "anime",
+    "path": "/anime/mi-vecino-saiyan"
+  },
+  "EU-ANIME-243": {
+    "slug": "trunks-diseno-1",
+    "line": "anime",
+    "path": "/anime/trunks-diseno-1"
+  },
+  "EU-ANIME-244": {
+    "slug": "fuerza-de-dragon-diseno-2",
+    "line": "anime",
+    "path": "/anime/fuerza-de-dragon-diseno-2"
+  },
+  "EU-ANIME-245": {
+    "slug": "principe-vegeta",
+    "line": "anime",
+    "path": "/anime/principe-vegeta"
+  },
+  "EU-ANIME-247": {
+    "slug": "goku-saiyan-blanca",
+    "line": "anime",
+    "path": "/anime/goku-saiyan-blanca"
+  },
+  "EU-ANIME-248": {
+    "slug": "goku-saiyan-rosa",
+    "line": "anime",
+    "path": "/anime/goku-saiyan-rosa"
+  },
+  "EU-ANIME-249": {
+    "slug": "gohan-diseno-3",
+    "line": "anime",
+    "path": "/anime/gohan-diseno-3"
+  },
+  "EU-ANIME-250": {
+    "slug": "fighting-masters",
+    "line": "anime",
+    "path": "/anime/fighting-masters"
+  },
+  "EU-ANIME-251": {
+    "slug": "dragon-ball-diseno-2",
+    "line": "anime",
+    "path": "/anime/dragon-ball-diseno-2"
+  },
+  "EU-ANIME-254": {
+    "slug": "son-goku",
+    "line": "anime",
+    "path": "/anime/son-goku"
+  },
+  "EU-ANIME-257": {
+    "slug": "dragon-old",
+    "line": "anime",
+    "path": "/anime/dragon-old"
+  },
+  "EU-ANIME-258": {
+    "slug": "escuela-tortuga",
+    "line": "anime",
+    "path": "/anime/escuela-tortuga"
+  },
+  "EU-ANIME-259": {
+    "slug": "capsule-db",
+    "line": "anime",
+    "path": "/anime/capsule-db"
+  },
+  "EU-ANIME-260": {
+    "slug": "roshi-cartoon",
+    "line": "anime",
+    "path": "/anime/roshi-cartoon"
+  },
+  "EU-ANIME-261": {
+    "slug": "vegeta",
+    "line": "anime",
+    "path": "/anime/vegeta"
+  },
+  "EU-ANIME-262": {
+    "slug": "bulma-unisex",
+    "line": "anime",
+    "path": "/anime/bulma-unisex"
+  },
+  "EU-ANIME-263": {
+    "slug": "milk-unisex",
+    "line": "anime",
+    "path": "/anime/milk-unisex"
+  },
+  "EU-ANIME-264": {
+    "slug": "goku-kame-beer",
+    "line": "anime",
+    "path": "/anime/goku-kame-beer"
+  },
+  "EU-ANIME-265": {
+    "slug": "uncensored",
+    "line": "anime",
+    "path": "/anime/uncensored"
+  },
+  "EU-ANIME-266": {
+    "slug": "buu-da",
+    "line": "anime",
+    "path": "/anime/buu-da"
+  },
+  "EU-ANIME-267": {
+    "slug": "roshi-full-power",
+    "line": "anime",
+    "path": "/anime/roshi-full-power"
+  },
+  "EU-ANIME-268": {
+    "slug": "dif-vegeta",
+    "line": "anime",
+    "path": "/anime/dif-vegeta"
+  },
+  "EU-ANIME-269": {
+    "slug": "dragon-pool",
+    "line": "anime",
+    "path": "/anime/dragon-pool"
+  },
+  "EU-ANIME-270": {
+    "slug": "yamcha",
+    "line": "anime",
+    "path": "/anime/yamcha"
+  },
+  "EU-ANIME-271": {
+    "slug": "force-saiyan",
+    "line": "anime",
+    "path": "/anime/force-saiyan"
+  },
+  "EU-ANIME-272": {
+    "slug": "the-masters",
+    "line": "anime",
+    "path": "/anime/the-masters"
+  },
+  "EU-ANIME-273": {
+    "slug": "jiren",
+    "line": "anime",
+    "path": "/anime/jiren"
+  },
+  "EU-ANIME-275": {
+    "slug": "modo-dioses",
+    "line": "anime",
+    "path": "/anime/modo-dioses"
+  },
+  "EU-ANIME-276": {
+    "slug": "just-do-it",
+    "line": "anime",
+    "path": "/anime/just-do-it"
+  },
+  "EU-ANIME-277": {
+    "slug": "legends-otaku-diseno-1",
+    "line": "anime",
+    "path": "/anime/legends-otaku-diseno-1"
+  },
+  "EU-ANIME-278": {
+    "slug": "legends-otaku-diseno-2",
+    "line": "anime",
+    "path": "/anime/legends-otaku-diseno-2"
+  },
+  "EU-ANIME-279": {
+    "slug": "ozaru",
+    "line": "anime",
+    "path": "/anime/ozaru"
+  },
+  "EU-ANIME-280": {
+    "slug": "gohan",
+    "line": "anime",
+    "path": "/anime/gohan"
+  },
+  "EU-ANIME-281": {
+    "slug": "arcade-z-diseno-1",
+    "line": "anime",
+    "path": "/anime/arcade-z-diseno-1"
+  },
+  "EU-ANIME-282": {
+    "slug": "arcade-z-diseno-2",
+    "line": "anime",
+    "path": "/anime/arcade-z-diseno-2"
+  },
+  "EU-ANIME-283": {
+    "slug": "shenlong-poliester",
+    "line": "anime",
+    "path": "/anime/shenlong-poliester"
+  },
+  "EU-ANIME-284": {
+    "slug": "db-goku",
+    "line": "anime",
+    "path": "/anime/db-goku"
+  },
+  "EU-ANIME-285": {
+    "slug": "super-saiyan-gris",
+    "line": "anime",
+    "path": "/anime/super-saiyan-gris"
+  },
+  "EU-ANIME-286": {
+    "slug": "super-saiyan-azul",
+    "line": "anime",
+    "path": "/anime/super-saiyan-azul"
+  },
+  "EU-ANIME-288": {
+    "slug": "berserk-camiseta",
+    "line": "anime",
+    "path": "/anime/berserk-camiseta"
+  },
+  "EU-ANIME-289": {
+    "slug": "berserk-diseno-4",
+    "line": "anime",
+    "path": "/anime/berserk-diseno-4"
+  },
+  "EU-ANIME-290": {
+    "slug": "saitama",
+    "line": "anime",
+    "path": "/anime/saitama"
+  },
+  "EU-ANIME-291": {
+    "slug": "garou",
+    "line": "anime",
+    "path": "/anime/garou"
+  },
+  "EU-ANIME-293": {
+    "slug": "lilith",
+    "line": "anime",
+    "path": "/anime/lilith"
+  },
+  "EU-ANIME-294": {
+    "slug": "zeele",
+    "line": "anime",
+    "path": "/anime/zeele"
+  },
+  "EU-ANIME-295": {
+    "slug": "nerv",
+    "line": "anime",
+    "path": "/anime/nerv"
+  },
+  "EU-ANIME-296": {
+    "slug": "eva-unidad-02",
+    "line": "anime",
+    "path": "/anime/eva-unidad-02"
+  },
+  "EU-ANIME-297": {
+    "slug": "toga",
+    "line": "anime",
+    "path": "/anime/toga"
+  },
+  "EU-ANIME-298": {
+    "slug": "one-punch-man-camiseta",
+    "line": "anime",
+    "path": "/anime/one-punch-man-camiseta"
+  },
+  "EU-ANIME-299": {
+    "slug": "black-bulls",
+    "line": "anime",
+    "path": "/anime/black-bulls"
+  },
+  "EU-ANIME-301": {
+    "slug": "baby-yoda-verde-militar",
+    "line": "cartoon",
+    "path": "/cartoon/baby-yoda-verde-militar"
+  },
+  "EU-ANIME-302": {
+    "slug": "exodia",
+    "line": "anime",
+    "path": "/anime/exodia"
+  },
+  "EU-ANIME-303": {
+    "slug": "star-wars-camiseta",
+    "line": "cartoon",
+    "path": "/cartoon/star-wars-camiseta"
+  },
+  "EU-ANIME-304": {
+    "slug": "caballeros-del-zodiaco-diseno-1",
+    "line": "anime",
+    "path": "/anime/caballeros-del-zodiaco-diseno-1"
+  },
+  "EU-ANIME-305": {
+    "slug": "caballeros-del-zodiaco-diseno-3",
+    "line": "anime",
+    "path": "/anime/caballeros-del-zodiaco-diseno-3"
+  },
+  "EU-ANIME-306": {
+    "slug": "ryuk",
+    "line": "anime",
+    "path": "/anime/ryuk"
+  },
+  "EU-ANIME-307": {
+    "slug": "deathnote",
+    "line": "anime",
+    "path": "/anime/deathnote"
+  },
+  "EU-ANIME-308": {
+    "slug": "haikyu",
+    "line": "anime",
+    "path": "/anime/haikyu"
+  },
+  "EU-ANIME-309": {
+    "slug": "hisoka-rosa",
+    "line": "anime",
+    "path": "/anime/hisoka-rosa"
+  },
+  "EU-ANIME-310": {
+    "slug": "seiya",
+    "line": "anime",
+    "path": "/anime/seiya"
+  },
+  "EU-ANIME-311": {
+    "slug": "sesshomaru",
+    "line": "anime",
+    "path": "/anime/sesshomaru"
+  },
+  "EU-ANIME-312": {
+    "slug": "tokyo-revengers-camiseta",
+    "line": "anime",
+    "path": "/anime/tokyo-revengers-camiseta"
+  },
+  "EU-ANIME-313": {
+    "slug": "simbolo-manji",
+    "line": "anime",
+    "path": "/anime/simbolo-manji"
+  },
+  "EU-ANIME-314": {
+    "slug": "tokyo-gang",
+    "line": "anime",
+    "path": "/anime/tokyo-gang"
+  },
+  "EU-ANIME-315": {
+    "slug": "mikey-sano",
+    "line": "anime",
+    "path": "/anime/mikey-sano"
+  },
+  "EU-ANIME-316": {
+    "slug": "tokyo-manji-gang",
+    "line": "anime",
+    "path": "/anime/tokyo-manji-gang"
+  },
+  "EU-ANIME-317": {
+    "slug": "chainsaw-man-camiseta",
+    "line": "anime",
+    "path": "/anime/chainsaw-man-camiseta"
+  },
+  "EU-ANIME-318": {
+    "slug": "pochita",
+    "line": "anime",
+    "path": "/anime/pochita"
+  },
+  "EU-ANIME-319": {
+    "slug": "pochita-style",
+    "line": "anime",
+    "path": "/anime/pochita-style"
+  },
+  "EU-ANIME-320": {
+    "slug": "denji-diseno-3",
+    "line": "anime",
+    "path": "/anime/denji-diseno-3"
+  },
+  "EU-ANIME-321": {
+    "slug": "yu-gi-oh-diseno-1-blanca",
+    "line": "anime",
+    "path": "/anime/yu-gi-oh-diseno-1-blanca"
+  },
+  "EU-ANIME-322": {
+    "slug": "hisoka",
+    "line": "anime",
+    "path": "/anime/hisoka"
+  },
+  "EU-ANIME-323": {
+    "slug": "jutsu-de-invocacion",
+    "line": "anime",
+    "path": "/anime/jutsu-de-invocacion"
+  },
+  "EU-ANIME-324": {
+    "slug": "aang",
+    "line": "cartoon",
+    "path": "/cartoon/aang"
+  },
+  "EU-ANIME-325": {
+    "slug": "bleach-diseno-1",
+    "line": "anime",
+    "path": "/anime/bleach-diseno-1"
+  },
+  "EU-ANIME-326": {
+    "slug": "kenpachi-diseno-1",
+    "line": "anime",
+    "path": "/anime/kenpachi-diseno-1"
+  },
+  "EU-ANIME-327": {
+    "slug": "saitama-goku-luffy",
+    "line": "anime",
+    "path": "/anime/saitama-goku-luffy"
+  },
+  "EU-ANIME-328": {
+    "slug": "adan-rosa",
+    "line": "anime",
+    "path": "/anime/adan-rosa"
+  },
+  "EU-ANIME-329": {
+    "slug": "yuno",
+    "line": "anime",
+    "path": "/anime/yuno"
+  },
+  "EU-ANIME-330": {
+    "slug": "pika-pika",
+    "line": "anime",
+    "path": "/anime/pika-pika"
+  },
+  "EU-ANIME-331": {
+    "slug": "kurosaki-diseno-1",
+    "line": "anime",
+    "path": "/anime/kurosaki-diseno-1"
+  },
+  "EU-ANIME-332": {
+    "slug": "kurosaki-diseno-2",
+    "line": "anime",
+    "path": "/anime/kurosaki-diseno-2"
+  },
+  "EU-ANIME-333": {
+    "slug": "studios-ghibli-negra",
+    "line": "anime",
+    "path": "/anime/studios-ghibli-negra"
+  },
+  "EU-ANIME-334": {
+    "slug": "silueta-totoro",
+    "line": "anime",
+    "path": "/anime/silueta-totoro"
+  },
+  "EU-ANIME-335": {
+    "slug": "totoro-lover",
+    "line": "anime",
+    "path": "/anime/totoro-lover"
+  },
+  "EU-ANIME-336": {
+    "slug": "ranma-camiseta",
+    "line": "anime",
+    "path": "/anime/ranma-camiseta"
+  },
+  "EU-ANIME-337": {
+    "slug": "pechan",
+    "line": "anime",
+    "path": "/anime/pechan"
+  },
+  "EU-ANIME-338": {
+    "slug": "sailor-star",
+    "line": "anime",
+    "path": "/anime/sailor-star"
+  },
+  "EU-ANIME-339": {
+    "slug": "luna-sailor-moon",
+    "line": "anime",
+    "path": "/anime/luna-sailor-moon"
+  },
+  "EU-ANIME-340": {
+    "slug": "serena",
+    "line": "anime",
+    "path": "/anime/serena"
+  },
+  "EU-ANIME-341": {
+    "slug": "serena-moon",
+    "line": "anime",
+    "path": "/anime/serena-moon"
+  },
+  "EU-ANIME-342": {
+    "slug": "power-diseno-2",
+    "line": "anime",
+    "path": "/anime/power-diseno-2"
+  },
+  "EU-ANIME-343": {
+    "slug": "bulbasaur-diseno-1",
+    "line": "anime",
+    "path": "/anime/bulbasaur-diseno-1"
+  },
+  "EU-ANIME-344": {
+    "slug": "chihiro-bluson",
+    "line": "anime",
+    "path": "/anime/chihiro-bluson"
+  },
+  "EU-ANIME-345": {
+    "slug": "himiko-bluson",
+    "line": "anime",
+    "path": "/anime/himiko-bluson"
+  },
+  "EU-ANIME-346": {
+    "slug": "sakura-bluson",
+    "line": "anime",
+    "path": "/anime/sakura-bluson"
+  },
+  "EU-ANIME-347": {
+    "slug": "nobara",
+    "line": "anime",
+    "path": "/anime/nobara"
+  },
+  "EU-ANIME-348": {
+    "slug": "power-demonio-de-sangre",
+    "line": "anime",
+    "path": "/anime/power-demonio-de-sangre"
+  },
+  "EU-ANIME-349": {
+    "slug": "inuyasha-peinado",
+    "line": "anime",
+    "path": "/anime/inuyasha-peinado"
+  },
+  "EU-ANIME-350": {
+    "slug": "ranma-diseno-3",
+    "line": "anime",
+    "path": "/anime/ranma-diseno-3"
+  },
+  "EU-ANIME-351": {
+    "slug": "solo-leveling-diseno-4",
+    "line": "anime",
+    "path": "/anime/solo-leveling-diseno-4"
+  },
+  "EU-ANIME-352": {
+    "slug": "pikachu-ilustracion-blanca",
+    "line": "anime",
+    "path": "/anime/pikachu-ilustracion-blanca"
+  },
+  "EU-ANIME-353": {
+    "slug": "mitsuri-diseno-2",
+    "line": "anime",
+    "path": "/anime/mitsuri-diseno-2"
+  },
+  "EU-ANIME-354": {
+    "slug": "bulma-diseno-2",
+    "line": "anime",
+    "path": "/anime/bulma-diseno-2"
+  },
+  "EU-ANIME-355": {
+    "slug": "ranma-diseno-2",
+    "line": "anime",
+    "path": "/anime/ranma-diseno-2"
+  },
+  "EU-ANIME-356": {
+    "slug": "shampoo",
+    "line": "anime",
+    "path": "/anime/shampoo"
+  },
+  "EU-ANIME-357": {
+    "slug": "spy-family",
+    "line": "anime",
+    "path": "/anime/spy-family"
+  },
+  "EU-ANIME-358": {
+    "slug": "bond-spy-family-diseno-1",
+    "line": "anime",
+    "path": "/anime/bond-spy-family-diseno-1"
+  },
+  "EU-ANIME-359": {
+    "slug": "bond-spy-family-diseno-2",
+    "line": "anime",
+    "path": "/anime/bond-spy-family-diseno-2"
+  },
+  "EU-ANIME-360": {
+    "slug": "anya",
+    "line": "anime",
+    "path": "/anime/anya"
+  },
+  "EU-ANIME-361": {
+    "slug": "hinata",
+    "line": "anime",
+    "path": "/anime/hinata"
+  },
+  "EU-ANIME-362": {
+    "slug": "bulbasaur-diseno-2",
+    "line": "anime",
+    "path": "/anime/bulbasaur-diseno-2"
+  },
+  "EU-ANIME-363": {
+    "slug": "maki",
+    "line": "anime",
+    "path": "/anime/maki"
+  },
+  "EU-ANIME-364": {
+    "slug": "avatar-bluson",
+    "line": "cartoon",
+    "path": "/cartoon/avatar-bluson"
+  },
+  "EU-ANIME-365": {
+    "slug": "jujutsu-draw",
+    "line": "anime",
+    "path": "/anime/jujutsu-draw"
+  },
+  "EU-ANIME-366": {
+    "slug": "yor-forger-assassin",
+    "line": "anime",
+    "path": "/anime/yor-forger-assassin"
+  },
+  "EU-ANIME-367": {
+    "slug": "diana-unisex",
+    "line": "anime",
+    "path": "/anime/diana-unisex"
+  },
+  "EU-ANIME-368": {
+    "slug": "toga-diseno-2-dama",
+    "line": "anime",
+    "path": "/anime/toga-diseno-2-dama"
+  },
+  "EU-ANIME-369": {
+    "slug": "dr-stone-ilustracion-negra",
+    "line": "anime",
+    "path": "/anime/dr-stone-ilustracion-negra"
+  },
+  "EU-ANIME-370": {
+    "slug": "mi-vecino-totoro-diseno-2",
+    "line": "anime",
+    "path": "/anime/mi-vecino-totoro-diseno-2"
+  },
+  "EU-ANIME-371": {
+    "slug": "gran-maestro-diseno-2",
+    "line": "anime",
+    "path": "/anime/gran-maestro-diseno-2"
+  },
+  "EU-ANIME-372": {
+    "slug": "avatar-diseno-2-negra",
+    "line": "cartoon",
+    "path": "/cartoon/avatar-diseno-2-negra"
+  },
+  "EU-ANIME-373": {
+    "slug": "broly-legendario",
+    "line": "anime",
+    "path": "/anime/broly-legendario"
+  },
+  "EU-ANIME-374": {
+    "slug": "jujutsu-girls",
+    "line": "anime",
+    "path": "/anime/jujutsu-girls"
+  },
+  "EU-ANIME-375": {
+    "slug": "shinra-tensei-diseno-2",
+    "line": "anime",
+    "path": "/anime/shinra-tensei-diseno-2"
+  },
+  "EU-ANIME-376": {
+    "slug": "nezuko",
+    "line": "anime",
+    "path": "/anime/nezuko"
+  },
+  "EU-ANIME-377": {
+    "slug": "tanjiro",
+    "line": "anime",
+    "path": "/anime/tanjiro"
+  },
+  "EU-ANIME-378": {
+    "slug": "akaza-luna-superior",
+    "line": "anime",
+    "path": "/anime/akaza-luna-superior"
+  },
+  "EU-ANIME-379": {
+    "slug": "recompensa-one-piece",
+    "line": "anime",
+    "path": "/anime/recompensa-one-piece"
+  },
+  "EU-ANIME-380": {
+    "slug": "androide-18-diseno-1",
+    "line": "anime",
+    "path": "/anime/androide-18-diseno-1"
+  },
+  "EU-ANIME-381": {
+    "slug": "dragon-girls-diseno-3",
+    "line": "anime",
+    "path": "/anime/dragon-girls-diseno-3"
+  },
+  "EU-ANIME-382": {
+    "slug": "sakura-card-captor",
+    "line": "anime",
+    "path": "/anime/sakura-card-captor"
+  },
+  "EU-ANIME-383": {
+    "slug": "super-campeones-diseno-3",
+    "line": "anime",
+    "path": "/anime/super-campeones-diseno-3"
+  },
+  "EU-ANIME-384": {
+    "slug": "inuyasha-diseno-3",
+    "line": "anime",
+    "path": "/anime/inuyasha-diseno-3"
+  },
+  "EU-ANIME-385": {
+    "slug": "samurai-diseno-1",
+    "line": "anime",
+    "path": "/anime/samurai-diseno-1"
+  },
+  "EU-ANIME-386": {
+    "slug": "sukuna",
+    "line": "anime",
+    "path": "/anime/sukuna"
+  },
+  "EU-ANIME-387": {
+    "slug": "equipo-rocket",
+    "line": "anime",
+    "path": "/anime/equipo-rocket"
+  },
+  "EU-ANIME-388": {
+    "slug": "shampoo-diseno-2",
+    "line": "anime",
+    "path": "/anime/shampoo-diseno-2"
+  },
+  "EU-ANIME-389": {
+    "slug": "escuela-tortuga-diseno-2",
+    "line": "anime",
+    "path": "/anime/escuela-tortuga-diseno-2"
+  },
+  "EU-ANIME-390": {
+    "slug": "nagato",
+    "line": "anime",
+    "path": "/anime/nagato"
+  },
+  "EU-ANIME-391": {
+    "slug": "jiraiya-ero-sennin",
+    "line": "anime",
+    "path": "/anime/jiraiya-ero-sennin"
+  },
+  "EU-ANIME-392": {
+    "slug": "tokyo-ghoul-camiseta",
+    "line": "anime",
+    "path": "/anime/tokyo-ghoul-camiseta"
+  },
+  "EU-ANIME-393": {
+    "slug": "asta-diseno-3",
+    "line": "anime",
+    "path": "/anime/asta-diseno-3"
+  },
+  "EU-ANIME-394": {
+    "slug": "naruto-uzumaki",
+    "line": "anime",
+    "path": "/anime/naruto-uzumaki"
+  },
+  "EU-ANIME-396": {
+    "slug": "eren-attack-mode",
+    "line": "anime",
+    "path": "/anime/eren-attack-mode"
+  },
+  "EU-ANIME-397": {
+    "slug": "muzan-diseno-2",
+    "line": "anime",
+    "path": "/anime/muzan-diseno-2"
+  },
+  "EU-ANIME-398": {
+    "slug": "one-piece-girls",
+    "line": "anime",
+    "path": "/anime/one-piece-girls"
+  },
+  "EU-ANIME-399": {
+    "slug": "mitsuri-line-diseno-1",
+    "line": "anime",
+    "path": "/anime/mitsuri-line-diseno-1"
+  },
+  "EU-ANIME-400": {
+    "slug": "armaduras-doradas",
+    "line": "anime",
+    "path": "/anime/armaduras-doradas"
+  },
+  "EU-ANIME-401": {
+    "slug": "recompensa-one-piece-hueso",
+    "line": "anime",
+    "path": "/anime/recompensa-one-piece-hueso"
+  },
+  "EU-ANIME-402": {
+    "slug": "levi-attack",
+    "line": "anime",
+    "path": "/anime/levi-attack"
+  },
+  "EU-ANIME-403": {
+    "slug": "maestros-legendarios",
+    "line": "anime",
+    "path": "/anime/maestros-legendarios"
+  },
+  "EU-ANIME-404": {
+    "slug": "fenix-caballeros-negros",
+    "line": "anime",
+    "path": "/anime/fenix-caballeros-negros"
+  },
+  "EU-ANIME-405": {
+    "slug": "shikamaru",
+    "line": "anime",
+    "path": "/anime/shikamaru"
+  },
+  "EU-ANIME-406": {
+    "slug": "obito-poliester",
+    "line": "anime",
+    "path": "/anime/obito-poliester"
+  },
+  "EU-ANIME-408": {
+    "slug": "sennin",
+    "line": "anime",
+    "path": "/anime/sennin"
+  },
+  "EU-ANIME-409": {
+    "slug": "pain",
+    "line": "anime",
+    "path": "/anime/pain"
+  },
+  "EU-ANIME-410": {
+    "slug": "black-clover-diseno-3",
+    "line": "anime",
+    "path": "/anime/black-clover-diseno-3"
+  },
+  "EU-ANIME-411": {
+    "slug": "piccolo-sacrifice",
+    "line": "anime",
+    "path": "/anime/piccolo-sacrifice"
+  },
+  "EU-ANIME-412": {
+    "slug": "nerv-system",
+    "line": "anime",
+    "path": "/anime/nerv-system"
+  },
+  "EU-ANIME-414": {
+    "slug": "obito",
+    "line": "anime",
+    "path": "/anime/obito"
+  },
+  "EU-ANIME-415": {
+    "slug": "kakashi-diseno-2",
+    "line": "anime",
+    "path": "/anime/kakashi-diseno-2"
+  },
+  "EU-ANIME-416": {
+    "slug": "gojo-cool",
+    "line": "anime",
+    "path": "/anime/gojo-cool"
+  },
+  "EU-ANIME-417": {
+    "slug": "meliodas-diseno-1",
+    "line": "anime",
+    "path": "/anime/meliodas-diseno-1"
+  },
+  "EU-ANIME-418": {
+    "slug": "gohan-vs-cell",
+    "line": "anime",
+    "path": "/anime/gohan-vs-cell"
+  },
+  "EU-ANIME-419": {
+    "slug": "kakashi-sharingan",
+    "line": "anime",
+    "path": "/anime/kakashi-sharingan"
+  },
+  "EU-ANIME-421": {
+    "slug": "kyojuro",
+    "line": "anime",
+    "path": "/anime/kyojuro"
+  },
+  "EU-ANIME-423": {
+    "slug": "anbu",
+    "line": "anime",
+    "path": "/anime/anbu"
+  },
+  "EU-ANIME-424": {
+    "slug": "lunas-kimetsu",
+    "line": "anime",
+    "path": "/anime/lunas-kimetsu"
+  },
+  "EU-ANIME-425": {
+    "slug": "akaza-diseno-2-rosa",
+    "line": "anime",
+    "path": "/anime/akaza-diseno-2-rosa"
+  },
+  "EU-ANIME-427": {
+    "slug": "mangekyo",
+    "line": "anime",
+    "path": "/anime/mangekyo"
+  },
+  "EU-ANIME-428": {
+    "slug": "kafka-hibino-kaiju-8",
+    "line": "anime",
+    "path": "/anime/kafka-hibino-kaiju-8"
+  },
+  "EU-ANIME-429": {
+    "slug": "naruto-modo-sabio",
+    "line": "anime",
+    "path": "/anime/naruto-modo-sabio"
+  },
+  "EU-ANIME-430": {
+    "slug": "akaza-diseno-1",
+    "line": "anime",
+    "path": "/anime/akaza-diseno-1"
+  },
+  "EU-ANIME-431": {
+    "slug": "kamui",
+    "line": "anime",
+    "path": "/anime/kamui"
+  },
+  "EU-ANIME-432": {
+    "slug": "uchiha-raven",
+    "line": "anime",
+    "path": "/anime/uchiha-raven"
+  },
+  "EU-ANIME-433": {
+    "slug": "kakashi-diseno-1",
+    "line": "anime",
+    "path": "/anime/kakashi-diseno-1"
+  },
+  "EU-ANIME-434": {
+    "slug": "itachi",
+    "line": "anime",
+    "path": "/anime/itachi"
+  },
+  "EU-ANIME-435": {
+    "slug": "naruto-hokage-diseno-1",
+    "line": "anime",
+    "path": "/anime/naruto-hokage-diseno-1"
+  },
+  "EU-ANIME-436": {
+    "slug": "shippuden-negra",
+    "line": "anime",
+    "path": "/anime/shippuden-negra"
+  },
+  "EU-ANIME-437": {
+    "slug": "naruto-pergamino",
+    "line": "anime",
+    "path": "/anime/naruto-pergamino"
+  },
+  "EU-ANIME-438": {
+    "slug": "loki-one-piece",
+    "line": "anime",
+    "path": "/anime/loki-one-piece"
+  },
+  "EU-ANIME-439": {
+    "slug": "jujutsu",
+    "line": "anime",
+    "path": "/anime/jujutsu"
+  },
+  "EU-ANIME-440": {
+    "slug": "itadori-sukuna",
+    "line": "anime",
+    "path": "/anime/itadori-sukuna"
+  },
+  "EU-ANIME-441": {
+    "slug": "sukuna-diseno-2",
+    "line": "anime",
+    "path": "/anime/sukuna-diseno-2"
+  },
+  "EU-ANIME-442": {
+    "slug": "sukuna-diseno-1",
+    "line": "anime",
+    "path": "/anime/sukuna-diseno-1"
+  },
+  "EU-ANIME-443": {
+    "slug": "itadori-diseno-1",
+    "line": "anime",
+    "path": "/anime/itadori-diseno-1"
+  },
+  "EU-ANIME-444": {
+    "slug": "satoru-sublimacion-diseno-1",
+    "line": "anime",
+    "path": "/anime/satoru-sublimacion-diseno-1"
+  },
+  "EU-ANIME-446": {
+    "slug": "satoru",
+    "line": "anime",
+    "path": "/anime/satoru"
+  },
+  "EU-ANIME-447": {
+    "slug": "naruto-hokage-diseno-2",
+    "line": "anime",
+    "path": "/anime/naruto-hokage-diseno-2"
+  },
+  "EU-ANIME-448": {
+    "slug": "jujutsu-kaisen-diseno-1",
+    "line": "anime",
+    "path": "/anime/jujutsu-kaisen-diseno-1"
+  },
+  "EU-ANIME-449": {
+    "slug": "sukuna-diseno-3",
+    "line": "anime",
+    "path": "/anime/sukuna-diseno-3"
+  },
+  "EU-ANIME-450": {
+    "slug": "titanes",
+    "line": "anime",
+    "path": "/anime/titanes"
+  },
+  "EU-ANIME-451": {
+    "slug": "titan-acorazado",
+    "line": "anime",
+    "path": "/anime/titan-acorazado"
+  },
+  "EU-ANIME-452": {
+    "slug": "ackerman-levi-diseno-2",
+    "line": "anime",
+    "path": "/anime/ackerman-levi-diseno-2"
+  },
+  "EU-ANIME-453": {
+    "slug": "sasuke-uchiha-diseno-1",
+    "line": "anime",
+    "path": "/anime/sasuke-uchiha-diseno-1"
+  },
+  "EU-ANIME-454": {
+    "slug": "sasuke-uchiha-diseno-2",
+    "line": "anime",
+    "path": "/anime/sasuke-uchiha-diseno-2"
+  },
+  "EU-ANIME-455": {
+    "slug": "eren-jaeger-diseno-4",
+    "line": "anime",
+    "path": "/anime/eren-jaeger-diseno-4"
+  },
+  "EU-ANIME-456": {
+    "slug": "akatsuki-diseno-1",
+    "line": "anime",
+    "path": "/anime/akatsuki-diseno-1"
+  },
+  "EU-ANIME-457": {
+    "slug": "boruto",
+    "line": "anime",
+    "path": "/anime/boruto"
+  },
+  "EU-ANIME-458": {
+    "slug": "armin-arlert-coordenada-ackerman-levi",
+    "line": "anime",
+    "path": "/anime/armin-arlert-coordenada-ackerman-levi"
+  },
+  "EU-ANIME-459": {
+    "slug": "coordenada",
+    "line": "anime",
+    "path": "/anime/coordenada"
+  },
+  "EU-ANIME-460": {
+    "slug": "levi-variante-2",
+    "line": "anime",
+    "path": "/anime/levi-variante-2"
+  },
+  "EU-ANIME-461": {
+    "slug": "eren-jaeger",
+    "line": "anime",
+    "path": "/anime/eren-jaeger"
+  },
+  "EU-ANIME-462": {
+    "slug": "titanes-snk",
+    "line": "anime",
+    "path": "/anime/titanes-snk"
+  },
+  "EU-ANIME-463": {
+    "slug": "satoru-j-k",
+    "line": "anime",
+    "path": "/anime/satoru-j-k"
+  },
+  "EU-ANIME-464": {
+    "slug": "nanami-diseno-1",
+    "line": "anime",
+    "path": "/anime/nanami-diseno-1"
+  },
+  "EU-ANIME-465": {
+    "slug": "katsuki-bakugo-diseno-4",
+    "line": "anime",
+    "path": "/anime/katsuki-bakugo-diseno-4"
+  },
+  "EU-ANIME-466": {
+    "slug": "deku-blanca",
+    "line": "anime",
+    "path": "/anime/deku-blanca"
+  },
+  "EU-ANIME-467": {
+    "slug": "my-hero",
+    "line": "anime",
+    "path": "/anime/my-hero"
+  },
+  "EU-ANIME-468": {
+    "slug": "all-might",
+    "line": "anime",
+    "path": "/anime/all-might"
+  },
+  "EU-ANIME-469": {
+    "slug": "bakugo-diseno-1",
+    "line": "anime",
+    "path": "/anime/bakugo-diseno-1"
+  },
+  "EU-ANIME-470": {
+    "slug": "todoroki-diseno-1",
+    "line": "anime",
+    "path": "/anime/todoroki-diseno-1"
+  },
+  "EU-ANIME-471": {
+    "slug": "todoroki-shoto",
+    "line": "anime",
+    "path": "/anime/todoroki-shoto"
+  },
+  "EU-ANIME-472": {
+    "slug": "dabi-variante-2",
+    "line": "anime",
+    "path": "/anime/dabi-variante-2"
+  },
+  "EU-ANIME-473": {
+    "slug": "bakugo-diseno-2",
+    "line": "anime",
+    "path": "/anime/bakugo-diseno-2"
+  },
+  "EU-ANIME-474": {
+    "slug": "todoroki-vs-deku",
+    "line": "anime",
+    "path": "/anime/todoroki-vs-deku"
+  },
+  "EU-ANIME-475": {
+    "slug": "hisoka-line",
+    "line": "anime",
+    "path": "/anime/hisoka-line"
+  },
+  "EU-ANIME-476": {
+    "slug": "karin-hueso",
+    "line": "anime",
+    "path": "/anime/karin-hueso"
+  },
+  "EU-ANIME-477": {
+    "slug": "trafalgar-diseno-4",
+    "line": "anime",
+    "path": "/anime/trafalgar-diseno-4"
+  },
+  "EU-ANIME-478": {
+    "slug": "zenitsu-agatsuma-diseno-3",
+    "line": "anime",
+    "path": "/anime/zenitsu-agatsuma-diseno-3"
+  },
+  "EU-ANIME-479": {
+    "slug": "kyojuro-cazador-de-demonios",
+    "line": "anime",
+    "path": "/anime/kyojuro-cazador-de-demonios"
+  },
+  "EU-ANIME-480": {
+    "slug": "inosuke-draw-diseno-1",
+    "line": "anime",
+    "path": "/anime/inosuke-draw-diseno-1"
+  },
+  "EU-ANIME-481": {
+    "slug": "tanjiro-line-diseno-1",
+    "line": "anime",
+    "path": "/anime/tanjiro-line-diseno-1"
+  },
+  "EU-ANIME-482": {
+    "slug": "monkey-d-luffy-diseno-2",
+    "line": "anime",
+    "path": "/anime/monkey-d-luffy-diseno-2"
+  },
+  "EU-ANIME-483": {
+    "slug": "gojo-diseno-2",
+    "line": "anime",
+    "path": "/anime/gojo-diseno-2"
+  },
+  "EU-ANIME-484": {
+    "slug": "little-goku-diseno-2",
+    "line": "anime",
+    "path": "/anime/little-goku-diseno-2"
+  },
+  "EU-ANIME-485": {
+    "slug": "universo-dragon-ball",
+    "line": "anime",
+    "path": "/anime/universo-dragon-ball"
+  },
+  "EU-ANIME-486": {
+    "slug": "gear-5-diseno-4",
+    "line": "anime",
+    "path": "/anime/gear-5-diseno-4"
+  },
+  "EU-ANIME-487": {
+    "slug": "shenlong-diseno-1-negra",
+    "line": "anime",
+    "path": "/anime/shenlong-diseno-1-negra"
+  },
+  "EU-ANIME-488": {
+    "slug": "maldicion-ilimitada",
+    "line": "anime",
+    "path": "/anime/maldicion-ilimitada"
+  },
+  "EU-ANIME-489": {
+    "slug": "majin-bu-diseno-3-roja",
+    "line": "anime",
+    "path": "/anime/majin-bu-diseno-3-roja"
+  },
+  "EU-ANIME-490": {
+    "slug": "gohan-del-futuro",
+    "line": "anime",
+    "path": "/anime/gohan-del-futuro"
+  },
+  "EU-ANIME-491": {
+    "slug": "monkey-d-luffy-diseno-3",
+    "line": "anime",
+    "path": "/anime/monkey-d-luffy-diseno-3"
+  },
+  "EU-ANIME-492": {
+    "slug": "nami-diseno-2",
+    "line": "anime",
+    "path": "/anime/nami-diseno-2"
+  },
+  "EU-ANIME-493": {
+    "slug": "solo-leveling-diseno-1",
+    "line": "anime",
+    "path": "/anime/solo-leveling-diseno-1"
+  },
+  "EU-ANIME-494": {
+    "slug": "solo-leveling-diseno-3",
+    "line": "anime",
+    "path": "/anime/solo-leveling-diseno-3"
+  },
+  "EU-ANIME-495": {
+    "slug": "baki-hanma-diseno-3",
+    "line": "anime",
+    "path": "/anime/baki-hanma-diseno-3"
+  },
+  "EU-ANIME-496": {
+    "slug": "baki-hanma-diseno-4",
+    "line": "anime",
+    "path": "/anime/baki-hanma-diseno-4"
+  },
+  "EU-ANIME-497": {
+    "slug": "hisoka-diseno-3",
+    "line": "anime",
+    "path": "/anime/hisoka-diseno-3"
+  },
+  "EU-ANIME-498": {
+    "slug": "uchiha-raven-diseno-2",
+    "line": "anime",
+    "path": "/anime/uchiha-raven-diseno-2"
+  },
+  "EU-ANIME-499": {
+    "slug": "pilar-de-la-piedra",
+    "line": "anime",
+    "path": "/anime/pilar-de-la-piedra"
+  },
+  "EU-ANIME-500": {
+    "slug": "nami-y-robin-diseno-1",
+    "line": "anime",
+    "path": "/anime/nami-y-robin-diseno-1"
+  },
+  "EU-ANIME-501": {
+    "slug": "toji-diseno-3",
+    "line": "anime",
+    "path": "/anime/toji-diseno-3"
+  },
+  "EU-ANIME-502": {
+    "slug": "juicio-final",
+    "line": "anime",
+    "path": "/anime/juicio-final"
+  },
+  "EU-ANIME-503": {
+    "slug": "demon-tanjiro",
+    "line": "anime",
+    "path": "/anime/demon-tanjiro"
+  },
+  "EU-ANIME-504": {
+    "slug": "killua-diseno-2-negra",
+    "line": "anime",
+    "path": "/anime/killua-diseno-2-negra"
+  },
+  "EU-ANIME-505": {
+    "slug": "gohan-diseno-4-hueso",
+    "line": "anime",
+    "path": "/anime/gohan-diseno-4-hueso"
+  },
+  "EU-ANIME-506": {
+    "slug": "sakamoto-days-diseno-1",
+    "line": "anime",
+    "path": "/anime/sakamoto-days-diseno-1"
+  },
+  "EU-ANIME-507": {
+    "slug": "sailor-moon-diseno-2-chocolateolate",
+    "line": "anime",
+    "path": "/anime/sailor-moon-diseno-2-chocolateolate"
+  },
+  "EU-ANIME-508": {
+    "slug": "kimetsu-art-diseno-1",
+    "line": "anime",
+    "path": "/anime/kimetsu-art-diseno-1"
+  },
+  "EU-ANIME-509": {
+    "slug": "inosuke-line-diseno-1",
+    "line": "anime",
+    "path": "/anime/inosuke-line-diseno-1"
+  },
+  "EU-ANIME-510": {
+    "slug": "kyojuro-art",
+    "line": "anime",
+    "path": "/anime/kyojuro-art"
+  },
+  "EU-ANIME-511": {
+    "slug": "tanjiro-draw-diseno-1",
+    "line": "anime",
+    "path": "/anime/tanjiro-draw-diseno-1"
+  },
+  "EU-ANIME-512": {
+    "slug": "tokito-line-diseno-1",
+    "line": "anime",
+    "path": "/anime/tokito-line-diseno-1"
+  },
+  "EU-ANIME-513": {
+    "slug": "zenitsu-line-diseno-1",
+    "line": "anime",
+    "path": "/anime/zenitsu-line-diseno-1"
+  },
+  "EU-ANIME-514": {
+    "slug": "pilares-diseno-2",
+    "line": "anime",
+    "path": "/anime/pilares-diseno-2"
+  },
+  "EU-ANIME-515": {
+    "slug": "ippo-reyes-del-ring",
+    "line": "anime",
+    "path": "/anime/ippo-reyes-del-ring"
+  },
+  "EU-ANIME-516": {
+    "slug": "shinra-tensei",
+    "line": "anime",
+    "path": "/anime/shinra-tensei"
+  },
+  "EU-ANIME-517": {
+    "slug": "kakashi-hatake-verde",
+    "line": "anime",
+    "path": "/anime/kakashi-hatake-verde"
+  },
+  "EU-ANIME-518": {
+    "slug": "little-goku-diseno-1-verde",
+    "line": "anime",
+    "path": "/anime/little-goku-diseno-1-verde"
+  },
+  "EU-ANIME-519": {
+    "slug": "shanks-diseno-1",
+    "line": "anime",
+    "path": "/anime/shanks-diseno-1"
+  },
+  "EU-ANIME-520": {
+    "slug": "brook-diseno-1",
+    "line": "anime",
+    "path": "/anime/brook-diseno-1"
+  },
+  "EU-ANIME-521": {
+    "slug": "kaiju-8-diseno-1",
+    "line": "anime",
+    "path": "/anime/kaiju-8-diseno-1"
+  },
+  "EU-ANIME-522": {
+    "slug": "digimon-diseno-1",
+    "line": "anime",
+    "path": "/anime/digimon-diseno-1"
+  },
+  "EU-ANIME-523": {
+    "slug": "baby-yoda-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/baby-yoda-diseno-2"
+  },
+  "EU-ANIME-524": {
+    "slug": "berserk-frenetic",
+    "line": "anime",
+    "path": "/anime/berserk-frenetic"
+  },
+  "EU-ANIME-525": {
+    "slug": "tanjiro-variante-2",
+    "line": "anime",
+    "path": "/anime/tanjiro-variante-2"
+  },
+  "EU-ANIME-526": {
+    "slug": "nico-robin-diseno-1",
+    "line": "anime",
+    "path": "/anime/nico-robin-diseno-1"
+  },
+  "EU-ANIME-527": {
+    "slug": "seleccion-blue-lock",
+    "line": "anime",
+    "path": "/anime/seleccion-blue-lock"
+  },
+  "EU-ANIME-528": {
+    "slug": "blue-lock-seishiro",
+    "line": "anime",
+    "path": "/anime/blue-lock-seishiro"
+  },
+  "EU-ANIME-529": {
+    "slug": "hunter-diseno-2",
+    "line": "anime",
+    "path": "/anime/hunter-diseno-2"
+  },
+  "EU-ANIME-530": {
+    "slug": "castillo-de-vagabundo-diseno-1",
+    "line": "anime",
+    "path": "/anime/castillo-de-vagabundo-diseno-1"
+  },
+  "EU-ANIME-531": {
+    "slug": "zenitsu-diseno-2",
+    "line": "anime",
+    "path": "/anime/zenitsu-diseno-2"
+  },
+  "EU-ANIME-532": {
+    "slug": "mahito-diseno-2",
+    "line": "anime",
+    "path": "/anime/mahito-diseno-2"
+  },
+  "EU-ANIME-533": {
+    "slug": "deku-midoriya-diseno-3",
+    "line": "anime",
+    "path": "/anime/deku-midoriya-diseno-3"
+  },
+  "EU-ANIME-534": {
+    "slug": "roronoa-diseno-3",
+    "line": "anime",
+    "path": "/anime/roronoa-diseno-3"
+  },
+  "EU-ANIME-535": {
+    "slug": "turbo-cat",
+    "line": "anime",
+    "path": "/anime/turbo-cat"
+  },
+  "EU-ANIME-536": {
+    "slug": "asta-diseno-2",
+    "line": "anime",
+    "path": "/anime/asta-diseno-2"
+  },
+  "EU-ANIME-537": {
+    "slug": "preparatoria-nekoma-diseno-1",
+    "line": "anime",
+    "path": "/anime/preparatoria-nekoma-diseno-1"
+  },
+  "EU-ANIME-538": {
+    "slug": "statue-of-god-diseno-1",
+    "line": "anime",
+    "path": "/anime/statue-of-god-diseno-1"
+  },
+  "EU-ANIME-539": {
+    "slug": "squirtle-diseno-2",
+    "line": "anime",
+    "path": "/anime/squirtle-diseno-2"
+  },
+  "EU-ANIME-540": {
+    "slug": "statue-of-god-diseno-2",
+    "line": "anime",
+    "path": "/anime/statue-of-god-diseno-2"
+  },
+  "EU-ANIME-541": {
+    "slug": "fans-anime-diseno-1",
+    "line": "anime",
+    "path": "/anime/fans-anime-diseno-1"
+  },
+  "EU-ANIME-542": {
+    "slug": "invincible-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/invincible-diseno-1"
+  },
+  "EU-ANIME-543": {
+    "slug": "super-campeones-diseno-1",
+    "line": "anime",
+    "path": "/anime/super-campeones-diseno-1"
+  },
+  "EU-ANIME-544": {
+    "slug": "tomioka-diseno-3",
+    "line": "anime",
+    "path": "/anime/tomioka-diseno-3"
+  },
+  "EU-ANIME-546": {
+    "slug": "itachi-sub-diseno-2",
+    "line": "anime",
+    "path": "/anime/itachi-sub-diseno-2"
+  },
+  "EU-ANIME-547": {
+    "slug": "nami-diseno-1",
+    "line": "anime",
+    "path": "/anime/nami-diseno-1"
+  },
+  "EU-ANIME-548": {
+    "slug": "pilares-diseno-3",
+    "line": "anime",
+    "path": "/anime/pilares-diseno-3"
+  },
+  "EU-ANIME-549": {
+    "slug": "sung-jin-woo",
+    "line": "anime",
+    "path": "/anime/sung-jin-woo"
+  },
+  "EU-ANIME-550": {
+    "slug": "jujutsu-variante-2",
+    "line": "anime",
+    "path": "/anime/jujutsu-variante-2"
+  },
+  "EU-ANIME-551": {
+    "slug": "yu-gi-oh-diseno-2",
+    "line": "anime",
+    "path": "/anime/yu-gi-oh-diseno-2"
+  },
+  "EU-ANIME-552": {
+    "slug": "takakura-ken-diseno-2",
+    "line": "anime",
+    "path": "/anime/takakura-ken-diseno-2"
+  },
+  "EU-ANIME-553": {
+    "slug": "tanjiro-kamado-diseno-3",
+    "line": "anime",
+    "path": "/anime/tanjiro-kamado-diseno-3"
+  },
+  "EU-ANIME-554": {
+    "slug": "luffy-y-nami",
+    "line": "anime",
+    "path": "/anime/luffy-y-nami"
+  },
+  "EU-ANIME-555": {
+    "slug": "turbo-cat-diseno-2",
+    "line": "anime",
+    "path": "/anime/turbo-cat-diseno-2"
+  },
+  "EU-ANIME-556": {
+    "slug": "takakura-ken-diseno-1",
+    "line": "anime",
+    "path": "/anime/takakura-ken-diseno-1"
+  },
+  "EU-ANIME-557": {
+    "slug": "sukuna-diseno-4",
+    "line": "anime",
+    "path": "/anime/sukuna-diseno-4"
+  },
+  "EU-ANIME-558": {
+    "slug": "sukuna-diseno-5",
+    "line": "anime",
+    "path": "/anime/sukuna-diseno-5"
+  },
+  "EU-ANIME-559": {
+    "slug": "majin-buu-diseno-3-negra",
+    "line": "anime",
+    "path": "/anime/majin-buu-diseno-3-negra"
+  },
+  "EU-ANIME-560": {
+    "slug": "okarun-diseno-1",
+    "line": "anime",
+    "path": "/anime/okarun-diseno-1"
+  },
+  "EU-ANIME-561": {
+    "slug": "okarun-diseno-2",
+    "line": "anime",
+    "path": "/anime/okarun-diseno-2"
+  },
+  "EU-ANIME-562": {
+    "slug": "michael-jackson-camiseta",
+    "line": "rock",
+    "path": "/rock/michael-jackson-camiseta"
+  },
+  "EU-ANIME-563": {
+    "slug": "trafalgar-diseno-3-verde",
+    "line": "anime",
+    "path": "/anime/trafalgar-diseno-3-verde"
+  },
+  "EU-ANIME-564": {
+    "slug": "goku-saiyan",
+    "line": "anime",
+    "path": "/anime/goku-saiyan"
+  },
+  "EU-ANIME-565": {
+    "slug": "metallica-diseno-5",
+    "line": "rock",
+    "path": "/rock/metallica-diseno-5"
+  },
+  "EU-ANIME-566": {
+    "slug": "toji-diseno-2-camel",
+    "line": "anime",
+    "path": "/anime/toji-diseno-2-camel"
+  },
+  "EU-ANIME-567": {
+    "slug": "mazinger-z-diseno-1",
+    "line": "anime",
+    "path": "/anime/mazinger-z-diseno-1"
+  },
+  "EU-ANIME-568": {
+    "slug": "the-simpsons-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/the-simpsons-diseno-2"
+  },
+  "EU-ANIME-569": {
+    "slug": "sailor-moon-diseno-2",
+    "line": "anime",
+    "path": "/anime/sailor-moon-diseno-2"
+  },
+  "EU-ANIME-570": {
+    "slug": "sailor-moon-diseno-3",
+    "line": "anime",
+    "path": "/anime/sailor-moon-diseno-3"
+  },
+  "EU-ANIME-571": {
+    "slug": "freezer-diseno-2",
+    "line": "anime",
+    "path": "/anime/freezer-diseno-2"
+  },
+  "EU-ANIME-572": {
+    "slug": "kyojuro-art-diseno-2",
+    "line": "anime",
+    "path": "/anime/kyojuro-art-diseno-2"
+  },
+  "EU-ANIME-573": {
+    "slug": "sesshomaru-diseno-2",
+    "line": "anime",
+    "path": "/anime/sesshomaru-diseno-2"
+  },
+  "EU-ANIME-574": {
+    "slug": "gojo-vs-sukuna-diseno-1",
+    "line": "anime",
+    "path": "/anime/gojo-vs-sukuna-diseno-1"
+  },
+  "EU-ANIME-575": {
+    "slug": "capitan-luffy-diseno-3",
+    "line": "anime",
+    "path": "/anime/capitan-luffy-diseno-3"
+  },
+  "EU-ANIME-576": {
+    "slug": "capitan-luffy-diseno-2",
+    "line": "anime",
+    "path": "/anime/capitan-luffy-diseno-2"
+  },
+  "EU-ANIME-577": {
+    "slug": "gengar-diseno-1",
+    "line": "anime",
+    "path": "/anime/gengar-diseno-1"
+  },
+  "EU-ANIME-578": {
+    "slug": "toji-fushiguro-diseno-1",
+    "line": "anime",
+    "path": "/anime/toji-fushiguro-diseno-1"
+  },
+  "EU-ANIME-579": {
+    "slug": "ikki-diseno-1",
+    "line": "anime",
+    "path": "/anime/ikki-diseno-1"
+  },
+  "EU-ANIME-580": {
+    "slug": "toji-fushiguro-diseno-2",
+    "line": "anime",
+    "path": "/anime/toji-fushiguro-diseno-2"
+  },
+  "EU-ANIME-581": {
+    "slug": "union-kimetsu-diseno-2",
+    "line": "anime",
+    "path": "/anime/union-kimetsu-diseno-2"
+  },
+  "EU-ANIME-582": {
+    "slug": "son-goku-diseno-2",
+    "line": "anime",
+    "path": "/anime/son-goku-diseno-2"
+  },
+  "EU-ANIME-583": {
+    "slug": "shikigami-mahoraga",
+    "line": "anime",
+    "path": "/anime/shikigami-mahoraga"
+  },
+  "EU-ANIME-584": {
+    "slug": "obito-uchiha-diseno-1",
+    "line": "anime",
+    "path": "/anime/obito-uchiha-diseno-1"
+  },
+  "EU-ANIME-585": {
+    "slug": "jinshi-los-diarios-de-bot",
+    "line": "anime",
+    "path": "/anime/jinshi-los-diarios-de-bot"
+  },
+  "EU-ANIME-586": {
+    "slug": "itadori-sukuna-diseno-2",
+    "line": "anime",
+    "path": "/anime/itadori-sukuna-diseno-2"
+  },
+  "EU-ANIME-587": {
+    "slug": "super-campeones-diseno-2",
+    "line": "anime",
+    "path": "/anime/super-campeones-diseno-2"
+  },
+  "EU-ANIME-588": {
+    "slug": "principe-vegeta-diseno-2",
+    "line": "anime",
+    "path": "/anime/principe-vegeta-diseno-2"
+  },
+  "EU-ANIME-589": {
+    "slug": "gohan-del-futuro-diseno-2",
+    "line": "anime",
+    "path": "/anime/gohan-del-futuro-diseno-2"
+  },
+  "EU-ANIME-590": {
+    "slug": "escanor-diseno-2",
+    "line": "anime",
+    "path": "/anime/escanor-diseno-2"
+  },
+  "EU-ANIME-591": {
+    "slug": "inuyasha-diseno-2",
+    "line": "anime",
+    "path": "/anime/inuyasha-diseno-2"
+  },
+  "EU-ANIME-592": {
+    "slug": "toji-roja",
+    "line": "anime",
+    "path": "/anime/toji-roja"
+  },
+  "EU-ANIME-593": {
+    "slug": "pokemon-diseno-2",
+    "line": "anime",
+    "path": "/anime/pokemon-diseno-2"
+  },
+  "EU-ANIME-594": {
+    "slug": "gojo-lover-diseno-2",
+    "line": "anime",
+    "path": "/anime/gojo-lover-diseno-2"
+  },
+  "EU-ANIME-595": {
+    "slug": "isagi-blue-lock-diseno-1",
+    "line": "anime",
+    "path": "/anime/isagi-blue-lock-diseno-1"
+  },
+  "EU-ANIME-596": {
+    "slug": "universo-sailor-moon",
+    "line": "anime",
+    "path": "/anime/universo-sailor-moon"
+  },
+  "EU-ANIME-597": {
+    "slug": "nagi-blue-lock-diseno-1",
+    "line": "anime",
+    "path": "/anime/nagi-blue-lock-diseno-1"
+  },
+  "EU-ANIME-598": {
+    "slug": "universo-full-metal-diseno-1",
+    "line": "anime",
+    "path": "/anime/universo-full-metal-diseno-1"
+  },
+  "EU-ANIME-599": {
+    "slug": "universo-full-metal-diseno-2",
+    "line": "anime",
+    "path": "/anime/universo-full-metal-diseno-2"
+  },
+  "EU-ANIME-600": {
+    "slug": "zenitsu-agatsuma-diseno-4",
+    "line": "anime",
+    "path": "/anime/zenitsu-agatsuma-diseno-4"
+  },
+  "EU-ANIME-601": {
+    "slug": "kaiosamas-training",
+    "line": "anime",
+    "path": "/anime/kaiosamas-training"
+  },
+  "EU-ANIME-602": {
+    "slug": "neon-genesis-diseno-2",
+    "line": "anime",
+    "path": "/anime/neon-genesis-diseno-2"
+  },
+  "EU-ANIME-603": {
+    "slug": "evangelion-ov",
+    "line": "anime",
+    "path": "/anime/evangelion-ov"
+  },
+  "EU-ANIME-604": {
+    "slug": "seleccion-blue-lock-diseno-2",
+    "line": "anime",
+    "path": "/anime/seleccion-blue-lock-diseno-2"
+  },
+  "EU-ANIME-605": {
+    "slug": "majin-bu-diseno-4",
+    "line": "anime",
+    "path": "/anime/majin-bu-diseno-4"
+  },
+  "EU-ANIME-606": {
+    "slug": "frutas-del-diablo-diseno-1",
+    "line": "anime",
+    "path": "/anime/frutas-del-diablo-diseno-1"
+  },
+  "EU-ANIME-607": {
+    "slug": "dragon-blanco-de-ojos-azules",
+    "line": "anime",
+    "path": "/anime/dragon-blanco-de-ojos-azules"
+  },
+  "EU-ANIME-608": {
+    "slug": "inosuke-line-diseno-3",
+    "line": "anime",
+    "path": "/anime/inosuke-line-diseno-3"
+  },
+  "EU-ANIME-609": {
+    "slug": "trunks-diseno-2",
+    "line": "anime",
+    "path": "/anime/trunks-diseno-2"
+  },
+  "EU-ANIME-610": {
+    "slug": "luffy-lovers-diseno-1",
+    "line": "anime",
+    "path": "/anime/luffy-lovers-diseno-1"
+  },
+  "EU-ANIME-611": {
+    "slug": "universo-dragon-ball-diseno-2",
+    "line": "anime",
+    "path": "/anime/universo-dragon-ball-diseno-2"
+  },
+  "EU-ANIME-612": {
+    "slug": "roronoa-zoro",
+    "line": "anime",
+    "path": "/anime/roronoa-zoro"
+  },
+  "EU-ANIME-613": {
+    "slug": "fuerza-de-dragon-diseno-3",
+    "line": "anime",
+    "path": "/anime/fuerza-de-dragon-diseno-3"
+  },
+  "EU-ANIME-614": {
+    "slug": "edward-elric-diseno-1",
+    "line": "anime",
+    "path": "/anime/edward-elric-diseno-1"
+  },
+  "EU-ANIME-615": {
+    "slug": "yu-gi-oh-diseno-3",
+    "line": "anime",
+    "path": "/anime/yu-gi-oh-diseno-3"
+  },
+  "EU-ANIME-616": {
+    "slug": "deku-plus-ultra",
+    "line": "anime",
+    "path": "/anime/deku-plus-ultra"
+  },
+  "EU-ANIME-617": {
+    "slug": "black-clover-diseno-2",
+    "line": "anime",
+    "path": "/anime/black-clover-diseno-2"
+  },
+  "EU-ANIME-618": {
+    "slug": "universo-my-hero-diseno-1",
+    "line": "anime",
+    "path": "/anime/universo-my-hero-diseno-1"
+  },
+  "EU-ANIME-619": {
+    "slug": "saitama-diseno-3",
+    "line": "anime",
+    "path": "/anime/saitama-diseno-3"
+  },
+  "EU-ANIME-620": {
+    "slug": "nana-blackstones",
+    "line": "anime",
+    "path": "/anime/nana-blackstones"
+  },
+  "EU-ANIME-621": {
+    "slug": "sogeking",
+    "line": "anime",
+    "path": "/anime/sogeking"
+  },
+  "EU-ANIME-622": {
+    "slug": "caballeros-diseno-5",
+    "line": "anime",
+    "path": "/anime/caballeros-diseno-5"
+  },
+  "EU-ANIME-623": {
+    "slug": "ash-pokemon-diseno-1",
+    "line": "anime",
+    "path": "/anime/ash-pokemon-diseno-1"
+  },
+  "EU-ANIME-624": {
+    "slug": "yujiro-hanma-diseno-1",
+    "line": "anime",
+    "path": "/anime/yujiro-hanma-diseno-1"
+  },
+  "EU-ANIME-625": {
+    "slug": "sanji-diseno-2",
+    "line": "anime",
+    "path": "/anime/sanji-diseno-2"
+  },
+  "EU-ANIME-626": {
+    "slug": "honor-espadachin-diseno-2",
+    "line": "anime",
+    "path": "/anime/honor-espadachin-diseno-2"
+  },
+  "EU-ANIME-627": {
+    "slug": "jojos-diseno-1",
+    "line": "anime",
+    "path": "/anime/jojos-diseno-1"
+  },
+  "EU-ANIME-628": {
+    "slug": "vegeta-instinto-de-batalla",
+    "line": "anime",
+    "path": "/anime/vegeta-instinto-de-batalla"
+  },
+  "EU-ANIME-629": {
+    "slug": "tomioka-vs-akaza-diseno-1",
+    "line": "anime",
+    "path": "/anime/tomioka-vs-akaza-diseno-1"
+  },
+  "EU-ANIME-630": {
+    "slug": "maki-diseno-2",
+    "line": "anime",
+    "path": "/anime/maki-diseno-2"
+  },
+  "EU-ANIME-631": {
+    "slug": "itadori-sukuna-diseno-3",
+    "line": "anime",
+    "path": "/anime/itadori-sukuna-diseno-3"
+  },
+  "EU-ANIME-632": {
+    "slug": "maga-oscura-yu-gi-oh",
+    "line": "anime",
+    "path": "/anime/maga-oscura-yu-gi-oh"
+  },
+  "EU-ANIME-633": {
+    "slug": "pikachu",
+    "line": "anime",
+    "path": "/anime/pikachu"
+  },
+  "EU-ANIME-634": {
+    "slug": "sousou-no-frieren",
+    "line": "anime",
+    "path": "/anime/sousou-no-frieren"
+  },
+  "EU-ANIME-635": {
+    "slug": "genos-diseno-1",
+    "line": "anime",
+    "path": "/anime/genos-diseno-1"
+  },
+  "EU-ANIME-636": {
+    "slug": "charmander-evolutions",
+    "line": "anime",
+    "path": "/anime/charmander-evolutions"
+  },
+  "EU-ANIME-637": {
+    "slug": "frieren-diseno-2",
+    "line": "anime",
+    "path": "/anime/frieren-diseno-2"
+  },
+  "EU-ANIME-638": {
+    "slug": "higuruma-diseno-1",
+    "line": "anime",
+    "path": "/anime/higuruma-diseno-1"
+  },
+  "EU-ANIME-639": {
+    "slug": "bakugo-diseno-3",
+    "line": "anime",
+    "path": "/anime/bakugo-diseno-3"
+  },
+  "EU-ANIME-640": {
+    "slug": "squirtle-evolutions",
+    "line": "anime",
+    "path": "/anime/squirtle-evolutions"
+  },
+  "EU-ANIME-641": {
+    "slug": "kokushibo-vs-tokito-diseno-1",
+    "line": "anime",
+    "path": "/anime/kokushibo-vs-tokito-diseno-1"
+  },
+  "EU-ANIME-642": {
+    "slug": "tony-chopper-diseno-3",
+    "line": "anime",
+    "path": "/anime/tony-chopper-diseno-3"
+  },
+  "EU-ANIME-643": {
+    "slug": "universo-dragon-ball-diseno-3",
+    "line": "anime",
+    "path": "/anime/universo-dragon-ball-diseno-3"
+  },
+  "EU-ANIME-644": {
+    "slug": "tributo-akira-toriyama",
+    "line": "anime",
+    "path": "/anime/tributo-akira-toriyama"
+  },
+  "EU-ANIME-645": {
+    "slug": "spirited-away",
+    "line": "anime",
+    "path": "/anime/spirited-away"
+  },
+  "EU-ANIME-646": {
+    "slug": "panda-jujutsu-kaisen-diseno-1",
+    "line": "anime",
+    "path": "/anime/panda-jujutsu-kaisen-diseno-1"
+  },
+  "EU-ANIME-647": {
+    "slug": "dr-stone-diseno-3",
+    "line": "anime",
+    "path": "/anime/dr-stone-diseno-3"
+  },
+  "EU-ANIME-648": {
+    "slug": "megumi-diseno-1",
+    "line": "anime",
+    "path": "/anime/megumi-diseno-1"
+  },
+  "EU-ANIME-649": {
+    "slug": "uzui-tengen-diseno-2",
+    "line": "anime",
+    "path": "/anime/uzui-tengen-diseno-2"
+  },
+  "EU-ANIME-650": {
+    "slug": "frieren-diseno-1",
+    "line": "anime",
+    "path": "/anime/frieren-diseno-1"
+  },
+  "EU-ANIME-651": {
+    "slug": "poder-saitama-diseno-1",
+    "line": "anime",
+    "path": "/anime/poder-saitama-diseno-1"
+  },
+  "EU-ANIME-652": {
+    "slug": "gojo-chibi-diseno-1",
+    "line": "anime",
+    "path": "/anime/gojo-chibi-diseno-1"
+  },
+  "EU-ANIME-653": {
+    "slug": "garou-diseno-2",
+    "line": "anime",
+    "path": "/anime/garou-diseno-2"
+  },
+  "EU-ANIME-654": {
+    "slug": "zelda-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/zelda-diseno-1"
+  },
+  "EU-ANIME-655": {
+    "slug": "akaza-historia-hakuji",
+    "line": "anime",
+    "path": "/anime/akaza-historia-hakuji"
+  },
+  "EU-ANIME-656": {
+    "slug": "universo-jujutsu-diseno-1",
+    "line": "anime",
+    "path": "/anime/universo-jujutsu-diseno-1"
+  },
+  "EU-ANIME-657": {
+    "slug": "serena-moon-diseno-2",
+    "line": "anime",
+    "path": "/anime/serena-moon-diseno-2"
+  },
+  "EU-ANIME-658": {
+    "slug": "retumbar-diseno-2",
+    "line": "anime",
+    "path": "/anime/retumbar-diseno-2"
+  },
+  "EU-ANIME-659": {
+    "slug": "asta-diseno-4",
+    "line": "anime",
+    "path": "/anime/asta-diseno-4"
+  },
+  "EU-ANIME-660": {
+    "slug": "universo-bleach-diseno-1",
+    "line": "anime",
+    "path": "/anime/universo-bleach-diseno-1"
+  },
+  "EU-ANIME-661": {
+    "slug": "sailor-lovers-diseno-2",
+    "line": "anime",
+    "path": "/anime/sailor-lovers-diseno-2"
+  },
+  "EU-ANIME-662": {
+    "slug": "sesshomaru-diseno-3",
+    "line": "anime",
+    "path": "/anime/sesshomaru-diseno-3"
+  },
+  "EU-ANIME-663": {
+    "slug": "loki-diseno-2",
+    "line": "anime",
+    "path": "/anime/loki-diseno-2"
+  },
+  "EU-ANIME-664": {
+    "slug": "super-saiyan-diseno-2",
+    "line": "anime",
+    "path": "/anime/super-saiyan-diseno-2"
+  },
+  "EU-ANIME-665": {
+    "slug": "kakashi-vs-obito-diseno-1",
+    "line": "anime",
+    "path": "/anime/kakashi-vs-obito-diseno-1"
+  },
+  "EU-ANIME-666": {
+    "slug": "hakari-kinji",
+    "line": "anime",
+    "path": "/anime/hakari-kinji"
+  },
+  "EU-ANIME-667": {
+    "slug": "power-luffy-diseno-2",
+    "line": "anime",
+    "path": "/anime/power-luffy-diseno-2"
+  },
+  "EU-ANIME-668": {
+    "slug": "freezer-emperador",
+    "line": "anime",
+    "path": "/anime/freezer-emperador"
+  },
+  "EU-ANIME-669": {
+    "slug": "barba-blanca-diseno-1",
+    "line": "anime",
+    "path": "/anime/barba-blanca-diseno-1"
+  },
+  "EU-ANIME-670": {
+    "slug": "barba-negra",
+    "line": "anime",
+    "path": "/anime/barba-negra"
+  },
+  "EU-ANIME-671": {
+    "slug": "the-culling-game",
+    "line": "anime",
+    "path": "/anime/the-culling-game"
+  },
+  "EU-ANIME-672": {
+    "slug": "pochita-mood-diseno-1",
+    "line": "anime",
+    "path": "/anime/pochita-mood-diseno-1"
+  },
+  "EU-ANIME-673": {
+    "slug": "pochita-style-diseno-2-hueso",
+    "line": "anime",
+    "path": "/anime/pochita-style-diseno-2-hueso"
+  },
+  "EU-ANIME-674": {
+    "slug": "denji-diseno-4",
+    "line": "anime",
+    "path": "/anime/denji-diseno-4"
+  },
+  "EU-ANIME-675": {
+    "slug": "douma-diseno-1",
+    "line": "anime",
+    "path": "/anime/douma-diseno-1"
+  },
+  "EU-ANIME-676": {
+    "slug": "kyojuro-cazador-de-dem-negra",
+    "line": "anime",
+    "path": "/anime/kyojuro-cazador-de-dem-negra"
+  },
+  "EU-ANIME-677": {
+    "slug": "muzan",
+    "line": "anime",
+    "path": "/anime/muzan"
+  },
+  "EU-ANIME-678": {
+    "slug": "gyomei-diseno-1",
+    "line": "anime",
+    "path": "/anime/gyomei-diseno-1"
+  },
+  "EU-ANIME-679": {
+    "slug": "chainsawman",
+    "line": "anime",
+    "path": "/anime/chainsawman"
+  },
+  "EU-ANIME-680": {
+    "slug": "nezuko-kamado-diseno-2",
+    "line": "anime",
+    "path": "/anime/nezuko-kamado-diseno-2"
+  },
+  "EU-ANIME-681": {
+    "slug": "mitsuri-diseno-3",
+    "line": "anime",
+    "path": "/anime/mitsuri-diseno-3"
+  },
+  "EU-ANIME-682": {
+    "slug": "tanjiro-kamado-diseno-2",
+    "line": "anime",
+    "path": "/anime/tanjiro-kamado-diseno-2"
+  },
+  "EU-ANIME-683": {
+    "slug": "mahito-diseno-1",
+    "line": "anime",
+    "path": "/anime/mahito-diseno-1"
+  },
+  "EU-ANIME-684": {
+    "slug": "mob-psycho-diseno-1",
+    "line": "anime",
+    "path": "/anime/mob-psycho-diseno-1"
+  },
+  "EU-ANIME-685": {
+    "slug": "denji-diseno-5",
+    "line": "anime",
+    "path": "/anime/denji-diseno-5"
+  },
+  "EU-ANIME-686": {
+    "slug": "denji-diseno-2-blanca",
+    "line": "anime",
+    "path": "/anime/denji-diseno-2-blanca"
+  },
+  "EU-ANIME-687": {
+    "slug": "pochita-style-diseno-2-verde",
+    "line": "anime",
+    "path": "/anime/pochita-style-diseno-2-verde"
+  },
+  "EU-ANIME-688": {
+    "slug": "universo-kimetsu-diseno-2",
+    "line": "anime",
+    "path": "/anime/universo-kimetsu-diseno-2"
+  },
+  "EU-ANIME-689": {
+    "slug": "the-slayers",
+    "line": "anime",
+    "path": "/anime/the-slayers"
+  },
+  "EU-ANIME-690": {
+    "slug": "kokushibo-diseno-3",
+    "line": "anime",
+    "path": "/anime/kokushibo-diseno-3"
+  },
+  "EU-ANIME-691": {
+    "slug": "shinobu-kocho-diseno-1-negra",
+    "line": "anime",
+    "path": "/anime/shinobu-kocho-diseno-1-negra"
+  },
+  "EU-ANIME-692": {
+    "slug": "shinobu-kocho-diseno-1-chocolateolate",
+    "line": "anime",
+    "path": "/anime/shinobu-kocho-diseno-1-chocolateolate"
+  },
+  "EU-ANIME-693": {
+    "slug": "demonios-superiores-diseno-1",
+    "line": "anime",
+    "path": "/anime/demonios-superiores-diseno-1"
+  },
+  "EU-ANIME-694": {
+    "slug": "nezuko-style-diseno-1",
+    "line": "anime",
+    "path": "/anime/nezuko-style-diseno-1"
+  },
+  "EU-ANIME-695": {
+    "slug": "kyojuro-espiritu-de-fuego",
+    "line": "anime",
+    "path": "/anime/kyojuro-espiritu-de-fuego"
+  },
+  "EU-ANIME-696": {
+    "slug": "mitsuri-sweet-love-negra",
+    "line": "anime",
+    "path": "/anime/mitsuri-sweet-love-negra"
+  },
+  "EU-ANIME-697": {
+    "slug": "power-tanjiro-diseno-1",
+    "line": "anime",
+    "path": "/anime/power-tanjiro-diseno-1"
+  },
+  "EU-ANIME-698": {
+    "slug": "tanjiro-kamado-diseno-4",
+    "line": "anime",
+    "path": "/anime/tanjiro-kamado-diseno-4"
+  },
+  "EU-ANIME-699": {
+    "slug": "kyojuro-style-diseno-1",
+    "line": "anime",
+    "path": "/anime/kyojuro-style-diseno-1"
+  },
+  "EU-ANIME-700": {
+    "slug": "universo-kimetsu-rosa",
+    "line": "anime",
+    "path": "/anime/universo-kimetsu-rosa"
+  },
+  "EU-ANIME-701": {
+    "slug": "universo-kimetsu-hueso",
+    "line": "anime",
+    "path": "/anime/universo-kimetsu-hueso"
+  },
+  "EU-ANIME-702": {
+    "slug": "mitsuri-sweet-love-blanca",
+    "line": "anime",
+    "path": "/anime/mitsuri-sweet-love-blanca"
+  },
+  "EU-ANIME-703": {
+    "slug": "akaza-line-diseno-1",
+    "line": "anime",
+    "path": "/anime/akaza-line-diseno-1"
+  },
+  "EU-ANIME-704": {
+    "slug": "tokito-draw-diseno-1",
+    "line": "anime",
+    "path": "/anime/tokito-draw-diseno-1"
+  },
+  "EU-ANIME-705": {
+    "slug": "kawai-slayer-diseno-2",
+    "line": "anime",
+    "path": "/anime/kawai-slayer-diseno-2"
+  },
+  "EU-ANIME-706": {
+    "slug": "douma-diseno-2",
+    "line": "anime",
+    "path": "/anime/douma-diseno-2"
+  },
+  "EU-ANIME-707": {
+    "slug": "kokushibo-diseno-2",
+    "line": "anime",
+    "path": "/anime/kokushibo-diseno-2"
+  },
+  "EU-ANIME-708": {
+    "slug": "union-kimetsu",
+    "line": "anime",
+    "path": "/anime/union-kimetsu"
+  },
+  "EU-ANIME-709": {
+    "slug": "pilares-diseno-4-verde",
+    "line": "anime",
+    "path": "/anime/pilares-diseno-4-verde"
+  },
+  "EU-ANIME-710": {
+    "slug": "chainsaw-man-diseno-5",
+    "line": "anime",
+    "path": "/anime/chainsaw-man-diseno-5"
+  },
+  "EU-ANIME-711": {
+    "slug": "power-diseno-3",
+    "line": "anime",
+    "path": "/anime/power-diseno-3"
+  },
+  "EU-ANIME-712": {
+    "slug": "chainsaw-man-diseno-3",
+    "line": "anime",
+    "path": "/anime/chainsaw-man-diseno-3"
+  },
+  "EU-ANIME-713": {
+    "slug": "ippo-makunouchi",
+    "line": "anime",
+    "path": "/anime/ippo-makunouchi"
+  },
+  "EU-ANIME-714": {
+    "slug": "kaiju-diseno-2",
+    "line": "anime",
+    "path": "/anime/kaiju-diseno-2"
+  },
+  "EU-ANIME-715": {
+    "slug": "sensei-estrella",
+    "line": "anime",
+    "path": "/anime/sensei-estrella"
+  },
+  "EU-ANIME-716": {
+    "slug": "jujutsu-primer-ano-blanca",
+    "line": "anime",
+    "path": "/anime/jujutsu-primer-ano-blanca"
+  },
+  "EU-ANIME-717": {
+    "slug": "jujutsu-primer-ano-negra",
+    "line": "anime",
+    "path": "/anime/jujutsu-primer-ano-negra"
+  },
+  "EU-ANIME-718": {
+    "slug": "ranma-diseno-4",
+    "line": "anime",
+    "path": "/anime/ranma-diseno-4"
+  },
+  "EU-ANIME-719": {
+    "slug": "inosuke-diseno-2",
+    "line": "anime",
+    "path": "/anime/inosuke-diseno-2"
+  },
+  "EU-ANIME-720": {
+    "slug": "nana-diseno-2",
+    "line": "anime",
+    "path": "/anime/nana-diseno-2"
+  },
+  "EU-ANIME-721": {
+    "slug": "sin-cara-diseno-1",
+    "line": "anime",
+    "path": "/anime/sin-cara-diseno-1"
+  },
+  "EU-ANIME-722": {
+    "slug": "buddha-of-ragnarok",
+    "line": "anime",
+    "path": "/anime/buddha-of-ragnarok"
+  },
+  "EU-ANIME-723": {
+    "slug": "goku-saiyan-diseno-2",
+    "line": "anime",
+    "path": "/anime/goku-saiyan-diseno-2"
+  },
+  "EU-ANIME-724": {
+    "slug": "solo-leveling-personajes-negro",
+    "line": "anime",
+    "path": "/anime/solo-leveling-personajes-negro"
+  },
+  "EU-ANIME-725": {
+    "slug": "power-diseno-2-unisex",
+    "line": "anime",
+    "path": "/anime/power-diseno-2-unisex"
+  },
+  "EU-ANIME-726": {
+    "slug": "inosuke-draw-diseno-2-camel",
+    "line": "anime",
+    "path": "/anime/inosuke-draw-diseno-2-camel"
+  },
+  "EU-ANIME-727": {
+    "slug": "pilares-diseno-4-hueso",
+    "line": "anime",
+    "path": "/anime/pilares-diseno-4-hueso"
+  },
+  "EU-ANIME-728": {
+    "slug": "douma-diseno-3",
+    "line": "anime",
+    "path": "/anime/douma-diseno-3"
+  },
+  "EU-ANIME-729": {
+    "slug": "trafalgar-diseno-2",
+    "line": "anime",
+    "path": "/anime/trafalgar-diseno-2"
+  },
+  "EU-ANIME-730": {
+    "slug": "trafalgar-diseno-3-blanca",
+    "line": "anime",
+    "path": "/anime/trafalgar-diseno-3-blanca"
+  },
+  "EU-ANIME-731": {
+    "slug": "mi-vecino-totoro",
+    "line": "anime",
+    "path": "/anime/mi-vecino-totoro"
+  },
+  "EU-ANIME-732": {
+    "slug": "neon-genesis",
+    "line": "anime",
+    "path": "/anime/neon-genesis"
+  },
+  "EU-ANIME-733": {
+    "slug": "shinji-unidad-01",
+    "line": "anime",
+    "path": "/anime/shinji-unidad-01"
+  },
+  "EU-ANIME-734": {
+    "slug": "roshi-cartoon-diseno-2",
+    "line": "anime",
+    "path": "/anime/roshi-cartoon-diseno-2"
+  },
+  "EU-ANIME-735": {
+    "slug": "misty-y-gengar-ghost-diseno-2",
+    "line": "anime",
+    "path": "/anime/misty-y-gengar-ghost-diseno-2"
+  },
+  "EU-ANIME-736": {
+    "slug": "kento-nanami-vinotinto",
+    "line": "anime",
+    "path": "/anime/kento-nanami-vinotinto"
+  },
+  "EU-ANIME-737": {
+    "slug": "el-nino-y-la-garza",
+    "line": "anime",
+    "path": "/anime/el-nino-y-la-garza"
+  },
+  "EU-ANIME-738": {
+    "slug": "kento-nanami-diseno-2-negra",
+    "line": "anime",
+    "path": "/anime/kento-nanami-diseno-2-negra"
+  },
+  "EU-ANIME-739": {
+    "slug": "bob-no-jutsu",
+    "line": "cartoon",
+    "path": "/cartoon/bob-no-jutsu"
+  },
+  "EU-ANIME-740": {
+    "slug": "dr-stone-diseno-2",
+    "line": "anime",
+    "path": "/anime/dr-stone-diseno-2"
+  },
+  "EU-ANIME-741": {
+    "slug": "neko",
+    "line": "anime",
+    "path": "/anime/neko"
+  },
+  "EU-ANIME-742": {
+    "slug": "nezuko-kamado",
+    "line": "anime",
+    "path": "/anime/nezuko-kamado"
+  },
+  "EU-ANIME-743": {
+    "slug": "yu-gi-oh-camiseta",
+    "line": "anime",
+    "path": "/anime/yu-gi-oh-camiseta"
+  },
+  "EU-ANIME-744": {
+    "slug": "pika-pika-diseno-2",
+    "line": "anime",
+    "path": "/anime/pika-pika-diseno-2"
+  },
+  "EU-ANIME-745": {
+    "slug": "bojji-diseno-1",
+    "line": "anime",
+    "path": "/anime/bojji-diseno-1"
+  },
+  "EU-ANIME-746": {
+    "slug": "ok-saitama-diseno-2-negra",
+    "line": "anime",
+    "path": "/anime/ok-saitama-diseno-2-negra"
+  },
+  "EU-ANIME-747": {
+    "slug": "ok-saitama-diseno-2-roja",
+    "line": "anime",
+    "path": "/anime/ok-saitama-diseno-2-roja"
+  },
+  "EU-ANIME-748": {
+    "slug": "avatar-diseno-2-verde",
+    "line": "cartoon",
+    "path": "/cartoon/avatar-diseno-2-verde"
+  },
+  "EU-ANIME-749": {
+    "slug": "totoro-lover-diseno-2",
+    "line": "anime",
+    "path": "/anime/totoro-lover-diseno-2"
+  },
+  "EU-ANIME-750": {
+    "slug": "yoshi",
+    "line": "cartoon",
+    "path": "/cartoon/yoshi"
+  },
+  "EU-ANIME-751": {
+    "slug": "roronoa",
+    "line": "anime",
+    "path": "/anime/roronoa"
+  },
+  "EU-ANIME-752": {
+    "slug": "gohan-diseno-2",
+    "line": "anime",
+    "path": "/anime/gohan-diseno-2"
+  },
+  "EU-ANIME-753": {
+    "slug": "full-metal-diseno-4",
+    "line": "anime",
+    "path": "/anime/full-metal-diseno-4"
+  },
+  "EU-ANIME-754": {
+    "slug": "vegeta-diseno-3",
+    "line": "anime",
+    "path": "/anime/vegeta-diseno-3"
+  },
+  "EU-ANIME-755": {
+    "slug": "naruto-rosa-diseno-2",
+    "line": "anime",
+    "path": "/anime/naruto-rosa-diseno-2"
+  },
+  "EU-ANIME-756": {
+    "slug": "tomioka-diseno-2",
+    "line": "anime",
+    "path": "/anime/tomioka-diseno-2"
+  },
+  "EU-ANIME-757": {
+    "slug": "looney-tunes-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/looney-tunes-diseno-2"
+  },
+  "EU-ANIME-758": {
+    "slug": "correcaminos-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/correcaminos-diseno-2"
+  },
+  "EU-ANIME-759": {
+    "slug": "tom-y-jerry-eternal-chaos",
+    "line": "cartoon",
+    "path": "/cartoon/tom-y-jerry-eternal-chaos"
+  },
+  "EU-ANIME-760": {
+    "slug": "coyote-diseno-3",
+    "line": "cartoon",
+    "path": "/cartoon/coyote-diseno-3"
+  },
+  "EU-ANIME-761": {
+    "slug": "classic-cartoons-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/classic-cartoons-diseno-1"
+  },
+  "EU-ANIME-762": {
+    "slug": "tasmania-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/tasmania-diseno-2"
+  },
+  "EU-ANIME-763": {
+    "slug": "world-domination",
+    "line": "cartoon",
+    "path": "/cartoon/world-domination"
+  },
+  "EU-ANIME-764": {
+    "slug": "looney-tunes-urban-style",
+    "line": "cartoon",
+    "path": "/cartoon/looney-tunes-urban-style"
+  },
+  "EU-ANIME-765": {
+    "slug": "pink-style",
+    "line": "cartoon",
+    "path": "/cartoon/pink-style"
+  },
+  "EU-ANIME-766": {
+    "slug": "looney-tunes-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/looney-tunes-diseno-1"
+  },
+  "EU-ANIME-767": {
+    "slug": "el-cadaver-de-la-novia-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/el-cadaver-de-la-novia-diseno-1"
+  },
+  "EU-ANIME-768": {
+    "slug": "looney-tunes-diseno-3",
+    "line": "cartoon",
+    "path": "/cartoon/looney-tunes-diseno-3"
+  },
+  "EU-ANIME-769": {
+    "slug": "que-hay-de-nuevo-viejo",
+    "line": "cartoon",
+    "path": "/cartoon/que-hay-de-nuevo-viejo"
+  },
+  "EU-ANIME-770": {
+    "slug": "tom-y-jerry-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/tom-y-jerry-diseno-1"
+  },
+  "EU-ANIME-771": {
+    "slug": "coyote-vs-acme-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/coyote-vs-acme-diseno-2"
+  },
+  "EU-ANIME-772": {
+    "slug": "no-excuses-tom-y-jerry",
+    "line": "cartoon",
+    "path": "/cartoon/no-excuses-tom-y-jerry"
+  },
+  "EU-ANIME-773": {
+    "slug": "boston-bugs",
+    "line": "cartoon",
+    "path": "/cartoon/boston-bugs"
+  },
+  "EU-ANIME-774": {
+    "slug": "chicago-bugs",
+    "line": "cartoon",
+    "path": "/cartoon/chicago-bugs"
+  },
+  "EU-ANIME-775": {
+    "slug": "evil-genius",
+    "line": "cartoon",
+    "path": "/cartoon/evil-genius"
+  },
+  "EU-ANIME-776": {
+    "slug": "coyote-vs-acme-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/coyote-vs-acme-diseno-1"
+  },
+  "EU-ANIME-777": {
+    "slug": "boss-duck",
+    "line": "cartoon",
+    "path": "/cartoon/boss-duck"
+  },
+  "EU-ANIME-778": {
+    "slug": "correcaminos-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/correcaminos-diseno-1"
+  },
+  "EU-ANIME-779": {
+    "slug": "mojojojo-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/mojojojo-diseno-1"
+  },
+  "EU-ANIME-780": {
+    "slug": "tomy-y-daly-urban-style",
+    "line": "cartoon",
+    "path": "/cartoon/tomy-y-daly-urban-style"
+  },
+  "EU-ANIME-781": {
+    "slug": "multiverse-spiderman",
+    "line": "cartoon",
+    "path": "/cartoon/multiverse-spiderman"
+  },
+  "EU-ANIME-782": {
+    "slug": "spiderman-art",
+    "line": "cartoon",
+    "path": "/cartoon/spiderman-art"
+  },
+  "EU-ANIME-783": {
+    "slug": "amazing-spiderman",
+    "line": "cartoon",
+    "path": "/cartoon/amazing-spiderman"
+  },
+  "EU-ANIME-784": {
+    "slug": "spiderman-diseno-3",
+    "line": "cartoon",
+    "path": "/cartoon/spiderman-diseno-3"
+  },
+  "EU-ANIME-785": {
+    "slug": "legends-cartoon",
+    "line": "cartoon",
+    "path": "/cartoon/legends-cartoon"
+  },
+  "EU-ANIME-786": {
+    "slug": "modo-rick-activado",
+    "line": "cartoon",
+    "path": "/cartoon/modo-rick-activado"
+  },
+  "EU-ANIME-787": {
+    "slug": "mi-propia-verdad",
+    "line": "cartoon",
+    "path": "/cartoon/mi-propia-verdad"
+  },
+  "EU-ANIME-788": {
+    "slug": "coyote",
+    "line": "cartoon",
+    "path": "/cartoon/coyote"
+  },
+  "EU-ANIME-789": {
+    "slug": "parche-gangsta",
+    "line": "cartoon",
+    "path": "/cartoon/parche-gangsta"
+  },
+  "EU-ANIME-790": {
+    "slug": "street-edition",
+    "line": "cartoon",
+    "path": "/cartoon/street-edition"
+  },
+  "EU-ANIME-791": {
+    "slug": "una-magia-diferente",
+    "line": "cartoon",
+    "path": "/cartoon/una-magia-diferente"
+  },
+  "EU-ANIME-792": {
+    "slug": "picapiedras-diseno-3",
+    "line": "cartoon",
+    "path": "/cartoon/picapiedras-diseno-3"
+  },
+  "EU-ANIME-793": {
+    "slug": "abduccion-canina",
+    "line": "cartoon",
+    "path": "/cartoon/abduccion-canina"
+  },
+  "EU-ANIME-794": {
+    "slug": "estilo-warner",
+    "line": "cartoon",
+    "path": "/cartoon/estilo-warner"
+  },
+  "EU-ANIME-795": {
+    "slug": "mario-drugs",
+    "line": "cartoon",
+    "path": "/cartoon/mario-drugs"
+  },
+  "EU-ANIME-796": {
+    "slug": "star-wars-pixel",
+    "line": "cartoon",
+    "path": "/cartoon/star-wars-pixel"
+  },
+  "EU-ANIME-797": {
+    "slug": "end-game-mario",
+    "line": "cartoon",
+    "path": "/cartoon/end-game-mario"
+  },
+  "EU-ANIME-798": {
+    "slug": "el-barto",
+    "line": "cartoon",
+    "path": "/cartoon/el-barto"
+  },
+  "EU-ANIME-799": {
+    "slug": "pato-lucas",
+    "line": "cartoon",
+    "path": "/cartoon/pato-lucas"
+  },
+  "EU-ANIME-800": {
+    "slug": "nelson",
+    "line": "cartoon",
+    "path": "/cartoon/nelson"
+  },
+  "EU-ANIME-801": {
+    "slug": "spider-skater",
+    "line": "cartoon",
+    "path": "/cartoon/spider-skater"
+  },
+  "EU-ANIME-802": {
+    "slug": "scooby-doo-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/scooby-doo-diseno-1"
+  },
+  "EU-ANIME-803": {
+    "slug": "portal-rick-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/portal-rick-diseno-1"
+  },
+  "EU-ANIME-804": {
+    "slug": "tasmania-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/tasmania-diseno-1"
+  },
+  "EU-ANIME-805": {
+    "slug": "the-simpson-diseno-3",
+    "line": "cartoon",
+    "path": "/cartoon/the-simpson-diseno-3"
+  },
+  "EU-ANIME-806": {
+    "slug": "marge-simpson-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/marge-simpson-diseno-1"
+  },
+  "EU-ANIME-807": {
+    "slug": "bunny-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/bunny-diseno-2"
+  },
+  "EU-ANIME-808": {
+    "slug": "johnny-bravo",
+    "line": "cartoon",
+    "path": "/cartoon/johnny-bravo"
+  },
+  "EU-ANIME-809": {
+    "slug": "piolin-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/piolin-diseno-1"
+  },
+  "EU-ANIME-810": {
+    "slug": "pickle-rick-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/pickle-rick-diseno-1"
+  },
+  "EU-ANIME-811": {
+    "slug": "krusty-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/krusty-diseno-1"
+  },
+  "EU-ANIME-812": {
+    "slug": "timothy-simpson",
+    "line": "cartoon",
+    "path": "/cartoon/timothy-simpson"
+  },
+  "EU-ANIME-813": {
+    "slug": "moe-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/moe-diseno-2"
+  },
+  "EU-ANIME-814": {
+    "slug": "stitch-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/stitch-diseno-2"
+  },
+  "EU-ANIME-815": {
+    "slug": "kuromi-diseno-4-hueso",
+    "line": "cartoon",
+    "path": "/cartoon/kuromi-diseno-4-hueso"
+  },
+  "EU-ANIME-816": {
+    "slug": "badness-level",
+    "line": "cartoon",
+    "path": "/cartoon/badness-level"
+  },
+  "EU-ANIME-817": {
+    "slug": "mickey-skate",
+    "line": "cartoon",
+    "path": "/cartoon/mickey-skate"
+  },
+  "EU-ANIME-818": {
+    "slug": "logan",
+    "line": "cartoon",
+    "path": "/cartoon/logan"
+  },
+  "EU-ANIME-819": {
+    "slug": "expecto-dragonum",
+    "line": "cartoon",
+    "path": "/cartoon/expecto-dragonum"
+  },
+  "EU-ANIME-820": {
+    "slug": "whats-up-doc",
+    "line": "cartoon",
+    "path": "/cartoon/whats-up-doc"
+  },
+  "EU-ANIME-821": {
+    "slug": "vive-lamour",
+    "line": "cartoon",
+    "path": "/cartoon/vive-lamour"
+  },
+  "EU-ANIME-822": {
+    "slug": "hell-kitty-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/hell-kitty-diseno-2"
+  },
+  "EU-ANIME-823": {
+    "slug": "ohana-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/ohana-diseno-2"
+  },
+  "EU-ANIME-824": {
+    "slug": "aventuras-bob",
+    "line": "cartoon",
+    "path": "/cartoon/aventuras-bob"
+  },
+  "EU-ANIME-825": {
+    "slug": "patricio-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/patricio-diseno-2"
+  },
+  "EU-ANIME-826": {
+    "slug": "el-barto-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/el-barto-diseno-2"
+  },
+  "EU-ANIME-827": {
+    "slug": "little-stitch-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/little-stitch-diseno-1"
+  },
+  "EU-ANIME-828": {
+    "slug": "portal-rick-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/portal-rick-diseno-2"
+  },
+  "EU-ANIME-829": {
+    "slug": "kuromi-diseno-4-negra",
+    "line": "cartoon",
+    "path": "/cartoon/kuromi-diseno-4-negra"
+  },
+  "EU-ANIME-830": {
+    "slug": "kuromi-diseno-3-hueso",
+    "line": "cartoon",
+    "path": "/cartoon/kuromi-diseno-3-hueso"
+  },
+  "EU-ANIME-831": {
+    "slug": "rick-diseno-4",
+    "line": "cartoon",
+    "path": "/cartoon/rick-diseno-4"
+  },
+  "EU-ANIME-832": {
+    "slug": "picapiedras-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/picapiedras-diseno-2"
+  },
+  "EU-ANIME-833": {
+    "slug": "los-chicos-del-barrio",
+    "line": "cartoon",
+    "path": "/cartoon/los-chicos-del-barrio"
+  },
+  "EU-ANIME-834": {
+    "slug": "respeta-mi-autoridad",
+    "line": "cartoon",
+    "path": "/cartoon/respeta-mi-autoridad"
+  },
+  "EU-ANIME-835": {
+    "slug": "hey-arnold-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/hey-arnold-diseno-1"
+  },
+  "EU-ANIME-836": {
+    "slug": "tommy-y-daly-negra",
+    "line": "cartoon",
+    "path": "/cartoon/tommy-y-daly-negra"
+  },
+  "EU-ANIME-837": {
+    "slug": "music-stitch",
+    "line": "cartoon",
+    "path": "/cartoon/music-stitch"
+  },
+  "EU-ANIME-838": {
+    "slug": "dogpool-la-estrella",
+    "line": "cartoon",
+    "path": "/cartoon/dogpool-la-estrella"
+  },
+  "EU-ANIME-839": {
+    "slug": "edd-gris",
+    "line": "cartoon",
+    "path": "/cartoon/edd-gris"
+  },
+  "EU-ANIME-840": {
+    "slug": "deadpool",
+    "line": "cartoon",
+    "path": "/cartoon/deadpool"
+  },
+  "EU-ANIME-841": {
+    "slug": "anatomy-rick",
+    "line": "cartoon",
+    "path": "/cartoon/anatomy-rick"
+  },
+  "EU-ANIME-842": {
+    "slug": "adventure-time-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/adventure-time-diseno-1"
+  },
+  "EU-ANIME-843": {
+    "slug": "scooby-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/scooby-diseno-2"
+  },
+  "EU-ANIME-844": {
+    "slug": "goofy-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/goofy-diseno-1"
+  },
+  "EU-ANIME-845": {
+    "slug": "rafita",
+    "line": "cartoon",
+    "path": "/cartoon/rafita"
+  },
+  "EU-ANIME-846": {
+    "slug": "popeye-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/popeye-diseno-2"
+  },
+  "EU-ANIME-847": {
+    "slug": "alien-simpson",
+    "line": "cartoon",
+    "path": "/cartoon/alien-simpson"
+  },
+  "EU-ANIME-848": {
+    "slug": "warner-bugs",
+    "line": "cartoon",
+    "path": "/cartoon/warner-bugs"
+  },
+  "EU-ANIME-849": {
+    "slug": "angelica-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/angelica-diseno-2"
+  },
+  "EU-ANIME-850": {
+    "slug": "marvin-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/marvin-diseno-1"
+  },
+  "EU-ANIME-851": {
+    "slug": "mario-nintendo",
+    "line": "cartoon",
+    "path": "/cartoon/mario-nintendo"
+  },
+  "EU-ANIME-852": {
+    "slug": "flaming-moe",
+    "line": "cartoon",
+    "path": "/cartoon/flaming-moe"
+  },
+  "EU-ANIME-853": {
+    "slug": "duff-diseno-2-negra",
+    "line": "cartoon",
+    "path": "/cartoon/duff-diseno-2-negra"
+  },
+  "EU-ANIME-854": {
+    "slug": "my-melody-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/my-melody-diseno-1"
+  },
+  "EU-ANIME-855": {
+    "slug": "kuromi-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/kuromi-diseno-1"
+  },
+  "EU-ANIME-856": {
+    "slug": "duff-diseno-2-verde",
+    "line": "cartoon",
+    "path": "/cartoon/duff-diseno-2-verde"
+  },
+  "EU-ANIME-857": {
+    "slug": "rick-diseno-5",
+    "line": "cartoon",
+    "path": "/cartoon/rick-diseno-5"
+  },
+  "EU-ANIME-858": {
+    "slug": "hello-kitty-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/hello-kitty-diseno-1"
+  },
+  "EU-ANIME-859": {
+    "slug": "mickey",
+    "line": "cartoon",
+    "path": "/cartoon/mickey"
+  },
+  "EU-ANIME-860": {
+    "slug": "super-mario-camiseta",
+    "line": "cartoon",
+    "path": "/cartoon/super-mario-camiseta"
+  },
+  "EU-ANIME-861": {
+    "slug": "buen-dia-para-morir",
+    "line": "anime",
+    "path": "/anime/buen-dia-para-morir"
+  },
+  "EU-ANIME-862": {
+    "slug": "south-park-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/south-park-diseno-1"
+  },
+  "EU-ANIME-863": {
+    "slug": "kuromi-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/kuromi-diseno-2"
+  },
+  "EU-ANIME-864": {
+    "slug": "little-stitch-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/little-stitch-diseno-2"
+  },
+  "EU-ANIME-865": {
+    "slug": "stitch-diseno-3",
+    "line": "cartoon",
+    "path": "/cartoon/stitch-diseno-3"
+  },
+  "EU-ANIME-866": {
+    "slug": "adventure-time-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/adventure-time-diseno-2"
+  },
+  "EU-ANIME-867": {
+    "slug": "adventure-time-diseno-3",
+    "line": "cartoon",
+    "path": "/cartoon/adventure-time-diseno-3"
+  },
+  "EU-ANIME-868": {
+    "slug": "new-adventure-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/new-adventure-diseno-1"
+  },
+  "EU-ANIME-869": {
+    "slug": "paz-entre-los-mundos",
+    "line": "cartoon",
+    "path": "/cartoon/paz-entre-los-mundos"
+  },
+  "EU-ANIME-870": {
+    "slug": "tommy-y-daly-amarilla",
+    "line": "cartoon",
+    "path": "/cartoon/tommy-y-daly-amarilla"
+  },
+  "EU-ANIME-871": {
+    "slug": "homero-duff-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/homero-duff-diseno-2"
+  },
+  "EU-ANIME-872": {
+    "slug": "thunder-cats",
+    "line": "cartoon",
+    "path": "/cartoon/thunder-cats"
+  },
+  "EU-ANIME-873": {
+    "slug": "dogpool-diseno-1",
+    "line": "cartoon",
+    "path": "/cartoon/dogpool-diseno-1"
+  },
+  "EU-ANIME-874": {
+    "slug": "duff-diseno-3",
+    "line": "cartoon",
+    "path": "/cartoon/duff-diseno-3"
+  },
+  "EU-ANIME-875": {
+    "slug": "little-stitch-diseno-3",
+    "line": "cartoon",
+    "path": "/cartoon/little-stitch-diseno-3"
+  },
+  "EU-ANIME-876": {
+    "slug": "stitch-hawaii",
+    "line": "cartoon",
+    "path": "/cartoon/stitch-hawaii"
+  },
+  "EU-ANIME-877": {
+    "slug": "otra-vez-lunes",
+    "line": "cartoon",
+    "path": "/cartoon/otra-vez-lunes"
+  },
+  "EU-ANIME-878": {
+    "slug": "cerati-diseno-3",
+    "line": "rock",
+    "path": "/rock/cerati-diseno-3"
+  },
+  "EU-ANIME-879": {
+    "slug": "scorpions-diseno-1",
+    "line": "rock",
+    "path": "/rock/scorpions-diseno-1"
+  },
+  "EU-ANIME-880": {
+    "slug": "slipknot-art",
+    "line": "rock",
+    "path": "/rock/slipknot-art"
+  },
+  "EU-ANIME-881": {
+    "slug": "system-art",
+    "line": "rock",
+    "path": "/rock/system-art"
+  },
+  "EU-ANIME-882": {
+    "slug": "death-magnetic",
+    "line": "rock",
+    "path": "/rock/death-magnetic"
+  },
+  "EU-ANIME-883": {
+    "slug": "mago-de-oz-diseno-2",
+    "line": "rock",
+    "path": "/rock/mago-de-oz-diseno-2"
+  },
+  "EU-ANIME-884": {
+    "slug": "pink-floyd-diseno-3",
+    "line": "rock",
+    "path": "/rock/pink-floyd-diseno-3"
+  },
+  "EU-ANIME-885": {
+    "slug": "metallica-diseno-1",
+    "line": "rock",
+    "path": "/rock/metallica-diseno-1"
+  },
+  "EU-ANIME-886": {
+    "slug": "metallica-diseno-2",
+    "line": "rock",
+    "path": "/rock/metallica-diseno-2"
+  },
+  "EU-ANIME-887": {
+    "slug": "the-trooper",
+    "line": "rock",
+    "path": "/rock/the-trooper"
+  },
+  "EU-ANIME-888": {
+    "slug": "rammstein-diseno-2",
+    "line": "rock",
+    "path": "/rock/rammstein-diseno-2"
+  },
+  "EU-ANIME-889": {
+    "slug": "coldplay-diseno-1",
+    "line": "rock",
+    "path": "/rock/coldplay-diseno-1"
+  },
+  "EU-ANIME-890": {
+    "slug": "cerati-diseno-4",
+    "line": "rock",
+    "path": "/rock/cerati-diseno-4"
+  },
+  "EU-ANIME-891": {
+    "slug": "kurt-cobain-diseno-3",
+    "line": "rock",
+    "path": "/rock/kurt-cobain-diseno-3"
+  },
+  "EU-ANIME-892": {
+    "slug": "cerati-diseno-2",
+    "line": "rock",
+    "path": "/rock/cerati-diseno-2"
+  },
+  "EU-ANIME-893": {
+    "slug": "green-day-hypnotized",
+    "line": "rock",
+    "path": "/rock/green-day-hypnotized"
+  },
+  "EU-ANIME-894": {
+    "slug": "ozzy-osbourne-diseno-3",
+    "line": "rock",
+    "path": "/rock/ozzy-osbourne-diseno-3"
+  },
+  "EU-ANIME-895": {
+    "slug": "slash-diseno-1",
+    "line": "rock",
+    "path": "/rock/slash-diseno-1"
+  },
+  "EU-ANIME-896": {
+    "slug": "slash-negra-diseno-2",
+    "line": "rock",
+    "path": "/rock/slash-negra-diseno-2"
+  },
+  "EU-ANIME-897": {
+    "slug": "guns-n-roses-diseno-6",
+    "line": "rock",
+    "path": "/rock/guns-n-roses-diseno-6"
+  },
+  "EU-ANIME-898": {
+    "slug": "logo-guns-n-roses-diseno-2",
+    "line": "rock",
+    "path": "/rock/logo-guns-n-roses-diseno-2"
+  },
+  "EU-ANIME-899": {
+    "slug": "welcome-to-the-jungle",
+    "line": "rock",
+    "path": "/rock/welcome-to-the-jungle"
+  },
+  "EU-ANIME-900": {
+    "slug": "ghost-diseno-1",
+    "line": "rock",
+    "path": "/rock/ghost-diseno-1"
+  },
+  "EU-ANIME-901": {
+    "slug": "slipknot-camiseta",
+    "line": "rock",
+    "path": "/rock/slipknot-camiseta"
+  },
+  "EU-ANIME-902": {
+    "slug": "linkin-park-diseno-3",
+    "line": "rock",
+    "path": "/rock/linkin-park-diseno-3"
+  },
+  "EU-ANIME-903": {
+    "slug": "rata-blanca-camiseta",
+    "line": "rock",
+    "path": "/rock/rata-blanca-camiseta"
+  },
+  "EU-ANIME-904": {
+    "slug": "the-master-of-rock",
+    "line": "rock",
+    "path": "/rock/the-master-of-rock"
+  },
+  "EU-ANIME-905": {
+    "slug": "rammstein-camiseta",
+    "line": "rock",
+    "path": "/rock/rammstein-camiseta"
+  },
+  "EU-ANIME-906": {
+    "slug": "nirvana-diseno-1",
+    "line": "rock",
+    "path": "/rock/nirvana-diseno-1"
+  },
+  "EU-ANIME-907": {
+    "slug": "iron-maiden-diseno-3",
+    "line": "rock",
+    "path": "/rock/iron-maiden-diseno-3"
+  },
+  "EU-ANIME-909": {
+    "slug": "system-of-a-down-diseno-3",
+    "line": "rock",
+    "path": "/rock/system-of-a-down-diseno-3"
+  },
+  "EU-ANIME-910": {
+    "slug": "system-of-a-down-diseno-4",
+    "line": "rock",
+    "path": "/rock/system-of-a-down-diseno-4"
+  },
+  "EU-ANIME-911": {
+    "slug": "guns-and-roses-diseno-3-negra",
+    "line": "rock",
+    "path": "/rock/guns-and-roses-diseno-3-negra"
+  },
+  "EU-ANIME-912": {
+    "slug": "logo-guns-n-roses-diseno-1",
+    "line": "rock",
+    "path": "/rock/logo-guns-n-roses-diseno-1"
+  },
+  "EU-ANIME-913": {
+    "slug": "ac-dc-next-station",
+    "line": "rock",
+    "path": "/rock/ac-dc-next-station"
+  },
+  "EU-ANIME-914": {
+    "slug": "guns-n-roses-cartoon",
+    "line": "rock",
+    "path": "/rock/guns-n-roses-cartoon"
+  },
+  "EU-ANIME-915": {
+    "slug": "ozzy-osbourne-diseno-1",
+    "line": "rock",
+    "path": "/rock/ozzy-osbourne-diseno-1"
+  },
+  "EU-ANIME-916": {
+    "slug": "ozzy-osbourne-diseno-2",
+    "line": "rock",
+    "path": "/rock/ozzy-osbourne-diseno-2"
+  },
+  "EU-ANIME-917": {
+    "slug": "therion-diseno-1",
+    "line": "rock",
+    "path": "/rock/therion-diseno-1"
+  },
+  "EU-ANIME-918": {
+    "slug": "blink-diseno-4",
+    "line": "rock",
+    "path": "/rock/blink-diseno-4"
+  },
+  "EU-ANIME-919": {
+    "slug": "cannibal-corpse-diseno-1",
+    "line": "rock",
+    "path": "/rock/cannibal-corpse-diseno-1"
+  },
+  "EU-ANIME-920": {
+    "slug": "lacrimosa-diseno-1",
+    "line": "rock",
+    "path": "/rock/lacrimosa-diseno-1"
+  },
+  "EU-ANIME-921": {
+    "slug": "misfits-camiseta",
+    "line": "rock",
+    "path": "/rock/misfits-camiseta"
+  },
+  "EU-ANIME-922": {
+    "slug": "soda-stereo-diseno-4",
+    "line": "rock",
+    "path": "/rock/soda-stereo-diseno-4"
+  },
+  "EU-ANIME-923": {
+    "slug": "soda-stereo-diseno-3",
+    "line": "rock",
+    "path": "/rock/soda-stereo-diseno-3"
+  },
+  "EU-ANIME-924": {
+    "slug": "foo-fighters-diseno-5",
+    "line": "rock",
+    "path": "/rock/foo-fighters-diseno-5"
+  },
+  "EU-ANIME-925": {
+    "slug": "calamaro-diseno-4",
+    "line": "rock",
+    "path": "/rock/calamaro-diseno-4"
+  },
+  "EU-ANIME-926": {
+    "slug": "korn-diseno-3",
+    "line": "rock",
+    "path": "/rock/korn-diseno-3"
+  },
+  "EU-ANIME-927": {
+    "slug": "calamaro-diseno-1",
+    "line": "rock",
+    "path": "/rock/calamaro-diseno-1"
+  },
+  "EU-ANIME-928": {
+    "slug": "the-offspring-diseno-2",
+    "line": "rock",
+    "path": "/rock/the-offspring-diseno-2"
+  },
+  "EU-ANIME-929": {
+    "slug": "kurt-cobain-diseno-2",
+    "line": "rock",
+    "path": "/rock/kurt-cobain-diseno-2"
+  },
+  "EU-ANIME-930": {
+    "slug": "ac-dc-diseno-4",
+    "line": "rock",
+    "path": "/rock/ac-dc-diseno-4"
+  },
+  "EU-ANIME-931": {
+    "slug": "black-sabbath-diseno-4",
+    "line": "rock",
+    "path": "/rock/black-sabbath-diseno-4"
+  },
+  "EU-ANIME-932": {
+    "slug": "motley-crue-diseno-1",
+    "line": "rock",
+    "path": "/rock/motley-crue-diseno-1"
+  },
+  "EU-ANIME-933": {
+    "slug": "foo-fighters-diseno-4",
+    "line": "rock",
+    "path": "/rock/foo-fighters-diseno-4"
+  },
+  "EU-ANIME-934": {
+    "slug": "the-exploited-diseno-1",
+    "line": "rock",
+    "path": "/rock/the-exploited-diseno-1"
+  },
+  "EU-ANIME-935": {
+    "slug": "wasp-diseno-1",
+    "line": "rock",
+    "path": "/rock/wasp-diseno-1"
+  },
+  "EU-ANIME-936": {
+    "slug": "foo-fighters-diseno-2",
+    "line": "rock",
+    "path": "/rock/foo-fighters-diseno-2"
+  },
+  "EU-ANIME-937": {
+    "slug": "foo-fighters-diseno-3",
+    "line": "rock",
+    "path": "/rock/foo-fighters-diseno-3"
+  },
+  "EU-ANIME-938": {
+    "slug": "pearl-jam-diseno-2",
+    "line": "rock",
+    "path": "/rock/pearl-jam-diseno-2"
+  },
+  "EU-ANIME-939": {
+    "slug": "judas-priest-diseno-2",
+    "line": "rock",
+    "path": "/rock/judas-priest-diseno-2"
+  },
+  "EU-ANIME-940": {
+    "slug": "ac-dc-diseno-3",
+    "line": "rock",
+    "path": "/rock/ac-dc-diseno-3"
+  },
+  "EU-ANIME-941": {
+    "slug": "metallica-hellfire",
+    "line": "rock",
+    "path": "/rock/metallica-hellfire"
+  },
+  "EU-ANIME-942": {
+    "slug": "motley-crue-diseno-2-negra",
+    "line": "rock",
+    "path": "/rock/motley-crue-diseno-2-negra"
+  },
+  "EU-ANIME-943": {
+    "slug": "motley-crue-diseno-2-azul",
+    "line": "rock",
+    "path": "/rock/motley-crue-diseno-2-azul"
+  },
+  "EU-ANIME-944": {
+    "slug": "avenged-sevenfold-diseno-2",
+    "line": "rock",
+    "path": "/rock/avenged-sevenfold-diseno-2"
+  },
+  "EU-ANIME-945": {
+    "slug": "megadeth-diseno-3",
+    "line": "rock",
+    "path": "/rock/megadeth-diseno-3"
+  },
+  "EU-ANIME-946": {
+    "slug": "pantera-diseno-1",
+    "line": "rock",
+    "path": "/rock/pantera-diseno-1"
+  },
+  "EU-ANIME-947": {
+    "slug": "anthrax-diseno-1",
+    "line": "rock",
+    "path": "/rock/anthrax-diseno-1"
+  },
+  "EU-ANIME-948": {
+    "slug": "rammstein-diseno-3",
+    "line": "rock",
+    "path": "/rock/rammstein-diseno-3"
+  },
+  "EU-ANIME-949": {
+    "slug": "pink-floyd-diseno-2",
+    "line": "rock",
+    "path": "/rock/pink-floyd-diseno-2"
+  },
+  "EU-ANIME-950": {
+    "slug": "pink-floyd-diseno-2-dama",
+    "line": "rock",
+    "path": "/rock/pink-floyd-diseno-2-dama"
+  },
+  "EU-ANIME-951": {
+    "slug": "dark-side-of-the-moon",
+    "line": "rock",
+    "path": "/rock/dark-side-of-the-moon"
+  },
+  "EU-ANIME-952": {
+    "slug": "pink-floyd-diseno-1",
+    "line": "rock",
+    "path": "/rock/pink-floyd-diseno-1"
+  },
+  "EU-ANIME-953": {
+    "slug": "metallica-damaged",
+    "line": "rock",
+    "path": "/rock/metallica-damaged"
+  },
+  "EU-ANIME-954": {
+    "slug": "metallica-diseno-3",
+    "line": "rock",
+    "path": "/rock/metallica-diseno-3"
+  },
+  "EU-ANIME-955": {
+    "slug": "72-season",
+    "line": "rock",
+    "path": "/rock/72-season"
+  },
+  "EU-ANIME-956": {
+    "slug": "rock-n-le-pew",
+    "line": "rock",
+    "path": "/rock/rock-n-le-pew"
+  },
+  "EU-ANIME-957": {
+    "slug": "slash-diseno-2-vinotinto",
+    "line": "rock",
+    "path": "/rock/slash-diseno-2-vinotinto"
+  },
+  "EU-ANIME-958": {
+    "slug": "slash-diseno-3-november-rain",
+    "line": "rock",
+    "path": "/rock/slash-diseno-3-november-rain"
+  },
+  "EU-ANIME-959": {
+    "slug": "nirvana-diseno-2",
+    "line": "rock",
+    "path": "/rock/nirvana-diseno-2"
+  },
+  "EU-ANIME-960": {
+    "slug": "nirvana-diseno-3",
+    "line": "rock",
+    "path": "/rock/nirvana-diseno-3"
+  },
+  "EU-ANIME-961": {
+    "slug": "in-utero",
+    "line": "rock",
+    "path": "/rock/in-utero"
+  },
+  "EU-ANIME-962": {
+    "slug": "the-offspring-diseno-1",
+    "line": "rock",
+    "path": "/rock/the-offspring-diseno-1"
+  },
+  "EU-ANIME-963": {
+    "slug": "slipknot-diseno-2",
+    "line": "rock",
+    "path": "/rock/slipknot-diseno-2"
+  },
+  "EU-ANIME-964": {
+    "slug": "linkin-park-diseno-1",
+    "line": "rock",
+    "path": "/rock/linkin-park-diseno-1"
+  },
+  "EU-ANIME-965": {
+    "slug": "green-day-burnout",
+    "line": "rock",
+    "path": "/rock/green-day-burnout"
+  },
+  "EU-ANIME-966": {
+    "slug": "gorillaz-diseno-1-negra",
+    "line": "rock",
+    "path": "/rock/gorillaz-diseno-1-negra"
+  },
+  "EU-ANIME-967": {
+    "slug": "blink-diseno-1",
+    "line": "rock",
+    "path": "/rock/blink-diseno-1"
+  },
+  "EU-ANIME-968": {
+    "slug": "blink-diseno-2",
+    "line": "rock",
+    "path": "/rock/blink-diseno-2"
+  },
+  "EU-ANIME-969": {
+    "slug": "blink-diseno-3",
+    "line": "rock",
+    "path": "/rock/blink-diseno-3"
+  },
+  "EU-ANIME-970": {
+    "slug": "soda-stereo-diseno-1",
+    "line": "rock",
+    "path": "/rock/soda-stereo-diseno-1"
+  },
+  "EU-ANIME-971": {
+    "slug": "soda-stereo-diseno-2",
+    "line": "rock",
+    "path": "/rock/soda-stereo-diseno-2"
+  },
+  "EU-ANIME-972": {
+    "slug": "rock-queen",
+    "line": "rock",
+    "path": "/rock/rock-queen"
+  },
+  "EU-ANIME-973": {
+    "slug": "guns-and-roses-diseno-1",
+    "line": "rock",
+    "path": "/rock/guns-and-roses-diseno-1"
+  },
+  "EU-ANIME-974": {
+    "slug": "black-sabbath-diseno-1",
+    "line": "rock",
+    "path": "/rock/black-sabbath-diseno-1"
+  },
+  "EU-ANIME-975": {
+    "slug": "black-sabbath-diseno-2",
+    "line": "rock",
+    "path": "/rock/black-sabbath-diseno-2"
+  },
+  "EU-ANIME-976": {
+    "slug": "korn-diseno-1",
+    "line": "rock",
+    "path": "/rock/korn-diseno-1"
+  },
+  "EU-ANIME-977": {
+    "slug": "high-voltage",
+    "line": "rock",
+    "path": "/rock/high-voltage"
+  },
+  "EU-ANIME-978": {
+    "slug": "back-in-black",
+    "line": "rock",
+    "path": "/rock/back-in-black"
+  },
+  "EU-ANIME-979": {
+    "slug": "the-doors-camiseta",
+    "line": "rock",
+    "path": "/rock/the-doors-camiseta"
+  },
+  "EU-ANIME-980": {
+    "slug": "arctic-monkeys-diseno-1",
+    "line": "rock",
+    "path": "/rock/arctic-monkeys-diseno-1"
+  },
+  "EU-ANIME-981": {
+    "slug": "radiohead-diseno-1",
+    "line": "rock",
+    "path": "/rock/radiohead-diseno-1"
+  },
+  "EU-ANIME-982": {
+    "slug": "radiohead-diseno-2",
+    "line": "rock",
+    "path": "/rock/radiohead-diseno-2"
+  },
+  "EU-ANIME-983": {
+    "slug": "radiohead-diseno-3",
+    "line": "rock",
+    "path": "/rock/radiohead-diseno-3"
+  },
+  "EU-ANIME-984": {
+    "slug": "radiohead-diseno-4",
+    "line": "rock",
+    "path": "/rock/radiohead-diseno-4"
+  },
+  "EU-ANIME-985": {
+    "slug": "arctic-monkeys-diseno-2",
+    "line": "rock",
+    "path": "/rock/arctic-monkeys-diseno-2"
+  },
+  "EU-ANIME-986": {
+    "slug": "the-smiths-camiseta",
+    "line": "rock",
+    "path": "/rock/the-smiths-camiseta"
+  },
+  "EU-ANIME-987": {
+    "slug": "the-strokes-diseno-1",
+    "line": "rock",
+    "path": "/rock/the-strokes-diseno-1"
+  },
+  "EU-ANIME-988": {
+    "slug": "the-strokes-diseno-2",
+    "line": "rock",
+    "path": "/rock/the-strokes-diseno-2"
+  },
+  "EU-ANIME-989": {
+    "slug": "cuarteto-de-nos-camiseta",
+    "line": "rock",
+    "path": "/rock/cuarteto-de-nos-camiseta"
+  },
+  "EU-ANIME-990": {
+    "slug": "los-prisioneros-camiseta",
+    "line": "rock",
+    "path": "/rock/los-prisioneros-camiseta"
+  },
+  "EU-ANIME-991": {
+    "slug": "sex-pistols-camiseta",
+    "line": "rock",
+    "path": "/rock/sex-pistols-camiseta"
+  },
+  "EU-ANIME-992": {
+    "slug": "system-of-a-down-diseno-1",
+    "line": "rock",
+    "path": "/rock/system-of-a-down-diseno-1"
+  },
+  "EU-ANIME-993": {
+    "slug": "megadeth-camiseta",
+    "line": "rock",
+    "path": "/rock/megadeth-camiseta"
+  },
+  "EU-ANIME-994": {
+    "slug": "ramones-camiseta",
+    "line": "rock",
+    "path": "/rock/ramones-camiseta"
+  },
+  "EU-ANIME-995": {
+    "slug": "guitar-hero",
+    "line": "cartoon",
+    "path": "/cartoon/guitar-hero"
+  },
+  "EU-ANIME-996": {
+    "slug": "pearl-jam-diseno-1",
+    "line": "rock",
+    "path": "/rock/pearl-jam-diseno-1"
+  },
+  "EU-ANIME-997": {
+    "slug": "twenty-one-pilots-camiseta",
+    "line": "rock",
+    "path": "/rock/twenty-one-pilots-camiseta"
+  },
+  "EU-ANIME-998": {
+    "slug": "motorhead-camiseta",
+    "line": "rock",
+    "path": "/rock/motorhead-camiseta"
+  },
+  "EU-ANIME-999": {
+    "slug": "the-cure-diseno-1",
+    "line": "rock",
+    "path": "/rock/the-cure-diseno-1"
+  },
+  "EU-ANIME-1000": {
+    "slug": "the-cure-diseno-2",
+    "line": "rock",
+    "path": "/rock/the-cure-diseno-2"
+  },
+  "EU-ANIME-1001": {
+    "slug": "flipper-camiseta",
+    "line": "rock",
+    "path": "/rock/flipper-camiseta"
+  },
+  "EU-ANIME-1002": {
+    "slug": "rollin-stoked",
+    "line": "rock",
+    "path": "/rock/rollin-stoked"
+  },
+  "EU-ANIME-1003": {
+    "slug": "oasis-camiseta",
+    "line": "rock",
+    "path": "/rock/oasis-camiseta"
+  },
+  "EU-ANIME-1004": {
+    "slug": "avenged-sevenfold-camiseta",
+    "line": "rock",
+    "path": "/rock/avenged-sevenfold-camiseta"
+  },
+  "EU-ANIME-1005": {
+    "slug": "red-hot-chili-peppers-camiseta",
+    "line": "rock",
+    "path": "/rock/red-hot-chili-peppers-camiseta"
+  },
+  "EU-ANIME-1006": {
+    "slug": "def-leppard-camiseta",
+    "line": "rock",
+    "path": "/rock/def-leppard-camiseta"
+  },
+  "EU-ANIME-1007": {
+    "slug": "mago-de-oz-camiseta",
+    "line": "rock",
+    "path": "/rock/mago-de-oz-camiseta"
+  },
+  "EU-ANIME-1008": {
+    "slug": "system-of-a-down-diseno-2",
+    "line": "rock",
+    "path": "/rock/system-of-a-down-diseno-2"
+  },
+  "EU-ANIME-1009": {
+    "slug": "judas-priest-diseno-1",
+    "line": "rock",
+    "path": "/rock/judas-priest-diseno-1"
+  },
+  "EU-ANIME-1010": {
+    "slug": "slayer-diseno-1",
+    "line": "rock",
+    "path": "/rock/slayer-diseno-1"
+  },
+  "EU-ANIME-1011": {
+    "slug": "sepultura-camiseta",
+    "line": "rock",
+    "path": "/rock/sepultura-camiseta"
+  },
+  "EU-ANIME-1012": {
+    "slug": "rock-queen-diseno-2-dama",
+    "line": "rock",
+    "path": "/rock/rock-queen-diseno-2-dama"
+  },
+  "EU-ANIME-1013": {
+    "slug": "linkin-park-diseno-4-roja",
+    "line": "rock",
+    "path": "/rock/linkin-park-diseno-4-roja"
+  },
+  "EU-ANIME-1014": {
+    "slug": "evanescence-camiseta",
+    "line": "rock",
+    "path": "/rock/evanescence-camiseta"
+  },
+  "EU-ANIME-1015": {
+    "slug": "slayer-diseno-3",
+    "line": "rock",
+    "path": "/rock/slayer-diseno-3"
+  },
+  "EU-ANIME-1016": {
+    "slug": "coldplay-diseno-2",
+    "line": "rock",
+    "path": "/rock/coldplay-diseno-2"
+  },
+  "EU-ANIME-1017": {
+    "slug": "rata-blanca-diseno-2",
+    "line": "rock",
+    "path": "/rock/rata-blanca-diseno-2"
+  },
+  "EU-ANIME-1018": {
+    "slug": "paramore-diseno-1",
+    "line": "rock",
+    "path": "/rock/paramore-diseno-1"
+  },
+  "EU-ANIME-1019": {
+    "slug": "paramore-diseno-2",
+    "line": "rock",
+    "path": "/rock/paramore-diseno-2"
+  },
+  "EU-ANIME-1020": {
+    "slug": "destino-divino",
+    "line": "urbanos",
+    "path": "/urbanas/destino-divino"
+  },
+  "EU-ANIME-1021": {
+    "slug": "jordan-diseno-2",
+    "line": "urbanos",
+    "path": "/urbanas/jordan-diseno-2"
+  },
+  "EU-ANIME-1022": {
+    "slug": "blasfemia-diseno-1",
+    "line": "urbanos",
+    "path": "/urbanas/blasfemia-diseno-1"
+  },
+  "EU-ANIME-1023": {
+    "slug": "redentor",
+    "line": "urbanos",
+    "path": "/urbanas/redentor"
+  },
+  "EU-ANIME-1024": {
+    "slug": "existence",
+    "line": "urbanos",
+    "path": "/urbanas/existence"
+  },
+  "EU-ANIME-1025": {
+    "slug": "krusty-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/krusty-diseno-2"
+  },
+  "EU-ANIME-1026": {
+    "slug": "kratos-diseno-2",
+    "line": "cartoon",
+    "path": "/cartoon/kratos-diseno-2"
+  },
+  "EU-ANIME-1027": {
+    "slug": "nativo-americano-diseno-3",
+    "line": "urbanos",
+    "path": "/urbanas/nativo-americano-diseno-3"
+  },
+  "EU-ANIME-1028": {
+    "slug": "jordan-diseno-3",
+    "line": "urbanos",
+    "path": "/urbanas/jordan-diseno-3"
+  },
+  "EU-ANIME-1029": {
+    "slug": "tupac-diseno-2",
+    "line": "urbanos",
+    "path": "/urbanas/tupac-diseno-2"
+  },
+  "EU-ANIME-1030": {
+    "slug": "corazon-blindado",
+    "line": "urbanos",
+    "path": "/urbanas/corazon-blindado"
+  },
+  "EU-ANIME-1031": {
+    "slug": "the-undead-mariner",
+    "line": "urbanos",
+    "path": "/urbanas/the-undead-mariner"
+  },
+  "EU-ANIME-1032": {
+    "slug": "sacrifice-diseno-2",
+    "line": "urbanos",
+    "path": "/urbanas/sacrifice-diseno-2"
+  },
+  "EU-ANIME-1033": {
+    "slug": "segador-de-la-noche",
+    "line": "urbanos",
+    "path": "/urbanas/segador-de-la-noche"
+  },
+  "EU-ANIME-1034": {
+    "slug": "outer-space",
+    "line": "urbanos",
+    "path": "/urbanas/outer-space"
+  },
+  "EU-ANIME-1035": {
+    "slug": "cerberus-diseno-3",
+    "line": "urbanos",
+    "path": "/urbanas/cerberus-diseno-3"
+  },
+  "EU-ANIME-1036": {
+    "slug": "buena-suerte-777",
+    "line": "anime",
+    "path": "/anime/buena-suerte-777"
+  },
+  "EU-ANIME-1037": {
+    "slug": "bendicion-mortal",
+    "line": "urbanos",
+    "path": "/urbanas/bendicion-mortal"
+  },
+  "EU-ANIME-1038": {
+    "slug": "zona-cero-tolerancia",
+    "line": "urbanos",
+    "path": "/urbanas/zona-cero-tolerancia"
+  },
+  "EU-ANIME-1039": {
+    "slug": "clown-surprise",
+    "line": "urbanos",
+    "path": "/urbanas/clown-surprise"
+  },
+  "EU-ANIME-1040": {
+    "slug": "dollar-hunter",
+    "line": "anime",
+    "path": "/anime/dollar-hunter"
+  },
+  "EU-ANIME-1041": {
+    "slug": "este-es-mi-mundo-diseno-2",
+    "line": "urbanos",
+    "path": "/urbanas/este-es-mi-mundo-diseno-2"
+  },
+  "EU-ANIME-1042": {
+    "slug": "tentacion-interna",
+    "line": "urbanos",
+    "path": "/urbanas/tentacion-interna"
+  },
+  "EU-ANIME-1043": {
+    "slug": "caras-vemos",
+    "line": "urbanos",
+    "path": "/urbanas/caras-vemos"
+  },
+  "EU-ANIME-1044": {
+    "slug": "todo-tranqui",
+    "line": "urbanos",
+    "path": "/urbanas/todo-tranqui"
+  },
+  "EU-ANIME-1045": {
+    "slug": "listo-para-la-lucha",
+    "line": "urbanos",
+    "path": "/urbanas/listo-para-la-lucha"
+  },
+  "EU-ANIME-1046": {
+    "slug": "attracting-money",
+    "line": "urbanos",
+    "path": "/urbanas/attracting-money"
+  },
+  "EU-ANIME-1047": {
+    "slug": "silent-reaper",
+    "line": "urbanos",
+    "path": "/urbanas/silent-reaper"
+  },
+  "EU-ANIME-1048": {
+    "slug": "tokyo-hueso",
+    "line": "urbanos",
+    "path": "/urbanas/tokyo-hueso"
+  },
+  "EU-ANIME-1049": {
+    "slug": "yo-tengo-un-angel",
+    "line": "urbanos",
+    "path": "/urbanas/yo-tengo-un-angel"
+  },
+  "EU-ANIME-1050": {
+    "slug": "alpine-club-chocolate",
+    "line": "urbanos",
+    "path": "/urbanas/alpine-club-chocolate"
+  },
+  "EU-ANIME-1051": {
+    "slug": "alpine-club-negra",
+    "line": "urbanos",
+    "path": "/urbanas/alpine-club-negra"
+  },
+  "EU-ANIME-1052": {
+    "slug": "gente-que-no-aporta",
+    "line": "urbanos",
+    "path": "/urbanas/gente-que-no-aporta"
+  },
+  "EU-ANIME-1053": {
+    "slug": "hunter",
+    "line": "urbanos",
+    "path": "/urbanas/hunter"
+  },
+  "EU-ANIME-1054": {
+    "slug": "angel-bold",
+    "line": "urbanos",
+    "path": "/urbanas/angel-bold"
+  },
+  "EU-ANIME-1055": {
+    "slug": "hombre-de-accion-negra",
+    "line": "urbanos",
+    "path": "/urbanas/hombre-de-accion-negra"
+  },
+  "EU-ANIME-1056": {
+    "slug": "canserbero-jeremias-17-5",
+    "line": "urbanos",
+    "path": "/urbanas/canserbero-jeremias-17-5"
+  },
+  "EU-ANIME-1057": {
+    "slug": "sanctum-infernum",
+    "line": "urbanos",
+    "path": "/urbanas/sanctum-infernum"
+  },
+  "EU-ANIME-1058": {
+    "slug": "duality",
+    "line": "urbanos",
+    "path": "/urbanas/duality"
+  },
+  "EU-ANIME-1059": {
+    "slug": "angel-guardian-vinotinto",
+    "line": "urbanos",
+    "path": "/urbanas/angel-guardian-vinotinto"
+  },
+  "EU-ANIME-1060": {
+    "slug": "estoy-improvisando",
+    "line": "urbanos",
+    "path": "/urbanas/estoy-improvisando"
+  },
+  "EU-ANIME-1061": {
+    "slug": "alcolirykoz-camiseta",
+    "line": "urbanos",
+    "path": "/urbanas/alcolirykoz-camiseta"
+  },
+  "EU-ANIME-1062": {
+    "slug": "anuel-aa-real-hasta-la-muerte-2",
+    "line": "urbanos",
+    "path": "/urbanas/anuel-aa-real-hasta-la-muerte-2"
+  },
+  "EU-ANIME-1063": {
+    "slug": "blessd-camiseta",
+    "line": "urbanos",
+    "path": "/urbanas/blessd-camiseta"
+  },
+  "EU-ANIME-1064": {
+    "slug": "angeles-protectores-verde",
+    "line": "urbanos",
+    "path": "/urbanas/angeles-protectores-verde"
+  },
+  "EU-ANIME-1065": {
+    "slug": "dios-te-multiplique",
+    "line": "urbanos",
+    "path": "/urbanas/dios-te-multiplique"
+  },
+  "EU-ANIME-1066": {
+    "slug": "angeles-protectores-negra",
+    "line": "urbanos",
+    "path": "/urbanas/angeles-protectores-negra"
+  },
+  "EU-ANIME-1067": {
+    "slug": "dragon-warrior-1-hueso",
+    "line": "urbanos",
+    "path": "/urbanas/dragon-warrior-1-hueso"
+  },
+  "EU-ANIME-1068": {
+    "slug": "universal-1-negra",
+    "line": "urbanos",
+    "path": "/urbanas/universal-1-negra"
+  },
+  "EU-ANIME-1069": {
+    "slug": "justicia-personal",
+    "line": "urbanos",
+    "path": "/urbanas/justicia-personal"
+  },
+  "EU-ANIME-1070": {
+    "slug": "empieza-por-tu-brazo-2",
+    "line": "urbanos",
+    "path": "/urbanas/empieza-por-tu-brazo-2"
+  },
+  "EU-ANIME-1071": {
+    "slug": "dimension-psicodelica",
+    "line": "urbanos",
+    "path": "/urbanas/dimension-psicodelica"
+  },
+  "EU-ANIME-1072": {
+    "slug": "nacido-para-dar-guerra",
+    "line": "urbanos",
+    "path": "/urbanas/nacido-para-dar-guerra"
+  },
+  "EU-ANIME-1073": {
+    "slug": "champion-1",
+    "line": "urbanos",
+    "path": "/urbanas/champion-1"
+  },
+  "EU-ANIME-1074": {
+    "slug": "espiritual",
+    "line": "urbanos",
+    "path": "/urbanas/espiritual"
+  },
+  "EU-ANIME-1075": {
+    "slug": "seguir-luchando",
+    "line": "urbanos",
+    "path": "/urbanas/seguir-luchando"
+  },
+  "EU-ANIME-1076": {
+    "slug": "civilizacion-atemporal",
+    "line": "urbanos",
+    "path": "/urbanas/civilizacion-atemporal"
+  },
+  "EU-ANIME-1077": {
+    "slug": "expedicion-espacial",
+    "line": "urbanos",
+    "path": "/urbanas/expedicion-espacial"
+  },
+  "EU-ANIME-1078": {
+    "slug": "infinite-space-1",
+    "line": "urbanos",
+    "path": "/urbanas/infinite-space-1"
+  },
+  "EU-ANIME-1079": {
+    "slug": "linaje-celestial",
+    "line": "urbanos",
+    "path": "/urbanas/linaje-celestial"
+  },
+  "EU-ANIME-1080": {
+    "slug": "abraza-tus-sombras",
+    "line": "urbanos",
+    "path": "/urbanas/abraza-tus-sombras"
+  },
+  "EU-ANIME-1081": {
+    "slug": "parca-1",
+    "line": "urbanos",
+    "path": "/urbanas/parca-1"
+  },
+  "EU-ANIME-1082": {
+    "slug": "vive-mientras-puedas",
+    "line": "urbanos",
+    "path": "/urbanas/vive-mientras-puedas"
+  },
+  "EU-ANIME-1083": {
+    "slug": "zero-gravity",
+    "line": "urbanos",
+    "path": "/urbanas/zero-gravity"
+  },
+  "EU-ANIME-1084": {
+    "slug": "renacimiento-1",
+    "line": "urbanos",
+    "path": "/urbanas/renacimiento-1"
+  },
+  "EU-ANIME-1085": {
+    "slug": "crecimiento-interno",
+    "line": "urbanos",
+    "path": "/urbanas/crecimiento-interno"
+  },
+  "EU-ANIME-1086": {
+    "slug": "cruel-existence-hueso",
+    "line": "urbanos",
+    "path": "/urbanas/cruel-existence-hueso"
+  },
+  "EU-ANIME-1087": {
+    "slug": "persiguiendo-lo-imposible",
+    "line": "urbanos",
+    "path": "/urbanas/persiguiendo-lo-imposible"
+  },
+  "EU-ANIME-1088": {
+    "slug": "angel-guardian-negra",
+    "line": "urbanos",
+    "path": "/urbanas/angel-guardian-negra"
+  },
+  "EU-ANIME-1089": {
+    "slug": "stupid-love",
+    "line": "urbanos",
+    "path": "/urbanas/stupid-love"
+  },
+  "EU-ANIME-1090": {
+    "slug": "lonely-paradise",
+    "line": "urbanos",
+    "path": "/urbanas/lonely-paradise"
+  },
+  "EU-ANIME-1091": {
+    "slug": "pantera-rosa-negra",
+    "line": "cartoon",
+    "path": "/cartoon/pantera-rosa-negra"
+  },
+  "EU-ANIME-1092": {
+    "slug": "sin-rostro",
+    "line": "urbanos",
+    "path": "/urbanas/sin-rostro"
+  },
+  "EU-ANIME-1093": {
+    "slug": "yo-si-fui",
+    "line": "urbanos",
+    "path": "/urbanas/yo-si-fui"
+  },
+  "EU-ANIME-1094": {
+    "slug": "cuidese-de-la-envidia",
+    "line": "urbanos",
+    "path": "/urbanas/cuidese-de-la-envidia"
+  },
+  "EU-ANIME-1095": {
+    "slug": "dragon-warrior-2",
+    "line": "urbanos",
+    "path": "/urbanas/dragon-warrior-2"
+  },
+  "EU-ANIME-1096": {
+    "slug": "goku-supreme-hueso",
+    "line": "anime",
+    "path": "/anime/goku-supreme-hueso"
+  },
+  "EU-ANIME-1097": {
+    "slug": "jordan-23-negra",
+    "line": "urbanos",
+    "path": "/urbanas/jordan-23-negra"
+  },
+  "EU-ANIME-1098": {
+    "slug": "monarca-camel",
+    "line": "urbanos",
+    "path": "/urbanas/monarca-camel"
+  },
+  "EU-ANIME-1099": {
+    "slug": "canserbero-vida-y-muerte-2",
+    "line": "urbanos",
+    "path": "/urbanas/canserbero-vida-y-muerte-2"
+  },
+  "EU-ANIME-1100": {
+    "slug": "take-it-easy",
+    "line": "urbanos",
+    "path": "/urbanas/take-it-easy"
+  },
+  "EU-ANIME-1101": {
+    "slug": "luchando-hasta-ganar",
+    "line": "urbanos",
+    "path": "/urbanas/luchando-hasta-ganar"
+  },
+  "EU-ANIME-1102": {
+    "slug": "donde-duele-inspira",
+    "line": "urbanos",
+    "path": "/urbanas/donde-duele-inspira"
+  },
+  "EU-ANIME-1103": {
+    "slug": "el-corazon-sobre-todo",
+    "line": "urbanos",
+    "path": "/urbanas/el-corazon-sobre-todo"
+  },
+  "EU-ANIME-1104": {
+    "slug": "vida-gangster",
+    "line": "urbanos",
+    "path": "/urbanas/vida-gangster"
+  },
+  "EU-ANIME-1105": {
+    "slug": "mente-criminal-2-canserbero",
+    "line": "urbanos",
+    "path": "/urbanas/mente-criminal-2-canserbero"
+  },
+  "EU-ANIME-1106": {
+    "slug": "bart-the-master-simpson",
+    "line": "cartoon",
+    "path": "/cartoon/bart-the-master-simpson"
+  },
+  "EU-ANIME-1107": {
+    "slug": "tupac-negra",
+    "line": "urbanos",
+    "path": "/urbanas/tupac-negra"
+  },
+  "EU-ANIME-1108": {
+    "slug": "deluxe-chocolate",
+    "line": "urbanos",
+    "path": "/urbanas/deluxe-chocolate"
+  },
+  "EU-ANIME-1109": {
+    "slug": "mickey-explode-roja",
+    "line": "cartoon",
+    "path": "/cartoon/mickey-explode-roja"
+  },
+  "EU-ANIME-1110": {
+    "slug": "golden-season-poliester",
+    "line": "urbanos",
+    "path": "/urbanas/golden-season-poliester"
+  },
+  "EU-ANIME-1111": {
+    "slug": "inmortal-1",
+    "line": "urbanos",
+    "path": "/urbanas/inmortal-1"
+  },
+  "EU-ANIME-1112": {
+    "slug": "japan-1",
+    "line": "urbanos",
+    "path": "/urbanas/japan-1"
+  },
+  "EU-ANIME-1113": {
+    "slug": "mente-criminal-1",
+    "line": "urbanos",
+    "path": "/urbanas/mente-criminal-1"
+  },
+  "EU-ANIME-1114": {
+    "slug": "viviendo-en-modo-experto",
+    "line": "urbanos",
+    "path": "/urbanas/viviendo-en-modo-experto"
+  },
+  "EU-ANIME-1115": {
+    "slug": "pantera-rosa-hueso",
+    "line": "cartoon",
+    "path": "/cartoon/pantera-rosa-hueso"
+  },
+  "EU-ANIME-1116": {
+    "slug": "canserbero-rey-del-barrio",
+    "line": "urbanos",
+    "path": "/urbanas/canserbero-rey-del-barrio"
+  },
+  "EU-ANIME-1117": {
+    "slug": "goku-supreme-negra",
+    "line": "anime",
+    "path": "/anime/goku-supreme-negra"
+  },
+  "EU-ANIME-1118": {
+    "slug": "alma-de-fuego",
+    "line": "urbanos",
+    "path": "/urbanas/alma-de-fuego"
+  },
+  "EU-ANIME-1119": {
+    "slug": "alma-de-samurai",
+    "line": "urbanos",
+    "path": "/urbanas/alma-de-samurai"
+  },
+  "EU-ANIME-1120": {
+    "slug": "empieza-por-tu-brazo-1",
+    "line": "urbanos",
+    "path": "/urbanas/empieza-por-tu-brazo-1"
+  },
+  "EU-ANIME-1121": {
+    "slug": "canserbero-rap-roja",
+    "line": "urbanos",
+    "path": "/urbanas/canserbero-rap-roja"
+  },
+  "EU-ANIME-1122": {
+    "slug": "avaricia-insaciable",
+    "line": "urbanos",
+    "path": "/urbanas/avaricia-insaciable"
+  },
+  "EU-ANIME-1123": {
+    "slug": "espiritu-inquebrantable",
+    "line": "urbanos",
+    "path": "/urbanas/espiritu-inquebrantable"
+  },
+  "EU-ANIME-1124": {
+    "slug": "confiando-en-mi",
+    "line": "urbanos",
+    "path": "/urbanas/confiando-en-mi"
+  },
+  "EU-ANIME-1125": {
+    "slug": "transformacion",
+    "line": "urbanos",
+    "path": "/urbanas/transformacion"
+  },
+  "EU-ANIME-1126": {
+    "slug": "savage-mode-1",
+    "line": "urbanos",
+    "path": "/urbanas/savage-mode-1"
+  },
+  "EU-ANIME-1127": {
+    "slug": "clown-1",
+    "line": "urbanos",
+    "path": "/urbanas/clown-1"
+  },
+  "EU-ANIME-1128": {
+    "slug": "ghostface-scary-movies-1",
+    "line": "urbanos",
+    "path": "/urbanas/ghostface-scary-movies-1"
+  },
+  "EU-ANIME-1129": {
+    "slug": "pinhead-hellraiser",
+    "line": "urbanos",
+    "path": "/urbanas/pinhead-hellraiser"
+  },
+  "EU-ANIME-1130": {
+    "slug": "happy-horror-days",
+    "line": "urbanos",
+    "path": "/urbanas/happy-horror-days"
+  },
+  "EU-ANIME-1131": {
+    "slug": "ghostface-club",
+    "line": "urbanos",
+    "path": "/urbanas/ghostface-club"
+  },
+  "EU-ANIME-1132": {
+    "slug": "frankenstein",
+    "line": "urbanos",
+    "path": "/urbanas/frankenstein"
+  },
+  "EU-ANIME-1133": {
+    "slug": "el-exorcista",
+    "line": "urbanos",
+    "path": "/urbanas/el-exorcista"
+  },
+  "EU-ANIME-1134": {
+    "slug": "volviendo-a-casa-the-night-he-came-home",
+    "line": "urbanos",
+    "path": "/urbanas/volviendo-a-casa-the-night-he-came-home"
+  },
+  "EU-ANIME-1135": {
+    "slug": "art-the-clown-terrifier-1",
+    "line": "urbanos",
+    "path": "/urbanas/art-the-clown-terrifier-1"
+  },
+  "EU-ANIME-1136": {
+    "slug": "terrifier-2-horror-circus",
+    "line": "urbanos",
+    "path": "/urbanas/terrifier-2-horror-circus"
+  },
+  "EU-ANIME-1137": {
+    "slug": "michael-myers-halloween",
+    "line": "urbanos",
+    "path": "/urbanas/michael-myers-halloween"
+  },
+  "EU-ANIME-1138": {
+    "slug": "sacrifice",
+    "line": "urbanos",
+    "path": "/urbanas/sacrifice"
+  },
+  "EU-ANIME-1139": {
+    "slug": "wu-tang-clan-2",
+    "line": "urbanos",
+    "path": "/urbanas/wu-tang-clan-2"
+  },
+  "EU-ANIME-1140": {
+    "slug": "cultura-china-2",
+    "line": "urbanos",
+    "path": "/urbanas/cultura-china-2"
+  },
+  "EU-ANIME-1141": {
+    "slug": "dragon-warrior-1-rosa",
+    "line": "urbanos",
+    "path": "/urbanas/dragon-warrior-1-rosa"
+  },
+  "EU-ANIME-1142": {
+    "slug": "fuerza-animal-2",
+    "line": "urbanos",
+    "path": "/urbanas/fuerza-animal-2"
+  },
+  "EU-ANIME-1143": {
+    "slug": "hardest-part",
+    "line": "urbanos",
+    "path": "/urbanas/hardest-part"
+  },
+  "EU-ANIME-1144": {
+    "slug": "jinete-del-destino",
+    "line": "urbanos",
+    "path": "/urbanas/jinete-del-destino"
+  },
+  "EU-ANIME-1145": {
+    "slug": "karma",
+    "line": "urbanos",
+    "path": "/urbanas/karma"
+  },
+  "EU-ANIME-1146": {
+    "slug": "los-angeles-california",
+    "line": "urbanos",
+    "path": "/urbanas/los-angeles-california"
+  },
+  "EU-ANIME-1147": {
+    "slug": "rey-de-tu-historia",
+    "line": "urbanos",
+    "path": "/urbanas/rey-de-tu-historia"
+  },
+  "EU-ANIME-1148": {
+    "slug": "tokyo-3",
+    "line": "urbanos",
+    "path": "/urbanas/tokyo-3"
+  },
+  "EU-ANIME-1149": {
+    "slug": "underdog",
+    "line": "urbanos",
+    "path": "/urbanas/underdog"
+  },
+  "EU-ANIME-1150": {
+    "slug": "pesima-conducta-1",
+    "line": "urbanos",
+    "path": "/urbanas/pesima-conducta-1"
+  },
+  "EU-ANIME-1151": {
+    "slug": "sociedad-traicionera-2",
+    "line": "urbanos",
+    "path": "/urbanas/sociedad-traicionera-2"
+  },
+  "EU-ANIME-1152": {
+    "slug": "la-vida-es-un-viaje",
+    "line": "urbanos",
+    "path": "/urbanas/la-vida-es-un-viaje"
+  },
+  "EU-ANIME-1153": {
+    "slug": "somos-una-vez-en-la-vida",
+    "line": "urbanos",
+    "path": "/urbanas/somos-una-vez-en-la-vida"
+  },
+  "EU-ANIME-1154": {
+    "slug": "tomalo-con-calma",
+    "line": "urbanos",
+    "path": "/urbanas/tomalo-con-calma"
+  },
+  "EU-ANIME-1155": {
+    "slug": "hacer-lo-que-amo",
+    "line": "urbanos",
+    "path": "/urbanas/hacer-lo-que-amo"
+  },
+  "EU-ANIME-1156": {
+    "slug": "jason-viernes-13",
+    "line": "urbanos",
+    "path": "/urbanas/jason-viernes-13"
+  },
+  "EU-ANIME-1157": {
+    "slug": "chicago-bulls-1",
+    "line": "urbanos",
+    "path": "/urbanas/chicago-bulls-1"
+  },
+  "EU-ANIME-1158": {
+    "slug": "disaster",
+    "line": "urbanos",
+    "path": "/urbanas/disaster"
+  },
+  "EU-ANIME-1159": {
+    "slug": "new-order",
+    "line": "urbanos",
+    "path": "/urbanas/new-order"
+  },
+  "EU-ANIME-1160": {
+    "slug": "relajao-negra",
+    "line": "urbanos",
+    "path": "/urbanas/relajao-negra"
+  },
+  "EU-ANIME-1161": {
+    "slug": "relajao-chocolate",
+    "line": "urbanos",
+    "path": "/urbanas/relajao-chocolate"
+  },
+  "EU-ANIME-1162": {
+    "slug": "sociedad-traicionera",
+    "line": "urbanos",
+    "path": "/urbanas/sociedad-traicionera"
+  },
+  "EU-ANIME-1163": {
+    "slug": "hombre-de-accion-roja",
+    "line": "urbanos",
+    "path": "/urbanas/hombre-de-accion-roja"
+  },
+  "EU-ANIME-1164": {
+    "slug": "demon-lord",
+    "line": "urbanos",
+    "path": "/urbanas/demon-lord"
+  },
+  "EU-ANIME-1165": {
+    "slug": "cerberus-2",
+    "line": "urbanos",
+    "path": "/urbanas/cerberus-2"
+  },
+  "EU-ANIME-1166": {
+    "slug": "actitud-impecable",
+    "line": "urbanos",
+    "path": "/urbanas/actitud-impecable"
+  },
+  "EU-ANIME-1167": {
+    "slug": "legado-legendario",
+    "line": "urbanos",
+    "path": "/urbanas/legado-legendario"
+  },
+  "EU-ANIME-1168": {
+    "slug": "tokyo-2",
+    "line": "urbanos",
+    "path": "/urbanas/tokyo-2"
+  },
+  "EU-ANIME-1169": {
+    "slug": "universal-1-verde",
+    "line": "urbanos",
+    "path": "/urbanas/universal-1-verde"
+  },
+  "EU-ANIME-1170": {
+    "slug": "freedom-2",
+    "line": "urbanos",
+    "path": "/urbanas/freedom-2"
+  },
+  "EU-ANIME-1171": {
+    "slug": "music-3-chocolate",
+    "line": "urbanos",
+    "path": "/urbanas/music-3-chocolate"
+  },
+  "EU-ANIME-1172": {
+    "slug": "powerful",
+    "line": "urbanos",
+    "path": "/urbanas/powerful"
+  },
+  "EU-ANIME-1173": {
+    "slug": "wolves-1",
+    "line": "urbanos",
+    "path": "/urbanas/wolves-1"
+  },
+  "EU-ANIME-1174": {
+    "slug": "ancestral",
+    "line": "urbanos",
+    "path": "/urbanas/ancestral"
+  },
+  "EU-ANIME-1175": {
+    "slug": "cruel-existence-negra",
+    "line": "urbanos",
+    "path": "/urbanas/cruel-existence-negra"
+  },
+  "EU-ANIME-1176": {
+    "slug": "freedom",
+    "line": "urbanos",
+    "path": "/urbanas/freedom"
+  },
+  "EU-ANIME-1177": {
+    "slug": "futuro-artificial",
+    "line": "urbanos",
+    "path": "/urbanas/futuro-artificial"
+  },
+  "EU-ANIME-1178": {
+    "slug": "great-eagle",
+    "line": "urbanos",
+    "path": "/urbanas/great-eagle"
+  },
+  "EU-ANIME-1179": {
+    "slug": "mas-fuerte-que-nunca",
+    "line": "urbanos",
+    "path": "/urbanas/mas-fuerte-que-nunca"
+  },
+  "EU-ANIME-1180": {
+    "slug": "mello-bear",
+    "line": "urbanos",
+    "path": "/urbanas/mello-bear"
+  },
+  "EU-ANIME-1181": {
+    "slug": "olympus",
+    "line": "urbanos",
+    "path": "/urbanas/olympus"
+  },
+  "EU-ANIME-1182": {
+    "slug": "parchaito",
+    "line": "urbanos",
+    "path": "/urbanas/parchaito"
+  },
+  "EU-ANIME-1183": {
+    "slug": "reverse",
+    "line": "urbanos",
+    "path": "/urbanas/reverse"
+  },
+  "EU-ANIME-1184": {
+    "slug": "stellar",
+    "line": "urbanos",
+    "path": "/urbanas/stellar"
+  },
+  "EU-ANIME-1185": {
+    "slug": "bart-wu-tang-clan-3",
+    "line": "cartoon",
+    "path": "/cartoon/bart-wu-tang-clan-3"
+  },
+  "EU-ANIME-1186": {
+    "slug": "realidad-efimera",
+    "line": "urbanos",
+    "path": "/urbanas/realidad-efimera"
+  },
+  "EU-ANIME-1187": {
+    "slug": "anti-valentine-club-ghostface-y-michael-myers",
+    "line": "urbanos",
+    "path": "/urbanas/anti-valentine-club-ghostface-y-michael-myers"
+  },
+  "EU-ANIME-1188": {
+    "slug": "chucky-1",
+    "line": "urbanos",
+    "path": "/urbanas/chucky-1"
+  },
+  "EU-ANIME-1189": {
+    "slug": "returning-home",
+    "line": "urbanos",
+    "path": "/urbanas/returning-home"
+  },
+  "EU-ANIME-1190": {
+    "slug": "society-2",
+    "line": "urbanos",
+    "path": "/urbanas/society-2"
+  },
+  "EU-ANIME-1191": {
+    "slug": "angeles-del-cielo",
+    "line": "urbanos",
+    "path": "/urbanas/angeles-del-cielo"
+  },
+  "EU-ANIME-1192": {
+    "slug": "bart-boy",
+    "line": "cartoon",
+    "path": "/cartoon/bart-boy"
+  },
+  "EU-ANIME-1193": {
+    "slug": "camino-solo-verde",
+    "line": "urbanos",
+    "path": "/urbanas/camino-solo-verde"
+  },
+  "EU-ANIME-1194": {
+    "slug": "camino-solo-negra",
+    "line": "urbanos",
+    "path": "/urbanas/camino-solo-negra"
+  },
+  "EU-ANIME-1195": {
+    "slug": "ciudad-de-la-furia-roja",
+    "line": "urbanos",
+    "path": "/urbanas/ciudad-de-la-furia-roja"
+  },
+  "EU-ANIME-1196": {
+    "slug": "cultura-china-1",
+    "line": "urbanos",
+    "path": "/urbanas/cultura-china-1"
+  },
+  "EU-ANIME-1197": {
+    "slug": "falsa-libertad",
+    "line": "urbanos",
+    "path": "/urbanas/falsa-libertad"
+  },
+  "EU-ANIME-1198": {
+    "slug": "ganja",
+    "line": "urbanos",
+    "path": "/urbanas/ganja"
+  },
+  "EU-ANIME-1199": {
+    "slug": "gladiator",
+    "line": "urbanos",
+    "path": "/urbanas/gladiator"
+  },
+  "EU-ANIME-1200": {
+    "slug": "pitufo-urbano",
+    "line": "cartoon",
+    "path": "/cartoon/pitufo-urbano"
+  },
+  "EU-ANIME-1201": {
+    "slug": "black-mercury",
+    "line": "urbanos",
+    "path": "/urbanas/black-mercury"
+  },
+  "EU-ANIME-1202": {
+    "slug": "demonios-internos",
+    "line": "urbanos",
+    "path": "/urbanas/demonios-internos"
+  },
+  "EU-ANIME-1203": {
+    "slug": "evolution-1",
+    "line": "urbanos",
+    "path": "/urbanas/evolution-1"
+  },
+  "EU-ANIME-1204": {
+    "slug": "tiempo-limitado",
+    "line": "urbanos",
+    "path": "/urbanas/tiempo-limitado"
+  },
+  "EU-ANIME-1205": {
+    "slug": "tupac-verde",
+    "line": "urbanos",
+    "path": "/urbanas/tupac-verde"
+  },
+  "EU-ANIME-1206": {
+    "slug": "black-list",
+    "line": "urbanos",
+    "path": "/urbanas/black-list"
+  },
+  "EU-ANIME-1207": {
+    "slug": "cannabis",
+    "line": "urbanos",
+    "path": "/urbanas/cannabis"
+  },
+  "EU-ANIME-1208": {
+    "slug": "cerberus-1",
+    "line": "urbanos",
+    "path": "/urbanas/cerberus-1"
+  },
+  "EU-ANIME-1209": {
+    "slug": "chinese-dynasty",
+    "line": "urbanos",
+    "path": "/urbanas/chinese-dynasty"
+  },
+  "EU-ANIME-1210": {
+    "slug": "fuerza-animal-1",
+    "line": "urbanos",
+    "path": "/urbanas/fuerza-animal-1"
+  },
+  "EU-ANIME-1211": {
+    "slug": "furia-desatada",
+    "line": "urbanos",
+    "path": "/urbanas/furia-desatada"
+  },
+  "EU-ANIME-1212": {
+    "slug": "loud-pack",
+    "line": "urbanos",
+    "path": "/urbanas/loud-pack"
+  },
+  "EU-ANIME-1213": {
+    "slug": "love-story",
+    "line": "urbanos",
+    "path": "/urbanas/love-story"
+  },
+  "EU-ANIME-1214": {
+    "slug": "mickey-fire-verde",
+    "line": "cartoon",
+    "path": "/cartoon/mickey-fire-verde"
+  },
+  "EU-ANIME-1215": {
+    "slug": "music-2",
+    "line": "urbanos",
+    "path": "/urbanas/music-2"
+  },
+  "EU-ANIME-1216": {
+    "slug": "nativo-americano-2",
+    "line": "urbanos",
+    "path": "/urbanas/nativo-americano-2"
+  },
+  "EU-ANIME-1217": {
+    "slug": "nativo-americano-1",
+    "line": "urbanos",
+    "path": "/urbanas/nativo-americano-1"
+  },
+  "EU-ANIME-1218": {
+    "slug": "mente-serena",
+    "line": "urbanos",
+    "path": "/urbanas/mente-serena"
+  },
+  "EU-ANIME-1219": {
+    "slug": "este-es-mi-mundo",
+    "line": "urbanos",
+    "path": "/urbanas/este-es-mi-mundo"
+  },
+  "EU-ANIME-1220": {
+    "slug": "espiritu-samurai-2",
+    "line": "urbanos",
+    "path": "/urbanas/espiritu-samurai-2"
+  },
+  "EU-ANIME-1221": {
+    "slug": "vieja-escuela",
+    "line": "urbanos",
+    "path": "/urbanas/vieja-escuela"
+  },
+  "EU-ANIME-1222": {
+    "slug": "canserbero-rap-negra",
+    "line": "urbanos",
+    "path": "/urbanas/canserbero-rap-negra"
+  },
+  "EU-ANIME-1223": {
+    "slug": "controla-el-juego",
+    "line": "urbanos",
+    "path": "/urbanas/controla-el-juego"
+  },
+  "EU-ANIME-1224": {
+    "slug": "egipto-1",
+    "line": "urbanos",
+    "path": "/urbanas/egipto-1"
+  },
+  "EU-ANIME-1225": {
+    "slug": "purgatorium",
+    "line": "urbanos",
+    "path": "/urbanas/purgatorium"
+  },
+  "EU-ANIME-1226": {
+    "slug": "poison",
+    "line": "urbanos",
+    "path": "/urbanas/poison"
+  },
+  "EU-ANIME-1227": {
+    "slug": "bad-bunny-1-lila",
+    "line": "urbanos",
+    "path": "/urbanas/bad-bunny-1-lila"
+  },
+  "EU-ANIME-1228": {
+    "slug": "bad-bunny-2-hueso",
+    "line": "urbanos",
+    "path": "/urbanas/bad-bunny-2-hueso"
+  },
+  "EU-ANIME-1229": {
+    "slug": "nuevo-orden-mundial",
+    "line": "urbanos",
+    "path": "/urbanas/nuevo-orden-mundial"
+  },
+  "EU-ANIME-1230": {
+    "slug": "pennywise-it",
+    "line": "urbanos",
+    "path": "/urbanas/pennywise-it"
+  },
+  "EU-ANIME-1231": {
+    "slug": "heaven-negra",
+    "line": "urbanos",
+    "path": "/urbanas/heaven-negra"
+  },
+  "EU-ANIME-1232": {
+    "slug": "chosen-one-negra",
+    "line": "urbanos",
+    "path": "/urbanas/chosen-one-negra"
+  },
+  "EU-ANIME-1233": {
+    "slug": "maldito-es-epico-negra",
+    "line": "urbanos",
+    "path": "/urbanas/maldito-es-epico-negra"
+  },
+  "EU-ANIME-1234": {
+    "slug": "silent-negra",
+    "line": "urbanos",
+    "path": "/urbanas/silent-negra"
+  },
+  "EU-ANIME-1235": {
+    "slug": "history-blanca",
+    "line": "urbanos",
+    "path": "/urbanas/history-blanca"
+  },
+  "EU-ANIME-1236": {
+    "slug": "chasing-green-rich-vinotinto",
+    "line": "urbanos",
+    "path": "/urbanas/chasing-green-rich-vinotinto"
+  },
+  "EU-ANIME-1237": {
+    "slug": "why-so-serious-hueso",
+    "line": "urbanos",
+    "path": "/urbanas/why-so-serious-hueso"
+  },
+  "EU-ANIME-1238": {
+    "slug": "risk-taker-negra",
+    "line": "urbanos",
+    "path": "/urbanas/risk-taker-negra"
+  },
+  "EU-ANIME-1239": {
+    "slug": "biggie-smalls-negra",
+    "line": "urbanos",
+    "path": "/urbanas/biggie-smalls-negra"
+  },
+  "EU-ANIME-1240": {
+    "slug": "tupac-all-eyez-on-me-negra",
+    "line": "urbanos",
+    "path": "/urbanas/tupac-all-eyez-on-me-negra"
+  },
+  "EU-ANIME-1241": {
+    "slug": "marijuana-leaves-negra",
+    "line": "urbanos",
+    "path": "/urbanas/marijuana-leaves-negra"
+  },
+  "EU-ANIME-1242": {
+    "slug": "acta-non-verba-verde",
+    "line": "urbanos",
+    "path": "/urbanas/acta-non-verba-verde"
+  },
+  "EU-ANIME-1243": {
+    "slug": "chicago-bear-hueso",
+    "line": "urbanos",
+    "path": "/urbanas/chicago-bear-hueso"
+  },
+  "EU-ANIME-1244": {
+    "slug": "snoop-dogg-basketball-negra",
+    "line": "urbanos",
+    "path": "/urbanas/snoop-dogg-basketball-negra"
+  },
+  "EU-ANIME-1245": {
+    "slug": "bart-meltdown-negra",
+    "line": "cartoon",
+    "path": "/cartoon/bart-meltdown-negra"
+  },
+  "EU-ANIME-1246": {
+    "slug": "popeye-relax-negra",
+    "line": "cartoon",
+    "path": "/cartoon/popeye-relax-negra"
+  },
+  "EU-ANIME-1247": {
+    "slug": "demon-cuddles-negra",
+    "line": "urbanos",
+    "path": "/urbanas/demon-cuddles-negra"
+  },
+  "EU-ANIME-1248": {
+    "slug": "ascension-negra",
+    "line": "urbanos",
+    "path": "/urbanas/ascension-negra"
+  },
+  "EU-ANIME-1249": {
+    "slug": "justice-negra",
+    "line": "urbanos",
+    "path": "/urbanas/justice-negra"
+  },
+  "EU-ANIME-1250": {
+    "slug": "chicago-flamas-negra",
+    "line": "urbanos",
+    "path": "/urbanas/chicago-flamas-negra"
+  }
+}

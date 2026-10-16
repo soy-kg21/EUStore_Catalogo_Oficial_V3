@@ -1,0 +1,1948 @@
+{
+  "sourcePdf": "URBANO 1.pdf",
+  "sourceSha256": "68431085fbbf8c1d827c6e6a7ec44a12c478163e7a4c3049ab38d3e87234ecfb",
+  "pages": 12,
+  "baselineLastId": 1047,
+  "review": [
+    {
+      "key": "p01-01",
+      "page": 1,
+      "xref": 230,
+      "supplierName": "",
+      "name": "",
+      "decision": "excluido",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "reason": "Portada"
+    },
+    {
+      "key": "p02-01",
+      "page": 2,
+      "xref": 3,
+      "supplierName": "REQUIEM SPC",
+      "name": "Requiem",
+      "decision": "existente / duplicado",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "catalogId": "EU-ANIME-127"
+    },
+    {
+      "key": "p02-02",
+      "page": 2,
+      "xref": 4,
+      "supplierName": "TOKYO HUESO",
+      "name": "Tokyo Hueso",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-03",
+      "page": 2,
+      "xref": 15,
+      "supplierName": "YO TENGO UN ÁNGEL",
+      "name": "Yo Tengo Un Ángel",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-04",
+      "page": 2,
+      "xref": 17,
+      "supplierName": "ALPINE CLUB CHOCOLATE",
+      "name": "Alpine Club Chocolate",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-05",
+      "page": 2,
+      "xref": 18,
+      "supplierName": "ALPINE CLUB",
+      "name": "Alpine Club Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-06",
+      "page": 2,
+      "xref": 19,
+      "supplierName": "CAN NEGRA #2 SPC",
+      "name": "Can Negra #2",
+      "decision": "existente / duplicado",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "catalogId": "EU-ANIME-198"
+    },
+    {
+      "key": "p02-07",
+      "page": 2,
+      "xref": 20,
+      "supplierName": "GENTE QUE NO APORTA",
+      "name": "Gente Que No Aporta",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-08",
+      "page": 2,
+      "xref": 21,
+      "supplierName": "HUNTER SPC",
+      "name": "Hunter",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-09",
+      "page": 2,
+      "xref": 22,
+      "supplierName": "ANGEL BOLD",
+      "name": "Ángel Bold",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-10",
+      "page": 2,
+      "xref": 23,
+      "supplierName": "HOMBRE DE ACCIÓN NEGRA",
+      "name": "Hombre De Acción Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-11",
+      "page": 2,
+      "xref": 5,
+      "supplierName": "JEREMIAS 17-5 SPC",
+      "name": "Canserbero Jeremías 17:5",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Canserbero"
+    },
+    {
+      "key": "p02-12",
+      "page": 2,
+      "xref": 6,
+      "supplierName": "SANCTUM INFERNUM SPC",
+      "name": "Sanctum Infernum",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-13",
+      "page": 2,
+      "xref": 7,
+      "supplierName": "DUALITY SPC",
+      "name": "Duality",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-14",
+      "page": 2,
+      "xref": 8,
+      "supplierName": "ANGEL GUARDIAN VINOTINTO SPC",
+      "name": "Angel Guardian Vinotinto",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-15",
+      "page": 2,
+      "xref": 9,
+      "supplierName": "ESTOY IMPROVISANDO SPC",
+      "name": "Estoy Improvisando",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-16",
+      "page": 2,
+      "xref": 10,
+      "supplierName": "ALCOLIRYKOZ SPC",
+      "name": "Alcolirykoz",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Alcolirykoz"
+    },
+    {
+      "key": "p02-17",
+      "page": 2,
+      "xref": 11,
+      "supplierName": "REAL HASTA LA MUERTE #2 SPC",
+      "name": "Anuel AA Real Hasta la Muerte #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Anuel AA"
+    },
+    {
+      "key": "p02-18",
+      "page": 2,
+      "xref": 12,
+      "supplierName": "BLESSD SPC",
+      "name": "Blessd",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Blessd"
+    },
+    {
+      "key": "p02-19",
+      "page": 2,
+      "xref": 13,
+      "supplierName": "ANGELES PROTECTORES VERDE SPC",
+      "name": "Ángeles Protectores Verde",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-20",
+      "page": 2,
+      "xref": 14,
+      "supplierName": "DIOS TE MULTIPLIQUE SPC",
+      "name": "Dios Te Multiplique",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p02-21",
+      "page": 2,
+      "xref": 16,
+      "supplierName": "ANGELES PROTECTORES NEGRA SPC",
+      "name": "Ángeles Protectores Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-01",
+      "page": 3,
+      "xref": 26,
+      "supplierName": "DRAGON WARRIOR #1",
+      "name": "Dragon Warrior #1 Hueso",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-02",
+      "page": 3,
+      "xref": 27,
+      "supplierName": "UNIVERSAL #1 NEGRA SPC",
+      "name": "Universal #1 Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-03",
+      "page": 3,
+      "xref": 38,
+      "supplierName": "JUSTICIA PERSONAL SPC",
+      "name": "Justicia Personal",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-04",
+      "page": 3,
+      "xref": 41,
+      "supplierName": "EMPIEZA POR TU BRAZO #2 SPC",
+      "name": "Empieza por tu Brazo #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-05",
+      "page": 3,
+      "xref": 42,
+      "supplierName": "DIMENSIÓN PSICODÉLICA SPC",
+      "name": "Dimensión Psicodélica",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-06",
+      "page": 3,
+      "xref": 43,
+      "supplierName": "NACIDO PARA DAR GUERRA SPC",
+      "name": "Nacido Para Dar Guerra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-07",
+      "page": 3,
+      "xref": 44,
+      "supplierName": "CHAMPION #1 SPC",
+      "name": "Champion #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-08",
+      "page": 3,
+      "xref": 45,
+      "supplierName": "ESPIRITUAL SPC",
+      "name": "Espiritual",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-09",
+      "page": 3,
+      "xref": 46,
+      "supplierName": "SEGUIR LUCHANDO SPC",
+      "name": "Seguir Luchando",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-10",
+      "page": 3,
+      "xref": 47,
+      "supplierName": "CIVILIZACIÓN ATEMPORAL SPC",
+      "name": "Civilización Atemporal",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-11",
+      "page": 3,
+      "xref": 28,
+      "supplierName": "EXPEDICIÓN ESPACIAL SPC",
+      "name": "Expedición Espacial",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-12",
+      "page": 3,
+      "xref": 29,
+      "supplierName": "INFINITE SPACE #1 SPC",
+      "name": "Infinite Space #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-13",
+      "page": 3,
+      "xref": 30,
+      "supplierName": "LINAJE CELESTIAL SPC",
+      "name": "Linaje Celestial",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-14",
+      "page": 3,
+      "xref": 31,
+      "supplierName": "ABRAZA TUS SOMBRAS SPC",
+      "name": "Abraza Tus Sombras",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-15",
+      "page": 3,
+      "xref": 32,
+      "supplierName": "PARCA #1 SPC",
+      "name": "Parca #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-16",
+      "page": 3,
+      "xref": 33,
+      "supplierName": "VIVE MIENTRAS PUEDAS SPC",
+      "name": "Vive Mientras Puedas",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-17",
+      "page": 3,
+      "xref": 34,
+      "supplierName": "ZERO GRAVITY SPC",
+      "name": "Zero Gravity",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-18",
+      "page": 3,
+      "xref": 35,
+      "supplierName": "RENACIMIENTO #1 SPC",
+      "name": "Renacimiento #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-19",
+      "page": 3,
+      "xref": 36,
+      "supplierName": "CRECIMIENTO INTERNO SPC",
+      "name": "Crecimiento Interno",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-20",
+      "page": 3,
+      "xref": 37,
+      "supplierName": "CRUEL EXISTENCE HUESO",
+      "name": "Cruel Existence Hueso",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-21",
+      "page": 3,
+      "xref": 39,
+      "supplierName": "PERSIGUIENDO LO IMPOSIBLE SPC",
+      "name": "Persiguiendo Lo Imposible",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p03-22",
+      "page": 3,
+      "xref": 40,
+      "supplierName": "ANGEL GUARDIAN NEGRA SPC",
+      "name": "Ángel Guardián Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-01",
+      "page": 4,
+      "xref": 50,
+      "supplierName": "STUPID LOVE",
+      "name": "Stupid Love",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-02",
+      "page": 4,
+      "xref": 51,
+      "supplierName": "LONELY PARADISE",
+      "name": "Lonely Paradise",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-03",
+      "page": 4,
+      "xref": 60,
+      "supplierName": "PINK PANTER NEGRA",
+      "name": "Pantera Rosa Negra",
+      "decision": "nuevo",
+      "line": "cartoon",
+      "category": "La Pantera Rosa"
+    },
+    {
+      "key": "p04-04",
+      "page": 4,
+      "xref": 61,
+      "supplierName": "SIN ROSTRO",
+      "name": "Sin Rostro",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-05",
+      "page": 4,
+      "xref": 62,
+      "supplierName": "YO SI FUI",
+      "name": "Yo Si Fui",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-06",
+      "page": 4,
+      "xref": 63,
+      "supplierName": "CUIDESE DE LA ENVIDIA",
+      "name": "Cuídese de la Envidia",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-07",
+      "page": 4,
+      "xref": 64,
+      "supplierName": "DRAGON WARRIOR #2 SPC",
+      "name": "Dragon Warrior #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-08",
+      "page": 4,
+      "xref": 65,
+      "supplierName": "GOKU SUPREME",
+      "name": "Goku Supreme Hueso",
+      "decision": "nuevo",
+      "line": "anime",
+      "category": "Dragon Ball"
+    },
+    {
+      "key": "p04-09",
+      "page": 4,
+      "xref": 66,
+      "supplierName": "JORDAN NEGRA SPC",
+      "name": "Jordan #23 Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-10",
+      "page": 4,
+      "xref": 67,
+      "supplierName": "MONARCA CAMEL SPC",
+      "name": "Monarca Camel",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-11",
+      "page": 4,
+      "xref": 52,
+      "supplierName": "CAN VIDA MUERTE #2 SPC",
+      "name": "Canserbero Vida y Muerte #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Canserbero"
+    },
+    {
+      "key": "p04-12",
+      "page": 4,
+      "xref": 53,
+      "supplierName": "TAKE IT EASY",
+      "name": "Take It Easy",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-13",
+      "page": 4,
+      "xref": 54,
+      "supplierName": "LUCHANDO HASTA GANAR SPC",
+      "name": "Luchando Hasta Ganar",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-14",
+      "page": 4,
+      "xref": 55,
+      "supplierName": "DONDE DUELE INSPIRA SPC",
+      "name": "Donde Duele Inspira",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-15",
+      "page": 4,
+      "xref": 56,
+      "supplierName": "EL CORAZÓN SOBRE TODO",
+      "name": "El Corazón Sobre Todo",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-16",
+      "page": 4,
+      "xref": 57,
+      "supplierName": "VIDA GANGSTER SPC",
+      "name": "Vida Gangster",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p04-17",
+      "page": 4,
+      "xref": 58,
+      "supplierName": "MENTE CRIMINAL #2 SPC",
+      "name": "Mente Criminal #2 Canserbero",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Canserbero"
+    },
+    {
+      "key": "p04-18",
+      "page": 4,
+      "xref": 59,
+      "supplierName": "",
+      "name": "",
+      "decision": "excluido",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "reason": "Fotografía editorial sin referencia propia; no dar de alta una variante sin ficha"
+    },
+    {
+      "key": "p05-01",
+      "page": 5,
+      "xref": 70,
+      "supplierName": "THE MASTER SIMPSON",
+      "name": "Bart The Master Simpson",
+      "decision": "nuevo",
+      "line": "cartoon",
+      "category": "Los Simpson"
+    },
+    {
+      "key": "p05-02",
+      "page": 5,
+      "xref": 71,
+      "supplierName": "TUPAC NEGRA SPC",
+      "name": "Tupac Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Tupac"
+    },
+    {
+      "key": "p05-03",
+      "page": 5,
+      "xref": 81,
+      "supplierName": "DELUXE CHOCOLATE",
+      "name": "Deluxe Chocolate",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-04",
+      "page": 5,
+      "xref": 82,
+      "supplierName": "ERRADICATE SPC",
+      "name": "Erradicate",
+      "decision": "existente / duplicado",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "catalogId": "EU-ANIME-013"
+    },
+    {
+      "key": "p05-05",
+      "page": 5,
+      "xref": 83,
+      "supplierName": "EXPLODE",
+      "name": "Mickey Explode Roja",
+      "decision": "nuevo",
+      "line": "cartoon",
+      "category": "Disney"
+    },
+    {
+      "key": "p05-06",
+      "page": 5,
+      "xref": 84,
+      "supplierName": "GOLDEN SEASON POLIÉSTER",
+      "name": "Golden Season Poliéster",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-07",
+      "page": 5,
+      "xref": 85,
+      "supplierName": "INMORTAL #1",
+      "name": "Inmortal #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-08",
+      "page": 5,
+      "xref": 86,
+      "supplierName": "JAPAN #1",
+      "name": "Japan #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-09",
+      "page": 5,
+      "xref": 87,
+      "supplierName": "MENTE CRIMINAL #1",
+      "name": "Mente Criminal #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-10",
+      "page": 5,
+      "xref": 88,
+      "supplierName": "VIVIENDO EN MODO EXPERTO",
+      "name": "Viviendo En Modo Experto",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-11",
+      "page": 5,
+      "xref": 72,
+      "supplierName": "PINK PANTER",
+      "name": "Pantera Rosa Hueso",
+      "decision": "nuevo",
+      "line": "cartoon",
+      "category": "La Pantera Rosa"
+    },
+    {
+      "key": "p05-12",
+      "page": 5,
+      "xref": 73,
+      "supplierName": "REY DEL BARRIO SPC",
+      "name": "Canserbero Rey del Barrio",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Canserbero"
+    },
+    {
+      "key": "p05-13",
+      "page": 5,
+      "xref": 74,
+      "supplierName": "GOKU SUPREME",
+      "name": "Goku Supreme Negra",
+      "decision": "nuevo",
+      "line": "anime",
+      "category": "Dragon Ball"
+    },
+    {
+      "key": "p05-14",
+      "page": 5,
+      "xref": 75,
+      "supplierName": "ALMA DE FUEGO SPC",
+      "name": "Alma De Fuego",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-15",
+      "page": 5,
+      "xref": 76,
+      "supplierName": "ALMA DE SAMURAI",
+      "name": "Alma De Samurai",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-16",
+      "page": 5,
+      "xref": 77,
+      "supplierName": "EMPIEZA POR TU BRAZO #1",
+      "name": "Empieza Por Tu Brazo #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-17",
+      "page": 5,
+      "xref": 78,
+      "supplierName": "RAP  ROJA SPC",
+      "name": "Canserbero RAP Roja",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Canserbero"
+    },
+    {
+      "key": "p05-18",
+      "page": 5,
+      "xref": 79,
+      "supplierName": "AVARICIA INSACIABLE SPC",
+      "name": "Avaricia Insaciable",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p05-19",
+      "page": 5,
+      "xref": 80,
+      "supplierName": "ESPÍRITU INQUEBRANTABLE SPC",
+      "name": "Espíritu Inquebrantable",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p06-01",
+      "page": 6,
+      "xref": 91,
+      "supplierName": "CONFIANDO EN MI SPC",
+      "name": "Confiando En Mi",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p06-02",
+      "page": 6,
+      "xref": 92,
+      "supplierName": "TRANSFORMACIÓN SPC",
+      "name": "Transformación",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p06-03",
+      "page": 6,
+      "xref": 98,
+      "supplierName": "SAVAGE MODE #1",
+      "name": "Savage Mode #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p06-04",
+      "page": 6,
+      "xref": 99,
+      "supplierName": "CLOWN #1 SPC",
+      "name": "Clown #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-05",
+      "page": 6,
+      "xref": 100,
+      "supplierName": "SCARY MOVIES #1",
+      "name": "Ghostface Scary Movies #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-06",
+      "page": 6,
+      "xref": 101,
+      "supplierName": "PINHEAD SPC",
+      "name": "Pinhead Hellraiser",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-07",
+      "page": 6,
+      "xref": 102,
+      "supplierName": "HAPPY HORROR DAYS SPC",
+      "name": "Happy Horror Days",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-08",
+      "page": 6,
+      "xref": 103,
+      "supplierName": "GHOST FACE",
+      "name": "Ghostface Club",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-09",
+      "page": 6,
+      "xref": 104,
+      "supplierName": "FRANKESTEIN SPC",
+      "name": "Frankenstein",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-10",
+      "page": 6,
+      "xref": 105,
+      "supplierName": "EL EXORCISTA SPC",
+      "name": "El Exorcista",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-11",
+      "page": 6,
+      "xref": 93,
+      "supplierName": "VOLVIENDO A CASA SPC",
+      "name": "Volviendo a Casa The Night He Came Home",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-12",
+      "page": 6,
+      "xref": 94,
+      "supplierName": "TERRIFIER #1",
+      "name": "Art the Clown Terrifier #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-13",
+      "page": 6,
+      "xref": 95,
+      "supplierName": "TERRIFIER #2 SPC",
+      "name": "Terrifier #2 Horror Circus",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-14",
+      "page": 6,
+      "xref": 96,
+      "supplierName": "MICHAEL MYERS",
+      "name": "Michael Myers Halloween",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p06-15",
+      "page": 6,
+      "xref": 97,
+      "supplierName": "",
+      "name": "",
+      "decision": "excluido",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "reason": "Fotografía adicional de Pinhead"
+    },
+    {
+      "key": "p07-01",
+      "page": 7,
+      "xref": 108,
+      "supplierName": "SACRIFICE SPC",
+      "name": "Sacrifice",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-02",
+      "page": 7,
+      "xref": 109,
+      "supplierName": "WU TANG CLAN #2 SPC",
+      "name": "Wu-Tang Clan #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Wu-Tang Clan"
+    },
+    {
+      "key": "p07-03",
+      "page": 7,
+      "xref": 119,
+      "supplierName": "CULTURA CHINA #2",
+      "name": "Cultura China #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-04",
+      "page": 7,
+      "xref": 120,
+      "supplierName": "DRAGON WARRIOR #1",
+      "name": "Dragon Warrior #1 Rosa",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-05",
+      "page": 7,
+      "xref": 121,
+      "supplierName": "FUERZA ANIMAL #2",
+      "name": "Fuerza Animal #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-06",
+      "page": 7,
+      "xref": 122,
+      "supplierName": "HARDEST PART",
+      "name": "Hardest Part",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-07",
+      "page": 7,
+      "xref": 123,
+      "supplierName": "JINETE DEL DESTINO",
+      "name": "Jinete Del Destino",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-08",
+      "page": 7,
+      "xref": 124,
+      "supplierName": "KARMA",
+      "name": "Karma",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-09",
+      "page": 7,
+      "xref": 125,
+      "supplierName": "LOS ÁNGELES CALIFORNIA",
+      "name": "Los Ángeles California",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-10",
+      "page": 7,
+      "xref": 126,
+      "supplierName": "REY DE TU HISTORIA SPC",
+      "name": "Rey De Tu Historia",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-11",
+      "page": 7,
+      "xref": 110,
+      "supplierName": "TOKYO #3 SPC",
+      "name": "Tokyo #3",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-12",
+      "page": 7,
+      "xref": 111,
+      "supplierName": "UNDERDOG SPC",
+      "name": "Underdog",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-13",
+      "page": 7,
+      "xref": 112,
+      "supplierName": "PÉSIMA CONDUCTA #1 SPC",
+      "name": "Pésima Conducta #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-14",
+      "page": 7,
+      "xref": 113,
+      "supplierName": "SOCIEDAD TRAICIONERA #2 SPC",
+      "name": "Sociedad Traicionera #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-15",
+      "page": 7,
+      "xref": 114,
+      "supplierName": "LA VIDA ES UN VIAJE SPC",
+      "name": "La Vida Es Un Viaje",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-16",
+      "page": 7,
+      "xref": 115,
+      "supplierName": "SOMOS UNA VEZ EN LA VIDA SPC",
+      "name": "Somos Una Vez En La Vida",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-17",
+      "page": 7,
+      "xref": 116,
+      "supplierName": "TÓMALO CON CALMA",
+      "name": "Tómalo Con Calma",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-18",
+      "page": 7,
+      "xref": 117,
+      "supplierName": "HACER LO QUE AMO SPC",
+      "name": "Hacer Lo Que Amo",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p07-19",
+      "page": 7,
+      "xref": 118,
+      "supplierName": "",
+      "name": "",
+      "decision": "excluido",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "reason": "Fotografía adicional de Jordan Negra"
+    },
+    {
+      "key": "p08-01",
+      "page": 8,
+      "xref": 129,
+      "supplierName": "VIERNES 13 SPC",
+      "name": "Jason Viernes 13",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p08-02",
+      "page": 8,
+      "xref": 130,
+      "supplierName": "CHICAGO BULLS #1",
+      "name": "Chicago Bulls #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-03",
+      "page": 8,
+      "xref": 138,
+      "supplierName": "DISASTER",
+      "name": "Disaster",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-04",
+      "page": 8,
+      "xref": 139,
+      "supplierName": "NEW ORDER",
+      "name": "New Order",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-05",
+      "page": 8,
+      "xref": 140,
+      "supplierName": "RELAJAO NEGRA SPC",
+      "name": "Relajao Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-06",
+      "page": 8,
+      "xref": 141,
+      "supplierName": "RELAJAO CHOCOLATE SPC",
+      "name": "Relajao Chocolate",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-07",
+      "page": 8,
+      "xref": 142,
+      "supplierName": "SOCIEDAD TRAICIONERA SPC",
+      "name": "Sociedad Traicionera",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-08",
+      "page": 8,
+      "xref": 143,
+      "supplierName": "HOMBRE DE ACCIÓN ROJA SPC",
+      "name": "Hombre De Acción Roja",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-09",
+      "page": 8,
+      "xref": 144,
+      "supplierName": "DEMON LORD",
+      "name": "Demon Lord",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-10",
+      "page": 8,
+      "xref": 145,
+      "supplierName": "CERBERUS #2 SPC",
+      "name": "Cerberus #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-11",
+      "page": 8,
+      "xref": 131,
+      "supplierName": "ACTITUD IMPECABLE SPC",
+      "name": "Actitud Impecable",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-12",
+      "page": 8,
+      "xref": 132,
+      "supplierName": "LEGADO LEGENDARIO SPC",
+      "name": "Legado Legendario",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-13",
+      "page": 8,
+      "xref": 133,
+      "supplierName": "TOKYO #2",
+      "name": "Tokyo #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-14",
+      "page": 8,
+      "xref": 134,
+      "supplierName": "UNIVERSAL #1 SPC VERDE",
+      "name": "Universal #1 Verde",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-15",
+      "page": 8,
+      "xref": 135,
+      "supplierName": "FREEDOM #2",
+      "name": "Freedom #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-16",
+      "page": 8,
+      "xref": 136,
+      "supplierName": "MUSIC #3 SPC CHOCOLATE",
+      "name": "Music #3 Chocolate",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p08-17",
+      "page": 8,
+      "xref": 137,
+      "supplierName": "",
+      "name": "",
+      "decision": "excluido",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "reason": "Fotografía adicional de Viernes 13"
+    },
+    {
+      "key": "p09-01",
+      "page": 9,
+      "xref": 148,
+      "supplierName": "POWERFUL",
+      "name": "Powerful",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-02",
+      "page": 9,
+      "xref": 149,
+      "supplierName": "WOLVES #1",
+      "name": "Wolves #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-03",
+      "page": 9,
+      "xref": 158,
+      "supplierName": "ANCESTRAL",
+      "name": "Ancestral",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-04",
+      "page": 9,
+      "xref": 159,
+      "supplierName": "CRUEL EXISTENCE NEGRO",
+      "name": "Cruel Existence Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-05",
+      "page": 9,
+      "xref": 160,
+      "supplierName": "FREEDOM",
+      "name": "Freedom",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-06",
+      "page": 9,
+      "xref": 161,
+      "supplierName": "FUTURO ARTIFICIAL",
+      "name": "Futuro Artificial",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-07",
+      "page": 9,
+      "xref": 162,
+      "supplierName": "GREAT EAGLE",
+      "name": "Great Eagle",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-08",
+      "page": 9,
+      "xref": 163,
+      "supplierName": "MAS FUERTE QUE NUNCA",
+      "name": "Más Fuerte que Nunca",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-09",
+      "page": 9,
+      "xref": 164,
+      "supplierName": "MELLO BEAR",
+      "name": "Mello Bear",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-10",
+      "page": 9,
+      "xref": 165,
+      "supplierName": "OLYMPUS",
+      "name": "Olympus",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-11",
+      "page": 9,
+      "xref": 150,
+      "supplierName": "PARCHAITO",
+      "name": "Parchaito",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-12",
+      "page": 9,
+      "xref": 151,
+      "supplierName": "REVERSE SPC",
+      "name": "Reverse",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-13",
+      "page": 9,
+      "xref": 152,
+      "supplierName": "STELLAR",
+      "name": "Stellar",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-14",
+      "page": 9,
+      "xref": 153,
+      "supplierName": "WU TANG CLAN #3 SPC",
+      "name": "Bart Wu-Tang Clan #3",
+      "decision": "nuevo",
+      "line": "cartoon",
+      "category": "Los Simpson"
+    },
+    {
+      "key": "p09-15",
+      "page": 9,
+      "xref": 154,
+      "supplierName": "REALIDAD EDIMERA SPC",
+      "name": "Realidad Efímera",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p09-16",
+      "page": 9,
+      "xref": 155,
+      "supplierName": "ANTI VALENTINE CLUB",
+      "name": "Anti Valentine Club Ghostface y Michael Myers",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p09-17",
+      "page": 9,
+      "xref": 156,
+      "supplierName": "CHUCKY #1",
+      "name": "Chucky #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    },
+    {
+      "key": "p09-18",
+      "page": 9,
+      "xref": 157,
+      "supplierName": "",
+      "name": "",
+      "decision": "excluido",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "reason": "Fotografía adicional de Anti Valentine Club"
+    },
+    {
+      "key": "p10-01",
+      "page": 10,
+      "xref": 168,
+      "supplierName": "RETURNING HOME",
+      "name": "Returning Home",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-02",
+      "page": 10,
+      "xref": 169,
+      "supplierName": "SOCIETY #2 SPC",
+      "name": "Society #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-03",
+      "page": 10,
+      "xref": 176,
+      "supplierName": "ÁNGELES DEL CIELO",
+      "name": "Ángeles Del Cielo",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-04",
+      "page": 10,
+      "xref": 177,
+      "supplierName": "BART BOY",
+      "name": "Bart Boy",
+      "decision": "nuevo",
+      "line": "cartoon",
+      "category": "Los Simpson"
+    },
+    {
+      "key": "p10-05",
+      "page": 10,
+      "xref": 178,
+      "supplierName": "CAMINO SOLO",
+      "name": "Camino Solo Verde",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-06",
+      "page": 10,
+      "xref": 179,
+      "supplierName": "CAMINO SOLO",
+      "name": "Camino Solo Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-07",
+      "page": 10,
+      "xref": 180,
+      "supplierName": "CIUDAD DE LA FURIA",
+      "name": "Ciudad de la Furia Roja",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-08",
+      "page": 10,
+      "xref": 181,
+      "supplierName": "CULTURA CHINA #1",
+      "name": "Cultura China #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-09",
+      "page": 10,
+      "xref": 182,
+      "supplierName": "FALSA LIBERTAD",
+      "name": "Falsa Libertad",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-10",
+      "page": 10,
+      "xref": 183,
+      "supplierName": "GANJA",
+      "name": "Ganja",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-11",
+      "page": 10,
+      "xref": 170,
+      "supplierName": "GLADIATOR",
+      "name": "Gladiator",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-12",
+      "page": 10,
+      "xref": 171,
+      "supplierName": "PITUFO",
+      "name": "Pitufo Urbano",
+      "decision": "nuevo",
+      "line": "cartoon",
+      "category": "Los Pitufos"
+    },
+    {
+      "key": "p10-13",
+      "page": 10,
+      "xref": 172,
+      "supplierName": "CIUDAD DE LA FURIA",
+      "name": "Ciudad De La Furia",
+      "decision": "excluido",
+      "line": "urbanos",
+      "category": "Urbanos",
+      "reason": "Capa de imagen superpuesta de Ciudad de la Furia"
+    },
+    {
+      "key": "p10-14",
+      "page": 10,
+      "xref": 173,
+      "supplierName": "BLACK MERCURY SPC",
+      "name": "Black Mercury",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-15",
+      "page": 10,
+      "xref": 174,
+      "supplierName": "DEMONIOS INTERNOS SPC",
+      "name": "Demonios Internos",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p10-16",
+      "page": 10,
+      "xref": 175,
+      "supplierName": "EVOLUTION #1",
+      "name": "Evolution #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-01",
+      "page": 11,
+      "xref": 186,
+      "supplierName": "TIEMPO LIMITADO",
+      "name": "Tiempo Limitado",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-02",
+      "page": 11,
+      "xref": 187,
+      "supplierName": "TUPAC VERDE SPC",
+      "name": "Tupac Verde",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Tupac"
+    },
+    {
+      "key": "p11-03",
+      "page": 11,
+      "xref": 192,
+      "supplierName": "BLACK LIST",
+      "name": "Black List",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-04",
+      "page": 11,
+      "xref": 193,
+      "supplierName": "CANNABIS",
+      "name": "Cannabis",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-05",
+      "page": 11,
+      "xref": 194,
+      "supplierName": "CERBERUS #1",
+      "name": "Cerberus #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-06",
+      "page": 11,
+      "xref": 195,
+      "supplierName": "CHINESE DINASTY",
+      "name": "Chinese Dynasty",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-07",
+      "page": 11,
+      "xref": 196,
+      "supplierName": "FUERZA ANIMAL #1",
+      "name": "Fuerza Animal #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-08",
+      "page": 11,
+      "xref": 197,
+      "supplierName": "FURIA DESATADA SPC",
+      "name": "Furia Desatada",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-09",
+      "page": 11,
+      "xref": 198,
+      "supplierName": "LOUD PACK",
+      "name": "Loud Pack",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-10",
+      "page": 11,
+      "xref": 199,
+      "supplierName": "LOVE STORY",
+      "name": "Love Story",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-11",
+      "page": 11,
+      "xref": 188,
+      "supplierName": "MICKEY FIRE",
+      "name": "Mickey Fire Verde",
+      "decision": "nuevo",
+      "line": "cartoon",
+      "category": "Disney"
+    },
+    {
+      "key": "p11-12",
+      "page": 11,
+      "xref": 189,
+      "supplierName": "MUSIC #2 SPC",
+      "name": "Music #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-13",
+      "page": 11,
+      "xref": 190,
+      "supplierName": "NATIVO AMERICANO #2",
+      "name": "Nativo Americano #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p11-14",
+      "page": 11,
+      "xref": 191,
+      "supplierName": "NATIVO AMERICANO #1",
+      "name": "Nativo Americano #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-01",
+      "page": 12,
+      "xref": 202,
+      "supplierName": "MENTE SERENA SPC",
+      "name": "Mente Serena",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-02",
+      "page": 12,
+      "xref": 203,
+      "supplierName": "ESTE ES MI MUNDO SPC",
+      "name": "Este Es Mi Mundo",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-03",
+      "page": 12,
+      "xref": 207,
+      "supplierName": "ESPIRITU SAMURAI #2 SPC",
+      "name": "Espiritu Samurai #2",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-04",
+      "page": 12,
+      "xref": 208,
+      "supplierName": "VIEJA ESCUELA SPC",
+      "name": "Vieja Escuela",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-05",
+      "page": 12,
+      "xref": 209,
+      "supplierName": "RAP SPC NEGRA",
+      "name": "Canserbero RAP Negra",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Canserbero"
+    },
+    {
+      "key": "p12-06",
+      "page": 12,
+      "xref": 210,
+      "supplierName": "CONTROLA EL JUEGO SPC",
+      "name": "Controla El Juego",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-07",
+      "page": 12,
+      "xref": 211,
+      "supplierName": "EGIPTO #1 SPC",
+      "name": "Egipto #1",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-08",
+      "page": 12,
+      "xref": 212,
+      "supplierName": "PURGATORIUM SPC",
+      "name": "Purgatorium",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-09",
+      "page": 12,
+      "xref": 213,
+      "supplierName": "POISON SPC",
+      "name": "Poison",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-10",
+      "page": 12,
+      "xref": 214,
+      "supplierName": "BAD BUNNY #1",
+      "name": "Bad Bunny #1 Lila",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Bad Bunny"
+    },
+    {
+      "key": "p12-11",
+      "page": 12,
+      "xref": 204,
+      "supplierName": "BAD BUNNY #2",
+      "name": "Bad Bunny #2 Hueso",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Bad Bunny"
+    },
+    {
+      "key": "p12-12",
+      "page": 12,
+      "xref": 205,
+      "supplierName": "NUEVO ORDEN MUNDIAL",
+      "name": "Nuevo Orden Mundial",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Urbanos"
+    },
+    {
+      "key": "p12-13",
+      "page": 12,
+      "xref": 206,
+      "supplierName": "PENNY WISE",
+      "name": "Pennywise IT",
+      "decision": "nuevo",
+      "line": "urbanos",
+      "category": "Terror y Cine"
+    }
+  ]
+}

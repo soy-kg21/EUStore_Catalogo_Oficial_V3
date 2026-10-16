@@ -1,0 +1,25 @@
+/* Original home social cards; only the surrounding title and spacing are new. */
+main.page{padding-bottom:0}
+.section{
+ padding:48px 4% 60px;
+ color:#f4f6ee;
+ background:radial-gradient(ellipse at 50% 130%,#ccff0033,transparent 70%),#111510;
+ text-align:center;
+ font-family:Arial,Helvetica,sans-serif;
+}
+.section h2{
+ max-width:720px;
+ margin:0 auto;
+ font:600 clamp(38px,4.5vw,62px)/1 EUCinemaDisplay,Impact,Arial,sans-serif;
+ letter-spacing:-.015em;
+ text-transform:uppercase;
+ text-wrap:balance;
+}
+.section h2 span{color:#ccff00}
+.section :global(.social-grid){margin-top:30px}
+.section :global(.social-grid a){color:#f4f6ee}
+@media(max-width:700px){
+ .section{padding:34px 5% calc(80px + env(safe-area-inset-bottom))}
+ .section h2{font-size:clamp(33px,9vw,45px)}
+ .section :global(.social-grid){margin-top:24px}
+}

@@ -1,0 +1,57 @@
+EVOLUCIÓN URBANA — ANIME SHOP ACTUALIZADO
+Revisión 14 de octubre de 2026
+
+PROYECTO PREPARADO PARA PUBLICAR EN EL VERCEL EXISTENTE
+Esta entrega modifica Anime Shop. No se ha publicado en el dominio ni se ha actualizado Meta desde esta conversación.
+
+CAMBIOS
+- Portada editorial más limpia, imágenes Hellsing y Gojo con frente y espalda, oferta y navegación claras.
+- Estilos nuevos aislados del catálogo general. Se conservan inicio general, carrito, header, footer, datos y motor de tarifas general.
+- Oferta principal: 2 POR $99.000, sin asterisco. Condiciones escritas aparte.
+- Totales públicos por cantidad: 1=$68.000; 2=$99.000; 3=$129.000; 4=$159.000; 5=$195.000.
+- Mayoristas: 6-11=$38.400 c/u; 12-23=$33.300 c/u; desde 24, cotización. Desde 6: anticipado, sin contraentrega y transporte separado.
+- La barra de selección muestra mercancía según cantidad y mantiene tallas y referencias al continuar por WhatsApp.
+- Se consolidan22 tarjetas duplicadas confirmadas visualmente; se conserva la presentación más completa.41 alias en total preservan referencias antiguas. Los archivos de imagen anteriores se conservan.
+- Se añaden20 camisetas nuevas del último ZIP: EU-ANIME-1231 a1250.18 Urbanos y2 Cartoon. Sus fotografías originales se conservan sin recrear estampados ni atribuir tejido desconocido.
+- Resultado:1.209 tarjetas:644 Anime,163 Cartoon,170 Rock,232 Urbanos.
+
+ENLACES NUEVOS
+Anime: https://www.evolucionurbana.store/anime
+Cartoon: https://www.evolucionurbana.store/cartoon
+Rock: https://www.evolucionurbana.store/rock
+Urbanos: https://www.evolucionurbana.store/urbanos
+Todas: https://www.evolucionurbana.store/shop
+Naruto: https://www.evolucionurbana.store/anime/naruto
+Dragon Ball: https://www.evolucionurbana.store/anime/dragon-ball
+Terror y Cine: https://www.evolucionurbana.store/urbanos/terror-y-cine
+Producto de ejemplo: https://www.evolucionurbana.store/p/125
+Los filtros y la búsqueda nuevos no añaden parámetros a la URL. El historial del navegador conserva el estado de búsqueda de la sesión; compartir una ruta comparte su colección. Los enlaces largos anteriores siguen resolviendo y se normalizan en la tienda. Los productos anteriores redirigen a su ficha corta.
+
+INSTALACIÓN Y VERIFICACIÓN
+Usar Node>=22.13.0 y pnpm 11.25.0, como el proyecto original. Dentro de esta carpeta:
+
+pnpm install --frozen-lockfile
+pnpm test:anime
+pnpm test:anime-shop
+pnpm test:anime-merchandising
+pnpm build:vercel
+
+Conservar variables del proyecto Vercel existente; esta entrega no incluye archivos de entorno privados. No reemplazar secretos de producción con archivos de ejemplo. Subir esta fuente al mismo repositorio/proyecto usado actualmente, revisar el despliegue previo y después publicar. No crear otra tienda ni cambiar dominio por esta actualización.
+
+WHATSAPP
+El ZIP WhatsApp_Actualizado contiene siete reglas, nueve fichas, fuentes revisadas, índice completo con enlaces cortos e instrucciones de sustitución. Publicar primero la web para que las rutas nuevas funcionen antes de enviarlas a clientes. Único cupón privado: dos por $93.000 tras cuatro horas de silencio del cliente y con cuatro horas para reclamar desde el envío efectivo, sólo con los requisitos de Regla 3. La espera se cuenta en horas transcurridas como supuesto de trabajo; no se ha confirmado un calendario de horas hábiles. Sin reclamo al vencer, vuelve a dos por $99.000 si la promoción sigue vigente. No hay segundo cupón ni rama para chats antiguos. El catálogo y su cálculo conservan precios públicos; WhatsApp recupera un reclamo válido del mismo chat al recibir la selección web. Reemplazar las fuentes por EU_00 V10 y EU_02 V8 del paquete WhatsApp más reciente, conservar EU_01 V7 e Índice V2. Ajustar también la automatización real de seguimiento: cargar conocimiento no cambia sus temporizadores. Este cambio sólo actualiza esta guía, sin modificar código, tarifas ni productos de la web.
+
+COMPROBACIONES REALIZADAS
+- Compilación Next.js 16.3.4 y TypeScript correctas.
+- Integridad de1.250 registros (1.209 canónicos,41 alias), imágenes y referencias.
+- 8.650comprobaciones de merchandising y prueba de tarifas, límites mayoristas, rutas y alias.
+- HTML generado de1.250rutas cortas de producto revisado para enlaces y saltos de línea del mensaje Anime Shop.
+- 3.012 cotizaciones del catálogo general comparadas con la fuente original: idénticas.
+- Prueba general heredada scripts/test-commerce.ts: expectativa antigua de 402.000 frente a 399.600. Falla también en la copia original. No se modifica el motor general para satisfacer esa expectativa.
+- Sin prueba visual interactiva de navegador en este entorno. Revisar antes de publicar en móvil y escritorio: portada, filtros, selección, navegación atrás y WhatsApp. La compilación no sustituye esa revisión visual.
+- Los 22 duplicados corresponden a casos confirmados. Variantes dudosas se conservan para evitar eliminar productos diferentes.
+
+DETALLE
+Datos de nuevas altas:data/anime-incoming-2026-10-14.json.
+Consolidaciones:data/anime-deduplication.json.
+Verificación:docs/VERIFICACION_ANIME_PREMIUM_2026-10-14.json.

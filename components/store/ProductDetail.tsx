@@ -2,9 +2,8 @@
 
 import ProductPrice from './ProductPrice';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Check, Maximize2, MessageCircle, ShoppingBag } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { readCart, saveCart } from '@/lib/cart';
 import { money, ORIGIN, wa } from '@/lib/config';
@@ -12,6 +11,22 @@ import type { Product } from '@/lib/types';
 
 export default function ProductDetail({ product }: { product: Product }) {
   const [active, setActive] = useState(0);
+  const gallery = useRef<HTMLDivElement>(null);
+  const activePhoto = useRef(0);
+  const selectPhoto = (index: number) => {
+    const rail = gallery.current;
+    if (!rail) return;
+    rail.scrollTo({ left: index * rail.clientWidth, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  };
+  useEffect(() => {
+    const rail = gallery.current;
+    if (!rail) return;
+    const observer = new ResizeObserver(() => {
+      rail.scrollTo({ left: activePhoto.current * rail.clientWidth, behavior: 'instant' });
+    });
+    observer.observe(rail);
+    return () => observer.disconnect();
+  }, []);
   const [size, setSize] = useState('');
   const [feedback, setFeedback] = useState('');
 
@@ -74,14 +89,24 @@ export default function ProductDetail({ product }: { product: Product }) {
     <div className="detail-grid">
       <section aria-label="Galería del producto">
         <div className="gallery-main">
-          <Image
-            src={product.images[active]}
-            alt={`${product.name}, vista ${active + 1}`}
-            width={800}
-            height={1000}
-            sizes="(max-width: 850px) 100vw, 50vw"
-            preload
-          />
+          <div ref={gallery} className="product-photo-rail" tabIndex={product.images.length > 1 ? 0 : undefined} aria-label="Fotografías del producto. Desliza para ver más."
+            onScroll={event => {
+              const rail = event.currentTarget;
+              const index = Math.min(product.images.length - 1, Math.max(0, Math.round(rail.scrollLeft / Math.max(1, rail.clientWidth))));
+              activePhoto.current = index;
+              setActive(index);
+            }}
+            onKeyDown={event => {
+              if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                event.preventDefault();
+                selectPhoto(Math.min(product.images.length - 1, Math.max(0, active + (event.key === 'ArrowRight' ? 1 : -1))));
+              }
+            }}>
+            {product.images.map((image, index) => <div className="product-photo-slide" key={image}>
+              <Image src={image} alt={`${product.name}, vista ${index + 1}`} width={800} height={1000} sizes="(max-width: 850px) 100vw, 50vw" preload={index === 0} draggable={false} />
+            </div>)}
+          </div>
+          {product.images.length > 1 && <span className="gallery-position" aria-live="polite">{active + 1} / {product.images.length}</span>}
           <Dialog>
             <DialogTrigger className="gallery-zoom" aria-label="Ampliar fotografía"><Maximize2 size={18} /></DialogTrigger>
             <DialogContent className="max-w-[90vw] sm:max-w-[800px]">
@@ -92,7 +117,7 @@ export default function ProductDetail({ product }: { product: Product }) {
         </div>
         <div className="thumbnails">
           {product.images.map((image, index) => (
-            <button key={image} aria-label={`Ver foto ${index + 1}`} aria-pressed={index === active} onClick={() => setActive(index)}>
+            <button key={image} aria-label={`Ver foto ${index + 1}`} aria-pressed={index === active} onClick={() => selectPhoto(index)}>
               <Image src={image.replace('.webp', '-480.webp')} alt={`Vista ${index + 1}`} width={80} height={100} sizes="80px" />
             </button>
           ))}

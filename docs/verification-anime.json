@@ -1,0 +1,121 @@
+{
+  "revision": "2026-10-10-urbano-1",
+  "baseline": "Actualización previa de siete PDF; 1.028 productos canónicos",
+  "build": "PASS; Next 16.3.4; TypeScript; 1.248 páginas generadas",
+  "lint": {
+    "errors": 0,
+    "warnings": 3,
+    "description": "Avisos anteriores de img en Header; interfaz conservada"
+  },
+  "catalog": {
+    "addedThisRevision": 183,
+    "newTotal": 1023,
+    "existingCanonical": 188,
+    "canonicalTotal": 1211,
+    "historicalAliases": 19,
+    "lineCounts": {
+      "anime": 665,
+      "cartoon": 161,
+      "rock": 171,
+      "urbanos": 214
+    },
+    "weightedBlocksChecked": 60
+  },
+  "eighthPdf": {
+    "pages": 12,
+    "new": 183,
+    "existingDuplicates": 3,
+    "coverOrEditorialPhotosExcluded": 6,
+    "overlappingImageLayersExcluded": 1
+  },
+  "http": {
+    "newDetailsVerified": 183,
+    "newGlobalSearchResultsVerified": 183,
+    "newThumbnailsVerified": 183,
+    "fourLineFilters": "PASS",
+    "newTerrorFilter": "PASS",
+    "globalSearch": "PASS",
+    "historicalRedirects308": 19,
+    "notFound404": "PASS"
+  },
+  "generalPricingHttpCases": 38,
+  "generalV2HttpCases": 30,
+  "preservation": {
+    "preservedRecords": 1047,
+    "newRecords": 183,
+    "changedBaselineFiles": [
+      "data/anime-catalog.json",
+      "data/anime-image-map.csv",
+      "data/anime-import-ledger.json",
+      "data/anime-index.json",
+      "docs/meta-catalog-context.json"
+    ],
+    "newImagesDecoded": 549
+  },
+  "importIdempotency": "PASS; segunda ejecución no agrega registros ni sobrescribe imágenes",
+  "browserThisRevision": "No ejecutado: no se modificó código de interfaz ni CSS. Pruebas anteriores en el registro histórico.",
+  "productionPublishedThisRevision": false,
+  "metaAgentConfigured": false,
+  "previousRevisionVerification": {
+    "date": "2026-10-10",
+    "build": "PASS; Next 16.3.4 production and TypeScript; 1065 generated routes",
+    "lint": {
+      "errors": 0,
+      "warnings": 3,
+      "description": "Existing img elements in shared Header"
+    },
+    "catalog": {
+      "new": 840,
+      "existingCanonical": 188,
+      "canonicalTotal": 1028,
+      "historicalAliases": 19,
+      "lineCounts": {
+        "anime": 663,
+        "cartoon": 153,
+        "rock": 171,
+        "urbanos": 41
+      },
+      "weightedBlocksChecked": 59
+    },
+    "httpAnime": "PASS; four SSR filters, unified search API, full search results, new detail, 19 permanent 308 redirects and 404",
+    "generalPricingHttpCases": 38,
+    "generalV2HttpCases": 30,
+    "browser": {
+      "checks": 25,
+      "errors": [],
+      "viewports": [
+        "1440x1000",
+        "375x812"
+      ],
+      "selection": "legacy, invalid JSON, size persistence, multi-tab",
+      "filters": "four deep links, category, search, back navigation",
+      "screenshots": [
+        "catalog-desktop.png",
+        "catalog-mobile.png"
+      ]
+    },
+    "assets": {
+      "decoded": 3084,
+      "bad": [],
+      "cssUnchanged": true,
+      "generalSourcesUnchanged": [
+        "data/catalog.json",
+        "data/pricing-policy.json",
+        "data/commercial-groups.json",
+        "data/product-editorial.json",
+        "lib/pricing.ts",
+        "lib/commercial.ts",
+        "lib/products.ts"
+      ]
+    },
+    "imageBytes": {
+      "sourceBytes": 123998303,
+      "detailBytes": 123653485,
+      "cardBytes": 58526186,
+      "backdropBytes": 896418
+    },
+    "productionPublished": false,
+    "metaAgentConfigured": false,
+    "globalSearch": "PASS; home and offers header, Anime header, both sources, full results and pagination, mobile, correct product links, prices and filters"
+  }
+}

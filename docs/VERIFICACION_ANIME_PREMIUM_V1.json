@@ -1,0 +1,61 @@
+{
+  "version": "2026-10-15-anime-premium-v1",
+  "source_zip_sha256": "142df5846c65b1ae2433f7999b443e1570b405fa21688d671c518240fa48cbbf",
+  "production_build": "passed",
+  "typescript": "passed during production build",
+  "catalog": {
+    "canonical_products": 1209,
+    "historical_aliases": 41,
+    "anime": 644,
+    "cartoon": 163,
+    "rock": 170,
+    "urbanos": 232
+  },
+  "tests": {
+    "inventory": "passed",
+    "commercial_rules": "passed",
+    "merchandising_assertions": 5659,
+    "premium_assertions": 6342,
+    "production_assertions": 1230,
+    "general_commercial_cases": 38,
+    "generated_product_html_checked": 1209,
+    "missing_css_classes": 0
+  },
+  "protected_files_unchanged": [
+    "data/catalog.json",
+    "data/pricing-policy.json",
+    "data/commercial-rules.json",
+    "lib/pricing.ts",
+    "lib/commercial.ts",
+    "app/page.tsx",
+    "app/catalogo/page.tsx",
+    "app/carrito/page.tsx",
+    "app/layout.tsx",
+    "app/globals.css",
+    "app/premium.css",
+    "app/enhancements.css",
+    "components/store/Cart.tsx",
+    "components/store/ProductDetail.tsx",
+    "components/store/Footer.tsx",
+    "data/anime-catalog.json",
+    "data/anime-index.json",
+    "pnpm-lock.yaml"
+  ],
+  "scope": {
+    "original_zip": "unchanged",
+    "general_catalog_and_prices": "unchanged",
+    "deployment": "not performed",
+    "whatsapp_ai_agent": "not changed",
+    "campaigns": "not changed"
+  },
+  "limits": [
+    "Sin revisión visual interactiva de navegador en este entorno. Revisar en móvil y PC antes de publicar.",
+    "La clasificación de dobles procede de la lista visual existente normalizada; el resto no se etiqueta como estampado sencillo confirmado.",
+    "No se dispone de ventas por referencia para afirmar más vendidas."
+  ],
+  "local_review": {
+    "port": 5174,
+    "url": "http://localhost:5174/anime",
+    "guide": "LEEME_ANIME_PREMIUM_V1.txt"
+  }
+}

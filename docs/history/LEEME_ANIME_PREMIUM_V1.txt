@@ -1,0 +1,104 @@
+EVOLUCIÓN URBANA / ANIME SHOP PREMIUM V1
+Entrega independiente - 15 de octubre de 2026
+
+EMPIEZA AQUÍ
+Esta carpeta es una versión de trabajo separada. No reemplaces la carpeta original.
+Conserva EUStore_Catalogo_Original-15-10-2026.zip sin sobrescribirlo.
+Extrae esta entrega en una carpeta nueva, por ejemplo C:\Proyectos\EUStore_Anime_Premium_V1.
+No se incluyen node_modules, compilaciones, cachés, tokens ni enlaces de publicación.
+
+INSTALAR EN WINDOWS
+1. Abre ÚNICAMENTE esta carpeta nueva en VS Code.
+2. Usa Node.js >=22.13.0 y pnpm 11.25.0, como la fuente recibida.
+3. En la terminal PowerShell de esta carpeta:
+
+   Copy-Item .env.example .env.local
+   pnpm install --frozen-lockfile
+   pnpm dev
+
+4. Abre http://localhost:5174/anime
+
+La versión anterior puede seguir en 5173. El puerto 5174 separa los datos del
+navegador. La selección Premium usa además una clave distinta de la original.
+.env.local creado desde el ejemplo solo contiene configuración de revisión.
+No copies el .env.local de producción a esta carpeta por rutina.
+
+QUÉ CAMBIÓ
+- Portadas y protagonistas propios para Anime, Cartoon, Rock y Urbanos.
+- Interfaz editorial de streetwear: negro, blanco hueso y acento lima.
+- Diseño adaptable de portada, tarjetas, filtros, fichas, ampliación y vista rápida.
+- Cinco dobles y un diseño de la lista restante desde la primera tarjeta.
+- Normalización de prioridades y códigos antiguos; se retiran referencias alias
+  de las listas de destacados sin borrar ningún producto del inventario.
+- Ruta única de ficha /p/NNN; enlaces históricos redirigidos permanentemente.
+- Categorías de las cuatro líneas con páginas válidas y búsqueda compartible.
+- Conservación de parámetros de campaña al filtrar y eventos internos del recorrido.
+- Un combo Anime para cabecera, catálogo y ficha; cantidades y tallas independientes.
+- Cotización pública por cantidad y mensaje de WhatsApp con el total correcto.
+- Datos desconocidos se mantienen por confirmar; no se inventan algodón ni gramaje.
+- Imágenes adaptables con next/image; las fotos del proveedor conservan sus diseños.
+
+ORDEN DE PRODUCTOS
+La regla se aplica solamente en Anime Shop y sus líneas. Primero se filtra la
+colección y luego se ordena: 5 dobles confirmadas en la lista visual existente,
+1 referencia de la lista restante, y repetir. Al agotarse las dobles se muestran
+las demás. La secuencia continúa al cargar más; no se reinicia cada pantalla.
+La lista restante puede incluir referencias pendientes de verificar; no se les
+muestra una etiqueta de estampado sencillo sin evidencia. No hay cifras de ventas
+para llamar a la selección "más vendidas"; se usa una selección editorial.
+Anime comienza con Gojo 483, Hellsing 125, Luffy 491, Killua 504 y ANBU 147.
+
+INVENTARIO Y PRECIOS
+Se conservan 1.209 productos canónicos y 41 alias, con las mismas fotografías.
+Anime 644; Cartoon 163; Rock 170; Urbanos 232.
+Precios públicos por cantidad: 1=$68.000, 2=$99.000, 3=$129.000,
+4=$159.000, 5=$195.000 COP. Desde 6 hasta 11: $38.400 por unidad;
+desde 12 hasta 23: $33.300; desde 24: cotización personalizada.
+De 1 a 5: envío estándar incluido y contraentrega sujetos a cobertura.
+Desde 6: anticipado y transporte separado por cotizar.
+El catálogo general conserva inventario, reglas comerciales y motor de precios.
+
+RUTAS PARA REVISAR
+/anime
+/cartoon
+/rock
+/urbanos
+/shop
+/anime/naruto
+/anime/dragon-ball
+/urbanos/terror-y-cine
+/p/483
+/p/125
+/anime/eu-anime-395  (alias antiguo -> /p/016)
+
+VERIFICAR
+pnpm test:anime
+pnpm test:anime-shop
+pnpm test:anime-merchandising
+pnpm test:anime-premium
+pnpm build:vercel
+pnpm test:anime-build
+
+La validación exacta de esta entrega figura en docs/VERIFICACION_ANIME_PREMIUM_V1.json.
+En este entorno no se dispone de revisión visual interactiva con navegador.
+Antes de publicar, revisa PC y móvil: enlaces directos, recarga, botón atrás,
+filtros, mostrar más, vista rápida, ampliación, tallas, cantidades y WhatsApp.
+Un clic de WhatsApp no se registra como venta confirmada.
+No se configuraron Meta Pixel, Google Analytics, campañas ni el agente de WhatsApp IA.
+Los eventos eu-anime-event son eventos internos, listos para una integración posterior.
+
+PUBLICAR SIN ALTERAR LA TIENDA ACTUAL
+Esta entrega no se ha conectado ni publicado en tu Vercel actual.
+Para revisar en internet utiliza un repositorio y un proyecto de Vercel nuevos.
+Configura NEXT_PUBLIC_SITE_URL con la URL de ese entorno e INDEXING_ENABLED=false.
+Mantén Supabase vacío para trabajar con la instantánea local incluida.
+No vincules este directorio al repositorio o proyecto original por accidente.
+Cuando decidas sustituir una versión pública, elige conscientemente el proyecto
+de destino y sus variables. Renombrar una carpeta no separa servicios externos.
+
+FLUJO TÉCNICO
+Los comandos principales usan Next.js, no Vite. La fuente contiene archivos
+históricos de Vite/Sites; no se necesita .sites-runtime para ejecutar Next.js.
+No ejecutes migraciones ni scripts de bases de datos para revisar el catálogo.
+No hacen falta credenciales de producción para instalarlo ni para usarlo localmente.
+Los documentos anteriores se conservan como historial; esta guía es la vigente.

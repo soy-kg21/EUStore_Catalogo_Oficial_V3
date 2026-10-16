@@ -1,1 +1,12 @@
-import {ORIGIN} from '@/lib/config';export default function robots(){return {rules:process.env.INDEXING_ENABLED==='true'?{userAgent:'*',allow:'/',disallow:['/api/','/carrito']}:{userAgent:'*',disallow:'/'},sitemap:ORIGIN+'/sitemap.xml'}}
+import type {MetadataRoute} from 'next';
+import {ORIGIN} from '@/lib/config';
+import {isIndexingEnabled} from '@/lib/seo';
+
+export default function robots():MetadataRoute.Robots {
+  return {
+    rules:isIndexingEnabled()
+      ? {userAgent:'*',allow:'/',disallow:['/api/']}
+      : {userAgent:'*',disallow:'/'},
+    sitemap:ORIGIN+'/sitemap.xml',
+  };
+}

@@ -1,0 +1,2328 @@
+{
+  "sourceSha256": "cae4ea5ef042887011f41f047545ba015fca437d286f0dbedec7f1e5264c7266",
+  "sheets": {
+    "01_Productos_Maestros_B1": 253,
+    "02_Grupos_Comerciales": 44,
+    "03_Imagenes_Catalogo": 279,
+    "04_Fichas_WA_IA": 253,
+    "05_Promociones_Ofertas": 48,
+    "06_URL_Catalogo": 253,
+    "07_Capa_13_IA": 4161,
+    "08_Control_Operativo": 263,
+    "09_Auditoria_B1": 356
+  },
+  "total": 253,
+  "active": 251,
+  "byState": {
+    "active": 248,
+    "review": 3,
+    "inactive": 2
+  },
+  "byCategory": {
+    "zapatillas": 128,
+    "camisetas": 67,
+    "conjuntos": 58
+  },
+  "stockUnknown": 253,
+  "issues": [
+    {
+      "id": "zap_imp_001",
+      "issue": "Imagen ausente",
+      "source": "imagenes/zapatillas_importadas/zap_imp_001_1.webp"
+    },
+    {
+      "id": "zap_imp_001",
+      "issue": "Imagen ausente",
+      "source": "imagenes/zapatillas_importadas/zap_imp_001_2.webp"
+    },
+    {
+      "id": "zap_imp_002",
+      "issue": "Imagen ausente",
+      "source": "imagenes/zapatillas_importadas/zap_imp_002_1.webp"
+    },
+    {
+      "id": "zap_imp_002",
+      "issue": "Imagen ausente",
+      "source": "imagenes/zapatillas_importadas/zap_imp_002_2.webp"
+    }
+  ],
+  "products": [
+    {
+      "id": "zap_nac_b1_052",
+      "sku": "ZN-B1-052",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/mary-jane-negro-b1-052",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_054",
+      "sku": "ZN-B1-054",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/mary-jane-marfil-b1-054",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_070",
+      "sku": "ZN-B1-070",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/calzado-deportivo-clasico-blanco-b1-070",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_071",
+      "sku": "ZN-B1-071",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/calzado-deportivo-clasico-plata-b1-071",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_072",
+      "sku": "ZN-B1-072",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/calzado-deportivo-clasico-negro-b1-072",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_073",
+      "sku": "ZN-B1-073",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/calzado-deportivo-clasico-dorado-b1-073",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_074",
+      "sku": "ZN-B1-074",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/calzado-deportivo-clasico-cafe-b1-074",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_075",
+      "sku": "ZN-B1-075",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/price-shoes-v2-negro-b1-075",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_076",
+      "sku": "ZN-B1-076",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/price-shoes-v2-blanco-b1-076",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_019",
+      "sku": "ZN-B1-019",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-samba-jane-blanco-b1-019",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_043",
+      "sku": "ZN-B1-043",
+      "state": "review",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-samba-jane-negro-b1-043",
+      "stock": null,
+      "issue": "Las dos fotos parecen café/blanco; el código y el Excel indican negro. Confirmar color con proveedor."
+    },
+    {
+      "id": "zap_nac_b1_044",
+      "sku": "ZN-B1-044",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-samba-jane-negro-b1-044",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_045",
+      "sku": "ZN-B1-045",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-samba-jane-beige-b1-045",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_035",
+      "sku": "ZN-B1-035",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/calzado-deportivo-b054-beige-claro-b1-035",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_036",
+      "sku": "ZN-B1-036",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/calzado-deportivo-b054-negro-b1-036",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_009",
+      "sku": "ZN-B1-009",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/mocasin-de-gamuza-cafe-b1-009",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_058",
+      "sku": "ZN-B1-058",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/price-shoes-beige-b1-058",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_067",
+      "sku": "ZN-B1-067",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/price-shoes-blanco-dorado-b1-067",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_068",
+      "sku": "ZN-B1-068",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/price-shoes-negro-b1-068",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_024",
+      "sku": "ZN-B1-024",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/veja-volley-blanco-negro-b1-024",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_053",
+      "sku": "ZN-B1-053",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/veja-volley-negro-b1-053",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_055",
+      "sku": "ZN-B1-055",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/veja-volley-blanco-b1-055",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_059",
+      "sku": "ZN-B1-059",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/alo-yoga-negro-b1-059",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_060",
+      "sku": "ZN-B1-060",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/alo-yoga-cafe-b1-060",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_061",
+      "sku": "ZN-B1-061",
+      "state": "review",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/alo-yoga-negro-b1-061",
+      "stock": null,
+      "issue": "Las dos fotos muestran tono café oscuro; el código y el Excel indican negro. Confirmar color con proveedor."
+    },
+    {
+      "id": "zap_nac_b1_030",
+      "sku": "ZN-B1-030",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/polo-club-negro-b1-030",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_056",
+      "sku": "ZN-B1-056",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/polo-club-azul-oscuro-b1-056",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_057",
+      "sku": "ZN-B1-057",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/polo-club-blanco-beige-b1-057",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_021",
+      "sku": "ZN-B1-021",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-samba-og-blanco-b1-021",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_029",
+      "sku": "ZN-B1-029",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-tokio-blanco-b1-029",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_031",
+      "sku": "ZN-B1-031",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-tokio-negro-b1-031",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_032",
+      "sku": "ZN-B1-032",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-tokio-beige-b1-032",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_048",
+      "sku": "ZN-B1-048",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-tokio-cafe-b1-048",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_012",
+      "sku": "ZN-B1-012",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-4-ff-negro-azul-b1-012",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_013",
+      "sku": "ZN-B1-013",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-4-ff-negro-naranja-b1-013",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_014",
+      "sku": "ZN-B1-014",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-4-ff-azul-b1-014",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_015",
+      "sku": "ZN-B1-015",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-4-ff-negro-verde-b1-015",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_018",
+      "sku": "ZN-B1-018",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-4-ff-negro-blanco-b1-018",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_049",
+      "sku": "ZN-B1-049",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-4-ff-negro-gris-b1-049",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_050",
+      "sku": "ZN-B1-050",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-4-ff-negro-b1-050",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_007",
+      "sku": "ZN-B1-007",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-5-negro-verde-b1-007",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_008",
+      "sku": "ZN-B1-008",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-5-blanco-b1-008",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_022",
+      "sku": "ZN-B1-022",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/asics-novablast-5-azul-b1-022",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_062",
+      "sku": "ZN-B1-062",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/big-star-tokyo-gamuza-rosa-b1-062",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_063",
+      "sku": "ZN-B1-063",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/big-star-tokyo-gamuza-roja-b1-063",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_064",
+      "sku": "ZN-B1-064",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/big-star-tokyo-gamuza-cafe-b1-064",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_065",
+      "sku": "ZN-B1-065",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/big-star-tokyo-gamuza-ceniza-b1-065",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_066",
+      "sku": "ZN-B1-066",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/big-star-tokyo-gamuza-negra-b1-066",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_001",
+      "sku": "ZN-B1-001",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-vaporfly-4-gris-blanco-b1-001",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_016",
+      "sku": "ZN-B1-016",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-vomero-18-blanco-amarillo-rojo-b1-016",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_020",
+      "sku": "ZN-B1-020",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-vomero-18-blanco-verde-b1-020",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_023",
+      "sku": "ZN-B1-023",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-vomero-18-negro-azul-b1-023",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_051",
+      "sku": "ZN-B1-051",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-vomero-18-negro-blanco-b1-051",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_004",
+      "sku": "ZN-B1-004",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-vomero-5-negro-b1-004",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_017",
+      "sku": "ZN-B1-017",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudmonster-negro-naranja-b1-017",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_002",
+      "sku": "ZN-B1-002",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudsurfer-gris-b1-002",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_033",
+      "sku": "ZN-B1-033",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudsurfer-negro-b1-033",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_038",
+      "sku": "ZN-B1-038",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudsurfer-gris-fucsia-b1-038",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_039",
+      "sku": "ZN-B1-039",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudsurfer-blanco-b1-039",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_003",
+      "sku": "ZN-B1-003",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudtilt-blanco-rojo-b1-003",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_006",
+      "sku": "ZN-B1-006",
+      "state": "review",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudtilt-negro-b1-006",
+      "stock": null,
+      "issue": "Las dos fotos muestran beige; el código y el Excel indican negro. Confirmar color con proveedor antes de publicar o recomendar."
+    },
+    {
+      "id": "zap_nac_b1_028",
+      "sku": "ZN-B1-028",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudtilt-negro-b1-028",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_034",
+      "sku": "ZN-B1-034",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudtilt-gris-verde-b1-034",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_037",
+      "sku": "ZN-B1-037",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudtilt-gris-blanco-b1-037",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_025",
+      "sku": "ZN-B1-025",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/onitsuka-tiger-tokuten-beige-azul-oscuro-b1-025",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_026",
+      "sku": "ZN-B1-026",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/onitsuka-tiger-tokuten-negro-b1-026",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_046",
+      "sku": "ZN-B1-046",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/onitsuka-tiger-tokuten-tierra-beige-b1-046",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_047",
+      "sku": "ZN-B1-047",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/onitsuka-tiger-tokuten-blanco-miel-b1-047",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_010",
+      "sku": "ZN-B1-010",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/reebok-club-c-bulc-blanco-verde-b1-010",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_011",
+      "sku": "ZN-B1-011",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/reebok-club-c-bulc-negro-b1-011",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_041",
+      "sku": "ZN-B1-041",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/reebok-club-c-bulc-blanco-b1-041",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_005",
+      "sku": "ZN-B1-005",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/vans-hylane-negro-b1-005",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_027",
+      "sku": "ZN-B1-027",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/vans-hylane-blanco-b1-027",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_069",
+      "sku": "ZN-B1-069",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-japan-blanco-negro-b1-069",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_040",
+      "sku": "ZN-B1-040",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/miu-beige-b1-040",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b1_042",
+      "sku": "ZN-B1-042",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/miu-beige-cafe-b1-042",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_001_seleccioncolombia_negro",
+      "sku": "C270-001",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-seleccion-colombia-negro-b5-camiseta-270g-001-seleccioncolombia-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_002_smoking_negro",
+      "sku": "C270-002",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-smoking-negro-b5-camiseta-270g-002-smoking-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_003_robotoso_negro",
+      "sku": "C270-003",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-robot-oso-negro-b5-camiseta-270g-003-robotoso-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_004_reality_blanca",
+      "sku": "C270-004",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-reality-blanco-b5-camiseta-270g-004-reality-blanca",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_005_usa_negro",
+      "sku": "C270-005",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-usa-negro-b5-camiseta-270g-005-usa-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_006_lookpositive_negro",
+      "sku": "C270-006",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-look-positive-negro-b5-camiseta-270g-006-lookpositive-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_007_passionate32_rojo",
+      "sku": "C270-007",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-passionate-32-rojo-b5-camiseta-270g-007-passionate32-rojo",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_008_interrogativo_negro",
+      "sku": "C270-008",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-interrogativo-negro-b5-camiseta-270g-008-interrogativo-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_009_freedom_negro",
+      "sku": "C270-009",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-freedom-negro-b5-camiseta-270g-009-freedom-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_010_justdoit_negro",
+      "sku": "C270-010",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-just-do-it-negro-b5-camiseta-270g-010-justdoit-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_011_underarmour_blanco",
+      "sku": "C270-011",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-under-armour-blanco-b5-camiseta-270g-011-underarmour-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_012_kclub24_negro",
+      "sku": "C270-012",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-kclub-24-negro-b5-camiseta-270g-012-kclub24-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_013_abletor_negro",
+      "sku": "C270-013",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-abletor-negro-b5-camiseta-270g-013-abletor-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_014_aesthetisc_blanco",
+      "sku": "C270-014",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-aesthetics-blanco-b5-camiseta-270g-014-aesthetisc-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_015_aesthetisc_negro",
+      "sku": "C270-015",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-aesthetics-negro-b5-camiseta-270g-015-aesthetisc-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_016_boss_azul",
+      "sku": "C270-016",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-boss-azul-b5-camiseta-270g-016-boss-azul",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_017_brooklyn_blanco",
+      "sku": "C270-017",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-brooklyn-blanco-b5-camiseta-270g-017-brooklyn-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_018_nasa_negro",
+      "sku": "C270-018",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-nasa-negro-b5-camiseta-270g-018-nasa-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_019_kingleon_negro",
+      "sku": "C270-019",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-king-lion-negro-b5-camiseta-270g-019-kingleon-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_020_wize_negro",
+      "sku": "C270-020",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-wize-negro-b5-camiseta-270g-020-wize-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_021_chicagobulls_negro",
+      "sku": "C270-021",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-chicago-bulls-negro-b5-camiseta-270g-021-chicagobulls-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_022_skate_negro",
+      "sku": "C270-022",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-skate-negro-b5-camiseta-270g-022-skate-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_023_trapstar_beige",
+      "sku": "C270-023",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-trapstar-beige-b5-camiseta-270g-023-trapstar-beige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_024_aesthetic_beige",
+      "sku": "C270-024",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-aesthetic-beige-b5-camiseta-270g-024-aesthetic-beige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_025_rostrodeoso_blanco",
+      "sku": "C270-025",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-rostro-de-oso-blanco-b5-camiseta-270g-025-rostrodeoso-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_026_originalunderground_negro",
+      "sku": "C270-026",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-original-underground-negro-b5-camiseta-270g-026-originalunderground-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_027_oso1_negro",
+      "sku": "C270-027",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-oso-negro-b5-camiseta-270g-027-oso1-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_028_newyorkyankees_blanco",
+      "sku": "C270-028",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-new-york-yankees-blanco-b5-camiseta-270g-028-newyorkyankees-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_029_ny_blanco",
+      "sku": "C270-029",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-ny-blanco-b5-camiseta-270g-029-ny-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_030_courage_negro",
+      "sku": "C270-030",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-courage-negro-b5-camiseta-270g-030-courage-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_031_edenmade_negro",
+      "sku": "C270-031",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-edenmade-negro-b5-camiseta-270g-031-edenmade-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_032_losangeles98_blanco",
+      "sku": "C270-032",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-los-angeles-98-blanco-b5-camiseta-270g-032-losangeles98-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_033_icandoit_negro",
+      "sku": "C270-033",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-i-can-do-it-negro-b5-camiseta-270g-033-icandoit-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_034_jordan_negro",
+      "sku": "C270-034",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-jordan-negro-b5-camiseta-270g-034-jordan-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_035_jordan_azul",
+      "sku": "C270-035",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-jordan-azul-b5-camiseta-270g-035-jordan-azul",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_036_chicago23_negro",
+      "sku": "C270-036",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-chicago-23-negro-b5-camiseta-270g-036-chicago23-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_037_calvinc_negro",
+      "sku": "C270-037",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-calvin-c-negro-b5-camiseta-270g-037-calvinc-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_038_aesthetics_verde",
+      "sku": "C270-038",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-aesthetics-verde-b5-camiseta-270g-038-aesthetics-verde",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_039_boston_verde",
+      "sku": "C270-039",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-boston-verde-b5-camiseta-270g-039-boston-verde",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_040_california_blanco",
+      "sku": "C270-040",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-california-blanco-b5-camiseta-270g-040-california-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_041_california23_beige",
+      "sku": "C270-041",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-california-23-beige-b5-camiseta-270g-041-california23-beige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_042_oso2_negro",
+      "sku": "C270-042",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-oso-2-negro-b5-camiseta-270g-042-oso2-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_043_LAlosangeles_negro",
+      "sku": "C270-043",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-la-los-angeles-negro-b5-camiseta-270g-043-lalosangeles-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_044_courageminimal_negro",
+      "sku": "C270-044",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-courage-minimal-negro-b5-camiseta-270g-044-courageminimal-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_045_columbia23_rojo",
+      "sku": "C270-045",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-columbia-23-rojo-b5-camiseta-270g-045-columbia23-rojo",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_046_dior82_blanco",
+      "sku": "C270-046",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-dior-82-blanco-b5-camiseta-270g-046-dior82-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_047_dreaming_beige",
+      "sku": "C270-047",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-dreaming-beige-b5-camiseta-270g-047-dreaming-beige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_048_friends_verde",
+      "sku": "C270-048",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-friends-verde-b5-camiseta-270g-048-friends-verde",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_049_kingleon2_beige",
+      "sku": "C270-049",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-king-lion-2-beige-b5-camiseta-270g-049-kingleon2-beige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_050_letrak_negro",
+      "sku": "C270-050",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-letra-k-negro-b5-camiseta-270g-050-letrak-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_051_letrak_rojo",
+      "sku": "C270-051",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-letra-k-rojo-b5-camiseta-270g-051-letrak-rojo",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_052_losangeles14_negro",
+      "sku": "C270-052",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-los-angeles-14-negro-b5-camiseta-270g-052-losangeles14-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_053_monastery_blanco",
+      "sku": "C270-053",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-monastery-blanco-b5-camiseta-270g-053-monastery-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_054_monastery_azul",
+      "sku": "C270-054",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-monastery-azul-b5-camiseta-270g-054-monastery-azul",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_055_nopainnogain_verde",
+      "sku": "C270-055",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-no-pain-no-gain-verde-b5-camiseta-270g-055-nopainnogain-verde",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_056_nopainnogain_beige",
+      "sku": "C270-056",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-no-pain-no-gain-beige-b5-camiseta-270g-056-nopainnogain-beige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_057_nopainnogain_negro",
+      "sku": "C270-057",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-no-pain-no-gain-negro-b5-camiseta-270g-057-nopainnogain-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_058_black_negro",
+      "sku": "C270-058",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-black-edition-negro-b5-camiseta-270g-058-black-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_059_chicago23_beige",
+      "sku": "C270-059",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-chicago-23-beige-b5-camiseta-270g-059-chicago23-beige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_060_chicagominimal_blanco",
+      "sku": "C270-060",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-chicago-minimal-blanco-b5-camiseta-270g-060-chicagominimal-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_061_chicagominimal_rojo",
+      "sku": "C270-061",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-chicago-minimal-rojo-b5-camiseta-270g-061-chicagominimal-rojo",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_062_paris1_blanco",
+      "sku": "C270-062",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-paris-1-blanco-b5-camiseta-270g-062-paris1-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_063_paris2_blanco",
+      "sku": "C270-063",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-paris-2-blanco-b5-camiseta-270g-063-paris2-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_064_paris3_blanco",
+      "sku": "C270-064",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-paris-3-blanco-b5-camiseta-270g-064-paris3-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_065_runas_negro",
+      "sku": "C270-065",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-runas-negro-b5-camiseta-270g-065-runas-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_066_scarymovil_rojo",
+      "sku": "C270-066",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-scary-movie-rojo-b5-camiseta-270g-066-scarymovil-rojo",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "camiseta_270g_067_universe_beige",
+      "sku": "C270-067",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/oversize-universe-beige-b5-camiseta-270g-067-universe-beige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_001_dream1998_verdenegro",
+      "sku": "CP-B5-001",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-dream-1998-verde-negro-conjunto-cp-b5-001-dream1998-verdenegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_002_monastery_rojo",
+      "sku": "CP-B5-002",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-monastery-rojo-conjunto-cp-b5-002-monastery-rojo",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_003_losangeles23_rojoblanco",
+      "sku": "CP-B5-003",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-los-angeles-23-rojo-blanco-conjunto-cp-b5-003-losangeles23-rojoblanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_004_caritaxx_blanco",
+      "sku": "CP-B5-004",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-carita-xx-blanco-conjunto-cp-b5-004-caritaxx-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_005_newyork8_rojo",
+      "sku": "CP-B5-005",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-new-york-8-rojo-conjunto-cp-b5-005-newyork8-rojo",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_006_caritasoriente_blanconegro",
+      "sku": "CP-B5-006",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-carita-sonriente-blanco-negro-conjunto-cp-b5-006-caritasoriente-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_007_legend_blanco",
+      "sku": "CP-B5-007",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-legend-blanco-conjunto-cp-b5-007-legend-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_008_puma_gris",
+      "sku": "CP-B5-008",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-puma-gris-conjunto-cp-b5-008-puma-gris",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_009_nynewyork_blanconegro",
+      "sku": "CP-B5-009",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-ny-new-york-blanco-negro-conjunto-cp-b5-009-nynewyork-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_010_parisvertical_blanconegro",
+      "sku": "CP-B5-010",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-paris-vertical-blanco-negro-conjunto-cp-b5-010-parisvertical-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_011_freedom23chicago_blancoverde",
+      "sku": "CP-B5-011",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-freedom-23-chicago-blanco-verde-conjunto-cp-b5-011-freedom23chicago-blancoverde",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_012_universe_beigenegro",
+      "sku": "CP-B5-012",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-universe-beige-negro-conjunto-cp-b5-012-universe-beigenegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_013_letrab_beigenegro",
+      "sku": "CP-B5-013",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-letra-b-beige-negro-conjunto-cp-b5-013-letrab-beigenegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_014_jordanboston_verdenegro",
+      "sku": "CP-B5-014",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-jordan-boston-verde-negro-conjunto-cp-b5-014-jordanboston-verdenegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_015_chasingbless_negro",
+      "sku": "CP-B5-015",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-chasing-bless-negro-conjunto-cp-b5-015-chasingbless-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_016_nasa_negro",
+      "sku": "CP-B5-016",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-nasa-negro-conjunto-cp-b5-016-nasa-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_017_letrak_blanconegro",
+      "sku": "CP-B5-017",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-letra-k-blanco-negro-conjunto-cp-b5-017-letrak-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_018_newyork_azulblanco",
+      "sku": "CP-B5-018",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-new-york-azul-blanco-conjunto-cp-b5-018-newyork-azulblanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_019_chicago23_negroverde",
+      "sku": "CP-B5-019",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-chicago-23-negro-verde-conjunto-cp-b5-019-chicago23-negroverde",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_020_futurehorizontal_negro",
+      "sku": "CP-B5-020",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-future-horizontal-negro-conjunto-cp-b5-020-futurehorizontal-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_021_puma_beigenegro",
+      "sku": "CP-B5-021",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-puma-beige-negro-conjunto-cp-b5-021-puma-beigenegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_022_gladiatoro_blanconegro",
+      "sku": "CP-B5-022",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-gladiator-blanco-negro-conjunto-cp-b5-022-gladiatoro-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_023_on_blancogris",
+      "sku": "CP-B5-023",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-on-blanco-gris-conjunto-cp-b5-023-on-blancogris",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_024_puma_negro",
+      "sku": "CP-B5-024",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-puma-negro-conjunto-cp-b5-024-puma-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_025_paris_blanconegro",
+      "sku": "CP-B5-025",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-paris-blanco-negro-conjunto-cp-b5-025-paris-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_026_carita2_rojonegro",
+      "sku": "CP-B5-026",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-carita-2-rojo-negro-conjunto-cp-b5-026-carita2-rojonegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_027_puma_rojo",
+      "sku": "CP-B5-027",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-puma-rojo-conjunto-cp-b5-027-puma-rojo",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_028_puma_azul",
+      "sku": "CP-B5-028",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-puma-azul-conjunto-cp-b5-028-puma-azul",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_029_standout_negro",
+      "sku": "CP-B5-029",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-stand-out-negro-conjunto-cp-b5-029-standout-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_030_losangeles_negro",
+      "sku": "CP-B5-030",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-los-angeles-negro-conjunto-cp-b5-030-losangeles-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_031_godgotme_negro",
+      "sku": "CP-B5-031",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-god-got-me-negro-conjunto-cp-b5-031-godgotme-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_032_chicago23_negroblanco",
+      "sku": "CP-B5-032",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-chicago-23-negro-blanco-conjunto-cp-b5-032-chicago23-negroblanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_033_me_negroblanco",
+      "sku": "CP-B5-033",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-me-negro-blanco-conjunto-cp-b5-033-me-negroblanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_034_california_blanco",
+      "sku": "CP-B5-034",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-california-blanco-conjunto-cp-b5-034-california-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_035_originalauthenticwear_blanco",
+      "sku": "CP-B5-035",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-original-authentic-wear-blanco-conjunto-cp-b5-035-originalauthenticwear-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_036_puma_blanconegro",
+      "sku": "CP-B5-036",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-puma-blanco-negro-conjunto-cp-b5-036-puma-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_037_brooklynnewyork1898_blanconegro",
+      "sku": "CP-B5-037",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-brooklyn-new-york-1898-blanco-negro-conjunto-cp-b5-037-brooklynnewyork1898-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_038_thirty_negro",
+      "sku": "CP-B5-038",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-thirty-negro-conjunto-cp-b5-038-thirty-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_039_thirty_blanco",
+      "sku": "CP-B5-039",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-thirty-blanco-conjunto-cp-b5-039-thirty-blanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_040_caritasonriente_negro",
+      "sku": "CP-B5-040",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-carita-sonriente-negro-conjunto-cp-b5-040-caritasonriente-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_041_lalosangeles23_negro",
+      "sku": "CP-B5-041",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-la-los-angeles-23-negro-conjunto-cp-b5-041-lalosangeles23-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_042_palmeras_negro",
+      "sku": "CP-B5-042",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-palmeras-negro-conjunto-cp-b5-042-palmeras-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_043_black_negro",
+      "sku": "CP-B5-043",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-black-negro-conjunto-cp-b5-043-black-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_044_losangelesusa_negro",
+      "sku": "CP-B5-044",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-los-angeles-usa-negro-conjunto-cp-b5-044-losangelesusa-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_045_me_azulblanco",
+      "sku": "CP-B5-045",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-me-azul-blanco-conjunto-cp-b5-045-me-azulblanco",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_046_peluche_negroazul",
+      "sku": "CP-B5-046",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-peluche-negro-azul-conjunto-cp-b5-046-peluche-negroazul",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_047_whenyoureally_blancobeige",
+      "sku": "CP-B5-047",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-when-you-really-blanco-beige-conjunto-cp-b5-047-whenyoureally-blancobeige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_048_paris_blanconegroe",
+      "sku": "CP-B5-048",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-paris-blanco-negro-conjunto-cp-b5-048-paris-blanconegroe",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_049_justdoit_negrobeige",
+      "sku": "CP-B5-049",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-just-do-it-negro-beige-conjunto-cp-b5-049-justdoit-negrobeige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_050_leon_blanconegro",
+      "sku": "CP-B5-050",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-leon-blanco-negro-conjunto-cp-b5-050-leon-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_051_whiteblack_blanconegro",
+      "sku": "CP-B5-051",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-white-black-blanco-negro-conjunto-cp-b5-051-whiteblack-blanconegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_052_dream_negro",
+      "sku": "CP-B5-052",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-dream-negro-conjunto-cp-b5-052-dream-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_053_freedom_beigenegro",
+      "sku": "CP-B5-053",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-freedom-beige-negro-conjunto-cp-b5-053-freedom-beigenegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_054_dreaming_beige",
+      "sku": "CP-B5-054",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-dreaming-beige-conjunto-cp-b5-054-dreaming-beige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_055_paris_negro",
+      "sku": "CP-B5-055",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-paris-negro-conjunto-cp-b5-055-paris-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_55B_thefutureisnow_negro",
+      "sku": "CP-B5-55B",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-the-future-is-now-negro-conjunto-cp-b5-55b-thefutureisnow-negro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_056_brooklynest1997_beigenegro",
+      "sku": "CP-B5-056",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-brooklyn-est-1997-beige-negro-conjunto-cp-b5-056-brooklynest1997-beigenegro",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "conjunto_cp_b5_057_parisvertical_negrobeige",
+      "sku": "CP-B5-057",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/conjunto-camiseta-y-pantaloneta-paris-vertical-negro-beige-conjunto-cp-b5-057-parisvertical-negrobeige",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_001",
+      "sku": "ZN-B2-001",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-suela-alta-blanco-b2-zap-nac-b2-001",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_002",
+      "sku": "ZN-B2-002",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-suela-alta-negro-b2-zap-nac-b2-002",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_003",
+      "sku": "ZN-B2-003",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/new-balance-suela-alta-blanco-b2-zap-nac-b2-003",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_004",
+      "sku": "ZN-B2-004",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v2k-negro-b2-zap-nac-b2-004",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_005",
+      "sku": "ZN-B2-005",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v5k-negro-b2-zap-nac-b2-005",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_006",
+      "sku": "ZN-B2-006",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-jordan-retro-3-blanco-negro-b2-zap-nac-b2-006",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_007",
+      "sku": "ZN-B2-007",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v5k-plateado-b2-zap-nac-b2-007",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_008",
+      "sku": "ZN-B2-008",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-bounce-negro-blanco-b2-zap-nac-b2-008",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_009",
+      "sku": "ZN-B2-009",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-shox-tl-plateado-b2-zap-nac-b2-009",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_010",
+      "sku": "ZN-B2-010",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-shox-tl-negro-rojo-b2-zap-nac-b2-010",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_011",
+      "sku": "ZN-B2-011",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-shox-tl-negro-blanco-b2-zap-nac-b2-011",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_012",
+      "sku": "ZN-B2-012",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-shox-tl-negro-b2-zap-nac-b2-012",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_013",
+      "sku": "ZN-B2-013",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-bounce-negro-blanco-rojo-b2-zap-nac-b2-013",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_014",
+      "sku": "ZN-B2-014",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v2k-blanco-cafe-b2-zap-nac-b2-014",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_015",
+      "sku": "ZN-B2-015",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v2k-cafe-b2-zap-nac-b2-015",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_016",
+      "sku": "ZN-B2-016",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v2k-blanco-beige-b2-zap-nac-b2-016",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_017",
+      "sku": "ZN-B2-017",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v2k-beige-b2-zap-nac-b2-017",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_018",
+      "sku": "ZN-B2-018",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v2k-beige-rojo-azul-b2-zap-nac-b2-018",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_019",
+      "sku": "ZN-B2-019",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v2k-blanco-rosado-b2-zap-nac-b2-019",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_020",
+      "sku": "ZN-B2-020",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v2k-beige-cafe-b2-zap-nac-b2-020",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_021",
+      "sku": "ZN-B2-021",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v5k-blanco-gris-b2-zap-nac-b2-021",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_022",
+      "sku": "ZN-B2-022",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v5k-blanco-cafe-b2-zap-nac-b2-022",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_023",
+      "sku": "ZN-B2-023",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-jordan-retro-3-blanco-negro-b2-zap-nac-b2-023",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_024",
+      "sku": "ZN-B2-024",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-jordan-retro-3-negro-gris-b2-zap-nac-b2-024",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_025",
+      "sku": "ZN-B2-025",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-jordan-retro-3-blanco-b2-zap-nac-b2-025",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_026",
+      "sku": "ZN-B2-026",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-jordan-retro-3-blanco-rojo-b2-zap-nac-b2-026",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_027",
+      "sku": "ZN-B2-027",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-shox-tl-azul-negro-b2-zap-nac-b2-027",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_028",
+      "sku": "ZN-B2-028",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-jordan-retro-3-negro-b2-zap-nac-b2-028",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_029",
+      "sku": "ZN-B2-029",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/botas-nike-sb-blanco-b2-zap-nac-b2-029",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_030",
+      "sku": "ZN-B2-030",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/hugo-boss-negro-blanco-b2-zap-nac-b2-030",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_031",
+      "sku": "ZN-B2-031",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-doble-suela-blanco-rojo-b2-zap-nac-b2-031",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_032",
+      "sku": "ZN-B2-032",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-bounce-gris-negro-b2-zap-nac-b2-032",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_033",
+      "sku": "ZN-B2-033",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/dolce-gabbana-negro-blanco-b2-zap-nac-b2-033",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_034",
+      "sku": "ZN-B2-034",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/dolce-gabbana-blanco-negro-b2-zap-nac-b2-034",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_035",
+      "sku": "ZN-B2-035",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudtilt-gris-rosado-b2-zap-nac-b2-035",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_036",
+      "sku": "ZN-B2-036",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudtilt-gris-b2-zap-nac-b2-036",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_037",
+      "sku": "ZN-B2-037",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-v5k-rosado-blanco-b2-zap-nac-b2-037",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_038",
+      "sku": "ZN-B2-038",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/on-cloudtilt-gris-rosado-b2-zap-nac-b2-038",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_039",
+      "sku": "ZN-B2-039",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-shox-tl-negro-amarillo-b2-zap-nac-b2-039",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_040",
+      "sku": "ZN-B2-040",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/amc-zoom-x-negro-blanco-b2-zap-nac-b2-040",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_041",
+      "sku": "ZN-B2-041",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-bounce-negro-blanco-b2-zap-nac-b2-041",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_042",
+      "sku": "ZN-B2-042",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/adidas-bounce-blanco-negro-b2-zap-nac-b2-042",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_043",
+      "sku": "ZN-B2-043",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/botas-nike-sb-blanco-rojo-b2-zap-nac-b2-043",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_044",
+      "sku": "ZN-B2-044",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-supreme-beige-b2-zap-nac-b2-044",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_045",
+      "sku": "ZN-B2-045",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-supreme-blanco-b2-zap-nac-b2-045",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_046",
+      "sku": "ZN-B2-046",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-supreme-negro-b2-zap-nac-b2-046",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_047",
+      "sku": "ZN-B2-047",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-supreme-marron-b2-zap-nac-b2-047",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_048",
+      "sku": "ZN-B2-048",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/nike-supreme-vinotinto-b2-zap-nac-b2-048",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_049",
+      "sku": "ZN-B2-049",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/botas-nike-sb-blanco-azul-b2-zap-nac-b2-049",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_nac_b2_050",
+      "sku": "ZN-B2-050",
+      "state": "active",
+      "images": 2,
+      "url": "https://www.evolucionurbana.store/producto/botas-nike-sb-gris-b2-zap-nac-b2-050",
+      "stock": null,
+      "issue": ""
+    },
+    {
+      "id": "zap_imp_001",
+      "sku": "ZI-001",
+      "state": "inactive",
+      "images": 0,
+      "url": "https://www.evolucionurbana.store/producto/zapatilla-importada-mujer-001-zap-imp-001",
+      "stock": null,
+      "issue": "Inactivo en fuente"
+    },
+    {
+      "id": "zap_imp_002",
+      "sku": "ZI-002",
+      "state": "inactive",
+      "images": 0,
+      "url": "https://www.evolucionurbana.store/producto/zapatilla-importada-hombre-002-zap-imp-002",
+      "stock": null,
+      "issue": "Inactivo en fuente"
+    }
+  ]
+}

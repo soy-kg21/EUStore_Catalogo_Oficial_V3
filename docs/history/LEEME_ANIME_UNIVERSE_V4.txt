@@ -1,0 +1,81 @@
+EVOLUCIÓN URBANA — ANIME UNIVERSE V4
+16-10-2026
+
+1. COPIA INDEPENDIENTE
+
+Extrae el ZIP en una carpeta nueva llamada EUStore_Anime_Universe_V4.
+No lo extraigas encima de la V3 ni de tu proyecto original.
+Los archivos son copias físicas independientes. No se incluyen node_modules,
+compilaciones, credenciales ni carpetas de despliegue.
+
+2. INSTALACIÓN EN WINDOWS / VS CODE
+
+Abre la carpeta que contiene package.json. En la terminal PowerShell:
+
+if (!(Test-Path .env.local)) { Copy-Item .env.example .env.local }
+pnpm.cmd install --frozen-lockfile
+pnpm.cmd dev
+
+Cuando aparezca Ready, abre:
+http://localhost:5177/anime
+http://localhost:5177/shop
+http://localhost:5177/
+http://localhost:5177/catalogo
+
+El puerto 5177 permite conservar la V3 en el 5176. No hace falta actualizar
+npm ni instalar otra versión de pnpm. Deja abierta la terminal al probar.
+Si necesitas detener el servidor, presiona Ctrl+C.
+
+3. RECORRIDO
+
+El scroll es el de la página: no se intercepta la rueda ni el gesto vertical.
+Al bajar se abre la marca, se ejecuta la coreografía y aparecen categorías.
+Al subir se recuperan las poses anteriores. El cursor añade profundidad.
+Las categorías filtran sin reiniciar la escena. Se conserva la selección.
+Los productos reales aparecen después de la escena en el flujo de la página.
+
+Los fondos de categorías son ilustraciones de ambiente, no prendas.
+Los conteos son diseños canónicos del catálogo, no cantidades de inventario.
+La compra conserva precios, tallas, enlaces compartibles y orden 5 dobles + 1.
+
+4. PRUEBA VISUAL ANTES DE PUBLICAR
+
+Esta entrega pasó las verificaciones automáticas indicadas en docs, pero
+requiere revisión visual de navegador y rendimiento WebGL en tus equipos.
+
+- PC: baja lentamente y vuelve arriba. La marca, cámara, cuerpo y flecha
+  deben avanzar y retroceder con el desplazamiento.
+- Mueve el cursor: la reacción debe ser discreta y no bloquear enlaces.
+- Cuando veas las categorías, cambia Anime > Cartoon > Rock > Urbanas.
+  No debe volver al inicio ni desaparecer la selección del combo.
+- Desliza horizontalmente las categorías con el mouse o con el dedo.
+- Cambia búsqueda, franquicia y doble estampado. Confirma que no reinicia
+  la escena y que los resultados coinciden con la línea elegida.
+- Al llegar a las prendas, revisa que el título de camisetas, el conteo y
+  las tarjetas queden debajo de la escena, sin superponerse.
+- Abre una camiseta, elige talla y cantidad, agrégala al combo y vuelve.
+- Repite con ancho 360, 390, 768 y 1440 px; comprueba claro y oscuro,
+  apertura de filtros y orientación horizontal del teléfono.
+- Desde el menú entra a Inicio, Catálogo, Camisetas, Zapatillas y Conjuntos.
+- Si tu equipo solicita reducir movimiento, las categorías y productos
+  deben seguir disponibles en una presentación sin recorrido animado.
+
+El modelo WebGL real no es idéntico a las ilustraciones de la maqueta.
+Sin WebGL se muestra un póster ilustrativo. No se reproduce un video.
+
+5. COMPILACIÓN LOCAL
+
+pnpm.cmd build:vercel
+pnpm.cmd test:anime-build
+pnpm.cmd start
+
+build:vercel no publica en Vercel. Esta entrega no cambia campañas,
+credenciales, pedidos, base de datos ni la IA de WhatsApp.
+
+6. ARCHIVOS PARA CONSERVAR
+
+Conserva package.json, pnpm-lock.yaml, .env.example y las carpetas de código,
+datos y public. No compartas .env.local con claves reales. La base incluida
+permite probar sin conectar la base de datos general.
+
+Los documentos de V1/V2/V3 permanecen como historial. Usa esta guía para V4.

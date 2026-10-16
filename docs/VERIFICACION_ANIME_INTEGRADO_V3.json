@@ -1,0 +1,151 @@
+{
+  "version": "Evolución Urbana Anime Shop integrado V3",
+  "verifiedAtUTC": "2026-10-16T02:49:37.711521+00:00",
+  "status": "Code and automatic checks complete; real browser interaction/layout QA pending",
+  "originalZipSHA256": "142df5846c65b1ae2433f7999b443e1570b405fa21688d671c518240fa48cbbf",
+  "canonicalProducts": 1209,
+  "historicalAliases": 41,
+  "publicRoutesUnchangedFromV2": true,
+  "sameHeaderAcrossCatalogAndAnimeShop": true,
+  "sharedHeaderDestinations": [
+    "/",
+    "/catalogo",
+    "/categoria/camisetas",
+    "/categoria/zapatillas",
+    "/categoria/conjuntos",
+    "/anime",
+    "/ofertas"
+  ],
+  "generalCatalogBaselineSHA256": {
+    "components/store/Footer.tsx": "478904af04c46fb778430b35b91445c309846e25071ab1f38e6882981661f578",
+    "data/catalog.json": "e1b1d963a5567810bfeff3f0e8df66de241085781bbbdf85cdddbfd05aa92d65",
+    "data/pricing-policy.json": "efbc6cbcdf7a055d57aa5bd66e13bbc6bfdf94b66e13fc873e8072e3ac3a5d60",
+    "data/commercial-rules.json": "8f80150d99efc3615f24a34908d5d16436a21f386d5c16e9f62a1ac7c214f5fc",
+    "lib/pricing.ts": "f9948778013602994c1052408a7dc7c0e0d828d7adcfe9ce8e8ba91dc95da2ac",
+    "lib/commercial.ts": "4999b9b2c3b78e935bd8330787e2a9071da79fb0ccd61a5c6b60b05541df2e54",
+    "app/page.tsx": "5f4e74847064ca1e31d3b45215597f6b39c6334898bc9cc2b4cbbf903d1052bc",
+    "app/catalogo/page.tsx": "ba13dd98a0ebc5cae9b6b313ff08419241e953707b59fdd3823de2811ddf5714",
+    "app/globals.css": "e855794221246740a66102fbab46e0c1633b91f8b09cc3377d8eb3c80e1a27d0",
+    "app/premium.css": "3dfd398a99347dbdbd24a4822c71d66b0ee0333746fc955dedd7ae2f58e99969",
+    "app/enhancements.css": "fcaf82fec0c5455cb32788045dd1e49245fb0f78ffcfa08c6dfcc80bee457686"
+  },
+  "originalPublicFilesPreservedByteForByte": 4744,
+  "physicalCopiesNotHardlinked": true,
+  "brandAccent": "#CCFF00, inherited from original --eu-accent",
+  "footer": "original component unchanged",
+  "commercialRulesAndPrices": "unchanged",
+  "nextProductionBuild": "passed (clean build)",
+  "typeScript": "passed during production build",
+  "checks": [
+    {
+      "script": "check-anime-integration.mjs",
+      "exitCode": 0,
+      "result": [
+        "PASS: 22 comprobaciones de integración: mismo menú original, Inicio y tres categorías generales accesibles desde once rutas; ticker conservado; datos, reglas, estilos generales y pie original intactos."
+      ]
+    },
+    {
+      "script": "check-anime-hero.mjs",
+      "exitCode": 0,
+      "result": [
+        "PASS: 20 comprobaciones del hero real renderizado: tres camisetas diferentes por línea, enlaces individuales y acceso directo a colección y precios. Sin navegador."
+      ]
+    },
+    {
+      "script": "check-anime-scene.mjs",
+      "exitCode": 0,
+      "result": [
+        "PASS: 20 comprobaciones 3D: Sukuna con esqueleto, textura local y crédito; nueve poses reproducibles en reversa, matrices finitas, lanzamiento continuo y 292 vértices deformados verificados. Sin navegador/WebGL."
+      ]
+    },
+    {
+      "script": "check-universe.mjs",
+      "exitCode": 0,
+      "result": [
+        "PASS: 13403 comprobaciones Universe V2: 1209 slugs legibles, sin colisiones, 3627 imágenes, alias y consultas IA sin resultados inventados."
+      ]
+    },
+    {
+      "script": "check-anime.mjs",
+      "exitCode": 0,
+      "result": [
+        "PASS: 1209 diseños únicos, 41 alias, archivos e IDs íntegros, ofertas y 60 bloques 76/24."
+      ]
+    },
+    {
+      "script": "check-anime-shop.mjs",
+      "exitCode": 0,
+      "result": [
+        "PASS: tarifas públicas/habituales, fronteras mayoristas, rutas limpias, compatibilidad y 41 alias sin ciclos."
+      ]
+    },
+    {
+      "script": "check-anime-merchandising.mjs",
+      "exitCode": 0,
+      "result": [
+        "PASS: 5659 comprobaciones de merchandising; 5 dobles + 1 diseño restante desde posición 1, filtros y paginación; 1209 referencias sin pérdidas ni duplicados."
+      ]
+    },
+    {
+      "script": "check-anime-premium.mjs",
+      "exitCode": 0,
+      "result": [
+        "PASS: 6342 comprobaciones premium: 1250 referencias y alias, rutas, filtros compartibles, cantidades/tallas, fusiones y mensaje con precios reales y dominio independiente."
+      ]
+    },
+    {
+      "script": "check-anime-build.mjs",
+      "exitCode": 0,
+      "result": [
+        "38 commercial integration cases passed.",
+        "PASS: 1246 comprobaciones de producción: HTML, canonicals y previews de 1209 fichas; APIs, IA, 38 cotizaciones generales y dos PNG sociales de 1200×630. Sin servidor de vista previa."
+      ]
+    }
+  ],
+  "scene": {
+    "character": "Sukuna / Jujutsu Kaisen",
+    "model": "rigged textured GLB",
+    "modelInfo": {
+      "sourceURL": "https://raw.githubusercontent.com/RTF-India/Model/main/sukuna.glb",
+      "metadata": {
+        "extras": {
+          "author": "Wing (https://sketchfab.com/Wing12_)",
+          "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+          "source": "https://sketchfab.com/3d-models/sukuna-d4e388f837f0495cba61ee00ceca2a2f",
+          "title": "Sukuna"
+        },
+        "generator": "Sketchfab-16.29.0",
+        "version": "2.0"
+      },
+      "originalBytes": 15617580,
+      "optimizedBytes": 2949924,
+      "sha256": "cbe1abc930f269d5e27a73706baa2b260631c4ff88b5fbc2f5fcc7eba5554d34"
+    },
+    "renderer": "Three.js 0.180.0 / WebGL 2, imported on demand",
+    "timeline": "pure scroll position, nine poses verified in forward and reverse order",
+    "releaseContinuity": "passed",
+    "verticesSampled": 292,
+    "softwareRendersInspected": true,
+    "browserOrWebGLFrameActuallyTested": false,
+    "poster": "rendered from the actual posed model by software; used as fallback",
+    "layout": "scene clipped to its own area; title, buttons and three product cards in separate layout tracks",
+    "renderLoop": "only while visible and progress is converging; pauses when tab hidden",
+    "animationFPSMeasured": false
+  },
+  "socialImageOptimization": {
+    "beforeBytes": 37486093,
+    "afterBytes": 19056216,
+    "productOriginalsAltered": false
+  },
+  "browserQA": {
+    "status": "not_performed",
+    "reason": "No control-browser skill available in the managed environment; no preview server was launched.",
+    "instructionSource": "Sites SKILL.md",
+    "instruction": "If $control-browser is unavailable, skip browser QA: do not start a preview server, install a browser, or improvise another browser-control path.",
+    "manualChecklist": "LEEME_ANIME_INTEGRADO_V3.txt"
+  },
+  "whatsappAI": "Prepared source and lookup API; existing agent not connected or updated",
+  "published": false,
+  "campaignsChanged": false,
+  "privateCredentialsIncluded": false
+}

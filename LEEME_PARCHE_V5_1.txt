@@ -1,0 +1,49 @@
+EVOLUCIÓN URBANA · PARCHE V5.1
+Aplicar sobre EUStore_Anime_Universe_V5_Completo.zip (V5 original).
+
+INSTALACIÓN EN WINDOWS / VS CODE
+
+1. Detén el servidor con Ctrl+C en la terminal de VS Code.
+2. Extrae este ZIP en una carpeta temporal.
+3. Copia TODO su contenido a la raíz de tu proyecto V5, donde está package.json.
+   Debes combinar las carpetas components, lib, scripts y docs con las existentes.
+   Acepta reemplazar los archivos del mismo nombre. Conserva los demás archivos.
+   No sustituyas una carpeta completa por otra vacía: combina su contenido.
+4. No hay nuevas dependencias; no necesitas volver a instalar.
+5. En la terminal de VS Code ejecuta:
+
+   pnpm.cmd dev
+
+6. Abre http://localhost:5178/anime y recarga con Ctrl+F5.
+
+El ZIP incluye únicamente los archivos modificados y las instrucciones.
+No es un proyecto completo para instalar en una carpeta vacía.
+README.md y LEEME_ANIME_UNIVERSE_V5.txt se actualizan con el comportamiento V5.1.
+
+CAMBIOS
+
+- Scroll nativo: la página controla la escena, sin temporizador ni cola de gestos.
+- Pausa al detener el desplazamiento y reversa al subir.
+- Recorrido más corto en PC y móvil; no existe una espera obligatoria de 32 segundos.
+- Paso de categorías a productos con rueda o táctil normales.
+- Gojo más centrado en la apertura móvil y cierre con título más compacto.
+- Inicio del hero vuelve al inicio de Anime Shop y recorre la escena en reversa.
+- Se elimina Catálogo general del bloque de categorías.
+- Selector compacto de líneas y filtros entre los productos, sin volver al hero.
+- Botones compactos VER DISEÑO, etiquetas de franquicia/colección y REF a la derecha.
+- Presentación renovada de combos, con las mismas tarifas y condiciones.
+
+COMPROBACIÓN LOCAL
+
+1. En PC y móvil, desplaza hasta la mitad de la escena y detente.
+2. Comprueba que no continúa sola y que retrocede al subir.
+3. Pasa de categorías a productos sin arrastrar la barra lateral.
+4. Cambia de línea y filtra desde la barra entre productos.
+5. Pulsa Inicio: debe volver al hero de Anime Shop, sin salir al catálogo general.
+6. Abre VER DISEÑO, elige una talla y revisa tu combo.
+7. Revisa sol/luna, el menú original, las etiquetas, REF y precios de combos.
+
+Las pruebas automáticas y la compilación se documentan en
+docs/VERIFICACION_ANIME_UNIVERSE_V5_1.json.
+La verificación visual de la versión corregida en navegador y teléfono real
+sigue pendiente: este entorno no dispone de un navegador de prueba.

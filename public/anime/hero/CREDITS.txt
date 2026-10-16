@@ -1,0 +1,13 @@
+Sukuna — modelo 3D de Wing
+Autor: Wing (https://sketchfab.com/Wing12_)
+Fuente declarada dentro del archivo GLB: https://sketchfab.com/3d-models/sukuna-d4e388f837f0495cba61ee00ceca2a2f
+Licencia declarada dentro del archivo GLB: CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+Copia pública obtenida de: https://github.com/RTF-India/Model/blob/main/sukuna.glb
+
+Se conserva la atribución original de asset.extras. Cambios para esta entrega:
+texturas reducidas hasta 1024 px, color convertido a JPEG de alta calidad cuando no requiere alfa; se mantiene geometría, skinning y proporciones. Animación por poses/IK y flecha de fuego añadidas por código; cámara, iluminación y encuadre adaptados para Evolución Urbana.
+No es un modelo creado por Evolución Urbana ni se afirma patrocinio del autor o de Jujutsu Kaisen.
+
+V4: coreografía procedural reversible con torso, piernas, apoyo de pies, cámara y reacción al cursor.
+La imagen de respaldo sukuna-v4-poster.webp es ilustrativa y fue generada con ImageGen; no es una captura del modelo WebGL.
