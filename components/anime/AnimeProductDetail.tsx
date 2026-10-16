@@ -24,6 +24,10 @@ export default function AnimeProductDetail({product,related=[]}:{product:AnimeCl
   return()=>cancelAnimationFrame(frame);
  },[product.id]);
  const categoryHref=`${animeLinePath[product.line]}/${animeCategorySlug(product.category)}`;
+ const sameUniverse=related.every(item=>item.line===product.line&&item.category===product.category);
+ const sameLine=related.every(item=>item.line===product.line);
+ const moreHref=sameUniverse?categoryHref:sameLine?animeLinePath[product.line]:'/shop';
+ const moreLabel=sameUniverse?`Ver ${product.category}`:sameLine?`Ver más de ${lineName}`:'Explorar todas las líneas';
  const consult=(origin:string)=>`Hola Evolución Urbana 👕\n\nQuiero consultar la referencia ${product.id} — ${product.name}.\nColección: ${lineName} · ${product.category}.\n${origin}${animeProductHref(product.id)}\n\nQuiero confirmar tallas, disponibilidad y la promoción aplicable.`;
  return <main id="contenido" className={styles.shell}>
   <div className={styles.detailShell}>
@@ -48,7 +52,7 @@ export default function AnimeProductDetail({product,related=[]}:{product:AnimeCl
      <AnimeCollectionLink className={styles.backLink} style={{marginTop:12}} href={categoryHref}><ArrowUpRight size={16}/> Ver todos los diseños de {product.category}</AnimeCollectionLink>
     </section>
    </div>
-   {related.length>0&&<section className={styles.related}><div className={styles.sectionHeading}><div><p className={styles.kicker}>Sigue en tu universo</p><h2>Podrían ir en tu combo.</h2></div><AnimeCollectionLink href={categoryHref} className={styles.textLink}>Ver {product.category} <ArrowUpRight size={16}/></AnimeCollectionLink></div><div className={styles.grid}>{related.map(item=><AnimeProductCard key={item.id} product={item}/>)}</div></section>}
+   {related.length>0&&<section className={styles.related}><div className={styles.sectionHeading}><div><p className={styles.kicker}>{sameUniverse?'Sigue en tu universo':'Completa tu combo'}</p><h2>Podrían ir en tu combo.</h2></div><AnimeCollectionLink href={moreHref} className={styles.textLink}>{moreLabel} <ArrowUpRight size={16}/></AnimeCollectionLink></div><div className={styles.grid}>{related.map(item=><AnimeProductCard key={item.id} product={item}/>)}</div></section>}
   </div>
   <Dialog open={zoom} onOpenChange={setZoom}><DialogContent className={styles.zoomDialog}><DialogTitle className={styles.srOnly}>{product.name}, fotografía ampliada</DialogTitle><DialogDescription className={styles.srOnly}>Vista ampliada del diseño de la referencia {product.id}.</DialogDescription><div><Image src={product.image} alt={`${product.name}, diseño ampliado`} fill sizes="95vw"/></div></DialogContent></Dialog>
  </main>;

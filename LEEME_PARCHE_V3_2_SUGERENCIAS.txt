@@ -1,0 +1,48 @@
+EVOLUCIÓN URBANA · PARCHE V3.2 — SUGERENCIAS EN TODAS LAS FICHAS
+Requiere la V3.1 que ya aplicaste (auditoría, especificaciones y navegación).
+
+1. Detén el servidor local con Ctrl+C.
+2. Copia el contenido de este ZIP dentro de:
+   C:\Users\keine\Downloads\EUStore_Catalogo_Oficial_V3_GitHub
+   Combina las carpetas y acepta reemplazar. No copies el ZIP como una subcarpeta.
+3. No necesitas instalar dependencias nuevas.
+4. Ejecuta en esa carpeta, uno por uno:
+
+   pnpm.cmd build:vercel
+   pnpm.cmd start
+
+5. Abre http://localhost:5178/anime/hellsing-negro y baja al bloque «Podrían ir en tu combo».
+   Debe mostrar cuatro sugerencias. Comprueba también Gojo, una franquicia con pocos diseños,
+   un producto de Rock y otro de Urbanas. Los botones abren las fichas de cada camiseta.
+   La navegación de regreso a las categorías y al listado conserva el parche anterior.
+
+6. Después de comprobarlo, detén el servidor con Ctrl+C y publica:
+
+   git add .
+   git commit -m "Agrega cuatro sugerencias en todas las fichas de Anime Shop"
+   git push
+
+7. En Vercel, comprueba que el nuevo despliegue termine en Ready.
+
+QUÉ CAMBIA
+Todas las 1.209 fichas muestran cuatro sugerencias distintas:
+- Primero, camisetas del mismo universo y línea.
+- Si faltan, diseños de la misma línea.
+- Si todavía faltan, diseños de otras líneas para completar el combo.
+Se conserva el orden del catálogo dentro de cada prioridad.
+La camiseta abierta y los alias históricos quedan excluidos de las sugerencias.
+
+Si las cuatro sugerencias son del mismo universo, se conserva «Sigue en tu universo»
+y el enlace «Ver [universo]». Si se completa con otros universos, aparece «Completa tu combo»
+y el enlace permite explorar más de la línea o todas las líneas, según corresponda.
+
+VALIDACIÓN
+- 1.209 fichas con cuatro sugerencias: 996 solo del mismo universo y 213 completadas.
+- Exclusión del diseño abierto, referencias únicas y prioridad del mismo universo/línea.
+- Pruebas de catálogo reducido, duplicados, alias y conservación de los datos de entrada.
+- Compilación Next.js/TypeScript y verificación de las sugerencias en el HTML de cada ficha.
+- El diseño usa las mismas tarjetas y estilos existentes. Revisión visual local recomendada.
+
+PRUEBA REPRODUCIBLE
+node scripts/check-anime-recommendations.mjs
+node scripts/check-anime-recommendations.mjs --build  (después de compilar)

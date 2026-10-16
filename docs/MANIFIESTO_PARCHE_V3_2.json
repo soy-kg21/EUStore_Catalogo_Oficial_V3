@@ -1,0 +1,35 @@
+{
+  "patch": "V3.2 · sugerencias en todas las fichas",
+  "base": "V3.1",
+  "validation": {
+    "productionBuild": "PASS",
+    "typeScript": "PASS",
+    "productPages": 1209,
+    "suggestionsPerPage": 4,
+    "sameUniverseOnly": 996,
+    "completedWithOtherReferences": 213,
+    "productionHTML": "PASS"
+  },
+  "files": [
+    {
+      "path": "lib/anime-recommendations.ts",
+      "sha256": "bc66e7284b2a100515e6dbf9ea9297a2781f83c3b3df1295f7ef0833466ecc1c"
+    },
+    {
+      "path": "components/anime/AnimeProductPage.tsx",
+      "sha256": "fd7af4b6df5920ca9011a3f46a69b23c18be2a833ad17d5932bc7b23fd9b97e7"
+    },
+    {
+      "path": "components/anime/AnimeProductDetail.tsx",
+      "sha256": "846bbd113b0c6ee84a6cc81a71afe91404a799a3fd57b49e61a3eb29db73c341"
+    },
+    {
+      "path": "scripts/check-anime-recommendations.mjs",
+      "sha256": "f89090b8285125886533a9744d705c31bd7d72a3be58bfcb16d27d3eb6f82243"
+    },
+    {
+      "path": "LEEME_PARCHE_V3_2_SUGERENCIAS.txt",
+      "sha256": "6de3a8e5817be8fc1e4916bb3e6f2328cebfbc47a819c7c62307dfdb0c75686a"
+    }
+  ]
+}
