@@ -1,0 +1,78 @@
+EVOLUCIÓN URBANA · CATÁLOGO OFICIAL V3
+PARCHE V3.1 — Auditoría, navegación y ficha completa
+Base: el proyecto V5 con los parches V5.1 y V5.2, ya publicado como EUStore_Catalogo_Oficial_V3.
+
+APLICAR EN TU COPIA CONECTADA A GITHUB:
+C:\Users\keine\Downloads\EUStore_Catalogo_Oficial_V3_GitHub
+
+1. Si tienes el servidor abierto, detenlo con Ctrl+C.
+2. Extrae este ZIP. Copia SU CONTENIDO a la raíz del proyecto (donde está package.json).
+   Combina las carpetas y acepta reemplazar los archivos.
+3. No reemplaces la carpeta .git ni .env.local. El parche no las contiene.
+4. No necesitas instalar dependencias nuevas.
+5. En la terminal de VS Code, dentro de esa carpeta:
+
+   pnpm.cmd build:vercel
+
+6. Para comprobar el resultado local:
+
+   pnpm.cmd start
+
+   Abre http://localhost:5178/anime y recarga con Ctrl+F5.
+
+7. Comprueba ANBU - Naruto (REF 147), Bulbasaur, filtros de Naruto y las fichas.
+   Carga varias páginas de diseños, abre una camiseta y pulsa «Volver al listado anterior».
+   Debe recuperar los filtros, la cantidad cargada y la posición de la camiseta.
+   Los enlaces de línea/universo deben mostrar las categorías, sin repetir la introducción.
+   Abrir una ficha por sus enlaces debe mostrar la fotografía, aunque antes estuvieras abajo.
+   El botón Atrás del teléfono/navegador mantiene su navegación nativa.
+   Prueba también las camisetas del hero, los productos relacionados y las cuatro líneas.
+   Confirma el comportamiento en PC y en un móvil real.
+
+8. Cuando hayas comprobado el resultado, detén el servidor con Ctrl+C y publica:
+
+   git add .
+   git commit -m "Corrige referencias, fichas y navegacion del catalogo V3"
+   git push
+
+   Vercel podrá desplegar esa actualización mediante la integración existente con master.
+
+QUÉ INCLUYE
+- Auditoría de 1.209 diseños visibles y 41 alias, conservando los 1.250 códigos.
+- 17 correcciones de clasificación: 15 diseños y dos alias históricos.
+- ANBU 147 y 423 en Naruto; Bulbasaur en Pokémon; Black Bulls en Black Clover;
+  Shinobu en Demon Slayer; El castillo ambulante en Studio Ghibli, entre otros.
+- Los originales «Maestro» y su alias en Dragon Ball, por su estampado de Roshi.
+- 9 nombres corregidos: dos errores «Chocolateolate» y siete menciones anteriores a
+  poliéster/blusón eliminadas.
+- Especificación uniforme confirmada por el propietario para TODAS las camisetas:
+  algodón, gramaje 180 g, horma tradicional y tallas S, M, L, XL disponibles.
+- Campos completos en la ficha, especificaciones en vista rápida y exportaciones sincronizadas.
+- «Volver al listado anterior» recupera el listado y las páginas que ya se habían cargado.
+- Los enlaces de línea/universo abren su colección a la altura de las categorías.
+- Abrir un producto por sus enlaces posiciona su fotografía debajo del menú.
+- Los diez enlaces publicados afectados por nombres/líneas mantienen redirección permanente.
+- Fotografías, códigos, precios, reglas comerciales, animaciones y estilos conservados.
+
+INFORME COMPLETO
+Abre en tu navegador docs/AUDITORIA_CATALOGO_V3_1.html.
+Permite buscar las 1.209 camisetas y ver posición global, posición de línea, referencia,
+nombre, línea, universo, marca de estampado y especificaciones.
+El JSON de auditoría registra las correcciones puntuales.
+La marca de doble estampado se conserva; no se inventan caras no visibles en las fotos.
+
+VERIFICACIONES
+- Next.js/TypeScript y compilación de producción.
+- Integridad de referencias, alias, fotos, filtros, rutas y exportaciones.
+- Orden 5 dobles + 1 referencia restante, paginación y conservación de todas las camisetas.
+- Precios, fichas generadas, metadatos y APIs de producción.
+- Regreso explícito, posicionamiento, paginación y respeto del historial con adaptadores DOM.
+- No se dispuso de navegador de QA en este entorno: la comprobación visual final en Chrome
+  y en un móvil real debe hacerse antes de publicar el parche.
+
+PRUEBAS REPRODUCIBLES
+node scripts/check-anime-catalog-navigation.mjs
+node scripts/check-anime-merchandising.mjs
+node scripts/check-anime-integration.mjs
+node scripts/check-anime-cinema-runtime.mjs
+node scripts/check-anime-build.mjs   (después de compilar)

@@ -4,6 +4,7 @@ import {usePathname} from 'next/navigation';
 import {isAnimeShopPath} from '@/lib/anime-routes';
 import Image from 'next/image';
 import Link from 'next/link';
+import AnimeProductLink from './AnimeProductLink';
 import {ArrowUpRight,Check,LoaderCircle,Minus,Plus,ShoppingBag,Trash2,Truck} from 'lucide-react';
 import {Sheet,SheetContent,SheetTitle,SheetDescription} from '@/components/ui/sheet';
 import {useAnimeSelection} from '@/lib/anime-selection';
@@ -37,7 +38,7 @@ export default function AnimeComboDrawer(){
      {loading&&!products.length&&<p className={styles.comboStatus}><LoaderCircle className={styles.spinner} size={18}/> Cargando tu selección…</p>}
      {error&&<div className={styles.comboStatus}><p>No pudimos cargar los diseños.</p><button type="button" onClick={()=>setAttempt(n=>n+1)}>Volver a intentar</button></div>}
      {selection.rows.map(row=>{const product=byId.get(row.id);return <article className={styles.comboLine} key={animeSelectionLineKey(row)}>
-      {product?<Link className={styles.comboPhoto} href={animeProductHref(row.id)} onClick={()=>setOpen(false)}><Image src={product.thumbnail} alt={product.name} fill sizes="80px"/></Link>:<div className={styles.comboPhoto}/>}
+      {product?<AnimeProductLink productId={row.id} className={styles.comboPhoto} href={animeProductHref(row.id)} onClick={()=>setOpen(false)}><Image src={product.thumbnail} alt={product.name} fill sizes="80px"/></AnimeProductLink>:<div className={styles.comboPhoto}/>}
       <div className={styles.comboLineInfo}><span>{row.id}</span><h3>{product?.name||'Cargando diseño…'}</h3><label>Talla <select aria-label={`Talla de ${product?.name||row.id}`} value={row.size||''} onChange={event=>selection.setSize(row.id,row.size,event.target.value)}><option value="" disabled>Elegir</option>{['S','M','L','XL'].map(size=><option key={size}>{size}</option>)}</select></label><div className={styles.comboLineActions}><div className={styles.quantity}><button type="button" aria-label={`Reducir cantidad de ${product?.name||row.id}`} disabled={row.quantity<=1} onClick={()=>selection.setQuantity(row.id,row.size,row.quantity-1)}><Minus size={14}/></button><output>{row.quantity}</output><button type="button" aria-label={`Aumentar cantidad de ${product?.name||row.id}`} disabled={row.quantity>=99} onClick={()=>selection.setQuantity(row.id,row.size,row.quantity+1)}><Plus size={14}/></button></div><button type="button" className={styles.removeLine} aria-label={`Quitar ${product?.name||row.id}, talla ${row.size||'sin elegir'}`} onClick={()=>selection.remove(row.id,row.size)}><Trash2 size={17}/></button></div></div>
      </article>;})}
      <Link href="/shop#coleccion" className={styles.addAnother} onClick={()=>setOpen(false)}><Plus size={16}/> Añadir otro diseño</Link>

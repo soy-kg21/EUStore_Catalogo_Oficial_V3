@@ -5,13 +5,14 @@ import {resolveAnimeProduct} from '@/lib/anime-product-lookup';
 import {animeProductHref,animePublicRoutes,animeLinePath,animeLocationFilters} from '@/lib/anime-routes';
 import AnimeProductPage,{animeProductMetadata} from './AnimeProductPage';
 import AnimeShopPage from './AnimeShopPage';
+import legacyRoutes from '@/data/anime-legacy-routes.json';
 export type AnimeSearchParams=Promise<Record<string,string|string[]|undefined>>;
 export async function collectionFilters(line:AnimeLine|'',searchParams?:AnimeSearchParams):Promise<AnimeFilters>{
  const values=searchParams?await searchParams:{},search=new URLSearchParams();for(const key of ['linea','categoria','q','estampado'])if(typeof values[key]==='string')search.set(key,values[key] as string);
  return animeLocationFilters(line?animeLinePath[line]:'/shop',`?${search}`);
 }
 export function categoryParams(line:AnimeLine){return [...new Set(animeProducts.filter(p=>p.line===line).map(p=>animeCategorySlug(p.category)))];}
-export function collectionParams(line:AnimeLine){return [...categoryParams(line),...Object.values(animePublicRoutes).filter(row=>row.line===line).map(row=>row.slug)];}
+export function collectionParams(line:AnimeLine){return [...new Set([...categoryParams(line),...Object.values(animePublicRoutes).filter(row=>row.line===line).map(row=>row.slug),...Object.keys(legacyRoutes).filter(path=>path.startsWith(animeLinePath[line]+'/')).map(path=>path.split('/')[2])])];}
 function categoryName(line:AnimeLine,slug:string){return animeProducts.find(p=>p.line===line&&animeCategorySlug(p.category)===slug)?.category;}
 export function categoryMetadata(line:AnimeLine,slug:string):Metadata{
  const product=resolveAnimeProduct(slug,line);if(product)return animeProductMetadata(product);

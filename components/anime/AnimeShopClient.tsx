@@ -10,6 +10,7 @@ import {orderAnimeShopProducts,isDoublePrint} from '@/lib/anime-merchandising';
 import {useAnimeSelection} from '@/lib/anime-selection';
 import {trackAnimeEvent} from '@/lib/anime-events';
 import {useAnimeFilters} from './useAnimeFilters';
+import {useAnimeListNavigation} from './useAnimeListNavigation';
 import AnimeUniverseHero from './AnimeUniverseHero';
 import AnimeProductCard from './AnimeProductCard';
 import AnimeQuickView from './AnimeQuickView';
@@ -20,16 +21,12 @@ export default function AnimeShopClient({products,initialSearch,counts,hero}:{pr
  const deferredQuery=useDeferredValue(filters.q),filterKey=JSON.stringify(filters),[pagination,setPagination]=useState({key:filterKey,count:24});
  const visible=pagination.key===filterKey?pagination.count:24;
  const categories=useMemo(()=>[...new Set(products.filter(product=>!filters.linea||product.line===filters.linea).map(product=>product.category))].sort((a,b)=>a.localeCompare(b,'es')),[products,filters.linea]);
- const restoreOnMount=useRef(true);
  const railDrag=useRef<{pointer:number;x:number;scroll:number;moved:boolean}|null>(null),suppressRailClick=useRef(false);
  useEffect(()=>{const open=()=>setFilterOpen(true);window.addEventListener('eu-open-anime-filters',open);return()=>window.removeEventListener('eu-open-anime-filters',open);},[]);
  const filtered=useMemo(()=>orderAnimeShopProducts(filterAnimeProducts(products,{...filters,q:deferredQuery}).filter(product=>!filters.doble||isDoublePrint(product.id)),filters),[products,filters,deferredQuery]);
- const remember=()=>{try{sessionStorage.setItem('eu-anime-grid:'+filterKey,JSON.stringify({count:visible,scroll:window.scrollY,restore:true}));}catch{}};
- useEffect(()=>{
-  if(!restoreOnMount.current)return;restoreOnMount.current=false;
-  let frame=0;try{const raw=sessionStorage.getItem('eu-anime-grid:'+filterKey);if(raw){const saved=JSON.parse(raw);if(Number.isInteger(saved.count)&&saved.count>24&&saved.count<=2000)setPagination({key:filterKey,count:saved.count});if(saved.restore&&Number.isFinite(saved.scroll)){sessionStorage.setItem('eu-anime-grid:'+filterKey,JSON.stringify({...saved,restore:false}));frame=requestAnimationFrame(()=>{frame=requestAnimationFrame(()=>window.scrollTo({top:saved.scroll,behavior:'instant'}));});}}}catch{}
-  return ()=>cancelAnimationFrame(frame);
- },[filterKey]);
+ useAnimeListNavigation({filters,count:visible,filterOpen,gridFilterOpen,restore:saved=>{
+  setPagination({key:filterKey,count:saved.count});setFilterOpen(saved.filterOpen);setGridFilterOpen(saved.gridFilterOpen);
+ }});
  const items=filtered.slice(0,visible),line=animeLines.find(item=>item.id===filters.linea),experience=animeExperience[line?.id||'shop'];
  const currentCategory=categories.find(category=>animeCategorySlug(category)===filters.categoria);
  const popular=experience.categories.filter(category=>categories.includes(category));
@@ -72,10 +69,10 @@ export default function AnimeShopClient({products,initialSearch,counts,hero}:{pr
    {controls('grid')}
   </div>
   {(filters.q||currentCategory||filters.doble)&&<div className={styles.activeFilters}>{filters.q&&<button onClick={()=>update({q:''},true)}>“{filters.q}” <X size={13}/></button>}{currentCategory&&<button onClick={()=>update({categoria:''})}>{currentCategory} <X size={13}/></button>}{filters.doble&&<button onClick={()=>update({doble:false})}>Doble estampado <X size={13}/></button>}</div>}
-  <div className={styles.grid} aria-busy={deferredQuery!==filters.q}>{items.map(product=><AnimeProductCard key={product.id} product={product} onChoose={choose} onNavigate={remember} quantity={selection.rows.filter(row=>row.id===product.id).reduce((n,row)=>n+row.quantity,0)}/>)}</div>
+  <div className={styles.grid} aria-busy={deferredQuery!==filters.q}>{items.map(product=><AnimeProductCard key={product.id} product={product} onChoose={choose} quantity={selection.rows.filter(row=>row.id===product.id).reduce((n,row)=>n+row.quantity,0)}/>)}</div>
   {filtered.length===0&&<div className={styles.empty}><Search size={30}/><h3>No encontramos ese diseño.</h3><p>Prueba con otro personaje, franquicia o referencia.</p><button type="button" className={styles.primary} onClick={reset}>Ver todos los diseños <ArrowUpRight size={17}/></button></div>}
   {visible<filtered.length&&<div className={styles.loadMore}><p>Has visto {Math.min(visible,filtered.length)} de {filtered.length} diseños</p><span className={styles.loadTrack}><span style={{width:`${100*Math.min(visible,filtered.length)/filtered.length}%`}}/></span><button type="button" className={styles.secondary} onClick={()=>setPagination({key:filterKey,count:visible+24})}>Mostrar más diseños <ArrowDown size={17}/></button></div>}
   {filtered.length>0&&visible>=filtered.length&&<p className={styles.endMessage}><Check size={15}/> Ya viste todos los diseños de esta selección.</p>}
-  <AnimeQuickView product={quick} onClose={()=>setQuick(null)} onNavigate={remember}/>
+  <AnimeQuickView product={quick} onClose={()=>setQuick(null)}/>
  </section><div className={styles.benefits}><span><Check size={15}/> Tú eliges diseños y tallas</span><span><Check size={15}/> Combina las cuatro líneas</span><span><Check size={15}/> Confirmamos contigo por WhatsApp</span></div></>;
 }

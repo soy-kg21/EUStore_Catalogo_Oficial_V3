@@ -1265,9 +1265,9 @@
     "path": "/anime/arcade-z-diseno-2"
   },
   "EU-ANIME-283": {
-    "slug": "shenlong-poliester",
+    "slug": "shenlong-diseno-283",
     "line": "anime",
-    "path": "/anime/shenlong-poliester"
+    "path": "/anime/shenlong-diseno-283"
   },
   "EU-ANIME-284": {
     "slug": "db-goku",
@@ -1555,19 +1555,19 @@
     "path": "/anime/bulbasaur-diseno-1"
   },
   "EU-ANIME-344": {
-    "slug": "chihiro-bluson",
+    "slug": "chihiro-diseno-344",
     "line": "anime",
-    "path": "/anime/chihiro-bluson"
+    "path": "/anime/chihiro-diseno-344"
   },
   "EU-ANIME-345": {
-    "slug": "himiko-bluson",
+    "slug": "himiko-diseno-345",
     "line": "anime",
-    "path": "/anime/himiko-bluson"
+    "path": "/anime/himiko-diseno-345"
   },
   "EU-ANIME-346": {
-    "slug": "sakura-bluson",
+    "slug": "sakura-diseno-346",
     "line": "anime",
-    "path": "/anime/sakura-bluson"
+    "path": "/anime/sakura-diseno-346"
   },
   "EU-ANIME-347": {
     "slug": "nobara",
@@ -1655,9 +1655,9 @@
     "path": "/anime/maki"
   },
   "EU-ANIME-364": {
-    "slug": "avatar-bluson",
+    "slug": "avatar-diseno-364",
     "line": "cartoon",
-    "path": "/cartoon/avatar-bluson"
+    "path": "/cartoon/avatar-diseno-364"
   },
   "EU-ANIME-365": {
     "slug": "jujutsu-draw",
@@ -1860,9 +1860,9 @@
     "path": "/anime/shikamaru"
   },
   "EU-ANIME-406": {
-    "slug": "obito-poliester",
+    "slug": "obito-diseno-406",
     "line": "anime",
-    "path": "/anime/obito-poliester"
+    "path": "/anime/obito-diseno-406"
   },
   "EU-ANIME-408": {
     "slug": "sennin",
@@ -4101,8 +4101,8 @@
   },
   "EU-ANIME-861": {
     "slug": "buen-dia-para-morir",
-    "line": "anime",
-    "path": "/anime/buen-dia-para-morir"
+    "line": "cartoon",
+    "path": "/cartoon/buen-dia-para-morir"
   },
   "EU-ANIME-862": {
     "slug": "south-park-diseno-1",
@@ -4971,8 +4971,8 @@
   },
   "EU-ANIME-1036": {
     "slug": "buena-suerte-777",
-    "line": "anime",
-    "path": "/anime/buena-suerte-777"
+    "line": "urbanos",
+    "path": "/urbanas/buena-suerte-777"
   },
   "EU-ANIME-1037": {
     "slug": "bendicion-mortal",
@@ -5340,9 +5340,9 @@
     "path": "/cartoon/mickey-explode-roja"
   },
   "EU-ANIME-1110": {
-    "slug": "golden-season-poliester",
+    "slug": "golden-season-diseno-1110",
     "line": "urbanos",
-    "path": "/urbanas/golden-season-poliester"
+    "path": "/urbanas/golden-season-diseno-1110"
   },
   "EU-ANIME-1111": {
     "slug": "inmortal-1",
@@ -5976,8 +5976,8 @@
   },
   "EU-ANIME-1237": {
     "slug": "why-so-serious-hueso",
-    "line": "urbanos",
-    "path": "/urbanas/why-so-serious-hueso"
+    "line": "cartoon",
+    "path": "/cartoon/why-so-serious-hueso"
   },
   "EU-ANIME-1238": {
     "slug": "risk-taker-negra",

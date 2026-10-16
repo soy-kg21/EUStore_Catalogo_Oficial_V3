@@ -1,7 +1,7 @@
 export type AnimeLine = 'anime' | 'cartoon' | 'rock' | 'urbanos';
 export type AnimeProduct = {
   id:string; slug:string; name:string; image:string; thumbnail:string; backdrop:string;
-  category:string; line:AnimeLine; sizes:readonly string[]; price:number; isNew:boolean;
+  category:string; line:AnimeLine; sizes:readonly string[]; price:number; isNew:boolean; availability:'Disponible';
   material:string; weightGrams:number|null; fit:string; releaseBatch:string; sourceName:string;
   canonicalId?:string; searchAliases?:string[]; supplier?:{pdf:string;page:number;key:string;name:string};
 };

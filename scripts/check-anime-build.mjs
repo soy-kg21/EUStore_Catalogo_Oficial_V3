@@ -12,7 +12,8 @@ for(const product of visible){
  const route=routes[product.id],html=read(`.next-native/server/app${route.path}.html`);
  const canonical=html.match(/<link rel="canonical" href="([^"]+)"/);assert(canonical,product.id);assert.equal(new URL(canonical[1]).pathname,route.path);
  const blocks=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));
- const schema=blocks.find(s=>s['@type']==='Product');assert(schema,product.id);assert.equal(schema.sku,product.id);assert.equal(schema.name,product.name);assert.equal(schema.offers.price,68000);assert.equal(Object.hasOwn(schema.offers,'availability'),false);
+ const schema=blocks.find(s=>s['@type']==='Product');assert(schema,product.id);assert.equal(schema.sku,product.id);assert.equal(schema.name,product.name);assert.equal(schema.offers.price,68000);assert.equal(schema.offers.availability,'https://schema.org/InStock');
+ assert.equal(schema.material,'Algodón');assert(html.includes('Tradicional'));assert(html.includes('Tallas disponibles'));assert(html.includes('Disponible'));
  assert(html.includes('Compartir camiseta'));assert(html.includes('Cambiar a modo claro'));assert(html.includes('eu-theme-init'));
  const og=html.match(/<meta property="og:image" content="([^"]+)"/);assert(og);assert.equal(new URL(og[1].replaceAll('&amp;','&')).pathname,`/social/${route.line}/${route.slug}`);
  assert(!/href="\/p\//.test(html),product.id);assert(html.includes('announcement-track'));const navigation=html.match(/<nav class="desktop-nav"[\s\S]*?<\/nav>/)?.[0];assert(navigation,product.id);for(const path of ['/','/catalogo','/categoria/camisetas','/categoria/zapatillas','/categoria/conjuntos','/anime'])assert(navigation.includes('href="'+path+'"'),product.id+path);checks++;

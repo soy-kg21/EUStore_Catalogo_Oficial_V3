@@ -1,0 +1,322 @@
+{
+  "version": "EUStore V3 · parche 3.1 (base V5.2)",
+  "records": 1250,
+  "visible": 1209,
+  "aliases": 41,
+  "classificationChanges": [
+    {
+      "id": "EU-ANIME-023",
+      "name": "Maestro",
+      "before": {
+        "line": "anime",
+        "category": "Anime Mix"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-090",
+      "name": "Bulbasaur - Evoluciones Verde",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Pokémon"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-147",
+      "name": "ANBU - Naruto",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Naruto"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-158",
+      "name": "Réquiem Gótico - Edición 2",
+      "before": {
+        "line": "anime",
+        "category": "Anime Mix"
+      },
+      "after": {
+        "line": "urbanos",
+        "category": "Urbanos"
+      },
+      "evidence": "Alias histórico del mismo estampado: EU-ANIME-127"
+    },
+    {
+      "id": "EU-ANIME-181",
+      "name": "Furious - Rostros Negros",
+      "before": {
+        "line": "anime",
+        "category": "Anime Mix"
+      },
+      "after": {
+        "line": "urbanos",
+        "category": "Urbanos"
+      },
+      "evidence": "Alias histórico del mismo estampado: EU-ANIME-084"
+    },
+    {
+      "id": "EU-ANIME-299",
+      "name": "Black Bulls",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Black Clover"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-343",
+      "name": "Bulbasaur - Diseño 1",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Pokémon"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-362",
+      "name": "Bulbasaur - Diseño 2",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Pokémon"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-423",
+      "name": "Anbu",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Naruto"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-530",
+      "name": "Castillo De Vagabundo - Diseño 1",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Studio Ghibli"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-691",
+      "name": "Shinobu Kocho - Diseño 1 Negra",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Demon Slayer"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-692",
+      "name": "Shinobu Kocho - Diseño 1 Chocolate",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Demon Slayer"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-722",
+      "name": "Buddha Of Ragnarok",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "anime",
+        "category": "Record of Ragnarok"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-861",
+      "name": "Buen Día Para Morir",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "cartoon",
+        "category": "Disney"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-1029",
+      "name": "Tupac - Diseño 2",
+      "before": {
+        "line": "urbanos",
+        "category": "Urbanos"
+      },
+      "after": {
+        "line": "urbanos",
+        "category": "Tupac"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-1036",
+      "name": "Buena Suerte 777",
+      "before": {
+        "line": "anime",
+        "category": "Dragon Ball"
+      },
+      "after": {
+        "line": "urbanos",
+        "category": "Urbanos"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    },
+    {
+      "id": "EU-ANIME-1237",
+      "name": "Why So Serious Hueso",
+      "before": {
+        "line": "urbanos",
+        "category": "Urbanos"
+      },
+      "after": {
+        "line": "cartoon",
+        "category": "DC Comics"
+      },
+      "evidence": "Nombre, estampado y fuente original contrastados en auditoría visual."
+    }
+  ],
+  "nameChanges": [
+    {
+      "id": "EU-ANIME-283",
+      "before": "Shenlong Poliéster",
+      "after": "Shenlong"
+    },
+    {
+      "id": "EU-ANIME-344",
+      "before": "Chihiro Blusón",
+      "after": "Chihiro"
+    },
+    {
+      "id": "EU-ANIME-345",
+      "before": "Himiko Blusón",
+      "after": "Himiko Toga"
+    },
+    {
+      "id": "EU-ANIME-346",
+      "before": "Sakura Blusón",
+      "after": "Sakura"
+    },
+    {
+      "id": "EU-ANIME-364",
+      "before": "Avatar Blusón",
+      "after": "Avatar"
+    },
+    {
+      "id": "EU-ANIME-406",
+      "before": "Obito Poliéster",
+      "after": "Obito"
+    },
+    {
+      "id": "EU-ANIME-507",
+      "before": "Sailor Moon - Diseño 2 Chocolateolate",
+      "after": "Sailor Moon - Diseño 2 Chocolate"
+    },
+    {
+      "id": "EU-ANIME-692",
+      "before": "Shinobu Kocho - Diseño 1 Chocolateolate",
+      "after": "Shinobu Kocho - Diseño 1 Chocolate"
+    },
+    {
+      "id": "EU-ANIME-1110",
+      "before": "Golden Season Poliéster",
+      "after": "Golden Season"
+    }
+  ],
+  "legacyRoutes": {
+    "/anime/buen-dia-para-morir": "EU-ANIME-861",
+    "/anime/buena-suerte-777": "EU-ANIME-1036",
+    "/urbanas/why-so-serious-hueso": "EU-ANIME-1237",
+    "/anime/shenlong-poliester": "EU-ANIME-283",
+    "/anime/chihiro-bluson": "EU-ANIME-344",
+    "/anime/himiko-bluson": "EU-ANIME-345",
+    "/anime/sakura-bluson": "EU-ANIME-346",
+    "/cartoon/avatar-bluson": "EU-ANIME-364",
+    "/anime/obito-poliester": "EU-ANIME-406",
+    "/urbanas/golden-season-poliester": "EU-ANIME-1110"
+  },
+  "scope": "Revisión visual de los 1.209 diseños y contraste de metadatos, fuente, alias y orden. Las etiquetas de doble estampado se conservan: no se certifican ambas caras cuando la fotografía solo muestra una.",
+  "commonSpecifications": {
+    "material": "Algodón",
+    "weightGrams": 180,
+    "fit": "Tradicional",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "availability": "Disponible",
+    "source": "Confirmación expresa del usuario el 16 de octubre de 2026; aplicada a las 1.209 camisetas y sus 41 alias."
+  },
+  "validation": {
+    "typeScript": "PASS",
+    "productionBuild": "PASS",
+    "generatedPages": 1408,
+    "catalogNavigationChecks": 8723,
+    "merchandisingChecks": 5659,
+    "productionChecks": 1246,
+    "generalCommercialCases": 38,
+    "manualScrollControllerChecks": 93,
+    "visibleDesigns": 1209,
+    "historicAliases": 41,
+    "legacyRedirects": 10,
+    "byLine": {
+      "anime": 642,
+      "cartoon": 165,
+      "rock": 170,
+      "urbanos": 232
+    },
+    "browserVisualQA": "Pendiente de comprobación local; no hay navegador de QA disponible."
+  }
+}

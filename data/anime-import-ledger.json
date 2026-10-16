@@ -1056,7 +1056,7 @@
     "key": "0118",
     "pdf": "CATALOGO 1 ANIME.pdf",
     "page": 8,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "BABY YODA VERDE MILITAR",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-301"
@@ -1065,7 +1065,7 @@
     "key": "0119",
     "pdf": "CATALOGO 1 ANIME.pdf",
     "page": 8,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "BABY YODA NEGRA",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-027"
@@ -1083,7 +1083,7 @@
     "key": "0121",
     "pdf": "CATALOGO 1 ANIME.pdf",
     "page": 9,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "STAR WARS ALGODÓN",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-303"
@@ -1344,7 +1344,7 @@
     "key": "0150",
     "pdf": "CATALOGO 1 ANIME.pdf",
     "page": 11,
-    "line": "anime",
+    "line": "urbanos",
     "supplierName": "HELLSING",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-124"
@@ -1371,7 +1371,7 @@
     "key": "0153",
     "pdf": "CATALOGO 1 ANIME.pdf",
     "page": 11,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "AANG",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-324"
@@ -1848,7 +1848,7 @@
     "key": "0206",
     "pdf": "CATALOGO 1 ANIME.pdf",
     "page": 13,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "AVATAR BLUSÓN",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-364"
@@ -1857,7 +1857,7 @@
     "key": "0207",
     "pdf": "CATALOGO 1 ANIME.pdf",
     "page": 13,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "AVATAR BLUSÓN",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-364"
@@ -1965,7 +1965,7 @@
     "key": "0219",
     "pdf": "CATALOGO 2 ANIME.pdf",
     "page": 2,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "AVATAR #2 NEGRA",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-372"
@@ -3531,7 +3531,7 @@
     "key": "0393",
     "pdf": "CATALOGO 3 ANIME.pdf",
     "page": 4,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "BABY YODA #2 SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-523"
@@ -3756,7 +3756,7 @@
     "key": "0418",
     "pdf": "CATALOGO 3 ANIME.pdf",
     "page": 5,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "INVINCIBLE #1 SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-542"
@@ -4035,7 +4035,7 @@
     "key": "0453",
     "pdf": "CATALOGO 3 ANIME.pdf",
     "page": 7,
-    "line": "anime",
+    "line": "rock",
     "supplierName": "MICHAEL JACKSON SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-562"
@@ -4071,7 +4071,7 @@
     "key": "0457",
     "pdf": "CATALOGO 3 ANIME.pdf",
     "page": 7,
-    "line": "anime",
+    "line": "rock",
     "supplierName": "METALLICA #5 SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-565"
@@ -4098,7 +4098,7 @@
     "key": "0460",
     "pdf": "CATALOGO 3 ANIME.pdf",
     "page": 7,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "LUIGI CAR SPC",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-083"
@@ -4116,7 +4116,7 @@
     "key": "0462",
     "pdf": "CATALOGO 3 ANIME.pdf",
     "page": 7,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "THE SIMPSONS #2 SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-568"
@@ -4908,7 +4908,7 @@
     "key": "0550",
     "pdf": "CATALOGO ANIME 4.pdf",
     "page": 6,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "ZELDA #1 SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-654"
@@ -5223,7 +5223,7 @@
     "key": "0585",
     "pdf": "CATALOGO ANIME 4.pdf",
     "page": 9,
-    "line": "anime",
+    "line": "rock",
     "supplierName": "GUNS AND ROSES #3 SPC",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-118"
@@ -5808,7 +5808,7 @@
     "key": "0650",
     "pdf": "CATALOGO ANIME 4.pdf",
     "page": 12,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "BOB NO JUTSU SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-739"
@@ -5907,7 +5907,7 @@
     "key": "0661",
     "pdf": "CATALOGO ANIME 4.pdf",
     "page": 13,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "AVATAR #2 VERDE",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-748"
@@ -5925,7 +5925,7 @@
     "key": "0663",
     "pdf": "CATALOGO ANIME 4.pdf",
     "page": 13,
-    "line": "anime",
+    "line": "cartoon",
     "supplierName": "YOSHI SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-750"
@@ -5961,7 +5961,7 @@
     "key": "0667",
     "pdf": "CATALOGO ANIME 4.pdf",
     "page": 13,
-    "line": "anime",
+    "line": "rock",
     "supplierName": "KURT COBAIN SPC",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-194"
@@ -6564,7 +6564,7 @@
     "key": "0734",
     "pdf": "CAT CARTOON.pdf",
     "page": 4,
-    "line": "cartoon",
+    "line": "anime",
     "supplierName": "MI VECINO SAIYAN",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-242"
@@ -7716,7 +7716,7 @@
     "key": "0862",
     "pdf": "ROCK.pdf",
     "page": 4,
-    "line": "rock",
+    "line": "urbanos",
     "supplierName": "LACRIMOSA #2",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-148"
@@ -8616,7 +8616,7 @@
     "key": "0962",
     "pdf": "ROCK.pdf",
     "page": 10,
-    "line": "rock",
+    "line": "cartoon",
     "supplierName": "GUITAR HERO",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-995"
@@ -8931,7 +8931,7 @@
     "key": "0997",
     "pdf": "URBANO_2.pdf",
     "page": 3,
-    "line": "urbanos",
+    "line": "cartoon",
     "supplierName": "KRUSTY #2 SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-1025"
@@ -8940,7 +8940,7 @@
     "key": "0998",
     "pdf": "URBANO_2.pdf",
     "page": 3,
-    "line": "urbanos",
+    "line": "cartoon",
     "supplierName": "KRATOS #2 SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-1026"
@@ -9066,7 +9066,7 @@
     "key": "1012",
     "pdf": "URBANO_2.pdf",
     "page": 7,
-    "line": "urbanos",
+    "line": "cartoon",
     "supplierName": "MOJOJOJO #1 SPC",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-779"
@@ -9075,7 +9075,7 @@
     "key": "1013",
     "pdf": "URBANO_2.pdf",
     "page": 7,
-    "line": "urbanos",
+    "line": "anime",
     "supplierName": "DOLLAR HUNTER SPC",
     "decision": "nuevo",
     "catalogId": "EU-ANIME-1040"
@@ -9084,7 +9084,7 @@
     "key": "1014",
     "pdf": "URBANO_2.pdf",
     "page": 7,
-    "line": "urbanos",
+    "line": "cartoon",
     "supplierName": "TOMY Y DALY URBAN STYLE SPC",
     "decision": "existente / duplicado",
     "catalogId": "EU-ANIME-780"

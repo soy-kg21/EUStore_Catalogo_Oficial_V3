@@ -1,0 +1,134 @@
+{
+  "patch": "EUStore_Catalogo_Oficial_V3_1",
+  "base": "V3 publicada (V5 + V5.1 + V5.2)",
+  "files": [
+    {
+      "path": "LEEME_PARCHE_V3_1.txt",
+      "sha256": "812c15b3da0635664a06c3a47630b06125d1fbe8e5e9c8459e1d0f1788d0ac25"
+    },
+    {
+      "path": "components/anime/AnimeCollectionLink.tsx",
+      "sha256": "9df382f506559706ab1d74714dd179adb589164064c66a04fe9b02c7705d26af"
+    },
+    {
+      "path": "components/anime/AnimeCollectionRoute.tsx",
+      "sha256": "f554bec142fd1c2c3f883b35891193bc0c99255ff067c1366538d61853dd2e18"
+    },
+    {
+      "path": "components/anime/AnimeComboDrawer.tsx",
+      "sha256": "c292fa19f04ae9cbf9eee73a39b57b95d3f95a6d950fd66158e358834dc1d24a"
+    },
+    {
+      "path": "components/anime/AnimeProductCard.tsx",
+      "sha256": "366150007bc667a314d81931951d303a03012d6d02e1ad6a82657aa4d4dff4d2"
+    },
+    {
+      "path": "components/anime/AnimeProductDetail.tsx",
+      "sha256": "9a4e12bd76d484eeb03db0a013f55c6c86fcb58ae5c27870407802bcb27cb9f8"
+    },
+    {
+      "path": "components/anime/AnimeProductLink.tsx",
+      "sha256": "8c13f04488f10100f2e255727570acdc1227a8cae6b57bb75bea35991383508c"
+    },
+    {
+      "path": "components/anime/AnimeProductOptions.tsx",
+      "sha256": "3c001a5af4165049e2b768782d3bfa49212994e071699e4567cc956e7c393446"
+    },
+    {
+      "path": "components/anime/AnimeProductPage.tsx",
+      "sha256": "f50c27997fd9798a8c958e31c7596f04081fdb456b9d4627aa7ca05beb851af4"
+    },
+    {
+      "path": "components/anime/AnimeQuickView.tsx",
+      "sha256": "703ef12b98bb63fbac2877c2c9409fd1754c629a694a964acf346bdb460e0973"
+    },
+    {
+      "path": "components/anime/AnimeShopClient.tsx",
+      "sha256": "0fdbd0f30d6f551a7e5254d2842ff0a34fd8cb82b16d6366cbf7f51b387ca741"
+    },
+    {
+      "path": "components/anime/AnimeUniverseHero.tsx",
+      "sha256": "729fb5181dfb64c8c95cba913b7e28530694f10d5b0a9dc6f438117fce6bb8b8"
+    },
+    {
+      "path": "components/anime/useAnimeListNavigation.ts",
+      "sha256": "9294c269e65b3fff7703eae66907c256210cb906384c7e3963da1e9ad93d4d61"
+    },
+    {
+      "path": "components/store/AnimeSearchCard.tsx",
+      "sha256": "ff384a6832f1e0ac4c3cf6f389c539a2dabeccf1eb49a41a50699cb8718b0634"
+    },
+    {
+      "path": "data/anime-catalog.json",
+      "sha256": "7b7bd3270d208228e24c04272f6e150d9a8f9c03780949e9be4addd1f52c6538"
+    },
+    {
+      "path": "data/anime-import-ledger.json",
+      "sha256": "dffc7278ba7ce58c379c6ac2e9244d7707f8bbd4909b45f09efc13fee33d24bf"
+    },
+    {
+      "path": "data/anime-incoming-2026-10-14.json",
+      "sha256": "91e3ecf6a68bcb0c2d8927c313f27cb29e2a9661b5082e2b4f5489132dc8404e"
+    },
+    {
+      "path": "data/anime-legacy-routes.json",
+      "sha256": "f9ee78bcc69564371ddea9b8da664ad4a59dc41c8420ce6c46f24c7e93e8a024"
+    },
+    {
+      "path": "data/anime-products.ts",
+      "sha256": "10952a905a6f126fb72ee2a41490c7b4d8b19324806c6bcf6b7c6f225ef9d0b4"
+    },
+    {
+      "path": "data/anime-public-routes.json",
+      "sha256": "7b09f87a59fc597ac60553805ce13824d9c05371ed19f81046789c7aa3e5226c"
+    },
+    {
+      "path": "docs/AUDITORIA_CATALOGO_V3_1.html",
+      "sha256": "ca4fd6c499b97604fe8d1c2ff812803671eb553368dc6d0713d73f1406106cba"
+    },
+    {
+      "path": "docs/AUDITORIA_CATALOGO_V3_1.json",
+      "sha256": "b0459d60e5a10f2b0c30074c64828290383bcab24b6af81e6a04113b51ad3cb7"
+    },
+    {
+      "path": "docs/meta-catalog-context.json",
+      "sha256": "4771d2f0291f080d608d9dfa1ff5c3eebbd9fbaacb54b65d18c9c5e67fafeef6"
+    },
+    {
+      "path": "ia/catalogo-anime-shop.csv",
+      "sha256": "5780fbf53478f2e06e5bdfd3ee9b9cd88a6e8588da4be7ba855ae75d54c7eb3b"
+    },
+    {
+      "path": "ia/catalogo-anime-shop.json",
+      "sha256": "4771d2f0291f080d608d9dfa1ff5c3eebbd9fbaacb54b65d18c9c5e67fafeef6"
+    },
+    {
+      "path": "lib/anime-catalog-core.ts",
+      "sha256": "3f1a93e15aaf70141a18081646607c68f92427cd194ab4505a356526e0d92562"
+    },
+    {
+      "path": "lib/anime-navigation.ts",
+      "sha256": "9f1dbef680982c4bf72246f00ca5c2dcf9d0ce9e3df451394adc7e78a4eeb617"
+    },
+    {
+      "path": "lib/anime-product-lookup.ts",
+      "sha256": "69a1f5bc6e37302c6c8f5fe3347b7d27b7ba9d3298eff6551520f670ba642d84"
+    },
+    {
+      "path": "lib/anime-reference-search.ts",
+      "sha256": "ddd876f3c72bf669e3e3353104b400538fca76f135de6a3cc8741b3ce2bd7399"
+    },
+    {
+      "path": "scripts/check-anime-build.mjs",
+      "sha256": "aac14774638943a1fddbc958acfa4256b00b11e06ea7d91ae19014e3a73ab675"
+    },
+    {
+      "path": "scripts/check-anime-catalog-navigation.mjs",
+      "sha256": "9157e9eaebad773b422de0dfd5b27486be3c7ec1f2d64ef3286365af2e658765"
+    },
+    {
+      "path": "scripts/export-anime-audit.mjs",
+      "sha256": "06d70bfa4bab768d4e9a96d27edd97f8c4026850ce64ef699089993aad9067fa"
+    }
+  ]
+}
