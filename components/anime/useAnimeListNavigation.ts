@@ -53,6 +53,7 @@ export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,
     top=Math.max(categoryTop,animeResumeTarget(saved,{scroll:window.scrollY,cardTop:card?.getBoundingClientRect().top,width:window.innerWidth,header}));
    }
    top=Math.max(0,top);
+   window.dispatchEvent(new Event('eu-anime-place-list'));
    window.scrollTo({top,behavior:'instant'});
    stable=Math.abs(previous-top)<2?stable+1:0;previous=top;
    if(attempts<150&&(stable<8||!ready||document.fonts.status==='loading'))frame=requestAnimationFrame(place);

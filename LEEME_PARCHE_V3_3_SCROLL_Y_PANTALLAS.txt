@@ -1,0 +1,81 @@
+EUStore_Catalogo_Oficial_V3 — ACTUALIZACIÓN V3.3
+
+Aplicar sobre la versión V3.2 que ya publicaste (sugerencias en los productos).
+Este ZIP contiene solamente archivos nuevos o modificados. No incluye node_modules.
+
+CAMBIOS
+
+1. Scroll automático: un primer gesto hacia abajo, con rueda o dedo, inicia el
+   recorrido completo hasta las categorías. La secuencia completa dura 23 segundos
+   de reproducción activa. No requiere repetir el gesto para avanzar de capítulo.
+   Las ráfagas de scroll no aceleran la secuencia. Un gesto contrario invierte el
+   recorrido desde su posición actual. Al terminar, se libera el scroll de productos.
+
+2. Selector visible arriba de la escena: «Automático · 23 s» / «Manual».
+   Manual detiene el avance automático y permite controlar la misma animación
+   con el scroll hacia abajo o arriba. El cambio conserva la escena actual.
+   La elección se recuerda durante la sesión de navegación.
+   «Explorar la colección» funciona en ambos modos.
+   Abrir un diálogo o dejar la pestaña en segundo plano pausa el recorrido.
+   Se respeta la preferencia de movimiento reducido del dispositivo.
+
+3. Pantallas: las dimensiones y tipografías existentes conservan su escala normal
+   y aumentan juntas en resoluciones grandes. No se aplica zoom artificial a la página.
+   En un móvil que solicita modo ordenador se distingue su pantalla física del
+   ancho de escritorio solicitado: navegación de escritorio, cuatro columnas en
+   Anime Shop y tres en el catálogo general con filtros laterales.
+   La escena llena el alto disponible del teléfono en modo ordenador vertical.
+   Las tablets y los ordenadores táctiles mantienen sus propias reglas.
+   Pantallas QHD/4K: textos, espacios, tarjetas y controles escalan proporcionalmente;
+   la escena mide de nuevo el encabezado y las categorías. Se limita la resolución
+   interna de los efectos para evitar cargas excesivas en pantallas grandes.
+
+4. El regreso explícito desde un producto mantiene el listado, los filtros y la
+   ubicación guardada. No activa nuevamente el recorrido automático.
+
+INSTALAR EN WINDOWS
+
+1. Si tienes pnpm start abierto en PowerShell, detén el servidor con Ctrl+C.
+2. Guarda este ZIP en Descargas con su nombre original.
+3. Abre PowerShell y pega:
+
+Expand-Archive -LiteralPath "$env:USERPROFILE\Downloads\EUStore_Catalogo_Oficial_V3_3_Parche_Scroll_y_Pantallas.zip" -DestinationPath "$env:USERPROFILE\Downloads\EUStore_Catalogo_Oficial_V3_GitHub" -Force
+cd "$env:USERPROFILE\Downloads\EUStore_Catalogo_Oficial_V3_GitHub"
+pnpm.cmd build:vercel
+
+4. Solo después de una compilación correcta, inicia la vista local:
+
+pnpm.cmd start
+
+5. Abre http://localhost:5178/anime y comprueba:
+   - Un gesto hacia abajo llega a las categorías sin otro gesto.
+   - «Manual» permite bajar y retroceder dentro de la animación.
+   - Al abrir un producto y usar su botón de regreso se conserva la ubicación.
+   - En el móvil: prueba vista normal y «Sitio de escritorio / Modo ordenador».
+   - En el TV: comprueba textos, navegación, categorías y una ficha de producto.
+   Puedes ampliar con los controles normales del navegador; no se bloquea el zoom.
+
+PUBLICAR LA ACTUALIZACIÓN
+
+Cuando hayas revisado la vista local, detén el servidor con Ctrl+C y ejecuta:
+
+git add app components lib scripts docs LEEME_PARCHE_V3_3_SCROLL_Y_PANTALLAS.txt
+git commit -m "V3.3: scroll automatico de 23 segundos y ajuste de pantallas"
+git push
+
+La actualización queda en tu repositorio actual; no es necesario crear otro.
+
+VALIDACIÓN REALIZADA
+
+- Compilación de producción de Next.js: 1.408 páginas generadas.
+- TypeScript y ESLint de los archivos de código modificados.
+- Controlador real con DOM y reloj simulados: rueda, gesto táctil, tiempo de
+  reproducción incluso con pocos fotogramas, reversa, manual, retorno y limpieza.
+- Perfiles de geometría: móvil, tablet, móvil en modo ordenador, PC, Full HD,
+  QHD, ultrapanorámico y 4K. No equivalen a pruebas en dispositivos físicos.
+- Regresión de referencias, navegación y sugerencias de las 1.209 camisetas.
+- Se comprobaron las declaraciones CSS existentes para conservar sus medidas
+  a escala normal. Se preservaron las fotografías y la secuencia visual.
+
+La revisión visual en tu celular y TV reales queda pendiente. Su navegador puede
+reportar una resolución diferente de la resolución física del panel.

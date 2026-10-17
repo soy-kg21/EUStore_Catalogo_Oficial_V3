@@ -1,0 +1,36 @@
+{
+  "version": "V3.3",
+  "base": "V3.2 (sugerencias de productos)",
+  "automaticJourneySeconds": 23,
+  "checks": {
+    "productionBuild": "PASS — 1408 páginas",
+    "typescript": "PASS",
+    "eslintChangedCode": "PASS",
+    "cinemaTimeline": 65,
+    "cinemaController": 30,
+    "deviceLayout": 57,
+    "catalogAndNavigation": 8723,
+    "recommendations": 6051,
+    "originalCSSDeclarationsPreservedAtScaleOne": 7055,
+    "productionSSRAndBootstrapRoutes": [
+      "/catalogo",
+      "/anime",
+      "/anime/anbu-naruto"
+    ]
+  },
+  "testedProfiles": [
+    "308×608",
+    "390×844",
+    "980×2121 (modo ordenador en móvil)",
+    "980×453 (modo ordenador horizontal)",
+    "980×1307 (tablet)",
+    "1366×768 (portátil táctil)",
+    "1440×900",
+    "1920×1080",
+    "2560×1440",
+    "3440×1440",
+    "3840×2160"
+  ],
+  "scope": "Pruebas de código, controlador con DOM/reloj simulados, cálculo de geometría, CSS y respuestas HTML de producción. Sin pruebas visuales en navegadores de celular o televisor físicos.",
+  "preserved": "Fotografías, estampados, clasificación, materiales, tallas, precios, navegación de regreso y sugerencias existentes."
+}

@@ -3,7 +3,7 @@ const particles=Array.from({length:75},(_,i)=>({a:i*2.39996323,r:.14+((i*43)%101
 export function createCinemaEffects(canvas:HTMLCanvasElement){
  const ctx=canvas.getContext('2d');let cw=0,ch=0;
  return (p:number,w:number,h:number,mobile:boolean,px:number,py:number)=>{
-  if(!ctx)return;const dpr=Math.min(window.devicePixelRatio||1,1.6),nw=Math.round(w*dpr),nh=Math.round(h*dpr);
+  if(!ctx)return;const dpr=Math.min(window.devicePixelRatio||1,1.6,Math.sqrt(4000000/Math.max(1,w*h))),nw=Math.round(w*dpr),nh=Math.round(h*dpr);
   if(cw!==nw||ch!==nh){cw=nw;ch=nh;canvas.width=cw;canvas.height=ch;}
   ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
   const {energy,bloom}=cinemaFrame(p),travel=p*8,cx=w*(mobile?.61:.67)+px*9,cy=h*(mobile?.4:.43)+py*2,radius=Math.min(w,h)*(.14+energy*.23);

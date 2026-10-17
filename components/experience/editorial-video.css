@@ -4,31 +4,31 @@
 .eu-video video{opacity:0;transition:opacity .4s ease}
 .eu-video-has-frame video{opacity:1}
 .eu-video-shade{background:linear-gradient(90deg,rgba(5,8,10,.82),rgba(5,8,10,.34) 52%,rgba(5,8,10,.08)),linear-gradient(0deg,rgba(5,8,10,.72),transparent 55%);pointer-events:none}
-.eu-video-control{position:absolute;right:4%;bottom:100px;z-index:4;min-height:44px;display:flex;align-items:center;gap:10px;padding:10px 16px;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.55);border-radius:2px;color:#fff;font-size:12px;cursor:pointer;pointer-events:auto}
-.eu-video-control:focus-visible{outline:3px solid white;outline-offset:4px}
+.eu-video-control{position:absolute;right:4%;bottom:6.25rem;z-index:4;min-height:2.75rem;display:flex;align-items:center;gap:0.625rem;padding:0.625rem 1rem;background:rgba(0,0,0,.72);border:0.0625rem solid rgba(255,255,255,.55);border-radius:0.125rem;color:#fff;font-size:0.75rem;cursor:pointer;pointer-events:auto}
+.eu-video-control:focus-visible{outline:0.1875rem solid white;outline-offset:0.25rem}
 .eu-video-control:hover{background:#111}
-.eu-video-status{position:absolute;right:4%;bottom:76px;z-index:4;color:white;background:#111;padding:3px 6px;font-size:11px;max-width:90%}
+.eu-video-status{position:absolute;right:4%;bottom:4.75rem;z-index:4;color:white;background:#111;padding:0.1875rem 0.375rem;font-size:0.6875rem;max-width:90%}
 .story-hero.eu-cinematic:after{display:none}
 .eu-cinematic .story-hero-grid{position:relative;z-index:2;pointer-events:none}
 .eu-cinematic .story-hero-grid a{pointer-events:auto}
-.eu-cinematic .story-hero-copy h1{font-size:clamp(68px,8.4vw,136px)}
-.eu-curation-film{position:relative;isolation:isolate;min-height:540px;margin:0 0 60px;overflow:hidden;background:#101112;color:#fff}
-.eu-curation-copy{position:relative;z-index:2;min-height:540px;display:flex;flex-direction:column;justify-content:end;align-items:flex-start;padding:48px;max-width:620px;pointer-events:none}
+.eu-cinematic .story-hero-copy h1{font-size:clamp(4.25rem,8.4vw,8.5rem)}
+.eu-curation-film{position:relative;isolation:isolate;min-height:33.75rem;margin:0 0 3.75rem;overflow:hidden;background:#101112;color:#fff}
+.eu-curation-copy{position:relative;z-index:2;min-height:33.75rem;display:flex;flex-direction:column;justify-content:end;align-items:flex-start;padding:3rem;max-width:38.75rem;pointer-events:none}
 .eu-curation-copy a{pointer-events:auto}
-.eu-curation-copy h3{font-size:clamp(32px,4.5vw,68px);line-height:.96;font-weight:900;letter-spacing:-.045em;margin:22px 0 28px}
-.eu-curation-film .eu-video-control{bottom:30px}
-.eu-curation-film .eu-video-status{bottom:8px}
+.eu-curation-copy h3{font-size:clamp(2rem,4.5vw,4.25rem);line-height:.96;font-weight:900;letter-spacing:-.045em;margin:1.375rem 0 1.75rem}
+.eu-curation-film .eu-video-control{bottom:1.875rem}
+.eu-curation-film .eu-video-status{bottom:0.5rem}
 @media(max-width:700px){
- .eu-cinematic .story-hero-grid{padding-top:72px}
- .eu-cinematic .story-hero-copy h1{font-size:clamp(54px,17vw,96px);line-height:.87}
- .eu-cinematic .story-hero-copy{padding-bottom:24px}
+ .eu-cinematic .story-hero-grid{padding-top:4.5rem}
+ .eu-cinematic .story-hero-copy h1{font-size:clamp(3.375rem,17vw,6rem);line-height:.87}
+ .eu-cinematic .story-hero-copy{padding-bottom:1.5rem}
  .eu-video-shade{background:linear-gradient(180deg,rgba(4,6,8,.17) 10%,rgba(4,6,8,.25) 32%,rgba(4,6,8,.83) 73%,rgba(4,6,8,.96))}
- .eu-video-control{top:16px;right:5%;bottom:auto;font-size:11px;padding:8px 12px}
- .eu-video-status{top:66px;right:5%;bottom:auto}
- .eu-curation-film{min-height:600px;margin-bottom:36px}
- .eu-curation-copy{min-height:600px;padding:30px 24px;max-width:100%}
- .eu-curation-film .eu-video-control{top:16px;bottom:auto}
- .eu-curation-film .eu-video-status{top:66px;bottom:auto}
+ .eu-video-control{top:1rem;right:5%;bottom:auto;font-size:0.6875rem;padding:0.5rem 0.75rem}
+ .eu-video-status{top:4.125rem;right:5%;bottom:auto}
+ .eu-curation-film{min-height:37.5rem;margin-bottom:2.25rem}
+ .eu-curation-copy{min-height:37.5rem;padding:1.875rem 1.5rem;max-width:100%}
+ .eu-curation-film .eu-video-control{top:1rem;bottom:auto}
+ .eu-curation-film .eu-video-status{top:4.125rem;bottom:auto}
 }
 @media(prefers-reduced-motion:reduce){.eu-video video{transition:none}}
 
