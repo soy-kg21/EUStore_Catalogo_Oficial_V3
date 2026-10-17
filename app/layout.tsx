@@ -4,8 +4,6 @@ import '@/components/experience/editorial-video.css';
 import './premium.css';
 import './enhancements.css';
 import './integrated-navigation.css';
-import './device-layout.css';
-import {DEVICE_LAYOUT_SCRIPT} from '@/lib/device-layout';
 import Header from '@/components/store/Header';
 import Footer from '@/components/store/Footer';
 import ScrollProgress from '@/components/store/ScrollProgress';
@@ -40,7 +38,7 @@ export default function Layout({
 
   return (
     <html lang="es-CO" suppressHydrationWarning>
-      <head><script id="eu-display-init" dangerouslySetInnerHTML={{__html:DEVICE_LAYOUT_SCRIPT}}/><script id="eu-theme-init" dangerouslySetInnerHTML={{__html:`try{if(localStorage.getItem("eu-theme")==="light")document.documentElement.dataset.theme="light"}catch{}`}}/></head>
+      <head><script id="eu-theme-init" dangerouslySetInnerHTML={{__html:`try{if(localStorage.getItem("eu-theme")==="light")document.documentElement.dataset.theme="light"}catch{}`}}/></head>
       <body>
 
         <a className="skip-link" href="#contenido">
