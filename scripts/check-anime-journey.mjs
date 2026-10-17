@@ -41,13 +41,13 @@ let checks=0;
 assert.equal(Object.values(counts).reduce((a,b)=>a+b,0),1209);checks++;
 for(const pathname of ['/anime','/shop','/cartoon','/rock','/urbanas']){
  links.clear();const html=render(pathname);
- assert(html.includes('EVOLUCIÓN'));assert(html.includes('URBANA'));assert(html.includes('<canvas'));
+ assert(!html.includes('data-cinema="brand-a"'));assert(!html.includes('data-cinema="label-a"'));assert(html.includes('<canvas'));
  assert.equal((html.match(/aria-label="Líneas de Anime Shop"/g)||[]).length,1);
  assert(html.includes('aria-label="Cambiar línea entre los productos"'));
  assert(!html.includes('href="/catalogo"'));
  assert(html.indexOf('aria-label="Cambiar línea entre los productos"')>html.indexOf('id="coleccion"'));
- assert(html.includes('VER DISEÑO'));assert(html.includes('REF: '));
- for(const count of [1209,644,163,170,232])assert(html.includes(count.toLocaleString('es-CO')+' diseños'));
+ assert(html.includes('class="card-arrow"'));assert(!html.includes('class="cardAction"'));assert(html.includes('REF: '));assert(html.includes('por separado'));assert(html.includes('Envío incluido'));assert(html.includes('S / M / L / XL'));
+ for(const count of [1209,...Object.values(counts)])assert(html.includes(count.toLocaleString('es-CO')+' diseños'));
  assert(html.indexOf('id="anime-discover"')<html.indexOf('id="coleccion"'));
  assert(html.indexOf('id="coleccion"')<html.indexOf('id="anime-collection-title"'));
  for(const line of ['anime','cartoon','rock','urbanas'])assert(html.includes(encodeURIComponent(`/anime/universe/${line}.webp`)));

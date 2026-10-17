@@ -1,4 +1,5 @@
-/** The approved Gojo prototype's single, reversible composition timeline. */
+/** One reversible composition, driven exclusively by native scroll position. */
+export const CINEMA_SCROLL_RESISTANCE=1.08;
 export const clamp=(x:number,a=0,b=1)=>Math.max(a,Math.min(b,x));
 export const smooth=(a:number,b:number,x:number)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t);};
 const bell=(a:number,b:number,c:number,d:number,p:number)=>smooth(a,b,p)*(1-smooth(c,d,p));
@@ -9,9 +10,9 @@ export function cinemaFrame(progress:number){
 /** No clock, queue or inertia of its own: the page position is the playhead. */
 export const cinemaScrollProgress=(scroll:number,start:number,end:number)=>end>start?clamp((scroll-start)/(end-start)):0;
 export function cinemaGeometry({width,viewport,header,commerceTop,commerceHeight,panelHeight,rootTop}:{width:number;viewport:number;header:number;commerceTop:number;commerceHeight:number;panelHeight:number;rootTop:number}){
- const mobile=width<=700,available=Math.max(280,viewport-header),base=mobile?Math.max(760,commerceTop+commerceHeight+65):Math.max(640,Math.min(900,available));
- const lead=Math.max(0,base-available),collapsed=mobile?260:270;
- const distance=Math.min(4000,Math.max(mobile?2400:2600,available*(mobile?4:3.7)));
+ const mobile=width<=700,available=Math.max(280,viewport-header),base=mobile?Math.max(760,commerceTop+commerceHeight+65):Math.max(640,Math.min(width>=1800?1200:900,available));
+ const lead=Math.max(0,base-available),collapsed=mobile?260:width>=1800?340:270;
+ const distance=Math.min(4000,Math.max(mobile?2400:2600,available*(mobile?4:3.7)))*CINEMA_SCROLL_RESISTANCE;
  return {mobile,available,base,lead,collapsed,distance,start:rootTop-header+lead,end:rootTop-header+lead+distance,height:lead+distance+collapsed+panelHeight};
 }
 export function cinemaPageProgress(scroll:number,max:number,start:number,end:number,rendered?:number){

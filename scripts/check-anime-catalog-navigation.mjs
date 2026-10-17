@@ -48,18 +48,19 @@ nav.requestAnimeReturn('resume',saved.url,key);equal(nav.consumeAnimeReturn('otr
 const hooks=()=>{
  const effects=[],listeners=new Map(),docListeners=new Map(),frames=new Map(),scrolls=[],restored=[];let frameId=0;
  const stage={dataset:{enhanced:'false',journeyEnd:'3200'}},card={getBoundingClientRect:()=>({top:230})};
- globalThis.window={innerWidth:1440,scrollY:12500,location:{origin:'https://test.local',pathname:'/anime/naruto',search:''},addEventListener:(k,f)=>listeners.set(k,f),removeEventListener:k=>listeners.delete(k),scrollTo:options=>scrolls.push(options.top)};
+ globalThis.window={innerWidth:1440,scrollY:12500,location:{origin:'https://test.local',pathname:'/anime/naruto',search:''},addEventListener:(k,f)=>listeners.set(k,f),removeEventListener:k=>listeners.delete(k),dispatchEvent:e=>listeners.get(e.type)?.(e),scrollTo:options=>scrolls.push(options.top)};
  globalThis.document={fonts:{status:'loaded'},getElementById:id=>id.startsWith('anime-card-')?card:{getBoundingClientRect:()=>({top:3200})},querySelector:selector=>selector==='header.header'?{getBoundingClientRect:()=>({height:82})}:stage,addEventListener:(k,f)=>docListeners.set(k,f),removeEventListener:k=>docListeners.delete(k)};
  globalThis.requestAnimationFrame=fn=>{frames.set(++frameId,fn);return frameId;};globalThis.cancelAnimationFrame=id=>frames.delete(id);
  const exports={};const code=ts.transpileModule(read('components/anime/useAnimeListNavigation.ts'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
- const mock=name=>name==='react'?{useEffect:fn=>effects.push(fn)}:name==='@/lib/anime-navigation'?nav:name==='@/lib/anime-routes'?{animePublicRoutes:publicRoutes}:require(name);
+ const mock=name=>name==='react'?{useEffect:fn=>effects.push(fn),useRef:initial=>({current:initial})}:name==='@/lib/anime-navigation'?nav:name==='@/lib/anime-routes'?{animePublicRoutes:publicRoutes}:require(name);
  new Function('require','exports',code)(mock,exports);exports.useAnimeListNavigation({filters,count:24,filterOpen:false,gridFilterOpen:false,restore:s=>restored.push(s)});
- const cleanups=effects.map(effect=>effect());
+ let cleanups=effects.map(effect=>effect());
  const tick=()=>{const entries=[...frames];frames.clear();for(const [,fn] of entries)fn();};
- return {listeners,frames,scrolls,restored,stage,tick,cleanup:()=>cleanups.forEach(fn=>fn?.())};
+ return {listeners,frames,scrolls,restored,stage,tick,replay:()=>{cleanups.forEach(fn=>fn?.());cleanups=effects.map(effect=>effect());},cleanup:()=>cleanups.forEach(fn=>fn?.())};
 };
 let h=hooks();equal(h.restored[0].count,144);h.tick();equal(h.scrolls,[]);h.cleanup(); // native history: no requested scroll
 nav.requestAnimeReturn('resume',saved.url,key);h=hooks();h.tick();equal(h.scrolls,[]);h.stage.dataset.enhanced='true';for(let i=0;i<12;i++)h.tick();assert(h.scrolls.length);assert(h.scrolls.every(top=>top===12500));equal(h.frames.size,0);h.cleanup();
+nav.requestAnimeReturn('resume',saved.url,key);h=hooks();h.replay();h.stage.dataset.enhanced='true';for(let i=0;i<12;i++)h.tick();assert(h.scrolls.length);assert(h.scrolls.every(top=>top===12500));equal(h.frames.size,0);h.cleanup(); // React Strict Mode replay must preserve the return intent
 nav.requestAnimeReturn('categories',saved.url,key);h=hooks();h.stage.dataset.enhanced='true';h.tick();equal(h.scrolls[0],3200);h.listeners.get('wheel')();const n=h.scrolls.length;h.tick();equal(h.scrolls.length,n);h.cleanup();
 nav.saveAnimeList({...saved,scroll:0,cardTop:230});nav.requestAnimeReturn('resume',saved.url,key);h=hooks();h.stage.dataset.enhanced='true';window.scrollY=0;h.tick();equal(h.scrolls[0],3200);h.cleanup(); // a product opened in the hero returns to categories, never to the intro
 delete globalThis.window;delete globalThis.document;delete globalThis.sessionStorage;delete globalThis.requestAnimationFrame;delete globalThis.cancelAnimationFrame;

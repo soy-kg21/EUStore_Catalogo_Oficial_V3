@@ -28,3 +28,47 @@
  .meta{font-size:7px;letter-spacing:.03em}
  .meta>span:last-child{font-size:7px}
 }
+
+/* Approved reduction: a single title block at Gojo's collar, with its offer below. */
+.copy{top:24%;width:46%}
+.copy h1{margin:0}
+.copy h1,.description,.actions{will-change:transform,opacity}
+.description{margin-top:15px;line-height:1.65}
+.actions{flex-direction:column;align-items:stretch;gap:8px;width:max-content;max-width:100%;margin-top:19px}
+.prices{align-self:center;min-height:0;padding:0;border:0;font-size:12px;line-height:1.5}
+.shot1{background-image:url('/anime/cinema/naruto-cinema.webp');background-size:100% 100%;background-position:center}
+.shot2{background-image:url('/anime/cinema/goku-cinema.webp');background-size:100% 100%;background-position:center}
+.shot3{background-image:url('/anime/cinema/luffy-cinema.webp');background-size:100% 100%;background-position:center}
+@media(min-width:701px) and (max-width:1100px){
+ .copy{top:25%;width:51%}.copy h1{font-size:clamp(46px,6.35cqw,68px)}
+ .description{font-size:14px;max-width:420px}.selection{width:25%}
+}
+@media(max-width:700px){
+ .commerce{top:164px;gap:24px}.copy{top:auto;width:100%}
+ .copy h1{font-size:clamp(42px,12cqw,60px)}
+ .description{margin-top:14px;max-width:350px;line-height:1.65}
+ .actions{margin-top:17px;gap:8px}.enter{font-size:12px;min-height:46px;padding:12px 15px}.prices{font-size:11px}
+}
+@media(min-width:1800px){
+ .viewport{max-width:2400px}.copy h1{font-size:clamp(92px,5.4cqw,132px)}
+ .description{font-size:clamp(18px,1.05cqw,24px);max-width:700px;margin-top:22px}
+ .enter{font-size:18px;min-height:60px;padding:18px 25px}.prices{font-size:16px}.actions{gap:12px;margin-top:25px}
+ .edition{font-size:15px}.breadcrumb{font-size:14px}.selectionHeading,.selectionNote{font-size:13px}
+ .selection{max-width:440px}.chapter h2{font-size:clamp(118px,6cqw,158px)}
+ .collection h2{font-size:clamp(72px,4cqw,104px)}.collection{top:48px}
+ .discover{max-width:2200px;margin-inline:auto;padding:32px}
+}
+@media(prefers-reduced-motion:reduce){
+ .copy h1,.description,.actions{opacity:1!important;transform:none!important}
+ .commerce,.copy{inset:auto}.actions{gap:8px}
+}
+
+/* Other collection titles retain their wording within the same compact composition. */
+.journey[data-cinema-title=line] .copy h1{font-size:clamp(34px,4.7cqw,66px)}
+@media(max-width:700px){.journey[data-cinema-title=line] .copy h1{font-size:clamp(32px,9.5cqw,48px)}}
+@media(min-width:1800px){
+ .journey[data-cinema-title=line] .copy h1{font-size:clamp(66px,3.8cqw,96px)}
+ .label strong{font-size:18px}.label small{font-size:12px}.label{padding:18px 21px}
+ .collection .eyebrow{font-size:12px}.meta{font-size:12px}.vertical{font-size:13px}
+}
+@media(max-width:700px){.shot2{-webkit-mask-image:linear-gradient(#000 0 82%,transparent 100%);mask-image:linear-gradient(#000 0 82%,transparent 100%)}}

@@ -8,13 +8,13 @@ function fixture(width=1024,height=768,reduced=false){
  class El{constructor(name='div'){this.name=name;this.style={};this.dataset={};this.inert=false;this.handlers=new Map();this.offsetHeight=0;this.offsetTop=0;this.clientWidth=width;}
   addEventListener(t,f){const a=this.handlers.get(t)||new Set();a.add(f);this.handlers.set(t,a)}removeEventListener(t,f){this.handlers.get(t)?.delete(f)}closest(s){return s.includes(this.name)?this:null}getAttribute(n){return this[n]||null}getBoundingClientRect(){return {top:this===root?120-y:0,left:0,width:this.clientWidth,height:this===header?82:parseFloat(this.style.height)||640}}
  }
- const names=['viewport','stage','commerce','panel','discover','brand-a','brand-b','copy','edition','label-a','label-b','selection','awake','power','collection','vertical','caption','hint'];
+ const names=['viewport','stage','commerce','panel','discover','copy-title','copy-description','copy-actions','copy','edition','label-a','label-b','selection','awake','power','collection','vertical','caption','hint'];
  const nodes=Object.fromEntries(names.map(n=>[n,new El()]));nodes.panel.offsetHeight=300;nodes.commerce.offsetTop=width<=700?312:0;nodes.commerce.offsetHeight=width<=700?400:640;
  const root=new El(),header=new El(),canvas=new El('canvas'),explore=new El('a'),shots=Array.from({length:4},()=>new El());
  const context2d=new Proxy({},{get:(_t,k)=>k==='createRadialGradient'?()=>({addColorStop(){}}):()=>{},set:()=>true});canvas.getContext=()=>context2d;
  root.querySelector=s=>s==='canvas'?canvas:s==='[data-cinema-explore]'?explore:nodes[s.match(/data-cinema="([^"]+)"/)?.[1]];root.querySelectorAll=()=>shots;
  const observers=[];class Resize{constructor(cb){this.cb=cb;observers.push(this)}observe(){}disconnect(){}}
- const context={console,Element:El,HTMLElement:El,CustomEvent:class{},Event:class{constructor(type){this.type=type}},requestAnimationFrame:f=>{const id=next++;queue.set(id,f);return id},cancelAnimationFrame:id=>queue.delete(id),ResizeObserver:Resize,IntersectionObserver:class{observe(){}disconnect(){}}};
+ const context={console,Date:class extends Date{static now(){return now}},Element:El,HTMLElement:El,CustomEvent:class{},Event:class{constructor(type){this.type=type}},requestAnimationFrame:f=>{const id=next++;queue.set(id,f);return id},cancelAnimationFrame:id=>queue.delete(id),ResizeObserver:Resize,IntersectionObserver:class{observe(){}disconnect(){}}};
  const document={hidden:false,addEventListener:(t,f)=>add('document:'+t,f),removeEventListener:(t,f)=>remove('document:'+t,f),querySelector:s=>s==='header.header'?header:null,fonts:{ready:Promise.resolve()}};
  const win={get scrollY(){return y},innerHeight:height,devicePixelRatio:1,performance:{getEntriesByType:()=>[]},matchMedia:s=>({matches:s.includes('reduced')?reduced:true,addEventListener(){},removeEventListener(){}}),addEventListener:add,removeEventListener:remove,dispatchEvent(){},scrollTo({top}){y=top;for(const f of [...events.get('scroll')||[]])f();if(activeTrigger)activeTrigger.update();}};
  context.window=win;context.document=document;
@@ -45,5 +45,29 @@ for(const [width,height]of [[1440,900],[1024,768],[308,608],[390,844]]){
  f.clickExplore();f.step(2);assert.equal(f.y,end);assert.equal(f.root.dataset.sceneProgress,'1');checks++;
  f.dispose();assert.equal(f.listenerCount,0);f.step(2);assert.equal(f.queuedFrames,0);checks++;
 }
+// A held contact and its momentum cannot count as two category gestures.
+for(const [width,height]of [[1440,900],[390,844]]){
+ const f=fixture(width,height),end=Number(f.root.dataset.journeyEnd);
+ f.win.scrollTo({top:end});f.step(2);
+ for(let n=0;n<40;n++)assert.equal(f.fire('wheel').prevented,true);checks++;
+ assert.equal(f.y,end);f.step(20);
+ assert.equal(f.fire('wheel').prevented,false);f.win.scrollTo({top:end+120});f.step(2);assert.equal(f.y,end+120);checks++;
+ f.step(80);f.win.scrollTo({top:end});f.step(2);
+ assert.equal(f.fire('wheel',{deltaY:-120}).prevented,true);f.step(20);
+ assert.equal(f.fire('wheel',{deltaY:-120}).prevented,false);f.win.scrollTo({top:end-120});f.step(2);assert(Number(f.root.dataset.sceneProgress)<1);checks++;
+ f.step(80);f.win.scrollTo({top:end});f.step(2);
+ const swipe=(direction)=>{
+  f.fire('touchstart',{touches:[{clientX:180,clientY:450}]});
+  for(let n=1;n<=10;n++){f.fire('touchmove',{touches:[{clientX:180,clientY:450-direction*n*12}]});f.step();}
+  f.fire('touchend',{touches:[]});
+ };
+ swipe(1);assert.equal(f.y,end);checks++;swipe(1);assert(f.y>end);checks++;
+ f.step(80);f.win.scrollTo({top:end});f.step(2);swipe(-1);assert.equal(f.y,end);checks++;swipe(-1);assert(f.y<end);checks++;
+ f.step(80);f.win.scrollTo({top:end-50});f.step(2);
+ assert.equal(f.fire('wheel',{deltaY:500}).prevented,true);assert.equal(f.y,end);checks++;
+ for(let n=0;n<30;n++)assert.equal(f.fire('wheel',{deltaY:80}).prevented,true);assert.equal(f.y,end);checks++;
+ f.step(100);f.win.scrollTo({top:end+2000});f.step(2);assert.equal(f.y,end+2000);checks++;
+ f.dispose();assert.equal(f.listenerCount,0);checks++;
+}
 const r=fixture(390,844,true);assert.equal(r.fire('wheel').prevented,false);assert.equal(r.root.dataset.reduced,'true');r.win.scrollTo({top:800});r.step(2);assert.equal(r.root.dataset.sceneProgress,'0');r.dispose();checks++;
-console.log(`PASS: ${checks} comprobaciones del controlador real: scroll manual, pausa sin desplazamiento, reversa, rueda/táctil/teclado libres, salida a productos, filtros sin reinicio e Inicio local. Adaptadores de DOM y reloj; sin navegador.`);
+console.log(`PASS: ${checks} comprobaciones del controlador real: scroll manual, pausa sin desplazamiento, reversa, rueda/táctil/teclado nativos fuera del punto de categorías, doble gesto real en categorías, salida a productos, filtros sin reinicio e Inicio local. Adaptadores de DOM y reloj; sin navegador.`);

@@ -1,5 +1,5 @@
 'use client';
-import {useEffect} from 'react';
+import {useEffect,useRef} from 'react';
 import type {AnimeFilters} from '@/lib/anime-catalog-core';
 import {ANIME_REMEMBER_EVENT,animeNavigationKey,animeResumeTarget,consumeAnimeReturn,readAnimeList,saveAnimeList,requestAnimeProduct} from '@/lib/anime-navigation';
 import {animePublicRoutes} from '@/lib/anime-routes';
@@ -10,6 +10,8 @@ export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,
  restore:(saved:{count:number;filterOpen:boolean;gridFilterOpen:boolean})=>void;
 }){
  const key=animeNavigationKey(filters);
+ // Keep a consumed intent through React's effect setup/cleanup replay.
+ const placement=useRef<{key:string;intent:ReturnType<typeof consumeAnimeReturn>}|null>(null);
  useEffect(()=>{
   const remember=(event:Event)=>{
    const productId=(event as CustomEvent<string>).detail;
@@ -31,12 +33,14 @@ export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,
   return()=>{window.removeEventListener(ANIME_REMEMBER_EVENT,remember);document.removeEventListener('click',capture,true);};
  },[key,count,filterOpen,gridFilterOpen]);
  useEffect(()=>{
-  const saved=readAnimeList(key),intent=consumeAnimeReturn(key);
+  if(placement.current?.key!==key)placement.current={key,intent:consumeAnimeReturn(key)};
+  const saved=readAnimeList(key),intent=placement.current.intent;
   if(saved)restore(saved);
   // Back/Forward can recover the loaded cards, but never receives a scripted scroll.
   if(!intent)return;
   let frame=0,stopped=false,stable=0,previous=-1,attempts=0;
   const stop=()=>{stopped=true;cancelAnimationFrame(frame);};
+  const cancel=()=>{if(placement.current?.key===key)placement.current.intent=null;stop();};
   const place=()=>{
    if(stopped)return;
    attempts++;
@@ -53,16 +57,17 @@ export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,
     top=Math.max(categoryTop,animeResumeTarget(saved,{scroll:window.scrollY,cardTop:card?.getBoundingClientRect().top,width:window.innerWidth,header}));
    }
    top=Math.max(0,top);
+   window.dispatchEvent(new Event('eu-anime-place-list'));
    window.scrollTo({top,behavior:'instant'});
    stable=Math.abs(previous-top)<2?stable+1:0;previous=top;
    if(attempts<150&&(stable<8||!ready||document.fonts.status==='loading'))frame=requestAnimationFrame(place);
-   else stopped=true;
+   else {stopped=true;if(placement.current?.key===key)placement.current.intent=null;}
   };
   frame=requestAnimationFrame(place);
   const measure=()=>{if(!stopped){stable=0;cancelAnimationFrame(frame);frame=requestAnimationFrame(place);}};
   window.addEventListener('eu-cinema-measure',measure);
-  window.addEventListener('wheel',stop,{passive:true});window.addEventListener('touchstart',stop,{passive:true});window.addEventListener('keydown',stop);
-  return()=>{stop();window.removeEventListener('eu-cinema-measure',measure);window.removeEventListener('wheel',stop);window.removeEventListener('touchstart',stop);window.removeEventListener('keydown',stop);};
+  window.addEventListener('wheel',cancel,{passive:true});window.addEventListener('touchstart',cancel,{passive:true});window.addEventListener('keydown',cancel);
+  return()=>{stop();window.removeEventListener('eu-cinema-measure',measure);window.removeEventListener('wheel',cancel);window.removeEventListener('touchstart',cancel);window.removeEventListener('keydown',cancel);};
   // The snapshot is read once per collection. New renders must not restart placement.
   // eslint-disable-next-line react-hooks/exhaustive-deps
  },[key]);

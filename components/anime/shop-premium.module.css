@@ -168,3 +168,18 @@
  .prices .priceTier:last-child .priceTierTop{grid-column:1/-1;margin-bottom:3px}.prices .priceTier:last-child>strong{grid-column:2;grid-row:2/4;font-size:29px;margin:0;align-self:center}.prices .priceTier:last-child .priceMeter{grid-column:1/-1}
  .prices .priceConditions{font-size:9px;margin-top:16px}.prices .wholesale{padding:0 12px}.prices .wholesale summary{font-size:11px;gap:10px}.prices .wholesale summary>span{font-size:9px}
 }
+
+/* Categories alone stay within thumb reach; existing filters stay in the category panel. */
+.catalogDock{gap:0;padding:5px}
+.catalogLines>a{min-height:44px}
+@media(min-width:701px) and (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 20px}}
+@media(min-width:1800px){
+ .shop{max-width:2000px;padding-inline:4%}.grid{gap:44px 30px}
+ .catalogDock{padding:8px;margin-bottom:30px}.catalogLines{gap:10px}.catalogLines>a{font-size:17px;min-height:54px;padding-inline:22px}.catalogLines>a>small{font-size:12px}
+ .journeyControls .collectionLead h2{font-size:48px}.journeyControls .collectionLead .kicker{font-size:13px}
+ .journeyControls .lineNav>a{min-height:178px;padding:25px}.journeyControls .lineNav .lineNumber{top:18px;left:25px;font-size:14px}
+ .journeyControls .lineText{margin-top:28px}.journeyControls .lineText strong{font-size:32px}.journeyControls .lineText small{font-size:11px;max-width:185px}
+ .journeyControls .journeyFilterButton{font-size:15px;min-height:50px;padding:14px 18px}.journeyLine{font-size:14px}.journeyLine>span:last-child{font-size:13px}
+ .shop>.sectionHeading h2{font-size:52px}.shop>.sectionHeading .kicker{font-size:13px}.sectionHeading>p,.resultCount{font-size:15px}
+}
+@media(max-width:700px){.inlineFilters .desktopFilters{display:block}}
