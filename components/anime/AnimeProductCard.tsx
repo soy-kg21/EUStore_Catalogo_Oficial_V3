@@ -12,7 +12,7 @@ export default function AnimeProductCard({product,onNavigate,quantity=0}:{produc
  const href=animeProductHref(product.id),reference=product.id.replace('EU-ANIME-','');
  return <article className={`product-card ${styles.card}`} id={`anime-card-${product.id}`}>
   <AnimeProductLink productId={product.id} href={href} className={`card-image ${styles.media}`} onClick={onNavigate} aria-label={`Ver ${product.name}`}>
-   <Image quality={85} src={product.image} alt={`${product.name}, referencia ${reference}`} fill sizes="(max-width: 700px) 45vw, (max-width: 900px) 44vw, (max-width: 1100px) 30vw, (max-width: 1800px) 23vw, 440px"/>
+   <Image quality={85} src={product.image} alt={`${product.name}, referencia ${reference}`} fill sizes="(max-width: 700px) 48vw, (max-width: 900px) 47vw, (max-width: 1100px) 31vw, (max-width: 1800px) 23vw, 500px"/>
    <span className={`card-label ${styles.badge}`}>{product.category}</span>
    <span className="card-arrow" aria-hidden="true"><ArrowUpRight size={19}/></span>
    {quantity>0&&<span className={styles.selected}><Check size={13}/>{quantity} en tu combo</span>}
@@ -21,7 +21,6 @@ export default function AnimeProductCard({product,onNavigate,quantity=0}:{produc
    <p className={styles.meta}><span title={product.category}>{product.category}</span><span>REF: {reference}</span></p>
    <h3><AnimeProductLink productId={product.id} href={href} onClick={onNavigate}>{product.name}</AnimeProductLink></h3>
    <div className={`price-stack ${styles.price}`}>
-    <span><del>{money(product.price*animeCommercial.promoQuantity)}</del><small>por separado</small></span>
     <strong>{animeCommercial.promoQuantity} por {money(animeCommercial.promoTotal)}</strong>
     <small>1 camiseta {money(product.price)}</small>
    </div>

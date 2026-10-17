@@ -5,11 +5,11 @@ import {ANIME_REMEMBER_EVENT,animeNavigationKey,animeResumeTarget,consumeAnimeRe
 import {animePublicRoutes} from '@/lib/anime-routes';
 const productPaths=new Map(Object.entries(animePublicRoutes).map(([id,route])=>[route.path,id]));
 
-export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,restore}:{
- filters:AnimeFilters;count:number;filterOpen:boolean;gridFilterOpen:boolean;
- restore:(saved:{count:number;filterOpen:boolean;gridFilterOpen:boolean})=>void;
+export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,filterOffset=0,filterFloor=0,restore}:{
+ filters:AnimeFilters;count:number;filterOpen:boolean;gridFilterOpen:boolean;filterOffset?:number;filterFloor?:number;
+ restore:(saved:{count:number;filterOpen:boolean;gridFilterOpen:boolean;filterOffset?:number;filterFloor?:number})=>void;
 }){
- const key=animeNavigationKey(filters);
+ const key=animeNavigationKey(filters),localFilterEdit=useRef(false);
  // Keep a consumed intent through React's effect setup/cleanup replay.
  const placement=useRef<{key:string;intent:ReturnType<typeof consumeAnimeReturn>}|null>(null);
  useEffect(()=>{
@@ -18,7 +18,7 @@ export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,
    const card=document.getElementById('anime-card-'+productId);
    saveAnimeList({version:1,url:window.location.pathname+window.location.search,key,count,scroll:window.scrollY,
     productId:card?productId:undefined,cardTop:card?.getBoundingClientRect().top,width:window.innerWidth,
-    filterOpen,gridFilterOpen,savedAt:Date.now()});
+    filterOpen,gridFilterOpen,filterOffset,filterFloor,savedAt:Date.now()});
   };
   // Also covers a product chosen from the original header's global search.
   const capture=(event:MouseEvent)=>{
@@ -31,11 +31,12 @@ export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,
   window.addEventListener(ANIME_REMEMBER_EVENT,remember);
   document.addEventListener('click',capture,true);
   return()=>{window.removeEventListener(ANIME_REMEMBER_EVENT,remember);document.removeEventListener('click',capture,true);};
- },[key,count,filterOpen,gridFilterOpen]);
+ },[key,count,filterOpen,gridFilterOpen,filterOffset,filterFloor]);
  useEffect(()=>{
   if(placement.current?.key!==key)placement.current={key,intent:consumeAnimeReturn(key)};
-  const saved=readAnimeList(key),intent=placement.current.intent;
-  if(saved)restore(saved);
+  const saved=readAnimeList(key),intent=placement.current.intent,editedHere=localFilterEdit.current;localFilterEdit.current=false;
+  // Typing/selecting in the current list must not revive an older search layout.
+  if(saved&&(!editedHere||intent))restore(saved);
   // Back/Forward can recover the loaded cards, but never receives a scripted scroll.
   if(!intent)return;
   let frame=0,stopped=false,stable=0,previous=-1,attempts=0;
@@ -71,4 +72,5 @@ export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,
   // The snapshot is read once per collection. New renders must not restart placement.
   // eslint-disable-next-line react-hooks/exhaustive-deps
  },[key]);
+ return ()=>{localFilterEdit.current=true;};
 }

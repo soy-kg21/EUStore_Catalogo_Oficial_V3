@@ -37,6 +37,7 @@ const storage=new Map();globalThis.sessionStorage={getItem:k=>storage.get(k)||nu
 const nav=load('lib/anime-navigation.ts',{},'ANIME_REMEMBER_EVENT,animeNavigationKey,safeAnimeListUrl,parseAnimeSnapshot,saveAnimeList,readAnimeList,requestAnimeReturn,consumeAnimeReturn,requestAnimeProduct,consumeAnimeProduct,animeResumeTarget');
 const filters={linea:'anime',categoria:'naruto',q:''},key=nav.animeNavigationKey(filters),saved={version:1,url:'/anime/naruto',key,count:144,scroll:12500,productId:'EU-ANIME-147',cardTop:230,width:1440,filterOpen:true,gridFilterOpen:true,savedAt:Date.now()};
 nav.saveAnimeList(saved);equal(nav.readAnimeList(key),saved);equal(nav.readAnimeList(),saved);equal(nav.readAnimeList('otra'),null);
+equal(nav.parseAnimeSnapshot({...saved,filterOffset:1000,filterFloor:1800})?.filterOffset,1000);equal(nav.parseAnimeSnapshot({...saved,filterOffset:-1}),null);equal(nav.parseAnimeSnapshot({...saved,filterFloor:Infinity}),null);
 equal(nav.parseAnimeSnapshot({...saved,count:Infinity}),null);equal(nav.parseAnimeSnapshot({...saved,savedAt:Date.now()-90000000}),null);
 for(const url of ['https://evil.test','//evil.test','javascript:alert(1)','/catalogo','/anime/../../evil'])equal(nav.safeAnimeListUrl(url),null);
 equal(nav.safeAnimeListUrl('/anime/naruto?q=Kakashi'),'/anime/naruto?q=Kakashi');
@@ -53,12 +54,13 @@ const hooks=()=>{
  globalThis.requestAnimationFrame=fn=>{frames.set(++frameId,fn);return frameId;};globalThis.cancelAnimationFrame=id=>frames.delete(id);
  const exports={};const code=ts.transpileModule(read('components/anime/useAnimeListNavigation.ts'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
  const mock=name=>name==='react'?{useEffect:fn=>effects.push(fn),useRef:initial=>({current:initial})}:name==='@/lib/anime-navigation'?nav:name==='@/lib/anime-routes'?{animePublicRoutes:publicRoutes}:require(name);
- new Function('require','exports',code)(mock,exports);exports.useAnimeListNavigation({filters,count:24,filterOpen:false,gridFilterOpen:false,restore:s=>restored.push(s)});
+ new Function('require','exports',code)(mock,exports);const prepareFilterUpdate=exports.useAnimeListNavigation({filters,count:24,filterOpen:false,gridFilterOpen:false,restore:s=>restored.push(s)});
  let cleanups=effects.map(effect=>effect());
  const tick=()=>{const entries=[...frames];frames.clear();for(const [,fn] of entries)fn();};
- return {listeners,frames,scrolls,restored,stage,tick,replay:()=>{cleanups.forEach(fn=>fn?.());cleanups=effects.map(effect=>effect());},cleanup:()=>cleanups.forEach(fn=>fn?.())};
+ return {listeners,frames,scrolls,restored,stage,tick,prepareFilterUpdate,replay:()=>{cleanups.forEach(fn=>fn?.());cleanups=effects.map(effect=>effect());},cleanup:()=>cleanups.forEach(fn=>fn?.())};
 };
 let h=hooks();equal(h.restored[0].count,144);h.tick();equal(h.scrolls,[]);h.cleanup(); // native history: no requested scroll
+h=hooks();equal(h.restored.length,1);h.prepareFilterUpdate();h.replay();equal(h.restored.length,1);h.cleanup(); // local edits retain the current search anchor
 nav.requestAnimeReturn('resume',saved.url,key);h=hooks();h.tick();equal(h.scrolls,[]);h.stage.dataset.enhanced='true';for(let i=0;i<12;i++)h.tick();assert(h.scrolls.length);assert(h.scrolls.every(top=>top===12500));equal(h.frames.size,0);h.cleanup();
 nav.requestAnimeReturn('resume',saved.url,key);h=hooks();h.replay();h.stage.dataset.enhanced='true';for(let i=0;i<12;i++)h.tick();assert(h.scrolls.length);assert(h.scrolls.every(top=>top===12500));equal(h.frames.size,0);h.cleanup(); // React Strict Mode replay must preserve the return intent
 nav.requestAnimeReturn('categories',saved.url,key);h=hooks();h.stage.dataset.enhanced='true';h.tick();equal(h.scrolls[0],3200);h.listeners.get('wheel')();const n=h.scrolls.length;h.tick();equal(h.scrolls.length,n);h.cleanup();

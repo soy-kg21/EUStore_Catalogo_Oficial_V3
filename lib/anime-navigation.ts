@@ -6,6 +6,7 @@ const PREFIX='eu-anime-navigation-v1:';
 const MAX_AGE=24*60*60*1000;
 export type AnimeListSnapshot={
  version:1;url:string;key:string;count:number;scroll:number;productId?:string;cardTop?:number;
+ filterOffset?:number;filterFloor?:number;
  width:number;filterOpen:boolean;gridFilterOpen:boolean;savedAt:number;
 };
 export type AnimeReturnIntent={mode:'resume'|'categories';url:string;key:string;createdAt:number};
@@ -25,6 +26,7 @@ export function parseAnimeSnapshot(value:unknown,now=Date.now()):AnimeListSnapsh
  if(s.version!==1||!safeAnimeListUrl(s.url)||typeof s.key!=='string'||!Number.isInteger(s.count)||s.count<24||s.count>2000||!Number.isFinite(s.scroll)||s.scroll<0||!Number.isFinite(s.width)||s.width<=0||!Number.isFinite(s.savedAt)||now-s.savedAt>MAX_AGE||s.savedAt>now+60000)return null;
  if(s.productId!==undefined&&!/^EU-ANIME-\d{3,4}$/.test(s.productId))return null;
  if(s.cardTop!==undefined&&!Number.isFinite(s.cardTop))return null;
+ if([s.filterOffset,s.filterFloor].some(value=>value!==undefined&&(!Number.isFinite(value)||value<0)))return null;
  return s;
 }
 export function saveAnimeList(snapshot:AnimeListSnapshot){

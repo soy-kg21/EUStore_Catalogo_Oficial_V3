@@ -46,7 +46,7 @@ for(const pathname of ['/anime','/shop','/cartoon','/rock','/urbanas']){
  assert(html.includes('aria-label="Cambiar línea entre los productos"'));
  assert(!html.includes('href="/catalogo"'));
  assert(html.indexOf('aria-label="Cambiar línea entre los productos"')>html.indexOf('id="coleccion"'));
- assert(html.includes('class="card-arrow"'));assert(!html.includes('class="cardAction"'));assert(html.includes('REF: '));assert(html.includes('por separado'));assert(html.includes('Envío incluido'));assert(html.includes('S / M / L / XL'));
+ assert(html.includes('class="card-arrow"'));assert(!html.includes('class="cardAction"'));assert(html.includes('REF: '));assert(!html.includes('por separado'));assert(!html.includes('<del>'));assert(html.includes('1 camiseta'));assert(html.includes('Envío incluido'));assert(html.includes('S / M / L / XL'));
  for(const count of [1209,...Object.values(counts)])assert(html.includes(count.toLocaleString('es-CO')+' diseños'));
  assert(html.indexOf('id="anime-discover"')<html.indexOf('id="coleccion"'));
  assert(html.indexOf('id="coleccion"')<html.indexOf('id="anime-collection-title"'));

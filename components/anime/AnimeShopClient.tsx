@@ -1,7 +1,8 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import {useDeferredValue,useEffect,useMemo,useRef,useState,type MouseEvent} from 'react';
+import {createPortal} from 'react-dom';
+import {useCallback,useDeferredValue,useEffect,useLayoutEffect,useMemo,useRef,useState,type MouseEvent} from 'react';
 import {ArrowDown,ArrowUpRight,Check,Layers,Search,SlidersHorizontal,X} from 'lucide-react';
 import {animeLines,animeCategorySlug,filterAnimeProducts,type AnimeClientProduct,type AnimeLine} from '@/lib/anime-catalog-core';
 import {animeExperience} from '@/lib/anime-experience';
@@ -16,33 +17,85 @@ import AnimeProductCard from './AnimeProductCard';
 import styles from './shop-premium.module.css';
 export default function AnimeShopClient({products,initialSearch,counts,hero}:{products:AnimeClientProduct[];initialSearch:string;counts:Record<AnimeLine,number>;hero:Omit<Parameters<typeof AnimeUniverseHero>[0],'navigation'>}){
  const {filters,update}=useAnimeFilters(initialSearch),selection=useAnimeSelection();
- const [filterOpen,setFilterOpen]=useState(false);
+ const [filterOpen,setFilterOpen]=useState(false),[filterLayout,setFilterLayout]=useState({offset:0,floor:0});
+ const filterPanel=useRef<HTMLDivElement>(null),filterTrigger=useRef<HTMLButtonElement|null>(null),dock=useRef<HTMLDivElement>(null),grid=useRef<HTMLDivElement>(null),shop=useRef<HTMLElement>(null);
+ const compactTarget=useRef<number|null>(null);
+ const closeFilters=useCallback(()=>{
+  const offset=parseFloat(grid.current?.style.paddingTop||'0')||0;
+  if(offset){
+   const end=Number(document.querySelector<HTMLElement>('[data-anime-journey]')?.dataset.journeyEnd)||0;
+   compactTarget.current=Math.max(end,window.scrollY-offset);setFilterLayout({offset:0,floor:0});
+  }
+  setFilterOpen(false);
+ },[]);
+ useLayoutEffect(()=>{
+  if(compactTarget.current===null||filterLayout.offset)return;
+  // Remove temporary search spacing while keeping the same visible matches.
+  window.dispatchEvent(new Event('eu-anime-place-list'));
+  window.scrollTo({top:compactTarget.current,behavior:'instant'});compactTarget.current=null;
+ },[filterLayout.offset]);
+ const updateHere:typeof update=(patch,replace=false)=>{
+  // Keep new matches below the visible dock without jumping back to the hero.
+  const list=grid.current,section=shop.current;
+  if(list&&section&&filterOpen){
+   const header=document.querySelector('header.header')?.getBoundingClientRect().height||82;
+   const dockBottom=dock.current?.getBoundingClientRect().bottom||header;
+   const target=Math.max(header+12,dockBottom+14),top=list.getBoundingClientRect().top+filterLayout.offset;
+   if(top<target)setFilterLayout(current=>({offset:current.offset+target-top,floor:Math.max(current.floor,window.scrollY+window.innerHeight-(window.scrollY+section.getBoundingClientRect().top))}));
+  }
+  if((['linea','categoria','q'] as const).some(key=>patch[key]!==undefined&&patch[key]!==filters[key])||patch.doble!==undefined&&!!patch.doble!==!!filters.doble)prepareFilterUpdate();
+  update(patch,replace);
+ };
+ const toggleFilters=(event:MouseEvent<HTMLButtonElement>)=>{filterTrigger.current=event.currentTarget;if(filterOpen)closeFilters();else setFilterOpen(true);};
+ useEffect(()=>{
+  if(!filterOpen)return;
+  const panel=filterPanel.current;if(!panel)return;
+  const position=()=>{
+   const viewport=window.visualViewport,offset=viewport?.offsetTop||0,height=viewport?.height||window.innerHeight;
+   const header=document.querySelector('header.header')?.getBoundingClientRect().bottom||82;
+   const minTop=Math.max(offset+10,header+8),maxBottom=offset+height-12;
+   let anchor=filterTrigger.current?.getBoundingClientRect();
+   if(!anchor||anchor.bottom<minTop)anchor=dock.current?.getBoundingClientRect();
+   const below=(anchor?.bottom||minTop)+8,available=maxBottom-below;
+   const top=available>=230?below:Math.max(minTop,(anchor?.top||minTop)-Math.min(panel.scrollHeight,maxBottom-minTop)-8);
+   panel.style.top=`${Math.min(top,Math.max(minTop,maxBottom-140))}px`;
+   panel.style.right=`${Math.max(12,Math.min(window.innerWidth-(anchor?.right||window.innerWidth-16),window.innerWidth-Math.min(420,window.innerWidth-24)-12))}px`;
+   panel.style.maxHeight=`${Math.max(120,maxBottom-parseFloat(panel.style.top))}px`;
+  };
+  position();panel.querySelector<HTMLInputElement>('input[type="search"]')?.focus({preventScroll:true});
+  const outside=(event:PointerEvent)=>{if(event.target instanceof Node&&!panel.contains(event.target)&&!filterTrigger.current?.contains(event.target))closeFilters();};
+  const escape=(event:KeyboardEvent)=>{if(event.key==='Escape'){event.preventDefault();closeFilters();filterTrigger.current?.focus({preventScroll:true});}};
+  window.addEventListener('scroll',position,{passive:true});window.addEventListener('resize',position,{passive:true});
+  window.visualViewport?.addEventListener('resize',position);window.visualViewport?.addEventListener('scroll',position);
+  document.addEventListener('pointerdown',outside);document.addEventListener('keydown',escape);
+  return()=>{window.removeEventListener('scroll',position);window.removeEventListener('resize',position);window.visualViewport?.removeEventListener('resize',position);window.visualViewport?.removeEventListener('scroll',position);document.removeEventListener('pointerdown',outside);document.removeEventListener('keydown',escape);};
+ },[filterOpen,closeFilters]);
  const deferredQuery=useDeferredValue(filters.q),filterKey=JSON.stringify(filters),[pagination,setPagination]=useState({key:filterKey,count:24});
  const visible=pagination.key===filterKey?pagination.count:24;
  const categories=useMemo(()=>[...new Set(products.filter(product=>!filters.linea||product.line===filters.linea).map(product=>product.category))].sort((a,b)=>a.localeCompare(b,'es')),[products,filters.linea]);
  const railDrag=useRef<{pointer:number;x:number;scroll:number;moved:boolean}|null>(null),suppressRailClick=useRef(false);
  useEffect(()=>{const open=()=>setFilterOpen(true);window.addEventListener('eu-open-anime-filters',open);return()=>window.removeEventListener('eu-open-anime-filters',open);},[]);
  const filtered=useMemo(()=>orderAnimeShopProducts(filterAnimeProducts(products,{...filters,q:deferredQuery}).filter(product=>!filters.doble||isDoublePrint(product.id)),filters),[products,filters,deferredQuery]);
- useAnimeListNavigation({filters,count:visible,filterOpen,gridFilterOpen:false,restore:saved=>{
-  setPagination({key:filterKey,count:saved.count});setFilterOpen(saved.filterOpen||saved.gridFilterOpen);
+ const prepareFilterUpdate=useAnimeListNavigation({filters,count:visible,filterOpen,gridFilterOpen:false,filterOffset:filterLayout.offset,filterFloor:filterLayout.floor,restore:saved=>{
+  setPagination({key:filterKey,count:saved.count});setFilterOpen(saved.filterOpen||saved.gridFilterOpen);setFilterLayout({offset:saved.filterOffset||0,floor:saved.filterFloor||0});
  }});
  const items=filtered.slice(0,visible),line=animeLines.find(item=>item.id===filters.linea),experience=animeExperience[line?.id||'shop'];
  const currentCategory=categories.find(category=>animeCategorySlug(category)===filters.categoria);
  const popular=experience.categories.filter(category=>categories.includes(category));
  const chips=popular.length?popular.slice(0,6):categories.slice(0,6);
- const activeCount=Number(!!filters.categoria)+Number(!!filters.doble),reset=()=>update({categoria:'',q:'',doble:false});
- const chooseLine=(id:string)=>{const categoria=products.some(p=>(!id||p.line===id)&&animeCategorySlug(p.category)===filters.categoria)?filters.categoria:'';update({linea:id,categoria});};
+ const activeCount=Number(!!filters.q)+Number(!!filters.categoria)+Number(!!filters.doble),reset=()=>updateHere({categoria:'',q:'',doble:false});
+ const chooseLine=(id:string)=>{const categoria=products.some(p=>(!id||p.line===id)&&animeCategorySlug(p.category)===filters.categoria)?filters.categoria:'';updateHere({linea:id,categoria});};
  const lineChoices=[{id:'',name:'Todas'},...animeLines];
  const countLine=(id:string)=>id?counts[id as AnimeLine]:Object.values(counts).reduce((a,b)=>a+b,0);
  const changeLine=(id:string,event:MouseEvent<HTMLAnchorElement>)=>{if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();chooseLine(id);};
  useEffect(()=>{trackAnimeEvent('view_collection',{line:filters.linea||'todas'});},[filters.linea]);
  const controls=(suffix:string)=><div className={styles.filterControls}>
-  <label className={styles.categoryField} htmlFor={`anime-franchise-${suffix}`}><span>Universo o franquicia</span><select id={`anime-franchise-${suffix}`} value={filters.categoria} onChange={event=>update({categoria:event.target.value})}><option value="">Todas las franquicias</option>{categories.map(category=><option key={category} value={animeCategorySlug(category)}>{category}</option>)}</select></label>
-  <label className={styles.doubleFilter}><input type="checkbox" checked={!!filters.doble} onChange={event=>update({doble:event.target.checked})}/><span><Layers size={16}/> Solo doble estampado</span></label>
+  <label className={styles.categoryField} htmlFor={`anime-franchise-${suffix}`}><span>Universo o franquicia</span><select id={`anime-franchise-${suffix}`} value={filters.categoria} onChange={event=>updateHere({categoria:event.target.value})}><option value="">Todas las franquicias</option>{categories.map(category=><option key={category} value={animeCategorySlug(category)}>{category}</option>)}</select></label>
+  <label className={styles.doubleFilter}><input type="checkbox" checked={!!filters.doble} onChange={event=>updateHere({doble:event.target.checked})}/><span><Layers size={16}/> Solo doble estampado</span></label>
   {activeCount>0&&<button className={styles.resetFilters} type="button" onClick={reset}>Limpiar filtros <X size={14}/></button>}
  </div>;
  const navigation=<div className={styles.journeyControls}>
-  <div className={styles.collectionLead}><div><p className={styles.kicker}>Sigue en tu universo</p><h2>¿QUÉ TE REPRESENTA?</h2></div><button type="button" className={styles.journeyFilterButton} aria-expanded={filterOpen} aria-controls="anime-inline-filters" onClick={()=>setFilterOpen(value=>!value)}><SlidersHorizontal size={17}/> Filtros{activeCount>0&&<b>{activeCount}</b>}</button></div>
+  <div className={styles.collectionLead}><div><p className={styles.kicker}>Sigue en tu universo</p><h2>¿QUÉ TE REPRESENTA?</h2></div><button type="button" className={styles.journeyFilterButton} aria-expanded={filterOpen} aria-controls="anime-inline-filters" onClick={toggleFilters}><SlidersHorizontal size={17}/> Filtros{activeCount>0&&<b>{activeCount}</b>}</button></div>
   <nav className={styles.lineNav} aria-label="Líneas de Anime Shop" onDragStart={event=>event.preventDefault()} onPointerDown={event=>{if(event.pointerType==='mouse'&&event.button===0){railDrag.current={pointer:event.pointerId,x:event.clientX,scroll:event.currentTarget.scrollLeft,moved:false};suppressRailClick.current=false;}}} onPointerMove={event=>{const drag=railDrag.current;if(!drag||drag.pointer!==event.pointerId)return;const delta=event.clientX-drag.x;if(Math.abs(delta)>8){drag.moved=true;suppressRailClick.current=true;event.currentTarget.setPointerCapture(event.pointerId);}if(drag.moved){event.currentTarget.scrollLeft=drag.scroll-delta;event.preventDefault();}}} onPointerUp={()=>{railDrag.current=null;setTimeout(()=>{suppressRailClick.current=false;},0);}} onPointerCancel={()=>{railDrag.current=null;suppressRailClick.current=false;}} onClickCapture={event=>{if(suppressRailClick.current){event.preventDefault();event.stopPropagation();}}}>{[{id:'',name:'Todas'},...animeLines].map(item=>{
    const id=item.id as AnimeLine,tagline={anime:'Historias que te representan',cartoon:'Personajes de siempre',rock:'Tu música. Tu actitud.',urbanos:'Hechas para la calle'}[id]||'Todos tus universos';
    const count=item.id?counts[id]:Object.values(counts).reduce((a,b)=>a+b,0);
@@ -51,17 +104,18 @@ export default function AnimeShopClient({products,initialSearch,counts,hero}:{pr
    </Link>;
   })}</nav>
   <div className={styles.journeyLine}><span>{line?.name||'Todas las líneas'} · {filtered.length} diseños</span><span>Elige tu línea. Sigue explorando.</span></div>
-  <div id="anime-inline-filters" className={styles.inlineFilters} hidden={!filterOpen}><div className={styles.toolbar}><div className={styles.search}><Search size={20}/><input type="search" value={filters.q} onChange={event=>update({q:event.target.value},true)} placeholder="Busca un personaje, banda o diseño" aria-label="Buscar diseños" maxLength={100}/>{filters.q&&<button type="button" onClick={()=>update({q:''},true)} aria-label="Limpiar búsqueda"><X size={18}/></button>}</div></div>
-  <div className={styles.desktopFilters}>{controls('desktop')}</div>
-  <div className={styles.categoryChips} aria-label="Franquicias para descubrir"><button type="button" aria-pressed={!filters.categoria} onClick={()=>update({categoria:''})}>Todos los diseños</button>{chips.map(category=><button type="button" key={category} aria-pressed={filters.categoria===animeCategorySlug(category)} onClick={()=>update({categoria:animeCategorySlug(category)})}>{category}</button>)}</div></div>
+
  </div>;
- return <><AnimeUniverseHero {...hero} navigation={navigation}/><section className={styles.shop} id="coleccion" aria-labelledby="anime-collection-title">
+ return <><AnimeUniverseHero {...hero} navigation={navigation}/>{filterOpen&&createPortal(<div id="anime-inline-filters" ref={filterPanel} role="region" aria-label="Filtros de Anime Shop" data-cinema-native-scroll className={styles.filterPopover} hidden={!filterOpen}><div className={styles.toolbar}><div className={styles.search}><Search size={20}/><input type="search" value={filters.q} onChange={event=>updateHere({q:event.target.value},true)} placeholder="Busca un personaje, banda o diseño" aria-label="Buscar diseños" maxLength={100}/>{filters.q&&<button type="button" onClick={()=>updateHere({q:''},true)} aria-label="Limpiar búsqueda"><X size={18}/></button>}</div></div>
+  <div className={styles.desktopFilters}>{controls('desktop')}</div>
+  <div className={styles.categoryChips} aria-label="Franquicias para descubrir"><button type="button" aria-pressed={!filters.categoria} onClick={()=>updateHere({categoria:''})}>Todos los diseños</button>{chips.map(category=><button type="button" key={category} aria-pressed={filters.categoria===animeCategorySlug(category)} onClick={()=>updateHere({categoria:animeCategorySlug(category)})}>{category}</button>)}</div></div>,document.body)}<section ref={shop} style={{minHeight:filterLayout.floor||undefined}} className={styles.shop} id="coleccion" aria-labelledby="anime-collection-title">
   <div className={styles.sectionHeading}><div><p className={styles.kicker}>Encuentra lo que te representa</p><h2 id="anime-collection-title">{currentCategory|| (line?`Camisetas ${line.name}.`:'Encuentra tu próxima camiseta.')}</h2></div><p><span className={styles.resultCount} aria-live="polite">{filtered.length} diseños</span><br/>Combina referencias de cualquier línea.</p></div>
-  <div className={styles.catalogDock}>
+  <div ref={dock} className={styles.catalogDock}>
    <nav className={styles.catalogLines} aria-label="Cambiar línea entre los productos">{lineChoices.map(item=><Link key={item.id} href={item.id?animeLinePath[item.id as AnimeLine]:'/shop'} scroll={false} onClick={event=>changeLine(item.id,event)} aria-current={filters.linea===item.id?'page':undefined}>{item.name}<small>{countLine(item.id).toLocaleString('es-CO')}</small></Link>)}</nav>
+   <button type="button" className={styles.catalogFilter} aria-label="Filtros de productos" aria-expanded={filterOpen} aria-controls="anime-inline-filters" onClick={toggleFilters}><SlidersHorizontal size={18}/>{activeCount>0&&<b>{activeCount}</b>}</button>
   </div>
-  {(filters.q||currentCategory||filters.doble)&&<div className={styles.activeFilters}>{filters.q&&<button onClick={()=>update({q:''},true)}>“{filters.q}” <X size={13}/></button>}{currentCategory&&<button onClick={()=>update({categoria:''})}>{currentCategory} <X size={13}/></button>}{filters.doble&&<button onClick={()=>update({doble:false})}>Doble estampado <X size={13}/></button>}</div>}
-  <div className={styles.grid} aria-busy={deferredQuery!==filters.q}>{items.map(product=><AnimeProductCard key={product.id} product={product} quantity={selection.rows.filter(row=>row.id===product.id).reduce((n,row)=>n+row.quantity,0)}/>)}</div>
+  {(filters.q||currentCategory||filters.doble)&&<div className={styles.activeFilters}>{filters.q&&<button onClick={()=>updateHere({q:''},true)}>“{filters.q}” <X size={13}/></button>}{currentCategory&&<button onClick={()=>updateHere({categoria:''})}>{currentCategory} <X size={13}/></button>}{filters.doble&&<button onClick={()=>updateHere({doble:false})}>Doble estampado <X size={13}/></button>}</div>}
+  <div ref={grid} className={styles.grid} style={{paddingTop:filterLayout.offset||undefined,overflowAnchor:'none'}} aria-busy={deferredQuery!==filters.q}>{items.map(product=><AnimeProductCard key={product.id} product={product} quantity={selection.rows.filter(row=>row.id===product.id).reduce((n,row)=>n+row.quantity,0)}/>)}</div>
   {filtered.length===0&&<div className={styles.empty}><Search size={30}/><h3>No encontramos ese diseño.</h3><p>Prueba con otro personaje, franquicia o referencia.</p><button type="button" className={styles.primary} onClick={reset}>Ver todos los diseños <ArrowUpRight size={17}/></button></div>}
   {visible<filtered.length&&<div className={styles.loadMore}><p>Has visto {Math.min(visible,filtered.length)} de {filtered.length} diseños</p><span className={styles.loadTrack}><span style={{width:`${100*Math.min(visible,filtered.length)/filtered.length}%`}}/></span><button type="button" className={styles.secondary} onClick={()=>setPagination({key:filterKey,count:visible+24})}>Mostrar más diseños <ArrowDown size={17}/></button></div>}
   {filtered.length>0&&visible>=filtered.length&&<p className={styles.endMessage}><Check size={15}/> Ya viste todos los diseños de esta selección.</p>}
