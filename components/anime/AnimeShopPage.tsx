@@ -10,7 +10,8 @@ export default function AnimeShopPage({filters}:{filters:AnimeFilters}){
  const products=animeProducts,heroProducts=experience.heroIds.map(id=>toAnimeClientProduct(animeProducts.find(p=>p.id===id)!));
  const counts=Object.fromEntries(animeLines.map(item=>[item.id,animeProducts.filter(p=>p.line===item.id).length])) as Record<AnimeLine,number>;
  const search=new URLSearchParams({linea:filters.linea,categoria:filters.categoria,q:filters.q});if(filters.doble)search.set('estampado','doble');
- return <main id="contenido" className={`${styles.shell} ${socialStyles.page}`}>
+ // Appending cards must push the button down, rather than anchor the viewport to it.
+ return <main id="contenido" style={{overflowAnchor:'none'}} className={`${styles.shell} ${socialStyles.page}`}>
   <AnimeShopClient products={products.map(toAnimeClientProduct)} initialSearch={`?${search}`} counts={counts} hero={{products:heroProducts,division:experience.eyebrow,title:experience.title,description:experience.description}}/>
   <AnimePrices/>
   <AnimeSocialLinks/>

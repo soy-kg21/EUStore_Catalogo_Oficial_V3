@@ -2,6 +2,7 @@ import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {cinemaFrame,cinemaGeometry,cinemaScrollProgress,clamp,smooth} from './anime-cinema';
 import {createCinemaEffects} from './anime-cinema-effects';
+import {cinemaArtwork,mobileCinemaCamera,type CinemaArtId} from './anime-cinema-art';
 
 /** Native scrolling drives the film and the short category settling interval. */
 export function mountAnimeCinema(root:HTMLElement){
@@ -25,19 +26,37 @@ export function mountAnimeCinema(root:HTMLElement){
   stage.style.height=`${h}px`;
   const cameraHeight=mobile?h+(Math.min(h,560)-h)*(1-smooth(.12,.28,p)):h;
   const imageW=Math.max(w,cameraHeight*2),imageH=imageW/2;
+  let visibleTop=0,visibleBottom=h;
+  if(mobile){
+   const reveal=reduced.matches?1:f.discover;
+   discover.style.height=reduced.matches?'auto':`${panel.offsetHeight*reveal}px`;
+   view.style.top=`${Number(root.dataset.cinemaHeader||82)-Math.max(0,h+panel.offsetHeight*reveal-geometry.available)}px`;
+   const rect=stage.getBoundingClientRect();
+   visibleTop=reduced.matches?0:Math.max(0,Number(root.dataset.cinemaHeader||82)-rect.top);
+   visibleBottom=reduced.matches?Math.min(340,h):Math.min(h,window.innerHeight-rect.top);
+   if(visibleBottom-visibleTop<80){visibleTop=0;visibleBottom=h;}
+  }
   // Atlas landmarks keep Gojo inside the mobile opening and his head inside the closing shot.
   const centers=[.72,.78,.68,.72],focus=mobile?[.75,.68,.65,.75]:[.70,.72,.68,.73];
   const leadConsumed=clamp(window.scrollY-(geometry.start-geometry.lead),0,geometry.lead);
   const openingLift=mobile?leadConsumed*(1-smooth(0,.23,p)):0;
   shots.forEach((el,i)=>{
+   const art=cinemaArtwork[el.dataset.cinemaArt as CinemaArtId],portrait=art?.format==='portrait';
    const local=f.local[i],scale=1+[.08,.13,.12,.04][i]*local;
    // The power scene keeps both Goku and the energy sphere inside a narrow screen.
-   const shotWidth=mobile&&i===2?Math.min(imageW,w*2.5):imageW,shotHeight=shotWidth/2;
-   const center=mobile&&i===2?.78:centers[i];
-   const closingLift=i===3?Math.max(0,imageH*.32-h*.40)*f.finish:0;
-   const x=focus[i]*w-center*shotWidth+px*(8+i*2),y=12+(i===0?openingLift:0)-closingLift+py*(i+1)*1.7;
+   const goku=art?el.dataset.cinemaArt==='goku':i===2;
+   let shotWidth=mobile&&(goku||portrait)?Math.min(imageW,w*2.5):imageW,shotHeight=shotWidth/2;
+   const center=portrait?art.center:mobile&&goku?.78:centers[i];
+   const target=portrait?(mobile?art.focusMobile:art.focusDesktop):focus[i];
+   const closingLift=i===3&&!portrait?Math.max(0,imageH*.32-h*.40)*f.finish:0;
+   let x=target*w-center*shotWidth+px*(8+i*2),y=12+(i===0?openingLift:0)-closingLift+py*(i+1)*1.7;
    const rotation=i===2?(local-.5)*-2.4:(local-.5)*.7;
+   if(mobile&&art){
+    const camera=mobileCinemaCamera(el.dataset.cinemaArt as CinemaArtId,{width:w,top:visibleTop,bottom:visibleBottom,maxWidth:Math.min(imageW,w*2.5),scale,rotation,px,py});
+    shotWidth=camera.width;shotHeight=camera.height;x=camera.x;y=camera.y;
+   }
    el.style.width=`${shotWidth}px`;el.style.height=`${shotHeight}px`;el.style.opacity=String(f.weights[i]);
+   el.dataset.cinemaVisible=String(f.weights[i]>.01);
    el.style.transform=`translate3d(${x}px,${y}px,0) scale(${scale}) rotate(${rotation}deg)`;
   });
   style('copy-title',1-smooth(.10,.26,p),-f.exit*w*.18,-f.exit*32,-f.exit*2);
@@ -96,6 +115,7 @@ export function mountAnimeCinema(root:HTMLElement){
  const rootResize=new ResizeObserver(entries=>{if(Math.abs(entries[0].contentRect.width-width)>2)scheduleMeasure();});rootResize.observe(root);
  const header=document.querySelector('header.header');if(header)observer.observe(header);
  window.addEventListener('scroll',scroll,{passive:true});window.addEventListener('resize',scheduleMeasure,{passive:true});
+ root.addEventListener('eu-cinema-art-change',scheduleRender);
  document.addEventListener('click',home);window.addEventListener('eu-open-anime-filters',openFilters);
  stage.addEventListener('pointermove',pointer,{passive:true});stage.addEventListener('pointerleave',leave);
  root.querySelector('[data-cinema-explore]')?.addEventListener('click',explore);reduced.addEventListener('change',scheduleMeasure);
@@ -103,6 +123,7 @@ export function mountAnimeCinema(root:HTMLElement){
  return ()=>{
   destroyed=true;cancelAnimationFrame(frame);cancelAnimationFrame(measureFrame);trigger.kill();timeline.kill();observer.disconnect();rootResize.disconnect();
   window.removeEventListener('scroll',scroll);window.removeEventListener('resize',scheduleMeasure);document.removeEventListener('click',home);
+  root.removeEventListener('eu-cinema-art-change',scheduleRender);
   window.removeEventListener('eu-open-anime-filters',openFilters);stage.removeEventListener('pointermove',pointer);stage.removeEventListener('pointerleave',leave);
   root.querySelector('[data-cinema-explore]')?.removeEventListener('click',explore);reduced.removeEventListener('change',scheduleMeasure);
  };

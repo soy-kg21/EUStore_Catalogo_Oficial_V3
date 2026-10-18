@@ -2,7 +2,7 @@
 // Covers native scrolling and cleanup, not browser layout or GPU rendering.
 import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';import ts from 'typescript';import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);let checks=0;
-function fixture(width=1024,height=768,reduced=false){
+function fixture(width=1024,height=768,reduced=false,artIds=[]){
  let y=0,now=0,queue=new Map(),next=1,activeTrigger=null,refreshes=0;
  const events=new Map();const add=(type,fn)=>{const list=events.get(type)||new Set();list.add(fn);events.set(type,list);};const remove=(type,fn)=>events.get(type)?.delete(fn);
  class El{constructor(name='div'){this.name=name;this.style={};this.dataset={};this.inert=false;this.handlers=new Map();this.offsetHeight=0;this.offsetTop=0;this.clientWidth=width;}
@@ -10,7 +10,7 @@ function fixture(width=1024,height=768,reduced=false){
  }
  const names=['viewport','stage','commerce','panel','discover','copy-title','copy-description','copy-actions','copy','edition','label-a','label-b','selection','awake','power','collection','vertical','caption','hint'];
  const nodes=Object.fromEntries(names.map(n=>[n,new El()]));nodes.panel.offsetHeight=300;nodes.commerce.offsetTop=width<=700?312:0;nodes.commerce.offsetHeight=width<=700?400:640;
- const root=new El(),header=new El(),canvas=new El('canvas'),explore=new El('a'),shots=Array.from({length:4},()=>new El());
+ const root=new El(),header=new El(),canvas=new El('canvas'),explore=new El('a'),shots=Array.from({length:4},(_,i)=>{const el=new El();if(artIds[i])el.dataset.cinemaArt=artIds[i];return el;});
  const context2d=new Proxy({},{get:(_t,k)=>k==='createRadialGradient'?()=>({addColorStop(){}}):()=>{},set:()=>true});canvas.getContext=()=>context2d;
  root.querySelector=s=>s==='canvas'?canvas:s==='[data-cinema-explore]'?explore:nodes[s.match(/data-cinema="([^"]+)"/)?.[1]];root.querySelectorAll=()=>shots;
  const observers=[];class Resize{constructor(cb){this.cb=cb;observers.push(this)}observe(){}disconnect(){}}
@@ -66,4 +66,14 @@ for(const [width,height]of [[320,640],[390,844],[768,1024],[1440,900],[1920,1080
  }
 }
 const r=fixture(390,844,true);assert.equal(r.fire('wheel').prevented,false);assert.equal(r.root.dataset.reduced,'true');r.win.scrollTo({top:800});r.step(2);assert.equal(r.root.dataset.sceneProgress,'0');r.dispose();checks++;
+// Category artwork changes on the same mounted list without resetting its scroll.
+for(const width of [322,768,1440]){
+ const f=fixture(width,844,false,['jordan','ghostface','canserbero','snoop']);
+ const end=Number(f.root.dataset.journeyEnd);f.win.scrollTo({top:end});f.step(2);
+ assert(f.shots.every(shot=>shot.dataset.cinemaArt));assert(f.shots.every(shot=>!shot.style.transform.includes('NaN')));
+ const previous=f.shots[1].style.transform;f.shots[1].dataset.cinemaArt='scooby';
+ for(const fn of f.root.handlers.get('eu-cinema-art-change')||[])fn();f.step(2);
+ assert.notEqual(f.shots[1].style.transform,previous);assert.equal(f.y,end);assert.equal(f.root.dataset.sceneProgress,'1');
+ f.dispose();assert.equal(f.root.handlers.get('eu-cinema-art-change').size,0);checks++;
+}
 console.log(`PASS: ${checks} comprobaciones del controlador real: scroll nativo continuo, avance y reversa con un gesto, rueda/táctil/teclado sin retención, inercia e historial sin saltos, pausa sin desplazamiento, filtros y limpieza. Adaptadores de DOM y reloj; sin navegador.`);
