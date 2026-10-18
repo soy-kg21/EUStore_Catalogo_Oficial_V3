@@ -39,8 +39,12 @@ export function requestAnimeReturn(mode:'resume'|'categories',url:string,key:str
 }
 export function consumeAnimeReturn(key:string):AnimeReturnIntent|null{
  const value=read('return') as AnimeReturnIntent|null;
+ if(!value)return null;
+ if(!['resume','categories'].includes(value.mode)||!safeAnimeListUrl(value.url)||!Number.isFinite(value.createdAt)||Date.now()-value.createdAt>60000){remove('return');return null;}
+ // A cached collection can briefly observe another route's filters during navigation.
+ // Only the intended collection may consume its still-valid return request.
+ if(value.key!==key)return null;
  remove('return');
- if(!value||!['resume','categories'].includes(value.mode)||!safeAnimeListUrl(value.url)||value.key!==key||!Number.isFinite(value.createdAt)||Date.now()-value.createdAt>60000)return null;
  return value;
 }
 export function requestAnimeProduct(id:string){write('product',{id,createdAt:Date.now()});}

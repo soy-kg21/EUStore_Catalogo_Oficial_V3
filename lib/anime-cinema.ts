@@ -1,5 +1,5 @@
 /** One reversible composition, driven exclusively by native scroll position. */
-export const CINEMA_SCROLL_RESISTANCE=1.08*1.14;
+export const CINEMA_SCROLL_RESISTANCE=1.08*1.13;
 export const clamp=(x:number,a=0,b=1)=>Math.max(a,Math.min(b,x));
 export const smooth=(a:number,b:number,x:number)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t);};
 const bell=(a:number,b:number,c:number,d:number,p:number)=>smooth(a,b,p)*(1-smooth(c,d,p));
@@ -12,7 +12,8 @@ export const cinemaScrollProgress=(scroll:number,start:number,end:number)=>end>s
 export function cinemaGeometry({width,viewport,header,commerceTop,commerceHeight,panelHeight,rootTop}:{width:number;viewport:number;header:number;commerceTop:number;commerceHeight:number;panelHeight:number;rootTop:number}){
  const mobile=width<=700,available=Math.max(280,viewport-header),base=mobile?Math.max(760,commerceTop+commerceHeight+65):Math.max(640,Math.min(width>=1800?1200:900,available));
  const lead=Math.max(0,base-available),collapsed=mobile?260:width>=1800?340:270;
- const distance=Math.min(4000,Math.max(mobile?2400:2600,available*(mobile?4:3.7)))*CINEMA_SCROLL_RESISTANCE;
+ // A bounded manual journey: deliberate gestures, without an overlong pinned section.
+ const distance=Math.min(3200,Math.max(2400,available*4))*CINEMA_SCROLL_RESISTANCE;
  // A short native scroll interval keeps the finished composition visible as
  // the sticky hero hands off to products; it never consumes or counts gestures.
  const settle=Math.min(72,Math.max(40,available*.06));

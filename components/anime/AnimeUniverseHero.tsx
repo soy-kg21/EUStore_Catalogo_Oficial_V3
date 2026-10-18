@@ -1,11 +1,11 @@
 'use client';
 import Image from 'next/image';
 import AnimeProductLink from './AnimeProductLink';
-import {useEffect,useRef,type ReactNode,type CSSProperties} from 'react';
+import {useEffect,useRef,type CSSProperties,type ReactNode} from 'react';
 import {ArrowDown,ArrowUpRight,Home} from 'lucide-react';
 import type {AnimeClientProduct} from '@/lib/anime-catalog-core';
 import {animeProductHref} from '@/lib/anime-routes';
-import {cinemaArtForLine,cinemaMobileMasks} from '@/lib/anime-cinema-art';
+import {cinemaArtForLine} from '@/lib/anime-cinema-art';
 import styles from './universe.module.css';
 type Props={products:AnimeClientProduct[];division:string;title:[string,string];description:string;navigation?:ReactNode;line?:string};
 /** Each line keeps its four approved characters; the mixed shop opens with the original Gojo. */
@@ -14,13 +14,9 @@ export default function AnimeUniverseHero({products,title,description,navigation
  const artwork=cinemaArtForLine(line);
  useEffect(()=>{let cancelled=false,dispose:(()=>void)|undefined;import('@/lib/anime-cinema-runtime').then(({mountAnimeCinema})=>{if(!cancelled&&root.current)dispose=mountAnimeCinema(root.current);}).catch(()=>{/* Static collection stays available if enhancement fails. */});return()=>{cancelled=true;dispose?.();};},[]);
  useEffect(()=>{root.current?.dispatchEvent(new Event('eu-cinema-art-change'));},[line]);
- return <section ref={root} id="anime-inicio" className={styles.journey} data-anime-journey data-cinema-title={title[0]==='DE TU UNIVERSO.'?'universe':'line'} data-scene-progress="0" aria-labelledby="anime-hero-title"><div className={styles.viewport} data-cinema="viewport"><div className={styles.stage} data-cinema="stage">
-  <div className={styles.film} aria-hidden="true">{artwork.map((art,index)=>{
-   const mobileStyle={
-    '--cinema-shot-source':`url('${art.src}')`,
-    '--cinema-mobile-mask':cinemaMobileMasks[art.id],
-   } as CSSProperties;
-   return <div key={index} className={`${styles.shot} ${styles['shot'+index]}`} style={mobileStyle} data-cinema-shot={index} data-cinema-art={art.id} data-cinema-art-format={art.format}><div className={styles.shotImage} style={{backgroundImage:`url('${art.src}')`,backgroundSize:art.format==='atlas'?'200% 200%':'100% 100%',backgroundPosition:art.format==='atlas'?'0 0':'center'}}/></div>;
+ return <section ref={root} id="anime-inicio" className={styles.journey} data-anime-journey data-cinema-opening={artwork[0].format} data-cinema-title={title[0]==='DE TU UNIVERSO.'?'universe':'line'} data-scene-progress="0" aria-labelledby="anime-hero-title"><div className={styles.viewport} data-cinema="viewport"><div className={styles.stage} data-cinema="stage">
+  <div className={styles.film} style={{'--cinema-mobile-city':`url('${artwork[0].src}')`,'--cinema-mobile-city-size':artwork[0].format==='atlas'?'800% 200%':'400% 100%'} as CSSProperties} aria-hidden="true">{artwork.map((art,index)=>{
+   return <div key={index} className={`${styles.shot} ${styles['shot'+index]}`} data-cinema-shot={index} data-cinema-art={art.id} data-cinema-art-format={art.format}><div className={styles.shotImage} style={{backgroundImage:`url('${art.src}')`,backgroundSize:art.format==='atlas'?'200% 200%':'100% 100%',backgroundPosition:art.format==='atlas'?'0 0':'center'}}/></div>;
   })}<div className={styles.shade}/><div className={styles.grain}/></div><canvas className={styles.effects} aria-hidden="true"/>
   <nav className={styles.breadcrumb} aria-label="Inicio de Anime Shop"><a href="#anime-inicio" data-cinema-home><Home size={11}/> Inicio</a></nav>
   <div className={styles.edition} data-cinema="edition"><span/> {artwork[0].edition}</div>

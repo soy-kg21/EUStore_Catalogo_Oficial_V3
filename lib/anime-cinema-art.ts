@@ -28,34 +28,24 @@ export const cinemaMobileBounds:Record<CinemaArtId,readonly [number,number,numbe
  slash:[.59,.10,.92,1],freddie:[.58,.04,.95,1],kurt:[.51,.015,.90,1],ozzy:[.55,.01,.94,1],
  jordan:[.55,.11,.85,.97],ghostface:[.51,.015,.88,1],canserbero:[.55,.01,.80,1],snoop:[.54,.01,.86,1],
 };
-/** A soft background edge with an opaque guard around the character and props. */
-export const cinemaMobileMasks=Object.fromEntries(Object.entries(cinemaMobileBounds).map(([key,b])=>{
- const id=key as CinemaArtId,center=id==='scooby'?.81:id==='naruto'||id==='luffy'?.74:.71;
- const radius=id==='naruto'?.27:id==='luffy'?.18:id==='gojo'?.13:.11;
- const headLeft=Math.max(b[0],center-radius),headRight=id==='ozzy'?b[2]:Math.min(b[2],center+radius);
- const shoulder=Math.min(b[3],b[1]+.32),bottomLeft=id==='luffy'?.55:b[0],bottomRight=id==='luffy'?.88:b[2];
- const points=[[headLeft,b[1]],[headRight,b[1]],[b[2],shoulder],[b[2],b[3]-.15],[bottomRight,b[3]],[bottomLeft,b[3]],[b[0],b[3]-.15],[b[0],shoulder]].map(([x,y])=>`${x*1000},${y*500}`).join(' ');
- const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500"><defs><linearGradient id="v" x2="0" y2="1"><stop stop-color="white" stop-opacity="0"/><stop offset=".14" stop-color="white"/><stop offset=".86" stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient><linearGradient id="h"><stop stop-color="white" stop-opacity="0"/><stop offset=".12" stop-color="white"/><stop offset=".88" stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient><mask id="edge"><rect width="1000" height="500" fill="url(#h)"/></mask><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4"/></filter></defs><rect width="1000" height="500" fill="url(#v)" mask="url(#edge)"/><polygon points="${points}" fill="white" stroke="white" stroke-width="24" stroke-linejoin="round" filter="url(#soft)"/><polygon points="${points}" fill="white"/></svg>`;
- return [id,`url("data:image/svg+xml,${encodeURIComponent(svg)}")`];
-})) as Record<CinemaArtId,string>;
-/** Fit the subject, rather than the empty landscape, inside the visible mobile stage.
- * Includes the scroll camera's zoom/rotation and room for the existing ambient motion.
- * Desktop cameras and the scroll timeline do not use this function. */
-export function mobileCinemaCamera(id:CinemaArtId,{width,top,bottom,maxWidth,scale,rotation,px=0,py=0}:{width:number;top:number;bottom:number;maxWidth:number;scale:number;rotation:number;px?:number;py?:number}){
- const bounds=cinemaMobileBounds[id],ambient=cinemaArtwork[id].format==='portrait'?1.02:1;
- const angle=rotation*Math.PI/180,c=Math.cos(angle),s=Math.sin(angle);
- const points=[1,ambient].flatMap(breath=>[bounds[0],bounds[2]].flatMap(u=>[bounds[1],bounds[3]].map(v=>{
-  const x=.70+(u-.70)*breath-.60,y=(.42+(v-.42)*breath-.42)/2;
-  return {x:.60+scale*(x*c-y*s),y:.21+scale*(x*s+y*c)};
- })));
- const left=Math.min(...points.map(p=>p.x)),right=Math.max(...points.map(p=>p.x)),upper=Math.min(...points.map(p=>p.y)),lower=Math.max(...points.map(p=>p.y));
- const inset=Math.min(24,Math.max(12,width*.045)),motionRoom=8;
- const start=top+Math.min(28,Math.max(12,(bottom-top)*.045)),end=Math.max(start+1,bottom-26);
- const imageWidth=Math.max(1,Math.min(maxWidth,(width-inset*2-motionRoom*2)/(right-left),(end-start-motionRoom*2)/(lower-upper)));
- const minX=inset+motionRoom-left*imageWidth,maxX=width-inset-motionRoom-right*imageWidth;
- const minY=start+motionRoom-upper*imageWidth,maxY=end-motionRoom-lower*imageWidth;
- const x=Math.max(minX,Math.min(maxX,width*.70-(left+right)*imageWidth/2+px*8));
- const y=Math.max(minY,Math.min(maxY,minY+(maxY-minY)*.10+py*3));
+/** Cinematic focal points in the approved source frames. */
+export const cinemaPortraitFocus:Partial<Record<CinemaArtId,number>>={popeye:.75,johnny:.71,scooby:.815,panther:.66,slash:.71,freddie:.75,kurt:.70,ozzy:.67,jordan:.69,ghostface:.72,canserbero:.70,snoop:.70};
+export function portraitCinemaCamera(id:CinemaArtId,{width,height,mobile,scale,rotation,px=0,py=0,local=0,closing=0}:{width:number;height:number;mobile:boolean;scale:number;rotation:number;px?:number;py?:number;local?:number;closing?:number}){
+ const b=cinemaMobileBounds[id],angle=rotation*Math.PI/180,c=Math.cos(angle),s=Math.sin(angle);
+ const project=(u:number,v:number)=>{const x=u-.60,y=(v-.42)/2;return{x:.60+scale*(x*c-y*s),y:.21+scale*(x*s+y*c)}};
+ // Cover the stage instead of fitting the entire body into a floating landscape.
+ // At the closing pose keep enough scale for a readable face above categories.
+ const sceneHeight=height+(mobile?width*.42*closing:0);
+ const tl=project(0,0),tr=project(1,0),bl=project(0,1),br=project(1,1);
+ // Cover every corner, including rotation and the small breathing movement.
+ const left=Math.max(tl.x,bl.x),right=Math.min(tr.x,br.x),top=Math.max(tl.y,tr.y),bottom=Math.min(bl.y,br.y);
+ const imageWidth=Math.max((width+16)/(right-left),(height+16)/(bottom-top),sceneHeight*2/(1-b[1]))*(1+.015*local);
+ const head=project(cinemaPortraitFocus[id]||.72,b[1]),headCenter=project(cinemaPortraitFocus[id]||.72,b[1]+.08);
+ const minX=width+8-right*imageWidth,maxX=-8-left*imageWidth;
+ const half=id==='scooby'?.06:id==='panther'?.045:.035;
+ const faceRight=Math.max(...[b[1],b[1]+.18].map(v=>project((cinemaPortraitFocus[id]||.72)+half,v).x));
+ const x=Math.max(minX,Math.min(maxX,width-16-faceRight*imageWidth,width*(mobile?.79:.74)-headCenter.x*imageWidth+px*6));
+ const y=Math.max(height+8-bottom*imageWidth,Math.min(24-head.y*imageWidth+py*2,-4-top*imageWidth));
  return {width:imageWidth,height:imageWidth/2,x,y};
 }
 type Sequence=readonly [CinemaArtId,CinemaArtId,CinemaArtId,CinemaArtId];

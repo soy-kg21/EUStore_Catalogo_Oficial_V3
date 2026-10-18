@@ -71,18 +71,17 @@
  .label strong{font-size:18px}.label small{font-size:12px}.label{padding:18px 21px}
  .collection .eyebrow{font-size:12px}.meta{font-size:12px}.vertical{font-size:13px}
 }
-@media(max-width:700px){.shot{-webkit-mask-image:none;mask-image:none}}
-
-/* Artwork lives inside the existing scroll camera; only the new portraits breathe. */
+/* Preserve the approved full-bleed anime camera and its closing crop. */
+@media(max-width:700px){.shot[data-cinema-art=goku]{-webkit-mask-image:linear-gradient(#000 0 82%,transparent 100%);mask-image:linear-gradient(#000 0 82%,transparent 100%)}}
 .shot{background-image:none}
 .shotImage{position:absolute;inset:0;background-repeat:no-repeat;transform-origin:70% 42%}
-.shot[data-cinema-art-format=portrait] .shotImage{animation:cinemaPortraitBreathe 8s ease-in-out infinite alternate;animation-play-state:paused;will-change:transform}
+.shot[data-cinema-art-format=portrait] .shotImage{-webkit-mask-image:linear-gradient(#000 0 88%,transparent 100%);mask-image:linear-gradient(#000 0 88%,transparent 100%);animation:cinemaPortraitBreathe 8s ease-in-out infinite alternate;animation-play-state:paused;will-change:transform}
 .shot[data-cinema-art-format=portrait][data-cinema-visible=true] .shotImage{animation-play-state:running}
 @keyframes cinemaPortraitBreathe{from{transform:translate3d(-2px,1px,0) scale(1.008)}to{transform:translate3d(2px,-3px,0) scale(1.02)}}
 @media(prefers-reduced-motion:reduce){.shotImage{animation:none!important;transform:none!important}}
-
-/* Fill behind the fitted frame and soften its background while preserving its subject. */
-@media(max-width:700px){
- .shot:before{content:'';position:absolute;inset:-40vh -40vw;background-image:var(--cinema-shot-source);background-size:cover;background-position:70% center;filter:blur(28px) brightness(.35);opacity:.65;pointer-events:none}
- .shotImage{-webkit-mask-image:var(--cinema-mobile-mask);mask-image:var(--cinema-mobile-mask);-webkit-mask-size:100% 100%;mask-size:100% 100%;mask-repeat:no-repeat}
-}
+/* On narrow phones, wrap long collection titles within their existing left column. */
+@media(max-width:380px){.journey[data-cinema-opening=portrait] .copy h1{max-width:60%;font-size:clamp(28px,8cqw,31px)}}
+/* Longer portrait titles remain below the face while the opening scene exits. */
+@media(max-width:700px) and (prefers-reduced-motion:no-preference){.journey[data-cinema-opening=portrait] .commerce{top:188px}}
+/* Extend only the empty city area into the vertical mobile scene; never duplicate a character. */
+@media(max-width:700px){.film:before{content:'';position:absolute;inset:0;background-image:var(--cinema-mobile-city);background-size:var(--cinema-mobile-city-size);background-position:0 0;background-repeat:no-repeat;opacity:.42}}

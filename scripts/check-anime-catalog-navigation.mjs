@@ -45,7 +45,8 @@ equal(nav.animeResumeTarget(saved,{scroll:9000,cardTop:600,width:1440,header:82}
 equal(nav.animeResumeTarget(saved,{scroll:9000,cardTop:600,width:390,header:70}),9510);
 equal(nav.animeResumeTarget(saved,{scroll:0,width:390,header:70}),12500);
 nav.requestAnimeProduct('EU-ANIME-147');equal(nav.consumeAnimeProduct('EU-ANIME-147'),true);equal(nav.consumeAnimeProduct('EU-ANIME-147'),false);
-nav.requestAnimeReturn('resume',saved.url,key);equal(nav.consumeAnimeReturn('otra'),null);equal(nav.consumeAnimeReturn(key),null);
+// A cached route must leave the return request for its actual destination.
+nav.requestAnimeReturn('resume',saved.url,key);equal(nav.consumeAnimeReturn('otra'),null);equal(nav.consumeAnimeReturn(key)?.mode,'resume');equal(nav.consumeAnimeReturn(key),null);
 const hooks=()=>{
  const effects=[],listeners=new Map(),docListeners=new Map(),frames=new Map(),scrolls=[],restored=[];let frameId=0;
  const stage={dataset:{enhanced:'false',journeyEnd:'3200'}},card={getBoundingClientRect:()=>({top:230})};

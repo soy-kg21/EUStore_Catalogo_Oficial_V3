@@ -2,7 +2,7 @@ import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {cinemaFrame,cinemaGeometry,cinemaScrollProgress,clamp,smooth} from './anime-cinema';
 import {createCinemaEffects} from './anime-cinema-effects';
-import {cinemaArtwork,mobileCinemaCamera,type CinemaArtId} from './anime-cinema-art';
+import {cinemaArtwork,portraitCinemaCamera,type CinemaArtId} from './anime-cinema-art';
 
 /** Native scrolling drives the film and the short category settling interval. */
 export function mountAnimeCinema(root:HTMLElement){
@@ -26,40 +26,33 @@ export function mountAnimeCinema(root:HTMLElement){
   stage.style.height=`${h}px`;
   const cameraHeight=mobile?h+(Math.min(h,560)-h)*(1-smooth(.12,.28,p)):h;
   const imageW=Math.max(w,cameraHeight*2),imageH=imageW/2;
-  let visibleTop=0,visibleBottom=h;
-  if(mobile){
-   const reveal=reduced.matches?1:f.discover;
-   discover.style.height=reduced.matches?'auto':`${panel.offsetHeight*reveal}px`;
-   view.style.top=`${Number(root.dataset.cinemaHeader||82)-Math.max(0,h+panel.offsetHeight*reveal-geometry.available)}px`;
-   const rect=stage.getBoundingClientRect();
-   visibleTop=reduced.matches?0:Math.max(0,Number(root.dataset.cinemaHeader||82)-rect.top);
-   visibleBottom=reduced.matches?Math.min(340,h):Math.min(h,window.innerHeight-rect.top);
-   if(visibleBottom-visibleTop<80){visibleTop=0;visibleBottom=h;}
-  }
   // Atlas landmarks keep Gojo inside the mobile opening and his head inside the closing shot.
   const centers=[.72,.78,.68,.72],focus=mobile?[.75,.68,.65,.75]:[.70,.72,.68,.73];
   const leadConsumed=clamp(window.scrollY-(geometry.start-geometry.lead),0,geometry.lead);
   const openingLift=mobile?leadConsumed*(1-smooth(0,.23,p)):0;
   shots.forEach((el,i)=>{
-   const art=cinemaArtwork[el.dataset.cinemaArt as CinemaArtId],portrait=art?.format==='portrait';
+   const id=el.dataset.cinemaArt as CinemaArtId,art=cinemaArtwork[id],portrait=art?.format==='portrait';
    const local=f.local[i],scale=1+[.08,.13,.12,.04][i]*local;
    // The power scene keeps both Goku and the energy sphere inside a narrow screen.
-   const goku=art?el.dataset.cinemaArt==='goku':i===2;
-   let shotWidth=mobile&&(goku||portrait)?Math.min(imageW,w*2.5):imageW,shotHeight=shotWidth/2;
-   const center=portrait?art.center:mobile&&goku?.78:centers[i];
-   const target=portrait?(mobile?art.focusMobile:art.focusDesktop):focus[i];
-   const closingLift=i===3&&!portrait?Math.max(0,imageH*.32-h*.40)*f.finish:0;
-   let x=target*w-center*shotWidth+px*(8+i*2),y=12+(i===0?openingLift:0)-closingLift+py*(i+1)*1.7;
-   const rotation=i===2?(local-.5)*-2.4:(local-.5)*.7;
-   if(mobile&&art){
-    const camera=mobileCinemaCamera(el.dataset.cinemaArt as CinemaArtId,{width:w,top:visibleTop,bottom:visibleBottom,maxWidth:Math.min(imageW,w*2.5),scale,rotation,px,py});
-    shotWidth=camera.width;shotHeight=camera.height;x=camera.x;y=camera.y;
+   let shotWidth=mobile&&i===2?Math.min(imageW,w*2.5):imageW,shotHeight=shotWidth/2;
+   const center=mobile&&i===2?.78:centers[i];
+   const closingLift=i===3?Math.max(0,imageH*.32-h*.40)*f.finish:0;
+   let x=focus[i]*w-center*shotWidth+px*(8+i*2),y=12+(i===0?openingLift:0)-closingLift+py*(i+1)*1.7;
+   const rotation=portrait?(local-.5)*.10:i===2?(local-.5)*-2.4:(local-.5)*.7;
+   if(portrait){
+    const overflow=Math.max(0,h+panel.offsetHeight*f.discover-geometry.available);
+    // Match the part actually hidden under the sticky header, during both entry and exit.
+    const clipped=Math.min(overflow,Math.max(0,window.scrollY-(geometry.start-geometry.lead)));
+    const frameOffset=h-clipped>=80?clipped:0;
+    const camera=portraitCinemaCamera(id,{width:w,height:reduced.matches?340:h-frameOffset,mobile,scale,rotation,px,py,local,closing:f.collection});
+    shotWidth=camera.width;shotHeight=camera.height;x=camera.x;y=camera.y+frameOffset;
    }
-   el.style.width=`${shotWidth}px`;el.style.height=`${shotHeight}px`;el.style.opacity=String(f.weights[i]);
    el.dataset.cinemaVisible=String(f.weights[i]>.01);
+   el.style.width=`${shotWidth}px`;el.style.height=`${shotHeight}px`;el.style.opacity=String(f.weights[i]);
    el.style.transform=`translate3d(${x}px,${y}px,0) scale(${scale}) rotate(${rotation}deg)`;
   });
-  style('copy-title',1-smooth(.10,.26,p),-f.exit*w*.18,-f.exit*32,-f.exit*2);
+  const portraitOpening=cinemaArtwork[shots[0].dataset.cinemaArt as CinemaArtId]?.format==='portrait';
+  style('copy-title',1-smooth(.10,.26,p),-f.exit*w*.18,f.exit*(mobile&&portraitOpening?12:-32),-f.exit*2);
   style('copy-description',1-smooth(.12,.28,p),f.exit*w*.10,f.exit*28,f.exit*1.5);
   style('copy-actions',1-smooth(.14,.29,p),-f.exit*w*.08,f.exit*66);
   style('edition',1-smooth(.15,.3,p),0,-f.exit*22);
