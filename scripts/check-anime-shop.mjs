@@ -12,13 +12,13 @@ for(let n=1;n<=5;n++){
  assert.equal(animeQuote(n,'regular').merchandise,animeRegularTotals[n-1]);
  assert.equal(animeQuote(n).advance,false);
 }
-assert.equal(animeQuote(4).merchandise,159000);assert.notEqual(animeQuote(4).merchandise,2*animeQuote(2).merchandise);
-for(const [n,unit] of [[6,38400],[11,38400],[12,33300],[23,33300]]){
+assert.equal(animeQuote(4).merchandise,152000);assert.notEqual(animeQuote(4).merchandise,2*animeQuote(2).merchandise);
+for(const [n,unit] of [[6,32000],[11,32000],[12,29000],[23,29000],[24,26000],[48,26000]]){
  const q=animeQuote(n);assert.equal(q.merchandise,n*unit);assert(q.advance&&q.shippingPending&&!q.requiresHuman);
 }
-assert.equal(animeQuote(24).merchandise,null);assert(animeQuote(24).requiresHuman);
+assert.equal(animeQuote(49).merchandise,null);assert(animeQuote(49).requiresHuman);
 for(const n of [0,-1,1.5,NaN,Infinity])assert.throws(()=>animeQuote(n));
-assert.equal(animeCommercial.promoLabel,'2 POR $99.000');
+assert.equal(animeCommercial.promoLabel,'2 POR $93.000');
 for(const [path,line,category] of [['/anime','anime',''],['/cartoon','cartoon',''],['/rock','rock',''],['/urbanas','urbanos',''],['/shop','',''],['/anime/naruto','anime','naruto'],['/anime/dragon-ball','anime','dragon-ball'],['/urbanas/terror-y-cine','urbanos','terror-y-cine']]){
  const f=animeLocationFilters(path,'');assert.equal(f.linea,line);assert.equal(f.categoria,category);const href=new URL(animeFilterHref({...f,q:'Gojo & amigos'}),'https://review.test');assert.equal(href.pathname,path);assert.equal(href.searchParams.get('q'),'Gojo & amigos');
 }

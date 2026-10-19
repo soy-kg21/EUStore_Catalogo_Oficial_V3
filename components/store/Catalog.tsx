@@ -4,6 +4,7 @@ import {categories} from '@/lib/config';
 import {animeProducts} from '@/data/anime-products';
 import {searchCatalog,type CatalogMatch} from '@/lib/catalog-search';
 import AnimeCategoryGateway from '@/components/anime/AnimeCategoryGateway';
+import CollectionGateway from './CollectionGateway';
 import Filters from './Filters';
 import ProductCard from './ProductCard';
 import AnimeSearchCard from './AnimeSearchCard';
@@ -24,7 +25,8 @@ export default async function Catalog({params,category}:{params:Params;category?
     <nav className="breadcrumb"><Link href="/">Inicio</Link><span>/</span><span>{cat?.name||'Catálogo'}</span></nav>
     <div className="catalog-head"><p className="eyebrow">ENCUENTRA LO QUE VA CONTIGO</p><h1 className="page-title">{cat?.name||'Todo el catálogo.'}</h1><p className="page-intro">{cat?.detail||'Explora prendas y calzado. Combina tu estilo, elige tu talla y conversemos.'}</p></div>
     {category==='camisetas'&&<AnimeCategoryGateway/>}
-    <div className="catalog-layout" id={category==='camisetas'?'catalogo-camisetas':undefined}>
+    {(category==='zapatillas'||category==='conjuntos')&&<CollectionGateway category={category}/>}
+    <div className="catalog-layout" id={category?`catalogo-${category}`:undefined}>
       <aside aria-label="Filtros del catálogo"><Filters path={path} options={options} values={values}/></aside>
       <section className="catalog-results">
         <div className="catalog-toolbar"><nav className="category-tabs"><Link className={!category?'active':''} href="/catalogo">Todo</Link>{categories.map(c=><Link className={category===c.slug?'active':''} key={c.slug} href={'/categoria/'+c.slug}>{c.name}</Link>)}<Link href="/anime">Anime Shop</Link></nav><span>{result.total} referencias</span></div>

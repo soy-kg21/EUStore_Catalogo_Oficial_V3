@@ -388,3 +388,16 @@
     text-shadow:0 2px 12px rgba(0,0,0,.9);
   }
 }
+
+/* Cinematic gateways: a single image layer; no inset strokes or decorative lines. */
+.categoryGateway .gatewayCard{min-height:clamp(260px,22vw,390px);border:1px solid #ffffff20;box-shadow:none;background-size:cover;background-repeat:no-repeat;isolation:isolate;padding:clamp(22px,2.3vw,38px)}
+.categoryGateway .gatewayCard:after{display:none}
+.categoryGateway .gatewayCurrent{background-image:linear-gradient(90deg,#080c0bf2 0%,#080c0bb5 38%,#080c0b1a 100%),url('/media/categorias/categoria_camisetas_img1.webp');background-position:center,85% 45%;background-size:cover,cover}
+.categoryGateway .gatewayAnime{background-image:linear-gradient(90deg,#080c0bf2 0%,#080c0ba6 38%,#080c0b0d 100%),url('/anime/universe/anime.webp');background-position:center,62% center;background-size:cover,cover}
+.categoryGateway .gatewayCard:before{background:linear-gradient(0deg,#060a09bd,transparent 85%)}
+.categoryGateway .gatewayCard:hover{background-size:cover,cover;box-shadow:0 18px 48px #0004}
+.categoryGateway .gatewayNo{position:absolute;top:14px;left:22px;right:auto;font-size:78px;color:#ffffff16}
+.categoryGateway .gatewayCard strong{max-width:95%;font-size:clamp(23px,2vw,32px)}
+.categoryGateway .gatewayCard small{max-width:95%;color:#e0e5dc}
+@media(max-width:700px){.categoryGateway .gatewayCard{min-height:275px}.categoryGateway .gatewayCurrent{background-position:center,70% 42%}.categoryGateway .gatewayAnime{background-position:center,60% center}.categoryGateway .gatewayCard strong{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.categoryGateway .gatewayCard{transition:none;transform:none}}

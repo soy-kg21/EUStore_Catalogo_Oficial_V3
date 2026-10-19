@@ -8,7 +8,7 @@ export default function AnimeCollectionLink({href,resume=false,children,...props
  const [previous,setPrevious]=useState<string|null>(null);
  useEffect(()=>{if(resume)setPrevious(readAnimeList()?.url||null);},[resume]);
  const target=resume&&previous?previous:href;
- return <Link {...props} href={target+'#anime-discover'} scroll={false} onNavigate={()=>{
+ return <Link {...props} href={resume&&previous?target:target+'#anime-discover'} scroll={false} onNavigate={()=>{
   const url=new URL(target,window.location.origin),key=animeNavigationKey(animeLocationFilters(url.pathname,url.search));
   requestAnimeReturn(resume&&previous?'resume':'categories',target,key);
  }}>{children}</Link>;

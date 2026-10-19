@@ -111,7 +111,7 @@ export default function Cart() {
         {rows.map((row) => row && (
           <article key={`${row.id}:${row.size}`} className="cart-line">
             <Link href={`/producto/${row.product.slug}`}>
-              <Image src={row.product.images[0].replace('.webp', '-480.webp')} alt={row.product.name} width={480} height={600} sizes="(max-width: 700px) 28vw, 160px" />
+              <Image quality={85} src={row.product.images[0].replace('.webp', '-480.webp')} alt={row.product.name} width={480} height={600} sizes="(max-width: 700px) 28vw, 160px" />
             </Link>
             <div>
               <Link href={`/producto/${row.product.slug}`}><h2>{row.product.name}</h2></Link>

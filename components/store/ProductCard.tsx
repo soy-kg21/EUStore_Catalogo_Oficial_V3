@@ -14,7 +14,7 @@ export default function ProductCard({
   return (
     <article className="product-card">
       <Link href={`/producto/${product.slug}`} className="card-image">
-        <Image
+        <Image quality={85}
           src={product.images[0]}
           sizes="(max-width: 600px) 48vw, (max-width: 1000px) 32vw, 25vw"
           alt={product.name}

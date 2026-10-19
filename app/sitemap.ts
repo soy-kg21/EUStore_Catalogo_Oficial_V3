@@ -5,7 +5,7 @@ import {animeProductHref,animeLinePath} from '@/lib/anime-routes';
 
 export default async function sitemap(){
   return [
-    ...['','/catalogo','/anime','/ofertas','/nosotros','/contacto'].map(path=>({url:ORIGIN+path})),
+    ...['','/catalogo','/anime','/ofertas','/nosotros','/contacto','/zapatillas-importadas','/conjuntos-buzos'].map(path=>({url:ORIGIN+path})),
     ...categories.map(c=>({url:ORIGIN+'/categoria/'+c.slug})),
     ...(await getProducts()).map(p=>({url:ORIGIN+'/producto/'+p.slug})),
     ...['/shop','/cartoon','/rock','/urbanas'].map(path=>({url:ORIGIN+path})),

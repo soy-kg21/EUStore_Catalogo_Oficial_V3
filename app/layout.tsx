@@ -4,6 +4,7 @@ import '@/components/experience/editorial-video.css';
 import './premium.css';
 import './enhancements.css';
 import './integrated-navigation.css';
+import AnimeHistoryBridge from '@/components/anime/AnimeHistoryBridge';
 import Header from '@/components/store/Header';
 import Footer from '@/components/store/Footer';
 import ScrollProgress from '@/components/store/ScrollProgress';
@@ -37,7 +38,7 @@ export default function Layout({
 }){
 
   return (
-    <html lang="es-CO" suppressHydrationWarning>
+    <html lang="es-CO" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head><script id="eu-theme-init" dangerouslySetInnerHTML={{__html:`try{if(localStorage.getItem("eu-theme")==="light")document.documentElement.dataset.theme="light"}catch{}`}}/></head>
       <body>
 
@@ -45,6 +46,7 @@ export default function Layout({
           Saltar al contenido
         </a>
 
+        <AnimeHistoryBridge/>
         <Header/>
         <ScrollProgress/>
         {children}

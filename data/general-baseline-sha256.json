@@ -1,11 +1,11 @@
 {
   "components/store/Footer.tsx": "478904af04c46fb778430b35b91445c309846e25071ab1f38e6882981661f578",
   "data/catalog.json": "e1b1d963a5567810bfeff3f0e8df66de241085781bbbdf85cdddbfd05aa92d65",
-  "data/pricing-policy.json": "efbc6cbcdf7a055d57aa5bd66e13bbc6bfdf94b66e13fc873e8072e3ac3a5d60",
+  "data/pricing-policy.json": "be6d0e153ca50b4488334fa665e2ac0b51e30f9b017c633be6bb9bec08834f36",
   "data/commercial-rules.json": "8f80150d99efc3615f24a34908d5d16436a21f386d5c16e9f62a1ac7c214f5fc",
   "lib/pricing.ts": "f9948778013602994c1052408a7dc7c0e0d828d7adcfe9ce8e8ba91dc95da2ac",
   "lib/commercial.ts": "4999b9b2c3b78e935bd8330787e2a9071da79fb0ccd61a5c6b60b05541df2e54",
-  "app/page.tsx": "5f4e74847064ca1e31d3b45215597f6b39c6334898bc9cc2b4cbbf903d1052bc",
+  "app/page.tsx": "e3d5a52ce4d1fecc1acd2aaee16c6e3e9ea74ddd9201124c9071f00aca16559a",
   "app/catalogo/page.tsx": "ba13dd98a0ebc5cae9b6b313ff08419241e953707b59fdd3823de2811ddf5714",
   "app/globals.css": "e855794221246740a66102fbab46e0c1633b91f8b09cc3377d8eb3c80e1a27d0",
   "app/premium.css": "3dfd398a99347dbdbd24a4822c71d66b0ee0333746fc955dedd7ae2f58e99969",

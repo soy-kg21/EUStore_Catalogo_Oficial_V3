@@ -1,61 +1,22 @@
-/* Scoped editorial layout. The existing section owns its background and ornaments. */
-.look-story.lookbook-story {display:block;min-height:0;padding:64px 5%;}
-.lookbook-heading {position:relative;z-index:1;max-width:1180px;margin:0 auto 30px;display:flex;align-items:end;justify-content:space-between;gap:24px;}
-.lookbook-heading h2 {font-size:clamp(30px,4vw,54px);line-height:1.02;margin:15px 0 0;letter-spacing:-.045em;}
-.lookbook-heading h2 em {color:var(--eu-accent);}
-.lookbook-heading>p {max-width:250px;color:#b3beb0;font-size:14px;line-height:1.6;}
-.lookbook {position:relative;z-index:1;max-width:940px;margin:auto;}
-.lookbook-stage {display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:40px;align-items:center;}
-.lookbook-portrait {position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px 28px 4px 4px;background:#171b19;box-shadow:0 16px 40px #0003;isolation:isolate;}
-.lookbook-portrait img {object-fit:contain;opacity:0;transition:opacity .55s ease;}
-.lookbook-portrait img.is-selected {opacity:1;}
-.lookbook-image-caption {position:absolute;bottom:12px;left:12px;font-size:8px;letter-spacing:2px;padding:6px 9px;background:#101212bb;color:#f5f6f2;}
-.lookbook-detail {min-width:0;}
-.lookbook-counter {display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff26;padding-bottom:12px;margin-bottom:24px;gap:15px;}
-.lookbook-counter>span {font-size:10px;letter-spacing:2px;color:#c1c8bb;}
-.lookbook-counter>div {display:flex;gap:7px;}
-.lookbook-counter button {display:grid;place-items:center;min-width:44px;min-height:44px;border:1px solid #ffffff26;border-radius:50%;background:transparent;color:#f5f6f2;cursor:pointer;}
-.lookbook-counter button:hover {color:#ccff00;border-color:#ccff00;}
-.lookbook-copy {min-height:125px;}
-.lookbook-copy .lookbook-eyebrow {font-size:9px;letter-spacing:1.8px;color:#ccff00;margin-bottom:12px;}
-.lookbook-copy h3 {font-size:clamp(27px,3.2vw,42px);letter-spacing:-1px;line-height:1.1;margin:0 0 12px;color:#f5f6f2;}
-.lookbook-copy>p:last-child {font-size:14px;line-height:1.65;color:#b3beb0;max-width:390px;}
-.lookbook-explore {display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:46px;margin:20px 0 0;padding:10px 0;border:0;border-bottom:1px solid #ccff0080;background:transparent;color:#ccff00;font-size:13px;width:100%;cursor:pointer;}
-.lookbook-pieces {margin-top:10px;}
-.lookbook-pieces[hidden] {display:none;}
-.lookbook-piece {display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #ffffff14;color:#f5f6f2;font-size:12px;line-height:1.4;}
-.lookbook-piece img {width:44px;height:55px;object-fit:cover;border-radius:5px;flex-shrink:0;}
-.lookbook-piece>span {flex:1;}
-.lookbook-piece small {display:block;color:#ccff00;font-size:11px;margin-top:4px;}
-.lookbook-piece:hover {color:#ccff00;}
-.lookbook-note,.lookbook-disclaimer {font-size:10px;line-height:1.6;color:#aeb8a9;margin-top:10px;max-width:390px;}
-.lookbook-advice {display:flex;align-items:center;gap:12px;min-height:44px;width:fit-content;margin-top:8px;color:#f5f6f2;font-size:12px;}
-.lookbook-advice:hover {color:#ccff00;}
-.lookbook-selector {display:flex;gap:10px;margin-top:28px;padding:4px 2px 10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#ccff0070 transparent;}
-.lookbook-selector button {display:flex;align-items:center;gap:12px;flex:1 0 175px;min-width:0;text-align:left;border:1px solid #ffffff26;border-radius:8px;background:#10121270;color:#c0c8ba;padding:10px;cursor:pointer;scroll-snap-align:start;}
-.lookbook-selector button[aria-pressed=true] {border-color:#ccff00;color:#fff;background:#ccff000b;}
-.lookbook-selector img {width:40px;height:50px;object-fit:cover;border-radius:3px;}
-.lookbook-selector span {font-size:12px;line-height:1.4;}
-.lookbook-selector small {display:block;font-size:9px;letter-spacing:1px;color:#ccff00;margin-bottom:5px;}
-.lookbook-story :is(button,a):focus-visible {outline:2px solid #ccff00;outline-offset:4px;}
-.lookbook-benefits {position:relative;z-index:1;display:flex;justify-content:center;flex-wrap:wrap;gap:12px 28px;margin:30px auto 0;padding-top:20px;border-top:1px solid #ffffff16;max-width:940px;color:#b3beb0;font-size:11px;}
-.lookbook-benefits span {display:flex;align-items:center;gap:8px;}
-.lookbook-benefits svg {color:#ccff00;width:15px;height:15px;}
-@media(max-width:700px) {
-  .look-story.lookbook-story {padding:40px 5%;}
-  .lookbook-heading {display:block;margin-bottom:24px;}
-  .lookbook-heading h2 {font-size:clamp(28px,8vw,40px);}
-  .lookbook-heading>p {font-size:12px;margin-top:12px;max-width:none;}
-  .lookbook-stage {grid-template-columns:1fr;gap:20px;}
-  .lookbook-portrait {width:min(100%,240px);justify-self:center;}
-  .lookbook-counter {margin-bottom:18px;padding-bottom:8px;}
-  .lookbook-copy {min-height:110px;}
-  .lookbook-copy h3 {font-size:29px;}
-  .lookbook-copy>p:last-child {font-size:13px;}
-  .lookbook-explore {margin-top:12px;}
-  .lookbook-selector {margin-top:20px;}
-  .lookbook-selector button {flex:0 0 155px;gap:9px;}
-  .lookbook-selector span {font-size:11px;}
-  .lookbook-benefits {justify-content:flex-start;font-size:10px;gap:12px 20px;}
-}
-@media(prefers-reduced-motion:reduce) {.lookbook-portrait img {transition:none;}}
+/* Street Files — isolated from the product catalog and its commercial rules. */
+.look-story.lookbook-story{display:block;min-height:0;padding:clamp(44px,6vw,100px) 5%;background:radial-gradient(ellipse at 85% 40%,#29332044,transparent 60%),#0d100f;isolation:isolate}
+.lookbook-story .look-story-number{opacity:.1;pointer-events:none}.lookbook-story:before{pointer-events:none}
+.lookbook-heading{position:relative;z-index:1;max-width:1320px;margin:0 auto 38px;display:flex;align-items:end;justify-content:space-between;gap:24px}
+.lookbook-heading h2{font-size:clamp(36px,4.7vw,74px);line-height:.95;margin:18px 0 0;letter-spacing:-.055em}.lookbook-heading h2 em{color:#ccff00;font-style:normal}.lookbook-heading>p{max-width:250px;color:#b9c0b6;font-size:14px;line-height:1.7}
+.lookbook{position:relative;z-index:1;max-width:1320px;margin:auto}
+.lookbook-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(24px,5vw,80px);padding:20px;border:1px solid #ffffff20;border-radius:22px;background:linear-gradient(130deg,#ffffff06,transparent 65%);box-shadow:0 30px 80px #0003}
+.lookbook-portrait{position:relative;aspect-ratio:4/5;max-height:650px;overflow:hidden;border-radius:10px;background:#171b19;isolation:isolate}
+.lookbook-portrait:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#0003,transparent 26%,transparent 72%,#0009)}
+.lookbook-portrait img{object-fit:cover;opacity:0;transform:scale(1.025);transition:opacity .65s ease,transform 6s ease}.lookbook-portrait img.is-selected{opacity:1;transform:scale(1)}
+.lookbook-image-caption{position:absolute;bottom:25px;left:20px;z-index:1;font-size:8px;letter-spacing:.16em;color:#fff}.lookbook-frame-number{position:absolute;top:8px;left:18px;color:#fff;font-size:clamp(60px,7vw,105px);font-weight:800;letter-spacing:-.08em;line-height:1;z-index:1}
+.lookbook-progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:#ffffff30;z-index:2;overflow:hidden}.lookbook-progress i{display:block;background:#ccff00;height:100%;width:100%;transform:scaleX(0);transform-origin:left;animation:lookbook-time 7s linear forwards}.lookbook[data-playing=false] .lookbook-progress i{animation-play-state:paused}@keyframes lookbook-time{to{transform:scaleX(1)}}
+.lookbook-detail{min-width:0;padding:16px 24px 16px 0}.lookbook-counter{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff26;padding-bottom:18px;margin-bottom:28px;gap:12px}.lookbook-counter>span{font-size:10px;letter-spacing:.15em;color:#bec6ba}.lookbook-counter>div{display:flex;gap:7px}.lookbook-counter button{display:grid;place-items:center;min-width:44px;min-height:44px;border:1px solid #ffffff26;border-radius:50%;background:transparent;color:#f5f6f2;cursor:pointer}.lookbook-counter button:hover{color:#ccff00;border-color:#ccff00}
+.lookbook-copy{min-height:150px}.lookbook-copy .lookbook-eyebrow{font-size:9px;letter-spacing:.18em;color:#ccff00;margin-bottom:15px}.lookbook-copy h3{font-size:clamp(30px,3.5vw,52px);letter-spacing:-.045em;line-height:1.04;margin:0 0 17px;color:#f5f6f2}.lookbook-copy>p:last-child{font-size:14px;line-height:1.7;color:#b9c2b4;max-width:430px}
+.lookbook-preview{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}.lookbook-preview a{position:relative;display:grid;grid-template-columns:54px 1fr;align-items:center;gap:10px;background:#ffffff05;border:1px solid #ffffff18;border-radius:9px;padding:9px;color:#f5f6f2;font-size:10px;line-height:1.5;min-width:0}.lookbook-preview img{width:54px;height:68px;object-fit:cover;border-radius:4px}.lookbook-preview svg{position:absolute;top:7px;right:7px;color:#ccff00}.lookbook-preview span{padding-right:6px;overflow-wrap:anywhere}.lookbook-preview a:hover{border-color:#ccff0070}
+.lookbook-explore{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:50px;margin:10px 0 0;padding:10px 0;border:0;border-bottom:1px solid #ccff0070;background:transparent;color:#ccff00;font-size:13px;width:100%;cursor:pointer}.lookbook-pieces{margin-top:10px}.lookbook-pieces[hidden]{display:none}.lookbook-piece{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #ffffff14;color:#f5f6f2;font-size:12px;line-height:1.4}.lookbook-piece img{width:44px;height:55px;object-fit:cover;border-radius:5px;flex-shrink:0}.lookbook-piece>span{flex:1}.lookbook-piece small{display:block;color:#ccff00;font-size:11px;margin-top:4px}.lookbook-piece:hover{color:#ccff00}.lookbook-note,.lookbook-disclaimer{font-size:10px;line-height:1.7;color:#aeb8a9;margin-top:12px;max-width:430px}.lookbook-advice{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;margin-top:6px;color:#f5f6f2;font-size:12px}.lookbook-advice:hover{color:#ccff00}
+.lookbook-selector{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}.lookbook-selector button{display:flex;align-items:center;gap:15px;text-align:left;border:1px solid #ffffff20;border-radius:10px;background:#101412;color:#bac2b4;padding:13px;cursor:pointer;min-width:0;transition:border-color .25s,background .25s}.lookbook-selector button[aria-pressed=true]{border-color:#ccff0080;color:#fff;background:#ccff000b}.lookbook-selector img{width:54px;height:66px;object-fit:cover;border-radius:4px}.lookbook-selector span{font-size:13px;line-height:1.4}.lookbook-selector small{display:block;font-size:9px;letter-spacing:1px;color:#ccff00;margin-bottom:4px}.lookbook-selector em{display:block;font-size:10px;font-style:normal;opacity:.65;margin-top:5px}.lookbook-story :is(button,a):focus-visible{outline:2px solid #ccff00;outline-offset:4px}
+.lookbook-benefits{position:relative;z-index:1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px 28px;margin:32px auto 0;padding-top:22px;border-top:1px solid #ffffff16;max-width:1320px;color:#b3beb0;font-size:11px}.lookbook-benefits span{display:flex;align-items:center;gap:9px}.lookbook-benefits svg{color:#ccff00;width:15px;height:15px}
+@media(max-width:1000px) and (min-width:701px){.lookbook-stage{gap:24px;padding:14px}.lookbook-detail{padding-right:10px}.lookbook-preview{grid-template-columns:1fr}.lookbook-preview img{height:48px}.lookbook-copy{min-height:0}.lookbook-counter{margin-bottom:20px}.lookbook-selector em{display:none}}
+@media(max-width:700px){.lookbook-heading{display:block;margin-bottom:25px}.lookbook-heading>p{font-size:12px;margin-top:15px}.lookbook-stage{grid-template-columns:1fr;gap:24px;padding:12px;border-radius:15px}.lookbook-portrait{aspect-ratio:4/4.6;width:100%;max-height:560px}.lookbook-detail{padding:0 8px 10px}.lookbook-counter{margin-bottom:22px}.lookbook-copy{min-height:125px}.lookbook-copy h3{font-size:35px}.lookbook-copy>p:last-child{font-size:13px}.lookbook-preview{margin:18px 0}.lookbook-preview a{grid-template-columns:40px 1fr;gap:8px;font-size:9px;padding:8px}.lookbook-preview img{width:40px;height:54px}.lookbook-preview svg{width:12px;top:3px;right:3px}.lookbook-selector{display:flex;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;padding-bottom:8px}.lookbook-selector button{flex:0 0 210px;scroll-snap-align:start;padding:10px;gap:10px}.lookbook-selector img{width:42px;height:54px}.lookbook-selector span{font-size:11px}.lookbook-selector em{font-size:9px}.lookbook-benefits{justify-content:flex-start;font-size:10px;gap:14px}}
+@media(min-width:2000px){.lookbook-heading,.lookbook,.lookbook-benefits{max-width:1600px}.lookbook-portrait{max-height:820px}.lookbook-detail{font-size:18px}.lookbook-copy>p:last-child{font-size:18px;max-width:580px}.lookbook-preview a{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.lookbook-portrait img,.lookbook-selector button{transition:none}.lookbook-progress{display:none}}

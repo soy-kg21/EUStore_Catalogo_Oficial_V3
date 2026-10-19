@@ -53,7 +53,7 @@ for(const pathname of ['/anime','/shop','/cartoon','/rock','/urbanas']){
  for(const line of ['anime','cartoon','rock','urbanas'])assert(html.includes(encodeURIComponent(`/anime/universe/${line}.webp`)));
  checks++;
 }
-links.clear();render('/anime');globalThis.window=browser;
+links.clear();render('/anime');globalThis.window=browser;globalThis.document={querySelector:()=>null};
 let prevented=false;const click=links.get('/cartoon');assert(click);
 click({button:0,metaKey:false,ctrlKey:false,shiftKey:false,altKey:false,preventDefault(){prevented=true;}});
 assert(prevented);assert.equal(location.pathname,'/cartoon');assert.equal(location.searchParams.get('utm_source'),'prueba');assert.equal(calls.length,1);assert.equal(calls[0].state.preserve,'scene');assert.equal(scrollCalls,0);assert.equal(window.scrollY,935);checks++;

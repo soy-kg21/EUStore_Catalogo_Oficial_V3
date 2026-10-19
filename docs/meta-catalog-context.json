@@ -1,6 +1,6 @@
 {
   "version": "EU Anime Integrado V3",
-  "generatedAt": "2026-10-16T21:33:35.720Z",
+  "generatedAt": "2026-10-19T19:44:00.000Z",
   "origin": "https://www.evolucionurbana.store",
   "status": "Fuente preparada. Conectar al agente y publicar estas rutas antes de usarlas con clientes.",
   "inventoryIsLive": false,
@@ -11,34 +11,39 @@
     },
     {
       "quantity": 2,
-      "total": 99000
+      "total": 93000
     },
     {
       "quantity": 3,
-      "total": 129000
+      "total": 126000
     },
     {
       "quantity": 4,
-      "total": 159000
+      "total": 152000
     },
     {
       "quantity": 5,
-      "total": 195000
+      "total": 180000
     }
   ],
   "wholesale": [
     {
       "from": 6,
       "to": 11,
-      "unitCOP": 38400
+      "unitCOP": 32000
     },
     {
       "from": 12,
       "to": 23,
-      "unitCOP": 33300
+      "unitCOP": 29000
     },
     {
       "from": 24,
+      "to": 48,
+      "unitCOP": 26000
+    },
+    {
+      "from": 49,
       "humanQuote": true
     }
   ],

@@ -7,3 +7,7 @@
 .eu-scroll-progress span:after{content:'';position:absolute;right:0;top:0;height:100%;width:min(40px,100%);background:linear-gradient(90deg,transparent,#f5ffd7);box-shadow:0 0 9px var(--eu-accent)}
 @media(max-width:1150px){.header .desktop-nav{display:none}.header .mobile-menu{display:flex}.header{gap:14px}.header-actions{margin-left:auto}}
 @media(prefers-reduced-motion:reduce){.eu-scroll-progress{transition:none}.announcement-track{animation:none}}
+
+/* Esencia is available from the main navigation on wide screens and the drawer. */
+@media(min-width:1280px){.header .desktop-nav{display:flex;gap:clamp(10px,1.1vw,24px);font-size:clamp(10px,.72vw,14px)}}
+@media(min-width:1151px) and (max-width:1279px){.header .desktop-nav{display:none}.header .mobile-menu{display:flex}.header-actions{margin-left:auto}}

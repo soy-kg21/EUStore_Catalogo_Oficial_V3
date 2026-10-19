@@ -2,7 +2,7 @@ import type {AnimeFilters} from './anime-catalog-core';
 
 /** Only explicit in-page links request a scroll. Native Back/Forward stays native. */
 export const ANIME_REMEMBER_EVENT='eu-anime-remember-list';
-const PREFIX='eu-anime-navigation-v1:';
+const PREFIX='eu-anime-navigation-v2:';
 const MAX_AGE=24*60*60*1000;
 export type AnimeListSnapshot={
  version:1;url:string;key:string;count:number;scroll:number;productId?:string;cardTop?:number;

@@ -1,0 +1,63 @@
+EVOLUCIÓN URBANA — PULIDO FINAL / 19 OCTUBRE 2026
+
+Este parche se aplica SOBRE LA VERSIÓN PREMIUM QUE YA PROBASTE Y APROBASTE.
+Incluye únicamente 39 archivos de la actualización, más esta guía, la auditoría
+y el manifiesto. No es un proyecto completo ni reemplaza el parche anterior.
+
+CÓMO APLICARLO
+1. Guarda una copia de tu carpeta actual EUStore_Catalogo_Oficial_V3.
+2. Detén pnpm start o pnpm dev con Ctrl + C.
+3. Descomprime este ZIP en una carpeta aparte.
+4. Copia app, components, public y next.config.ts a la raíz de tu proyecto,
+   donde está package.json. Combina las carpetas y reemplaza los archivos
+   coincidentes. NO borres las carpetas originales antes de copiar.
+5. No necesitas cambiar package.json, reinstalar dependencias ni copiar
+   node_modules, .next-native o .sites-runtime.
+6. En la terminal de VS Code, dentro de tu proyecto, ejecuta:
+
+   pnpm build
+
+   Cuando termine sin errores:
+
+   pnpm start
+
+7. Abre http://localhost:5178 y actualiza con Ctrl + F5.
+   Desde el celular, usa la IPv4 actual del computador y el puerto :5178,
+   con ambos equipos en el mismo Wi-Fi y el permiso de red ya configurado.
+
+QUÉ INCLUYE
+- Videos del inicio y curaduría desde los originales recibidos, con su imagen
+  conservada sin recodificar. Sin audio y preparados para inicio progresivo.
+- Mejor calidad de entrega de fotografías con tamaños adaptativos y AVIF/WebP.
+  Menos grano superpuesto en los fondos del hero de las líneas de Anime Shop.
+- Siete anuncios con su icono a la izquierda, cuatro segundos de pausa y
+  transición hacia la izquierda; sin contadores ni controles laterales visibles.
+- Fondos editoriales para zapatillas importadas y buzos + sudaderas, creados
+  desde tus referencias con la identidad verde y urbana de EUStore.
+- Páginas de esas líneas que conducen a WhatsApp: modelos, tallas, precios,
+  disponibilidad y entrega. Sin publicar productos ni inventar precios.
+- Fondo en “Tú eliges cómo combinar”, tarjetas de Combos+ más compactas y
+  composición de productos/información ajustada a computador, tablet y TV.
+- Envío estándar incluido y contraentrega en la sección de precios de Anime
+  Shop, con cobertura y validación explícitas. Mayoristas conservan sus términos.
+- Nuestra esencia: portada visual, colecciones y asesoría, con acceso desde
+  el menú de escritorio amplio y el menú lateral de los demás tamaños.
+
+ANTES DE PUBLICAR
+La compilación de producción y las pruebas automáticas pasaron. Falta comprobar
+el resultado visual e interactivo en tu navegador, tu celular y otros equipos.
+Revisa inicio, anuncios, Combos+, Esencia, extensiones y WhatsApp; confirma
+asimismo que volver de un producto de anime conserva la posición sin animarla.
+
+CALIDAD Y VELOCIDAD
+Los archivos de video recibidos son de 848 x 478 y 478 x 850 píxeles. Se mantiene
+su resolución real; este parche no los convierte en HD/4K ni recupera detalles
+que no existen en el original. Las ilustraciones del hero de Anime Shop
+conservan el arte y la resolución aprobados, sin reconstruir los personajes.
+Los nuevos videos pesan algo más que las copias anteriores: la página elige
+una sola versión por dispositivo, difiere la curaduría hasta acercarse a ella
+y muestra una imagen en ahorro de datos, 3G/2G o movimiento reducido, con
+reproducción manual disponible. No se ha medido el rendimiento en tu conexión
+real ni se garantiza un tiempo de carga idéntico en todas las redes.
+
+No se publicó ni se cambió la configuración de Netlify.

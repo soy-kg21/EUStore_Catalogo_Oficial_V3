@@ -1,0 +1,72 @@
+EVOLUCIÓN URBANA — ACTUALIZACIÓN DEL 19 DE OCTUBRE DE 2026
+
+CONTENIDO
+Este ZIP es un parche: incluye únicamente los archivos nuevos o modificados.
+Las carpetas conservan la misma estructura de tu proyecto original.
+
+CÓMO APLICARLO
+1. Guarda una copia de seguridad de tu proyecto activo.
+2. Detén el servidor local si lo tienes abierto.
+3. Extrae este ZIP en una carpeta temporal.
+4. Copia sus carpetas app, components, data, docs, ia, lib y scripts dentro
+   de la raíz de tu proyecto, donde está package.json. Combina las carpetas
+   y acepta reemplazar los archivos con el mismo nombre. Copia también este
+   LEEME. Combinar carpetas conserva los demás archivos del proyecto.
+5. En la terminal de VS Code, desde la raíz del proyecto, ejecuta:
+
+   pnpm build
+
+6. Comprueba la actualización localmente:
+
+   pnpm start
+
+   Abre http://localhost:5178
+   Para verla desde tu celular, usa la dirección IP local de tu computador
+   y el puerto 5178, conectados ambos a la misma red Wi-Fi.
+7. Después de revisarla, publica con tu procedimiento habitual de Netlify.
+
+Las dependencias y sus versiones son las mismas: este parche no requiere
+instalar paquetes nuevos. La configuración de Next y el despliegue se conservan.
+No copies este ZIP como si fuera el proyecto completo: se aplica sobre tu carpeta actual.
+
+AJUSTES INCLUIDOS
+- Franja bajo el hero: un anuncio a la vez; 4 segundos detenido y transición
+  corta de derecha a izquierda. Controles y reducción de movimiento.
+- Sección 04: Street Files, imagen editorial más grande, selector de looks,
+  reproducción automática con pausa y acceso a las piezas reales.
+- Camisetas: fondos cinematográficos de la colección urbana y el Gojo
+  solicitado; textos protegidos y sin las líneas decorativas internas.
+- Anime: al cambiar de línea desde abajo, el listado nuevo empieza con sus
+  primeras referencias debajo del selector. Se elimina el relleno heredado.
+- Regreso desde una ficha: se recuperan los productos ya cargados y la
+  posición antes de mostrar el listado. También se atiende Atrás del navegador.
+- Tarifas Anime: actualizadas en vitrina, ficha, combo, WhatsApp, API y fuentes IA.
+- Combos+: cuatro bloques separados con referencias reales y sus tablas.
+- Nuevas puertas y páginas: /zapatillas-importadas y /conjuntos-buzos.
+  Aún no tienen productos publicados.
+
+TARIFAS ANIME VIGENTES
+1: $68.000       2: $93.000       3: $126.000
+4: $152.000      5: $180.000
+6 a 11: $32.000 por camiseta.
+12 a 23: $29.000 por camiseta.
+24 a 48: $26.000 por camiseta.
+Desde 49: cotización con asesor, porque no se indicó una tarifa.
+Desde 6: pago anticipado, sin contraentrega y transporte por cotizar.
+
+VERIFICACIÓN
+Compilación de producción y pruebas automatizadas correctas.
+Se verificaron los cálculos, APIs, rutas, referencias, recursos y navegación
+con adaptadores de DOM; los catálogos originales mantienen sus registros.
+No se ejecutó una revisión visual en un navegador ni en dispositivos reales.
+Haz esa última revisión antes de publicar; incluye el regreso desde una ficha
+profunda y el cambio de Rock a otra línea con menos diseños.
+
+Puedes repetir las comprobaciones principales:
+node scripts/check-catalog-upgrade.mjs
+node scripts/check-anime-catalog-navigation.mjs
+node scripts/check-anime-premium.mjs
+node scripts/check-anime-build.mjs
+
+La última requiere que pnpm build haya terminado correctamente.
+El detalle de la auditoría está en docs/AUDITORIA_ACTUALIZACION_2026-10-19.md.

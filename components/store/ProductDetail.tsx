@@ -103,7 +103,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               }
             }}>
             {product.images.map((image, index) => <div className="product-photo-slide" key={image}>
-              <Image src={image} alt={`${product.name}, vista ${index + 1}`} width={800} height={1000} sizes="(max-width: 850px) 100vw, 50vw" preload={index === 0} draggable={false} />
+              <Image quality={85} src={image} alt={`${product.name}, vista ${index + 1}`} width={800} height={1000} sizes="(max-width: 850px) 100vw, 50vw" preload={index === 0} draggable={false} />
             </div>)}
           </div>
           {product.images.length > 1 && <span className="gallery-position" aria-live="polite">{active + 1} / {product.images.length}</span>}
@@ -111,14 +111,14 @@ export default function ProductDetail({ product }: { product: Product }) {
             <DialogTrigger className="gallery-zoom" aria-label="Ampliar fotografía"><Maximize2 size={18} /></DialogTrigger>
             <DialogContent className="max-w-[90vw] sm:max-w-[800px]">
               <DialogTitle>{product.name}</DialogTitle>
-              <Image src={product.images[active]} alt={product.name} width={800} height={1000} sizes="90vw" style={{ maxHeight: '75vh', width: '100%', objectFit: 'contain' }} />
+              <Image quality={85} src={product.images[active]} alt={product.name} width={800} height={1000} sizes="90vw" style={{ maxHeight: '75vh', width: '100%', objectFit: 'contain' }} />
             </DialogContent>
           </Dialog>
         </div>
         <div className="thumbnails">
           {product.images.map((image, index) => (
             <button key={image} aria-label={`Ver foto ${index + 1}`} aria-pressed={index === active} onClick={() => selectPhoto(index)}>
-              <Image src={image.replace('.webp', '-480.webp')} alt={`Vista ${index + 1}`} width={80} height={100} sizes="80px" />
+              <Image quality={85} src={image.replace('.webp', '-480.webp')} alt={`Vista ${index + 1}`} width={80} height={100} sizes="80px" />
             </button>
           ))}
         </div>

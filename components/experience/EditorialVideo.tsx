@@ -12,7 +12,7 @@ type Props = {
   eager?: boolean;
 };
 
-type Connection = EventTarget & { saveData?: boolean };
+type Connection = EventTarget & { saveData?: boolean; effectiveType?: string };
 
 export default function EditorialVideo({
   desktop, mobile, desktopPoster, mobilePoster, label, eager = false,
@@ -44,7 +44,7 @@ export default function EditorialVideo({
     let pending = false;
     let unavailable = false;
     let generation = 0;
-    const wantsPlayback = () => manual ?? (!motion.matches && !connection?.saveData);
+    const wantsPlayback = () => manual ?? (!motion.matches && !connection?.saveData && !['slow-2g','2g','3g'].includes(connection?.effectiveType || ''));
 
     function sync() {
       if (disposed || unavailable) return;

@@ -14,7 +14,7 @@ const experiences=new Function(stripTypeScriptTypes(read('lib/anime-experience.t
 const styles=new Proxy({},{get:(_target,name)=>String(name)});
 function loadComponent(file){
  const javascript=ts.transpileModule(read(file),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText,exports={};
- const componentRequire=name=>name.endsWith('.module.css')?{__esModule:true,default:styles}:name==='@/lib/anime-cinema-art'?loadComponent('lib/anime-cinema-art.ts'):name==='@/lib/anime-routes'?{animeProductHref:id=>routes[id].path}:name==='./AnimeProductLink'?{__esModule:true,default:({productId,...props})=>React.createElement(require('next/link').default,props)}:name==='./AnimeActionScene'?loadComponent('components/anime/AnimeActionScene.tsx'):require(name);
+ const componentRequire=name=>name.endsWith('.module.css')?{__esModule:true,default:styles}:name==='@/lib/anime-cinema-runtime'?{mountAnimeCinema(){}}:name==='@/lib/anime-cinema-art'?loadComponent('lib/anime-cinema-art.ts'):name==='@/lib/anime-routes'?{animeProductHref:id=>routes[id].path}:name==='./AnimeProductLink'?{__esModule:true,default:({productId,...props})=>React.createElement(require('next/link').default,props)}:name==='./AnimeActionScene'?loadComponent('components/anime/AnimeActionScene.tsx'):require(name);
  new Function('require','exports',javascript)(componentRequire,exports);return exports;
 }
 const exports=loadComponent('components/anime/AnimeUniverseHero.tsx');

@@ -107,6 +107,7 @@ export function mountAnimeCinema(root:HTMLElement){
  const observer=new ResizeObserver(entries=>{if(entries.some(entry=>entry.target!==commerce||root.clientWidth<=700))scheduleMeasure();});observer.observe(commerce);observer.observe(panel);
  const rootResize=new ResizeObserver(entries=>{if(Math.abs(entries[0].contentRect.width-width)>2)scheduleMeasure();});rootResize.observe(root);
  const header=document.querySelector('header.header');if(header)observer.observe(header);
+ window.addEventListener('eu-anime-place-list',render);
  window.addEventListener('scroll',scroll,{passive:true});window.addEventListener('resize',scheduleMeasure,{passive:true});
  root.addEventListener('eu-cinema-art-change',scheduleRender);
  document.addEventListener('click',home);window.addEventListener('eu-open-anime-filters',openFilters);
@@ -115,7 +116,7 @@ export function mountAnimeCinema(root:HTMLElement){
  document.fonts.ready.then(()=>{if(!destroyed)scheduleMeasure();});measure();
  return ()=>{
   destroyed=true;cancelAnimationFrame(frame);cancelAnimationFrame(measureFrame);trigger.kill();timeline.kill();observer.disconnect();rootResize.disconnect();
-  window.removeEventListener('scroll',scroll);window.removeEventListener('resize',scheduleMeasure);document.removeEventListener('click',home);
+  window.removeEventListener('eu-anime-place-list',render);window.removeEventListener('scroll',scroll);window.removeEventListener('resize',scheduleMeasure);document.removeEventListener('click',home);
   root.removeEventListener('eu-cinema-art-change',scheduleRender);
   window.removeEventListener('eu-open-anime-filters',openFilters);stage.removeEventListener('pointermove',pointer);stage.removeEventListener('pointerleave',leave);
   root.querySelector('[data-cinema-explore]')?.removeEventListener('click',explore);reduced.removeEventListener('change',scheduleMeasure);

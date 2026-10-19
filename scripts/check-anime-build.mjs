@@ -1,6 +1,8 @@
 // Verify the actual production output and compiled handlers without opening a preview server.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url),root=new URL('../',import.meta.url);
 const read=file=>fs.readFileSync(new URL(file,root),'utf8'),json=file=>JSON.parse(read(file));
@@ -37,10 +39,11 @@ const originalFetch=globalThis.fetch;
 globalThis.fetch=async(url,init)=>{const parsed=new URL(url);assert.equal(parsed.pathname,'/api/quote');return quote(new Request(parsed,init));};
 try{await import('./check-pricing.mjs');}finally{globalThis.fetch=originalFetch;}
 // Render the sharing PNG for both a WEBP and a JPEG product; assets are provided locally in process.
+const socialOutput=fs.mkdtempSync(path.join(os.tmpdir(),'eu-social-audit-'));
 const social=require(new URL('.next-native/server/app/social/[line]/[slug]/route.js',root).pathname).routeModule.userland.GET;
 globalThis.fetch=async(url)=>{const parsed=new URL(url),asset=new URL('public'+parsed.pathname,root);assert(asset.pathname.startsWith(new URL('public/anime/',root).pathname));const bytes=fs.readFileSync(asset);assert.equal(parsed.pathname.endsWith('.webp'),false,'Social image must use compatible JPEG');const mime=parsed.pathname.endsWith('.webp')?'image/webp':parsed.pathname.endsWith('.png')?'image/png':'image/jpeg';return new Response(bytes,{headers:{'content-type':mime}});};
 try{
- for(const id of ['EU-ANIME-125','EU-ANIME-483']){const route=routes[id],response=await social(new Request('http://local.test'),{params:Promise.resolve({line:route.line,slug:route.slug})});assert.equal(response.status,200);assert.equal(response.headers.get('content-type'),'image/png');const bytes=Buffer.from(await response.arrayBuffer());assert.equal(bytes.subarray(1,4).toString(),'PNG');assert.equal(bytes.readUInt32BE(16),1200);assert.equal(bytes.readUInt32BE(20),630);assert(bytes.length>10000);fs.writeFileSync(new URL(`../../audit/social-${id}.png`,root),bytes);checks++;}
+ for(const id of ['EU-ANIME-125','EU-ANIME-483']){const route=routes[id],response=await social(new Request('http://local.test'),{params:Promise.resolve({line:route.line,slug:route.slug})});assert.equal(response.status,200);assert.equal(response.headers.get('content-type'),'image/png');const bytes=Buffer.from(await response.arrayBuffer());assert.equal(bytes.subarray(1,4).toString(),'PNG');assert.equal(bytes.readUInt32BE(16),1200);assert.equal(bytes.readUInt32BE(20),630);assert(bytes.length>10000);fs.writeFileSync(path.join(socialOutput,`social-${id}.png`),bytes);checks++;}
  assert.equal((await social(new Request('http://local.test'),{params:Promise.resolve({line:'anime',slug:'inexistente'})})).status,404);checks++;
 }finally{globalThis.fetch=originalFetch;}
 console.log(`PASS: ${checks} comprobaciones de producción: HTML, canonicals y previews de 1209 fichas; APIs, IA, 38 cotizaciones generales y dos PNG sociales de 1200×630. Sin servidor de vista previa.`);

@@ -1,0 +1,252 @@
+{
+  "base": "Versión premium previamente aprobada",
+  "created": "2026-10-19",
+  "files": [
+    {
+      "path": "app/conjuntos-buzos/page.tsx",
+      "bytes": 435,
+      "sha256": "1d5107d8a970f8ef3de43d36260981fb271afc8dec072cafc0c5025b7a221d82",
+      "action": "replace"
+    },
+    {
+      "path": "app/integrated-navigation.css",
+      "bytes": 1553,
+      "sha256": "1dd3b669cdf8858518b45b7e854de2c425cfacbcf780ead4eec1284fa65ec8a8",
+      "action": "replace"
+    },
+    {
+      "path": "app/nosotros/essence.module.css",
+      "bytes": 5019,
+      "sha256": "d1b3446c43802f6c1a63aa9d1c64cbfcf1f7475711d0b3a2c1e94cecadd99269",
+      "action": "add"
+    },
+    {
+      "path": "app/nosotros/page.tsx",
+      "bytes": 4013,
+      "sha256": "23a10770b3308b2cd3f0b0220debfe9409fa20a22c49da4443c737a07ee58b61",
+      "action": "replace"
+    },
+    {
+      "path": "app/ofertas/offers.module.css",
+      "bytes": 11928,
+      "sha256": "3b5db3e3101c58385f38e73c84e02f70a7f9515be8648c6af06599de9d45609d",
+      "action": "replace"
+    },
+    {
+      "path": "app/ofertas/page.tsx",
+      "bytes": 9217,
+      "sha256": "d6cd7ea6783ded00f39c36130214ce5a7a1e3f58a3c7cae28458984f3588b20b",
+      "action": "replace"
+    },
+    {
+      "path": "app/page.tsx",
+      "bytes": 8051,
+      "sha256": "b99b215174412299a1ad6478eaa5217760f610a61f18327858c97e15dd4fec85",
+      "action": "replace"
+    },
+    {
+      "path": "app/zapatillas-importadas/page.tsx",
+      "bytes": 440,
+      "sha256": "933feab8e8c7befbfad15c5be2be3a1419e2bdb7c94c2454f6d740c8debc8718",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/AnimeActionScene.tsx",
+      "bytes": 5122,
+      "sha256": "f664ec8b249e27fd6e82a5ddccf1b750b41e3b1836d0cdcf141612673cd07cee",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/AnimeComboDrawer.tsx",
+      "bytes": 7227,
+      "sha256": "f1e161349085c001e4b72746205eff24d8fa9a09e26141117f1f85c0c0f2565c",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/AnimePrices.tsx",
+      "bytes": 2687,
+      "sha256": "3a10be4c9abf5bbdc7fb64dbd4f61424a53ed0c7c9ea4857aab008170f064a88",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/AnimeProductDetail.tsx",
+      "bytes": 7187,
+      "sha256": "94e15977a25f5ece37a82d56db2b7670a04d84ee4de2d50ea14b9be145836a85",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/AnimeQuickView.tsx",
+      "bytes": 1991,
+      "sha256": "e86a41e58ada16dc04146357ee82b47f411988fa5a4a64a987a009685dfe7d8e",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/shop-premium.module.css",
+      "bytes": 69214,
+      "sha256": "dde382623827eef7a83696c1ca0aa869100189109a48d74caa69fc3af6e36148",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/universe.module.css",
+      "bytes": 14428,
+      "sha256": "6e477c1d49075c1eb0065229a0612b78aaa95d76078b91b1040e426f9f53e34d",
+      "action": "replace"
+    },
+    {
+      "path": "components/experience/EditorialVideo.tsx",
+      "bytes": 6497,
+      "sha256": "c82cac690c6e8050d6c52afa7a064dcdabd210c824a7b259cd1fde0bc90a5590",
+      "action": "replace"
+    },
+    {
+      "path": "components/home/CategoryVisual.tsx",
+      "bytes": 585,
+      "sha256": "7e0633d4ce7d311d6e335fc939b29c760f6dbda155b5a19cd930d1cafc0caa83",
+      "action": "replace"
+    },
+    {
+      "path": "components/home/HeroMedia.tsx",
+      "bytes": 421,
+      "sha256": "f778f0df77484529f3689fb162af17b2f5cd1e17b6964a8fba37ebf4bfacf495",
+      "action": "replace"
+    },
+    {
+      "path": "components/home/Lookbook.tsx",
+      "bytes": 5866,
+      "sha256": "753e2e32c5da3af0358b71044a577c6407fd72c3b5792e3fa5cf62da9f75ae69",
+      "action": "replace"
+    },
+    {
+      "path": "components/home/ServiceAnnouncements.tsx",
+      "bytes": 2313,
+      "sha256": "f2d47b3f645488615dc1d833eafc29ff1292cff6b30e8f194d2050d20730c1b2",
+      "action": "replace"
+    },
+    {
+      "path": "components/home/service-announcements.module.css",
+      "bytes": 1339,
+      "sha256": "aed59442b40d0f14f05b344a057234be57c9cc4b607866916faf257a1290f3cf",
+      "action": "replace"
+    },
+    {
+      "path": "components/store/Cart.tsx",
+      "bytes": 8330,
+      "sha256": "2df56b7a37edd1a9d29f9be140794ffb38ae50806897990c2904bcf63b49cf9b",
+      "action": "replace"
+    },
+    {
+      "path": "components/store/CollectionComingSoon.tsx",
+      "bytes": 3351,
+      "sha256": "4c4c8a211f9ba8ede05690a97fcdbd19df2736709fc4afb4caddeac8150cd855",
+      "action": "replace"
+    },
+    {
+      "path": "components/store/CollectionGateway.tsx",
+      "bytes": 2500,
+      "sha256": "b3b9879d85f3d576ae2756109b3505508e018603fb4d8a1016d41dea33fcf910",
+      "action": "replace"
+    },
+    {
+      "path": "components/store/Header.tsx",
+      "bytes": 9807,
+      "sha256": "87c43712c8cedc0dcac2ce1187d180465ebaabca3ff6febe5cf110b9a86abd92",
+      "action": "replace"
+    },
+    {
+      "path": "components/store/ProductCard.tsx",
+      "bytes": 1697,
+      "sha256": "aa7194a3f954ae0d47ba3771e0c98b615cecc9abf77829fa755fa2bb0c877e6d",
+      "action": "replace"
+    },
+    {
+      "path": "components/store/ProductDetail.tsx",
+      "bytes": 8907,
+      "sha256": "4bb3509c70197dab08abc021f2078cb03d50bbd035d82aff0582eb9256bf05c6",
+      "action": "replace"
+    },
+    {
+      "path": "components/store/collection-gateway.module.css",
+      "bytes": 7555,
+      "sha256": "b198e5e86f1e1f4aa2352004332e26956f2cbfce26bf01f95e6b96270d3d395e",
+      "action": "replace"
+    },
+    {
+      "path": "next.config.ts",
+      "bytes": 516,
+      "sha256": "bbe81e3aa21beee6fd5ef5b8c6e3e040d0c6871f7d51a0629b344ddccaac8064",
+      "action": "replace"
+    },
+    {
+      "path": "public/media/collections/conjuntos-editorial.webp",
+      "bytes": 188208,
+      "sha256": "fe672ca590f7d4c0bc41c5af9a5129570e04e9cedd1690fb48dfa2a0282f27fc",
+      "action": "add"
+    },
+    {
+      "path": "public/media/collections/importadas-editorial.webp",
+      "bytes": 237944,
+      "sha256": "cf16a51b4c0564977f1f06e11ae2cae3eab1b7045eaeeab7fe3528102d17816e",
+      "action": "add"
+    },
+    {
+      "path": "public/media/curaduria/curaduria-mobile-original.mp4",
+      "bytes": 4625023,
+      "sha256": "cb189f0a7e87dd7de4b04f6f27ce0a00cd733be84b89ba385adcdbc8b2dbfc4a",
+      "action": "add"
+    },
+    {
+      "path": "public/media/curaduria/curaduria-mobile-original.webp",
+      "bytes": 133956,
+      "sha256": "8ce3585b649d3abc0a12d4b5e99f6edccf79b0f26a19545211375ab7f2de93a8",
+      "action": "add"
+    },
+    {
+      "path": "public/media/curaduria/curaduria-pc-original.mp4",
+      "bytes": 3538805,
+      "sha256": "2eb3e64f39cbc9cd5061cce4990a0fbaa1cffa86264e45a717ff7971ee903d8b",
+      "action": "add"
+    },
+    {
+      "path": "public/media/curaduria/curaduria-pc-original.webp",
+      "bytes": 120710,
+      "sha256": "8a797ca4c851a94b9a2d317d790f7ed03ab3dfbb3b32150295326ae9111d57bb",
+      "action": "add"
+    },
+    {
+      "path": "public/media/hero/hero-desktop-original.mp4",
+      "bytes": 3639879,
+      "sha256": "927d8f48f21d5b1b389c339fc26f45d7607983604f26356e5970d718b12dcbc6",
+      "action": "add"
+    },
+    {
+      "path": "public/media/hero/hero-desktop-original.webp",
+      "bytes": 60704,
+      "sha256": "b28e3d52cfa5def96d6526e6e9e09b43375d312befe1430f7c3a7b284b4d3fe9",
+      "action": "add"
+    },
+    {
+      "path": "public/media/hero/hero-mobile-original.mp4",
+      "bytes": 3394071,
+      "sha256": "f0cf832e8fb5930d02d1c79d44f432ee977ea003acc7b2a2211390af5fcdaaf9",
+      "action": "add"
+    },
+    {
+      "path": "public/media/hero/hero-mobile-original.webp",
+      "bytes": 40972,
+      "sha256": "bae3e9164f1360540cc90c004152b6d17671a24f2ac7d228e936c61d7f890866",
+      "action": "add"
+    },
+    {
+      "path": "LEEME_PULIDO_FINAL_2026-10-19.txt",
+      "bytes": 3511,
+      "sha256": "73da5cc24dc637588815ca354bf4311470113b88acfa3174adc7e2b0f93450fe",
+      "action": "guide"
+    },
+    {
+      "path": "AUDITORIA_PULIDO_FINAL_2026-10-19.md",
+      "bytes": 5738,
+      "sha256": "a9dc195fd93aa90fc71241719024028edb40dbb5272480277282dcd6987134e5",
+      "action": "guide"
+    }
+  ]
+}

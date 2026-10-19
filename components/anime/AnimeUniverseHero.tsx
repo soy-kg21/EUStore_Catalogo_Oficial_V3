@@ -1,18 +1,19 @@
 'use client';
 import Image from 'next/image';
 import AnimeProductLink from './AnimeProductLink';
-import {useEffect,useRef,type CSSProperties,type ReactNode} from 'react';
+import {useEffect,useLayoutEffect,useRef,type CSSProperties,type ReactNode} from 'react';
 import {ArrowDown,ArrowUpRight,Home} from 'lucide-react';
 import type {AnimeClientProduct} from '@/lib/anime-catalog-core';
 import {animeProductHref} from '@/lib/anime-routes';
 import {cinemaArtForLine} from '@/lib/anime-cinema-art';
 import styles from './universe.module.css';
+import {mountAnimeCinema} from '@/lib/anime-cinema-runtime';
 type Props={products:AnimeClientProduct[];division:string;title:[string,string];description:string;navigation?:ReactNode;line?:string};
 /** Each line keeps its four approved characters; the mixed shop opens with the original Gojo. */
 export default function AnimeUniverseHero({products,title,description,navigation,line='anime'}:Props){
  const root=useRef<HTMLElement>(null);
  const artwork=cinemaArtForLine(line);
- useEffect(()=>{let cancelled=false,dispose:(()=>void)|undefined;import('@/lib/anime-cinema-runtime').then(({mountAnimeCinema})=>{if(!cancelled&&root.current)dispose=mountAnimeCinema(root.current);}).catch(()=>{/* Static collection stays available if enhancement fails. */});return()=>{cancelled=true;dispose?.();};},[]);
+ useLayoutEffect(()=>{if(root.current)return mountAnimeCinema(root.current);},[]);
  useEffect(()=>{root.current?.dispatchEvent(new Event('eu-cinema-art-change'));},[line]);
  return <section ref={root} id="anime-inicio" className={styles.journey} data-anime-journey data-cinema-opening={artwork[0].format} data-cinema-title={title[0]==='DE TU UNIVERSO.'?'universe':'line'} data-scene-progress="0" aria-labelledby="anime-hero-title"><div className={styles.viewport} data-cinema="viewport"><div className={styles.stage} data-cinema="stage">
   <div className={styles.film} style={{'--cinema-mobile-city':`url('${artwork[0].src}')`,'--cinema-mobile-city-size':artwork[0].format==='atlas'?'800% 200%':'400% 100%'} as CSSProperties} aria-hidden="true">{artwork.map((art,index)=>{
@@ -20,7 +21,7 @@ export default function AnimeUniverseHero({products,title,description,navigation
   })}<div className={styles.shade}/><div className={styles.grain}/></div><canvas className={styles.effects} aria-hidden="true"/>
   <nav className={styles.breadcrumb} aria-label="Inicio de Anime Shop"><a href="#anime-inicio" data-cinema-home><Home size={11}/> Inicio</a></nav>
   <div className={styles.edition} data-cinema="edition"><span/> {artwork[0].edition}</div>
-  <div className={styles.commerce} data-cinema="commerce"><div className={styles.copy} data-cinema="copy"><h1 id="anime-hero-title" data-cinema="copy-title">{title[0]==='DE TU UNIVERSO.'?'TU UNIVERSO':title[0]}<br/><em>{title[1]==='A LA CALLE.'?'A LA CALLE':title[1]}</em></h1><p className={styles.description} data-cinema="copy-description">{title[0]==='DE TU UNIVERSO.'?<>Tu anime favorito. Tu próxima camiseta.<br/>Elige tus diseños y arma tu combo.</>:description}</p><div className={styles.actions} data-cinema="copy-actions"><a href="#anime-discover" className={styles.enter} data-cinema-explore>Explorar la colección <ArrowUpRight size={17}/></a><a href="#precios" className={styles.prices}>2 por $99.000</a></div></div>
+  <div className={styles.commerce} data-cinema="commerce"><div className={styles.copy} data-cinema="copy"><h1 id="anime-hero-title" data-cinema="copy-title">{title[0]==='DE TU UNIVERSO.'?'TU UNIVERSO':title[0]}<br/><em>{title[1]==='A LA CALLE.'?'A LA CALLE':title[1]}</em></h1><p className={styles.description} data-cinema="copy-description">{title[0]==='DE TU UNIVERSO.'?<>Tu anime favorito. Tu próxima camiseta.<br/>Elige tus diseños y arma tu combo.</>:description}</p><div className={styles.actions} data-cinema="copy-actions"><a href="#anime-discover" className={styles.enter} data-cinema-explore>Explorar la colección <ArrowUpRight size={17}/></a><a href="#precios" className={styles.prices}>2 por $93.000</a></div></div>
    <div className={styles.selection} data-cinema="selection"><span className={styles.selectionHeading}>TRES FORMAS DE EMPEZAR <ArrowUpRight size={12}/></span><div className={styles.products}>{products.slice(0,3).map((product,index)=><AnimeProductLink productId={product.id} key={product.id} href={animeProductHref(product.id)} className={styles.look} aria-label={`Ver camiseta ${product.name}`}><Image quality={85} src={product.image} alt={product.name} fill sizes="(max-width:700px) 27vw, (max-width:1100px) 12vw, 150px" preload={index===0} loading={index===0?undefined:'eager'}/></AnimeProductLink>)}</div><span className={styles.selectionNote}>{title[0]==='DE TU UNIVERSO.'?'Diseños del catálogo · Doble estampado':'Diseños del catálogo · Elige tu universo'}</span></div>
   </div>
   <button type="button" className={`${styles.label} ${styles.labelB}`} data-cinema="label-b" onClick={()=>window.dispatchEvent(new Event('eu-open-anime-filters'))}><div><small>TU OUTFIT. TUS REGLAS.</small><strong>Elige tu universo.</strong></div><ArrowUpRight size={17}/></button>

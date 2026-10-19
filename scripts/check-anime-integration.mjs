@@ -6,7 +6,7 @@ import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import ts from 'typescript';
 import {animeCategorySlug,animeLines} from '../lib/anime-catalog-core.ts';
-const require=createRequire(import.meta.url),read=file=>fs.readFileSync(new URL('../'+file,import.meta.url),'utf8');
+const require=createRequire(import.meta.url),read=file=>fs.readFileSync(new URL('../'+file,import.meta.url),'utf8').replaceAll('\r\n','\n');
 const baseline=JSON.parse(read('data/general-baseline-sha256.json'));
 let path='/anime';const Link=({href,children,...props})=>React.createElement('a',{href,...props},children);
 const simple=({children,...props})=>React.createElement('div',props,children);
@@ -24,4 +24,4 @@ for(path of ['/','/catalogo','/categoria/camisetas','/categoria/zapatillas','/ca
  for(const href of ['/','/catalogo','/categoria/camisetas','/categoria/zapatillas','/categoria/conjuntos','/anime','/ofertas'])assert(html.includes('href="'+href+'"'),path+': '+href);checks++;
 }
 for(const [file,expected] of Object.entries(baseline)){assert.equal(createHash('sha256').update(read(file)).digest('hex'),expected,file);checks++;}
-console.log(`PASS: ${checks} comprobaciones de integración: mismo menú original, Inicio y tres categorías generales accesibles desde once rutas; ticker conservado; datos, reglas, estilos generales y pie original intactos.`);
+console.log(`PASS: ${checks} comprobaciones de integración: mismo menú original, Inicio y tres categorías generales accesibles desde once rutas; ticker, datos generales, estilos base y pie preservados; inicio y tarifa B7 actualizados según el alcance autorizado.`);

@@ -9,9 +9,9 @@ Las URL deben publicarse en el dominio configurado antes de enviarlas a clientes
 3. Si hay varias camisetas de Naruto, Gojo, una película o una banda, ofrecer opciones concretas; no presentar una referencia arbitraria como la única.
 4. Si no hay coincidencias, decir que no se encontró en el catálogo y pedir nombre exacto o imagen. No inventar existencias, referencias, anime, película, licencias, datos sobre personajes ni descripciones del estampado.
 5. material/gramaje/horma null significa por confirmar. doublePrint=not_confirmed no significa estampado sencillo confirmado. catalogSizes no confirma stock. Confirmar referencia, talla, medidas, cobertura y entrega con una persona antes de cerrar la compra.
-6. Precio individual $68.000 COP. Combos públicos por cantidad: 2=$99.000, 3=$129.000, 4=$159.000, 5=$195.000. Se pueden mezclar referencias de Anime, Cartoon, Rock y Urbanas dentro de Anime Shop.
+6. Precio individual $68.000 COP. Combos públicos por cantidad: 2=$93.000, 3=$126.000, 4=$152.000, 5=$180.000. Se pueden mezclar referencias de Anime, Cartoon, Rock y Urbanas dentro de Anime Shop.
 7. De 1 a 5 camisetas, envío estándar incluido y contraentrega sujetos a cobertura y validación. No prometer envío internacional, entrega inmediata ni contraentrega a todas las ciudades.
-8. De 6 a 11: $38.400 por unidad. De 12 a 23: $33.300 por unidad. Desde 6, pago anticipado, sin contraentrega y transporte separado por cotizar. Desde 24, cotización personalizada humana.
+8. De 6 a 11: $32.000 por unidad. De 12 a 23: $29.000 por unidad. Desde 6, pago anticipado, sin contraentrega y transporte separado por cotizar. De 24 a 48: $26.000 por unidad. Desde 49, cotización personalizada humana.
 9. No mezclar estas promociones con los productos/políticas del catálogo general. No mostrar archivos de proveedor, páginas PDF ni datos internos.
 10. Reexportar después de cambios de datos o dominio: pnpm export:ia --origin https://DOMINIO-PUBLICADO. Los slugs existentes se conservan en data/anime-public-routes.json; nunca regenerarlos en masa a partir de nombres editados.
 11. Una consulta identifica productos del catálogo: no es una enciclopedia del argumento del anime o la película. Si se desea información de ficción adicional, deberá incorporarse una fuente verificada separada.

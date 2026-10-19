@@ -47,24 +47,38 @@ equal(nav.animeResumeTarget(saved,{scroll:0,width:390,header:70}),12500);
 nav.requestAnimeProduct('EU-ANIME-147');equal(nav.consumeAnimeProduct('EU-ANIME-147'),true);equal(nav.consumeAnimeProduct('EU-ANIME-147'),false);
 // A cached route must leave the return request for its actual destination.
 nav.requestAnimeReturn('resume',saved.url,key);equal(nav.consumeAnimeReturn('otra'),null);equal(nav.consumeAnimeReturn(key)?.mode,'resume');equal(nav.consumeAnimeReturn(key),null);
-const hooks=()=>{
- const effects=[],listeners=new Map(),docListeners=new Map(),frames=new Map(),scrolls=[],restored=[];let frameId=0;
- const stage={dataset:{enhanced:'false',journeyEnd:'3200'}},card={getBoundingClientRect:()=>({top:230})};
- globalThis.window={innerWidth:1440,scrollY:12500,location:{origin:'https://test.local',pathname:'/anime/naruto',search:''},addEventListener:(k,f)=>listeners.set(k,f),removeEventListener:k=>listeners.delete(k),dispatchEvent:e=>listeners.get(e.type)?.(e),scrollTo:options=>scrolls.push(options.top)};
- globalThis.document={fonts:{status:'loaded'},getElementById:id=>id.startsWith('anime-card-')?card:{getBoundingClientRect:()=>({top:3200})},querySelector:selector=>selector==='header.header'?{getBoundingClientRect:()=>({height:82})}:stage,addEventListener:(k,f)=>docListeners.set(k,f),removeEventListener:k=>docListeners.delete(k)};
- globalThis.requestAnimationFrame=fn=>{frames.set(++frameId,fn);return frameId;};globalThis.cancelAnimationFrame=id=>frames.delete(id);
- const exports={};const code=ts.transpileModule(read('components/anime/useAnimeListNavigation.ts'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
- const mock=name=>name==='react'?{useEffect:fn=>effects.push(fn),useRef:initial=>({current:initial})}:name==='@/lib/anime-navigation'?nav:name==='@/lib/anime-routes'?{animePublicRoutes:publicRoutes}:require(name);
- new Function('require','exports',code)(mock,exports);const prepareFilterUpdate=exports.useAnimeListNavigation({filters,count:24,filterOpen:false,gridFilterOpen:false,restore:s=>restored.push(s)});
- let cleanups=effects.map(effect=>effect());
- const tick=()=>{const entries=[...frames];frames.clear();for(const [,fn] of entries)fn();};
- return {listeners,frames,scrolls,restored,stage,tick,prepareFilterUpdate,replay:()=>{cleanups.forEach(fn=>fn?.());cleanups=effects.map(effect=>effect());},cleanup:()=>cleanups.forEach(fn=>fn?.())};
+const hooks=(initialFilters=filters)=>{
+ const refs=[],effects=[],listeners=new Map(),docListeners=new Map(),scrolls=[],restored=[];
+ let cursor=0,count=24,currentFilters=initialFilters,nextCount=null,prepareFilterUpdate;
+ const stage={dataset:{enhanced:'true',journeyEnd:'3200'}},card={getBoundingClientRect:()=>({top:230})};
+ globalThis.window={innerWidth:1440,scrollY:12500,location:{origin:'https://test.local',pathname:'/anime/naruto',search:''},addEventListener:(k,f)=>listeners.set(k,f),removeEventListener:k=>listeners.delete(k),dispatchEvent:e=>listeners.get(e.type)?.(e),scrollTo:options=>scrolls.push({...options})};
+ globalThis.document={getElementById:id=>id.startsWith('anime-card-')?card:{getBoundingClientRect:()=>({top:3200})},querySelector:selector=>selector==='header.header'?{getBoundingClientRect:()=>({height:82})}:stage,addEventListener:(k,f)=>docListeners.set(k,f),removeEventListener:k=>docListeners.delete(k)};
+ let layouts=[],passives=[];
+ const effect=(queue,fn,deps)=>{const i=cursor++,old=refs[i];if(!old||deps.some((value,n)=>value!==old.deps[n])){refs[i]={deps,fn,cleanup:old?.cleanup};queue.push(i);}};
+ const react={useRef:initial=>{const i=cursor++;return refs[i]??(refs[i]={current:initial});},useEffect:(fn,deps)=>effect(passives,fn,deps),useLayoutEffect:(fn,deps)=>effect(layouts,fn,deps)};
+ const exports={},code=ts.transpileModule(read('components/anime/useAnimeListNavigation.ts'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
+ const mock=name=>name==='react'?react:name==='@/lib/anime-navigation'?nav:name==='@/lib/anime-routes'?{animePublicRoutes:publicRoutes}:require(name);
+ new Function('require','exports',code)(mock,exports);
+ const render=()=>{
+  let attempts=0;
+  do{
+   if(nextCount!==null){count=nextCount;nextCount=null;}
+   cursor=0;layouts=[];
+   prepareFilterUpdate=exports.useAnimeListNavigation({filters:currentFilters,count,filterOpen:false,gridFilterOpen:false,restore:s=>{restored.push(s);if(count!==s.count)nextCount=s.count;}});
+   for(const i of layouts){refs[i].cleanup?.();refs[i].cleanup=refs[i].fn();}
+  }while(nextCount!==null&&++attempts<5);
+  for(const i of new Set(passives)){refs[i].cleanup?.();refs[i].cleanup=refs[i].fn();}passives=[];
+ };
+ render();
+ return {listeners,scrolls,restored,stage,get count(){return count;},prepareFilterUpdate:()=>prepareFilterUpdate(),changeFilters:value=>{currentFilters=value;render();},replay:()=>{for(const ref of refs)if(ref?.fn){ref.cleanup?.();ref.cleanup=ref.fn();}},cleanup:()=>refs.forEach(ref=>ref?.cleanup?.())};
 };
-let h=hooks();equal(h.restored[0].count,144);h.tick();equal(h.scrolls,[]);h.cleanup(); // native history: no requested scroll
-h=hooks();equal(h.restored.length,1);h.prepareFilterUpdate();h.replay();equal(h.restored.length,1);h.cleanup(); // local edits retain the current search anchor
-nav.requestAnimeReturn('resume',saved.url,key);h=hooks();h.tick();equal(h.scrolls,[]);h.stage.dataset.enhanced='true';for(let i=0;i<12;i++)h.tick();assert(h.scrolls.length);assert(h.scrolls.every(top=>top===12500));equal(h.frames.size,0);h.cleanup();
-nav.requestAnimeReturn('resume',saved.url,key);h=hooks();h.replay();h.stage.dataset.enhanced='true';for(let i=0;i<12;i++)h.tick();assert(h.scrolls.length);assert(h.scrolls.every(top=>top===12500));equal(h.frames.size,0);h.cleanup(); // React Strict Mode replay must preserve the return intent
-nav.requestAnimeReturn('categories',saved.url,key);h=hooks();h.stage.dataset.enhanced='true';h.tick();equal(h.scrolls[0],3200);h.listeners.get('wheel')();const n=h.scrolls.length;h.tick();equal(h.scrolls.length,n);h.cleanup();
-nav.saveAnimeList({...saved,scroll:0,cardTop:230});nav.requestAnimeReturn('resume',saved.url,key);h=hooks();h.stage.dataset.enhanced='true';window.scrollY=0;h.tick();equal(h.scrolls[0],3200);h.cleanup(); // a product opened in the hero returns to categories, never to the intro
-delete globalThis.window;delete globalThis.document;delete globalThis.sessionStorage;delete globalThis.requestAnimationFrame;delete globalThis.cancelAnimationFrame;
-console.log(`PASS: ${checks} comprobaciones de identidad, 1.250 referencias/alias, 1.209 rutas y exportaciones, diez enlaces históricos, especificaciones comunes, regreso explícito, paginación y respeto del historial nativo.`);
+let h=hooks();equal(h.restored[0].count,144);equal(h.count,144);equal(h.scrolls,[]);h.cleanup(); // ordinary entry does not request a scroll
+nav.requestAnimeReturn('resume',saved.url,key);h=hooks();equal(h.count,144);equal(h.scrolls,[{top:12500,behavior:'instant'}]);h.replay();equal(h.scrolls.length,1);h.cleanup(); // restore pages then position before paint, without a frame loop
+nav.requestAnimeReturn('categories',saved.url,key);h=hooks();equal(h.scrolls,[{top:3200,behavior:'instant'}]);h.cleanup();
+// A local filter edit cannot resurrect an old line's pagination or spacing.
+const nextFilters={linea:'rock',categoria:'',q:''},nextKey=nav.animeNavigationKey(nextFilters);
+nav.saveAnimeList({...saved,url:'/rock',key:nextKey,count:96,filterOffset:5000,filterFloor:9000});
+h=hooks();const n=h.restored.length;h.prepareFilterUpdate();h.changeFilters(nextFilters);equal(h.restored.length,n);h.cleanup();
+// Snapshot validation, safe URL handling and width-aware anchors were exercised above.
+delete globalThis.window;delete globalThis.document;delete globalThis.sessionStorage;
+console.log(`PASS: ${checks} comprobaciones de identidad, 1.250 referencias/alias, 1.209 rutas, exportaciones, historial, restauración instantánea y filtros sin espacios heredados.`);

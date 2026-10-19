@@ -1,3 +1,4 @@
+import ServiceAnnouncements from '@/components/home/ServiceAnnouncements';
 import Lookbook from '@/components/home/Lookbook';
 import {resolveLooks} from '@/lib/looks';
 import CategoryVisual from '@/components/home/CategoryVisual';
@@ -58,11 +59,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <div className="service-strip story-service-strip" aria-label="Beneficios de compra">
-        <span><Truck size={18} /> Envíos a Colombia</span>
-        <span><Layers size={18} /> Looks para combinar</span>
-        <span><MessageCircle size={18} /> Asesoría personalizada</span>
-      </div>
+      <ServiceAnnouncements />
 
       <section className="category-story" id="categorias" aria-labelledby="category-title">
         <div className="category-story-intro" data-reveal>
@@ -126,10 +123,10 @@ export default async function Home() {
 
         <div className="eu-curation-film">
           <EditorialVideo
-            desktop="/media/curaduria/curaduria-pc.mp4"
-            mobile="/media/curaduria/curaduria-mobile.mp4"
-            desktopPoster="/media/curaduria/curaduria-pc.webp"
-            mobilePoster="/media/curaduria/curaduria-mobile.webp"
+            desktop="/media/curaduria/curaduria-pc-original.mp4"
+            mobile="/media/curaduria/curaduria-mobile-original.mp4"
+            desktopPoster="/media/curaduria/curaduria-pc-original.webp"
+            mobilePoster="/media/curaduria/curaduria-mobile-original.webp"
             label="Looks urbanos en una escena nocturna"
           />
           <div className="eu-curation-copy">

@@ -36,7 +36,7 @@ assert.equal(animeCategorySlug('Pokémon'),'pokemon');
 assert.equal(readAnimeFilters('?linea=incorrecta').linea,'');
 const accented=canonical.find(p=>/[áéíóúñ]/i.test(p.name));
 assert(filterAnimeProducts(canonical,{linea:'',categoria:'',q:accented.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'')}).some(x=>x.id===accented.id));
-assert.equal(animeCommercial.promoTotal,99000);assert.equal(animeCommercial.promoQuantity,2);
+assert.equal(animeCommercial.promoTotal,93000);assert.equal(animeCommercial.promoQuantity,2);
 console.log(`PASS: ${canonical.length} diseños únicos, ${catalog.length-canonical.length} alias, archivos e IDs íntegros, ofertas y ${blocks} bloques 76/24.`);
 if(process.env.CATALOG_TEST_URL){
  const base=process.env.CATALOG_TEST_URL;
@@ -54,7 +54,7 @@ if(process.env.CATALOG_TEST_URL){
  const mixed=await (await fetch(base+'/api/search?q=camiseta')).json();
  assert(mixed.items.some(p=>/^\/(anime|cartoon|rock|urbanas)\/[a-z0-9-]+$/.test(p.href)));assert(mixed.items.some(p=>p.href.startsWith('/producto/')));
  const globalResults=await (await fetch(base+'/catalogo?q=Chopper')).text();
- assert(globalResults.includes('href="/anime/'));assert(globalResults.includes('2 POR $99.000'));
+ assert(globalResults.includes('href="/anime/'));assert(globalResults.includes('2 POR $93.000'));
  assert.equal((await fetch(base+'/api/search?q='+'x'.repeat(101))).status,400);
  assert.equal((await (await fetch(base+'/api/search?q=referencia-inexistente-xyz')).json()).total,0);
  for(const params of ['q=Chopper&max=67000','q=Chopper&availability=confirmed']){

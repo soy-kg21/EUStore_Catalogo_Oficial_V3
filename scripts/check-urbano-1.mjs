@@ -29,7 +29,7 @@ if(process.env.CATALOG_TEST_URL){
   const api=await (await fetch(base+'/api/search?q='+p.id)).json();assert(api.items.some(x=>x.id===p.id&&x.href==='/anime/'+p.slug),p.id);
   assert.equal((await fetch(base+p.thumbnail)).status,200,p.thumbnail);
  }
- const global=await (await fetch(base+'/catalogo?q=Goku%20Supreme')).text();assert(global.includes('/p/'));assert(global.includes('2 POR $99.000'));
+ const global=await (await fetch(base+'/catalogo?q=Goku%20Supreme')).text();assert(global.includes('/p/'));assert(global.includes('2 POR $93.000'));
  const terror=await (await fetch(base+'/anime?linea=urbanos&categoria=terror-y-cine')).text();assert(terror.includes('Pinhead Hellraiser'));assert(!terror.includes('aria-label="Ver Goku Supreme'));
  console.log('PASS: 183 fichas, 183 resultados de lupa y 183 tarjetas HTTP; búsqueda general y filtro Terror y Cine.');
 }
