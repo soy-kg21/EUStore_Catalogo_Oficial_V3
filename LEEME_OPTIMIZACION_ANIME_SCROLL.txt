@@ -1,0 +1,66 @@
+EVOLUCIÓN URBANA — OPTIMIZACIÓN DE SCROLL ANIME SHOP
+19 de octubre de 2026
+
+BASE: aplicar sobre la versión premium y pulido final que acabas de publicar
+(commit 8400c55). Este ZIP contiene solo 13 archivos actualizados/nuevos más
+esta guía, la auditoría y el manifiesto; no es un proyecto completo.
+
+APLICACIÓN
+1. Guarda una copia de tu carpeta actual del proyecto.
+2. Detén el servidor local con Ctrl + C.
+3. Copia las carpetas app, components, lib y scripts de este ZIP en la raíz
+   del proyecto (donde está package.json). Combina las carpetas y reemplaza
+   los archivos coincidentes; no borres las carpetas originales.
+4. No hay dependencias nuevas: no necesitas ejecutar pnpm install.
+5. En la terminal de VS Code, dentro de tu proyecto:
+
+   pnpm build
+
+   Cuando termine sin errores:
+
+   pnpm start
+
+6. Abre http://localhost:5178 y actualiza con Ctrl + F5.
+   Para el celular, usa la IPv4 actual del computador con :5178 y el mismo Wi-Fi.
+
+QUÉ CAMBIA
+- El hero deja de recalcular y dibujar sus efectos mientras recorres una zona
+  del listado donde ya no aparece. Se reactiva al regresar hacia arriba.
+- Las dimensiones necesarias se miden al cambiar el tamaño o contenido, en vez
+  de leerlas después de modificar estilos en cada fotograma.
+- La composición sigue la misma función matemática de scroll, sin el motor y
+  el observador duplicados que antes cargaba esta parte de Anime Shop.
+- El buffer del canvas se reutiliza y se evita recrearlo por cambios mínimos
+  de altura. Se conservan la densidad de partículas y la composición visual.
+- Se pausan los retratos fuera de vista y al ocultar la pestaña.
+- Las fichas de producto y las líneas filtrables dejan de precargarse en masa
+  al entrar en pantalla. Los enlaces siguen abriendo la misma ficha al pulsar;
+  la primera apertura puede necesitar su petición de red en ese momento.
+- Al ampliar el listado, las tarjetas que no cambiaron evitan renderizarse
+  otra vez. Se mantiene la paginación de 24 en 24 y la posición al regresar.
+- La barra de progreso usa transformaciones en vez de cambiar su ancho en cada
+  frame; las medidas globales se actualizan al cambiar la página, no en cada
+  paso del scroll. El panel de filtros también agrupa su posicionamiento por frame.
+- Se retira el desenfoque del fondo de la barra de categorías, cuya superficie
+  ya era prácticamente opaca. Se conservan su forma, posición, colores y controles.
+
+No se redujo la calidad de ninguna imagen ni se eliminaron personajes o diseños.
+Se conservan los precios, los productos, la secuencia, la distancia de scroll,
+los filtros, WhatsApp y la restauración instantánea al volver de una ficha.
+
+COMPROBACIÓN EN TU EQUIPO
+Recorre Anime, Cartoon, Rock y Urbanas. Usa Mostrar más varias veces, cambia de
+línea desde abajo, abre un producto y vuelve al listado. Revisa también los
+filtros, el modo claro/oscuro y la secuencia al subir de nuevo hacia el hero.
+La compilación y pruebas automáticas pasaron; no hubo navegador disponible para
+medir FPS o revisar visualmente el resultado en dispositivos reales.
+
+DESPUÉS DE PROBAR, PARA ACTUALIZAR GITHUB Y NETLIFY
+Ejecuta uno por uno en la carpeta actual vinculada al repositorio:
+
+   git add .
+   git commit -m "Optimiza scroll y carga de Anime Shop"
+   git push origin master
+
+Netlify ya tiene publicación automática desde master. Revisa el nuevo commit
+en Deploys y espera a que figure como Published. Este ZIP no publica por sí solo.

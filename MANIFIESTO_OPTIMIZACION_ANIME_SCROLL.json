@@ -1,0 +1,96 @@
+{
+  "base": "Premium y pulido final publicados en 8400c55",
+  "date": "2026-10-19",
+  "files": [
+    {
+      "path": "app/integrated-navigation.css",
+      "bytes": 1579,
+      "sha256": "101784716fd7c3fce5529bba47d6d6bf17242ce6ce07855e1d9b5b0c20ce5bd4",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/AnimeProductCard.tsx",
+      "bytes": 2160,
+      "sha256": "bdc8e99ab0775720497125955719a86a80923ea92a94c4f2fc78bda263314abd",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/AnimeProductLink.tsx",
+      "bytes": 535,
+      "sha256": "dde8b83dcb2e67358f6b353aec4f5c7bb5a79a6bf2ec08a8e9137f775da8afdd",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/AnimeShopClient.tsx",
+      "bytes": 15419,
+      "sha256": "0aa404e20f50eb7a9ace5fcb05387d3073db111b93eeb8b90f8ae53e800da2a2",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/catalog-card.module.css",
+      "bytes": 2584,
+      "sha256": "6ee392e046cea0661fb96ba01c7a5f2c9af64dc17ceadb7e3944fcbd34cc133e",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/shop-premium.module.css",
+      "bytes": 69366,
+      "sha256": "eaffa74fcadc7daa86a30897bce314cc6e15a09a21ecf003d3d7d3ebd8f11e9c",
+      "action": "replace"
+    },
+    {
+      "path": "components/anime/universe.module.css",
+      "bytes": 14750,
+      "sha256": "26f928c6e34b2b9537b25c984ac81ef7abe55423c97f6730e806d0e2721b3606",
+      "action": "replace"
+    },
+    {
+      "path": "components/store/Header.tsx",
+      "bytes": 10251,
+      "sha256": "20d9a30c01b91c6751d3ceef9df02c2963584ed914fec0e466ec606ab7038dd8",
+      "action": "replace"
+    },
+    {
+      "path": "components/store/ScrollProgress.tsx",
+      "bytes": 2681,
+      "sha256": "f6804466c51e3ad6a2fb7feeadf33819ec03d13b14ece6ea0a7af825be8a4f9a",
+      "action": "replace"
+    },
+    {
+      "path": "lib/anime-cinema-effects.ts",
+      "bytes": 2368,
+      "sha256": "e7acd512b531dbfc2a2ebd30c05d5ea49c2119e9c3bf298343dcb5ccfa670176",
+      "action": "replace"
+    },
+    {
+      "path": "lib/anime-cinema-runtime.ts",
+      "bytes": 10867,
+      "sha256": "f05b247fb56fc7690341556aa1cd9905c583fb30edbb112c4ce4177a4cd5c1fa",
+      "action": "replace"
+    },
+    {
+      "path": "scripts/check-anime-cinema-runtime.mjs",
+      "bytes": 12765,
+      "sha256": "8261131de3a5b5ddab5232e4fddd2662f7fd7b6e9c80c63a98691a30b63d88ff",
+      "action": "replace"
+    },
+    {
+      "path": "scripts/check-scroll-progress.mjs",
+      "bytes": 3617,
+      "sha256": "061c300f80e2093c5a207b86db639c618dfef042e9f54835f80192d123af773a",
+      "action": "add"
+    },
+    {
+      "path": "LEEME_OPTIMIZACION_ANIME_SCROLL.txt",
+      "bytes": 3469,
+      "sha256": "67b019dbbcf3f532d96fe8aeb3465fac03c69fe5422fde3f86e6a008e30088d3",
+      "action": "guide"
+    },
+    {
+      "path": "AUDITORIA_OPTIMIZACION_ANIME_SCROLL.md",
+      "bytes": 4087,
+      "sha256": "dc56751b663289b20ca57662d29098e960fbe52efe008436c7db45d300031a4b",
+      "action": "guide"
+    }
+  ]
+}

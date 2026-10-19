@@ -3,7 +3,7 @@
 .cart-anime-link{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;background:var(--eu-panel);border:1px solid var(--eu-stroke);border-radius:11px;padding:13px 15px;font:inherit;font-size:12px;color:var(--eu-copy)}
 .cart-anime-link:hover{border-color:var(--eu-link)}
 .eu-scroll-progress{height:3px;background:transparent;contain:layout style}
-.eu-scroll-progress span{width:calc(var(--scroll-progress,0)*100%);transform:none;background:var(--eu-accent);box-shadow:0 0 10px color-mix(in srgb,var(--eu-accent) 65%,transparent);transition:none;position:relative}
+.eu-scroll-progress span{width:100%;transform:scaleX(var(--scroll-progress,0));transform-origin:left center;background:var(--eu-accent);box-shadow:0 0 10px color-mix(in srgb,var(--eu-accent) 65%,transparent);transition:none;position:relative}
 .eu-scroll-progress span:after{content:'';position:absolute;right:0;top:0;height:100%;width:min(40px,100%);background:linear-gradient(90deg,transparent,#f5ffd7);box-shadow:0 0 9px var(--eu-accent)}
 @media(max-width:1150px){.header .desktop-nav{display:none}.header .mobile-menu{display:flex}.header{gap:14px}.header-actions{margin-left:auto}}
 @media(prefers-reduced-motion:reduce){.eu-scroll-progress{transition:none}.announcement-track{animation:none}}

@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import {memo} from 'react';
 import AnimeProductLink from './AnimeProductLink';
 import {ArrowUpRight,Check} from 'lucide-react';
 import type {AnimeClientProduct} from '@/lib/anime-catalog-core';
@@ -8,7 +9,7 @@ import {animeCommercial} from '@/lib/anime-commercial';
 import {money} from '@/lib/config';
 import styles from './catalog-card.module.css';
 
-export default function AnimeProductCard({product,onNavigate,quantity=0}:{product:AnimeClientProduct;quantity?:number;onNavigate?:()=>void}){
+function AnimeProductCard({product,onNavigate,quantity=0}:{product:AnimeClientProduct;quantity?:number;onNavigate?:()=>void}){
  const href=animeProductHref(product.id),reference=product.id.replace('EU-ANIME-','');
  return <article className={`product-card ${styles.card}`} id={`anime-card-${product.id}`}>
   <AnimeProductLink productId={product.id} href={href} className={`card-image ${styles.media}`} onClick={onNavigate} aria-label={`Ver ${product.name}`}>
@@ -29,3 +30,4 @@ export default function AnimeProductCard({product,onNavigate,quantity=0}:{produc
   </div>
  </article>;
 }
+export default memo(AnimeProductCard);

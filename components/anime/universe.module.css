@@ -85,3 +85,7 @@
 @media(max-width:700px) and (prefers-reduced-motion:no-preference){.journey[data-cinema-opening=portrait] .commerce{top:188px}}
 /* Extend only the empty city area into the vertical mobile scene; never duplicate a character. */
 @media(max-width:700px){.film:before{content:'';position:absolute;inset:0;background-image:var(--cinema-mobile-city);background-size:var(--cinema-mobile-city-size);background-position:0 0;background-repeat:no-repeat;opacity:.42}}
+
+/* Release large compositing layers and pause portraits once the hero is offscreen. */
+.journey[data-cinema-active=false] :is(.shot,.shotImage,.copy,.copy h1,.description,.actions,.label,.selection,.chapter,.discover){will-change:auto}
+.journey[data-cinema-active=false] .shotImage{animation-play-state:paused!important}

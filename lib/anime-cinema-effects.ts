@@ -4,11 +4,14 @@ export function createCinemaEffects(canvas:HTMLCanvasElement){
  const ctx=canvas.getContext('2d');let cw=0,ch=0;
  const device=typeof navigator==='undefined'?undefined:navigator as Navigator&{deviceMemory?:number};
  const limited=!!device&&((device.hardwareConcurrency>0&&device.hardwareConcurrency<=4)||(!!device.deviceMemory&&device.deviceMemory<=4));
- return (p:number,w:number,h:number,mobile:boolean,px:number,py:number)=>{
-  if(!ctx)return;const dpr=Math.min(window.devicePixelRatio||1,mobile?(limited?1:1.4):1.6),nw=Math.round(w*dpr),nh=Math.round(h*dpr);
-  if(cw!==nw||ch!==nh){cw=nw;ch=nh;canvas.width=cw;canvas.height=ch;}
-  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
-  const {energy,bloom}=cinemaFrame(p),travel=p*8,cx=w*(mobile?.61:.67)+px*9,cy=h*(mobile?.4:.43)+py*2,radius=Math.min(w,h)*(.14+energy*.23);
+ return (p:number,w:number,h:number,mobile:boolean,px:number,py:number,composition?:ReturnType<typeof cinemaFrame>)=>{
+  if(!ctx||w<=0||h<=0)return;
+  const dpr=Math.min(window.devicePixelRatio||1,mobile?(limited?1:1.4):1.6),nw=Math.round(w*dpr),nh=Math.ceil(h*dpr/64)*64;
+  // Reuse the drawing buffer while the hero changes height by a few pixels.
+  if(cw!==nw){cw=nw;canvas.width=cw;}
+  if(ch!==nh){ch=nh;canvas.height=ch;}
+  ctx.setTransform(cw/w,0,0,ch/h,0,0);ctx.clearRect(0,0,w,h);
+  const {energy,bloom}=composition||cinemaFrame(p),travel=p*8,cx=w*(mobile?.61:.67)+px*9,cy=h*(mobile?.4:.43)+py*2,radius=Math.min(w,h)*(.14+energy*.23);
   ctx.save();ctx.globalCompositeOperation='screen';
   for(let i=0;i<3;i++){const rr=radius*(.7+i*.38);ctx.save();ctx.translate(cx,cy);ctx.rotate(p*(2+i)+i*.8);ctx.scale(1,.28+energy*.25);ctx.beginPath();ctx.ellipse(0,0,rr,rr,0,p*3.1+i*.7,p*3.1+i*.7+Math.PI*1.25);ctx.strokeStyle=i===1?`rgba(204,255,0,${.17+energy*.25})`:`rgba(151,127,255,${.08+energy*.22})`;ctx.lineWidth=i===1?1:1.5;ctx.stroke();ctx.restore();}
   const count=mobile&&limited?45:particles.length;

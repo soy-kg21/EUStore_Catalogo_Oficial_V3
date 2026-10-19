@@ -4,15 +4,16 @@ import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:asser
 const require=createRequire(import.meta.url);let checks=0;
 function fixture(width=1024,height=768,reduced=false,artIds=[]){
  let y=0,now=0,queue=new Map(),next=1,activeTrigger=null,refreshes=0;
+ const metrics={layoutReads:0,queries:0,canvasDraws:0,canvasResizes:0,styleWrites:0};
  const events=new Map();const add=(type,fn)=>{const list=events.get(type)||new Set();list.add(fn);events.set(type,list);};const remove=(type,fn)=>events.get(type)?.delete(fn);
- class El{constructor(name='div'){this.name=name;this.style={};this.dataset={};this.inert=false;this.handlers=new Map();this.offsetHeight=0;this.offsetTop=0;this.clientWidth=width;}
-  addEventListener(t,f){const a=this.handlers.get(t)||new Set();a.add(f);this.handlers.set(t,a)}removeEventListener(t,f){this.handlers.get(t)?.delete(f)}closest(s){return s.includes(this.name)?this:null}getAttribute(n){return this[n]||null}getBoundingClientRect(){return {top:this===root?120-y:0,left:0,width:this.clientWidth,height:this===header?82:parseFloat(this.style.height)||640}}
+ class El{constructor(name='div'){this.name=name;this.style=new Proxy({},{set:(target,key,value)=>{metrics.styleWrites++;target[key]=value;return true;}});this.dataset={};this.inert=false;this.handlers=new Map();this.offsetHeight=0;this.offsetTop=0;this.clientWidth=width;for(const key of ['offsetHeight','offsetTop','clientWidth']){let value=this[key];Object.defineProperty(this,key,{get(){metrics.layoutReads++;return value;},set(next){value=next;}});}}
+  addEventListener(t,f){const a=this.handlers.get(t)||new Set();a.add(f);this.handlers.set(t,a)}removeEventListener(t,f){this.handlers.get(t)?.delete(f)}closest(s){return s.includes(this.name)?this:null}getAttribute(n){return this[n]||null}getBoundingClientRect(){metrics.layoutReads++;return {top:this===root?120-y:0,left:0,width:this.clientWidth,height:this===header?82:parseFloat(this.style.height)||640}}
  }
  const names=['viewport','stage','commerce','panel','discover','copy-title','copy-description','copy-actions','copy','edition','label-a','label-b','selection','awake','power','collection','vertical','caption','hint'];
  const nodes=Object.fromEntries(names.map(n=>[n,new El()]));nodes.panel.offsetHeight=300;nodes.commerce.offsetTop=width<=700?312:0;nodes.commerce.offsetHeight=width<=700?400:640;
  const root=new El(),header=new El(),canvas=new El('canvas'),explore=new El('a'),shots=Array.from({length:4},(_,i)=>{const el=new El();if(artIds[i])el.dataset.cinemaArt=artIds[i];return el;});
- const context2d=new Proxy({},{get:(_t,k)=>k==='createRadialGradient'?()=>({addColorStop(){}}):()=>{},set:()=>true});canvas.getContext=()=>context2d;
- root.querySelector=s=>s==='canvas'?canvas:s==='[data-cinema-explore]'?explore:nodes[s.match(/data-cinema="([^"]+)"/)?.[1]];root.querySelectorAll=()=>shots;
+ const context2d=new Proxy({},{get:(_t,k)=>k==='createRadialGradient'?()=>({addColorStop(){}}):()=>{if(k==='clearRect')metrics.canvasDraws++;},set:()=>true});canvas.getContext=()=>context2d;for(const key of ['width','height']){let value=0;Object.defineProperty(canvas,key,{get:()=>value,set:next=>{metrics.canvasResizes++;value=next;}});}
+ root.querySelector=s=>{metrics.queries++;return s==='canvas'?canvas:s==='[data-cinema-explore]'?explore:nodes[s.match(/data-cinema="([^"]+)"/)?.[1]];};root.querySelectorAll=()=>{metrics.queries++;return shots;};
  const observers=[];class Resize{constructor(cb){this.cb=cb;observers.push(this)}observe(){}disconnect(){}}
  const context={console,Date:class extends Date{static now(){return now}},Element:El,HTMLElement:El,CustomEvent:class{},Event:class{constructor(type){this.type=type}},requestAnimationFrame:f=>{const id=next++;queue.set(id,f);return id},cancelAnimationFrame:id=>queue.delete(id),ResizeObserver:Resize,IntersectionObserver:class{observe(){}disconnect(){}}};
  const document={hidden:false,addEventListener:(t,f)=>add('document:'+t,f),removeEventListener:(t,f)=>remove('document:'+t,f),querySelector:s=>s==='header.header'?header:null,fonts:{ready:Promise.resolve()}};
@@ -24,7 +25,7 @@ function fixture(width=1024,height=768,reduced=false,artIds=[]){
  const dispose=load('lib/anime-cinema-runtime.ts').mountAnimeCinema(root);
  const step=(count=1)=>{for(let i=0;i<count;i++){const batch=[...queue.values()];queue.clear();now+=1000/60;for(const f of batch)f(now)}};
  const fire=(type,props={})=>{const e={ctrlKey:false,metaKey:false,altKey:false,deltaX:0,deltaY:120,deltaMode:0,target:canvas,prevented:false,preventDefault(){this.prevented=true},...props};for(const f of [...events.get(type)||[]])f(e);return e};
- step(2);return {root,nodes,step,fire,win,dispose,observers,get y(){return y},get refreshes(){return refreshes},get listenerCount(){return [...events.values()].reduce((n,s)=>n+s.size,0)},get queuedFrames(){return queue.size},shots,clickHome(){const a=new El('a');const e={button:0,target:a,preventDefault(){}};for(const f of events.get('document:click')||[])f(e)},clickExplore(){const e={preventDefault(){}};for(const f of explore.handlers.get('click')||[])f(e)},clickPrice(){const a=new El('a');a.href='#precios';for(const f of root.handlers.get('click')||[])f({target:a});},El};
+ step(2);return {root,nodes,step,fire,win,doc:document,dispose,observers,metrics,resetMetrics(){for(const key of Object.keys(metrics))metrics[key]=0;},get y(){return y},get refreshes(){return refreshes},get listenerCount(){return [...events.values()].reduce((n,s)=>n+s.size,0)},get queuedFrames(){return queue.size},shots,clickHome(){const a=new El('a');const e={button:0,target:a,preventDefault(){}};for(const f of events.get('document:click')||[])f(e)},clickExplore(){const e={preventDefault(){}};for(const f of explore.handlers.get('click')||[])f(e)},clickPrice(){const a=new El('a');a.href='#precios';for(const f of root.handlers.get('click')||[])f({target:a});},El};
 }
 for(const [width,height]of [[1440,900],[1024,768],[308,608],[390,844]]){
  const f=fixture(width,height);const start=Number(f.root.dataset.journeyStart),end=Number(f.root.dataset.journeyEnd);
@@ -77,3 +78,28 @@ for(const width of [322,768,1440]){
  f.dispose();assert.equal(f.root.handlers.get('eu-cinema-art-change').size,0);checks++;
 }
 console.log(`PASS: ${checks} comprobaciones del controlador real: scroll nativo continuo, avance y reversa con un gesto, rueda/táctil/teclado sin retención, inercia e historial sin saltos, pausa sin desplazamiento, filtros y limpieza. Adaptadores de DOM y reloj; sin navegador.`);
+
+// Scroll the actual controller through long loaded lists. The finished hero must
+// do no layout reads, canvas drawing, or DOM writes for successive list frames.
+for(const width of [390,1440]){
+ const f=fixture(width,900),start=Number(f.root.dataset.journeyStart),end=Number(f.root.dataset.journeyEnd);
+ f.win.scrollTo({top:end+2000});f.step(2);f.resetMetrics();
+ for(let i=0;i<300;i++){f.win.scrollTo({top:end+2000+i*12});f.step();}
+ assert.equal(f.metrics.canvasDraws,0);assert.equal(f.metrics.layoutReads,0);assert.equal(f.metrics.queries,0);assert.equal(f.metrics.styleWrites,0);assert.equal(f.queuedFrames,0);checks+=5;
+ f.win.scrollTo({top:start+(end-start)*.5});f.step(2);assert(f.metrics.canvasDraws>0);assert.equal(f.root.dataset.cinemaActive,'true');checks+=2;
+ f.resetMetrics();
+ for(let i=0;i<180;i++){f.win.scrollTo({top:start+(end-start)*(.1+.8*i/179)});f.step();}
+ assert.equal(f.metrics.layoutReads,0);assert.equal(f.metrics.queries,0);assert(f.metrics.canvasResizes<40);checks+=3;
+ f.dispose();assert.equal(f.listenerCount,0);checks++;
+}
+console.log('PASS: hero sin lecturas de layout, consultas DOM, dibujo ni escrituras en 300 frames de listado; reactivación al volver y buffer de canvas reutilizado.');
+
+// Hiding a tab suspends the film; coming back restores its actual scroll frame.
+const hidden=fixture(390,844);const hiddenStart=Number(hidden.root.dataset.journeyStart),hiddenEnd=Number(hidden.root.dataset.journeyEnd);
+hidden.win.scrollTo({top:hiddenStart+(hiddenEnd-hiddenStart)*.45});hidden.step(2);
+hidden.doc.hidden=true;hidden.fire('document:visibilitychange');hidden.resetMetrics();
+hidden.win.scrollTo({top:hiddenStart+(hiddenEnd-hiddenStart)*.55});hidden.step(10);
+assert.equal(hidden.metrics.canvasDraws,0);assert.equal(hidden.queuedFrames,0);assert.equal(hidden.root.dataset.cinemaActive,'false');
+hidden.doc.hidden=false;hidden.fire('document:visibilitychange');hidden.step(2);
+assert.equal(hidden.root.dataset.cinemaActive,'true');assert(Math.abs(Number(hidden.root.dataset.sceneProgress)-.55)<1e-8);assert(hidden.metrics.canvasDraws>0);hidden.dispose();
+console.log('PASS: pausa de efectos al ocultar la pestaña y restauración de su fotograma al regresar.');
