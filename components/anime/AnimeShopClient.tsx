@@ -10,6 +10,7 @@ import {animeLinePath} from '@/lib/anime-routes';
 import {orderAnimeShopProducts,isDoublePrint} from '@/lib/anime-merchandising';
 import {useAnimeSelection} from '@/lib/anime-selection';
 import {trackAnimeEvent} from '@/lib/anime-events';
+import {warmAnimeImages} from '@/lib/anime-image';
 import {useAnimeFilters} from './useAnimeFilters';
 import {useAnimeListNavigation} from './useAnimeListNavigation';
 import AnimeUniverseHero from './AnimeUniverseHero';
@@ -21,6 +22,13 @@ export default function AnimeShopClient({products,initialSearch,counts,hero}:{pr
  const filterPanel=useRef<HTMLDivElement>(null),filterTrigger=useRef<HTMLButtonElement|null>(null),dock=useRef<HTMLDivElement>(null),grid=useRef<HTMLDivElement>(null),shop=useRef<HTMLElement>(null);
  const filterTarget=useRef(false);
  const closeFilters=useCallback(()=>setFilterOpen(false),[]);
+ const warmedLines=useRef(new Set<string>());
+ const warmLine=(id:string)=>{
+  if(warmedLines.current.has(id))return;
+  warmedLines.current.add(id);
+  const rows=orderAnimeShopProducts(filterAnimeProducts(products,{linea:id,categoria:'',q:''}),{linea:id});
+  warmAnimeImages(rows);
+ };
  const updateHere:typeof update=(patch,replace=false)=>{
   const changed=(['linea','categoria','q'] as const).some(key=>patch[key]!==undefined&&patch[key]!==filters[key])||patch.doble!==undefined&&!!patch.doble!==!!filters.doble;
   if(changed){
@@ -97,8 +105,8 @@ export default function AnimeShopClient({products,initialSearch,counts,hero}:{pr
   <nav className={styles.lineNav} aria-label="Líneas de Anime Shop" onDragStart={event=>event.preventDefault()} onPointerDown={event=>{if(event.pointerType==='mouse'&&event.button===0){railDrag.current={pointer:event.pointerId,x:event.clientX,scroll:event.currentTarget.scrollLeft,moved:false};suppressRailClick.current=false;}}} onPointerMove={event=>{const drag=railDrag.current;if(!drag||drag.pointer!==event.pointerId)return;const delta=event.clientX-drag.x;if(Math.abs(delta)>8){drag.moved=true;suppressRailClick.current=true;event.currentTarget.setPointerCapture(event.pointerId);}if(drag.moved){event.currentTarget.scrollLeft=drag.scroll-delta;event.preventDefault();}}} onPointerUp={()=>{railDrag.current=null;setTimeout(()=>{suppressRailClick.current=false;},0);}} onPointerCancel={()=>{railDrag.current=null;suppressRailClick.current=false;}} onClickCapture={event=>{if(suppressRailClick.current){event.preventDefault();event.stopPropagation();}}}>{[{id:'',name:'Todas'},...animeLines].map(item=>{
    const id=item.id as AnimeLine,tagline={anime:'Historias que te representan',cartoon:'Personajes de siempre',rock:'Tu música. Tu actitud.',urbanos:'Hechas para la calle'}[id]||'Todos tus universos';
    const count=item.id?counts[id]:Object.values(counts).reduce((a,b)=>a+b,0);
-   return <Link prefetch={false} key={item.id} href={item.id?animeLinePath[id]:'/shop'} scroll={false} onClick={event=>changeLine(item.id,event)} className={filters.linea===item.id?styles.lineActive:undefined} aria-current={filters.linea===item.id?'page':undefined}>
-    <span className={styles.lineNumber}>{count.toLocaleString('es-CO')} diseños</span><span className={styles.lineText}><strong>{item.name}</strong><small>{tagline}</small></span><span className={styles.lineArt}><Image src={`/anime/universe/${!item.id?'all':id==='urbanos'?'urbanas':id}.webp`} alt="" fill sizes="(max-width:700px) 260px, 350px" quality={85}/></span><ArrowUpRight size={16}/>
+   return <Link prefetch={false} key={item.id} href={item.id?animeLinePath[id]:'/shop'} scroll={false} onPointerEnter={()=>warmLine(item.id)} onFocus={()=>warmLine(item.id)} onPointerDown={()=>warmLine(item.id)} onClick={event=>changeLine(item.id,event)} className={filters.linea===item.id?styles.lineActive:undefined} aria-current={filters.linea===item.id?'page':undefined}>
+    <span className={styles.lineNumber}>{count.toLocaleString('es-CO')} diseños</span><span className={styles.lineText}><strong>{item.name}</strong><small>{tagline}</small></span><span className={styles.lineArt}><Image unoptimized src={`/anime/universe/${!item.id?'all':id==='urbanos'?'urbanas':id}.webp`} alt="" fill sizes="(max-width:700px) 260px, 350px" quality={85}/></span><ArrowUpRight size={16}/>
    </Link>;
   })}</nav>
   <div className={styles.journeyLine}><span>{line?.name||'Todas las líneas'} · {filtered.length} diseños</span><span>Elige tu línea. Sigue explorando.</span></div>
@@ -109,11 +117,11 @@ export default function AnimeShopClient({products,initialSearch,counts,hero}:{pr
   <div className={styles.categoryChips} aria-label="Franquicias para descubrir"><button type="button" aria-pressed={!filters.categoria} onClick={()=>updateHere({categoria:''})}>Todos los diseños</button>{chips.map(category=><button type="button" key={category} aria-pressed={filters.categoria===animeCategorySlug(category)} onClick={()=>updateHere({categoria:animeCategorySlug(category)})}>{category}</button>)}</div></div>,document.body)}<section ref={shop}  className={styles.shop} id="coleccion" aria-labelledby="anime-collection-title">
   <div className={styles.sectionHeading}><div><p className={styles.kicker}>Encuentra lo que te representa</p><h2 id="anime-collection-title">{currentCategory|| (line?`Camisetas ${line.name}.`:'Encuentra tu próxima camiseta.')}</h2></div><p><span className={styles.resultCount} aria-live="polite">{filtered.length} diseños</span><br/>Combina referencias de cualquier línea.</p></div>
   <div ref={dock} className={styles.catalogDock}>
-   <nav className={styles.catalogLines} aria-label="Cambiar línea entre los productos">{lineChoices.map(item=><Link prefetch={false} key={item.id} href={item.id?animeLinePath[item.id as AnimeLine]:'/shop'} scroll={false} onClick={event=>changeLine(item.id,event)} aria-current={filters.linea===item.id?'page':undefined}>{item.name}<small>{countLine(item.id).toLocaleString('es-CO')}</small></Link>)}</nav>
+   <nav className={styles.catalogLines} aria-label="Cambiar línea entre los productos">{lineChoices.map(item=><Link prefetch={false} key={item.id} href={item.id?animeLinePath[item.id as AnimeLine]:'/shop'} scroll={false} onPointerEnter={()=>warmLine(item.id)} onFocus={()=>warmLine(item.id)} onPointerDown={()=>warmLine(item.id)} onClick={event=>changeLine(item.id,event)} aria-current={filters.linea===item.id?'page':undefined}>{item.name}<small>{countLine(item.id).toLocaleString('es-CO')}</small></Link>)}</nav>
    <button type="button" className={styles.catalogFilter} aria-label="Filtros de productos" aria-expanded={filterOpen} aria-controls="anime-inline-filters" onClick={toggleFilters}><SlidersHorizontal size={18}/>{activeCount>0&&<b>{activeCount}</b>}</button>
   </div>
   {(filters.q||currentCategory||filters.doble)&&<div className={styles.activeFilters}>{filters.q&&<button onClick={()=>updateHere({q:''},true)}>“{filters.q}” <X size={13}/></button>}{currentCategory&&<button onClick={()=>updateHere({categoria:''})}>{currentCategory} <X size={13}/></button>}{filters.doble&&<button onClick={()=>updateHere({doble:false})}>Doble estampado <X size={13}/></button>}</div>}
-  <div ref={grid} className={styles.grid} style={{overflowAnchor:'none'}} aria-busy={deferredQuery!==filters.q}>{items.map(product=><AnimeProductCard key={product.id} product={product} quantity={selection.rows.filter(row=>row.id===product.id).reduce((n,row)=>n+row.quantity,0)}/>)}</div>
+  <div ref={grid} className={styles.grid} style={{overflowAnchor:'none'}} aria-busy={deferredQuery!==filters.q}>{items.map((product,index)=><AnimeProductCard eager={index<4} key={product.id} product={product} quantity={selection.rows.filter(row=>row.id===product.id).reduce((n,row)=>n+row.quantity,0)}/>)}</div>
   {filtered.length===0&&<div className={styles.empty}><Search size={30}/><h3>No encontramos ese diseño.</h3><p>Prueba con otro personaje, franquicia o referencia.</p><button type="button" className={styles.primary} onClick={reset}>Ver todos los diseños <ArrowUpRight size={17}/></button></div>}
   {visible<filtered.length&&<div className={styles.loadMore}><p>Has visto {Math.min(visible,filtered.length)} de {filtered.length} diseños</p><span className={styles.loadTrack}><span style={{width:`${100*Math.min(visible,filtered.length)/filtered.length}%`}}/></span><button type="button" className={styles.secondary} onClick={()=>setPagination({key:filterKey,count:visible+24})}>Mostrar más diseños <ArrowDown size={17}/></button></div>}
   {filtered.length>0&&visible>=filtered.length&&<p className={styles.endMessage}><Check size={15}/> Ya viste todos los diseños de esta selección.</p>}

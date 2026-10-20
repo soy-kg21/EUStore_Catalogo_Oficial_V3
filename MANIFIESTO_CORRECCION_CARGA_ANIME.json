@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-19",
+  "base": "Actualización Premium + Pulido Final",
+  "supersedes": "EUStore_Optimizacion_Anime_Scroll_2026-10-19.zip",
+  "files": [
+    {
+      "path": "AUDITORIA_CORRECCION_CARGA_ANIME.md",
+      "bytes": 4190,
+      "sha256": "db014c55341b0ad2a0928e421a8890fc027a6ff4901005a9f85b0a5d3526551e"
+    },
+    {
+      "path": "LEEME_CORRECCION_CARGA_ANIME.txt",
+      "bytes": 3534,
+      "sha256": "4f55c6b36fa787c60dbfe03355de6ba9bc6ef91c500a86f7a60a3f0e3595f993"
+    },
+    {
+      "path": "app/integrated-navigation.css",
+      "bytes": 1579,
+      "sha256": "101784716fd7c3fce5529bba47d6d6bf17242ce6ce07855e1d9b5b0c20ce5bd4"
+    },
+    {
+      "path": "components/anime/AnimeCatalogImage.tsx",
+      "bytes": 673,
+      "sha256": "20263076aa2d26a49a8b5db5691e16abed207f598276876d5d55f7370f8a3f93"
+    },
+    {
+      "path": "components/anime/AnimeProductCard.tsx",
+      "bytes": 2098,
+      "sha256": "4dffe14b182485a2346be1e7b2f1bbe4b5ac9b4c95cd30ef5666eb34f80b220d"
+    },
+    {
+      "path": "components/anime/AnimeProductDetail.tsx",
+      "bytes": 7211,
+      "sha256": "dca1bd63f81a458ae103a6c1d1006aafbcd30bb9c3d7f8c6a07cbfb53944882f"
+    },
+    {
+      "path": "components/anime/AnimeProductLink.tsx",
+      "bytes": 535,
+      "sha256": "dde8b83dcb2e67358f6b353aec4f5c7bb5a79a6bf2ec08a8e9137f775da8afdd"
+    },
+    {
+      "path": "components/anime/AnimeShopClient.tsx",
+      "bytes": 16010,
+      "sha256": "73b7663bd16315fbd74aa04d9197b304a26efa66c77ab00095eaae5d9e9cb6a6"
+    },
+    {
+      "path": "components/anime/AnimeUniverseHero.tsx",
+      "bytes": 5213,
+      "sha256": "9960b0fcccafc5f214945eedf94674379c94305149571032ae07b2f547108f8c"
+    },
+    {
+      "path": "components/anime/catalog-card.module.css",
+      "bytes": 2592,
+      "sha256": "d29f63c02b3da6e4f5cfe8426dfe47fcd50bba44ece5e6a77138fc13bcef25ca"
+    },
+    {
+      "path": "components/anime/shop-premium.module.css",
+      "bytes": 69366,
+      "sha256": "eaffa74fcadc7daa86a30897bce314cc6e15a09a21ecf003d3d7d3ebd8f11e9c"
+    },
+    {
+      "path": "components/anime/universe.module.css",
+      "bytes": 14750,
+      "sha256": "26f928c6e34b2b9537b25c984ac81ef7abe55423c97f6730e806d0e2721b3606"
+    },
+    {
+      "path": "components/store/Header.tsx",
+      "bytes": 10251,
+      "sha256": "20d9a30c01b91c6751d3ceef9df02c2963584ed914fec0e466ec606ab7038dd8"
+    },
+    {
+      "path": "components/store/ScrollProgress.tsx",
+      "bytes": 2681,
+      "sha256": "f6804466c51e3ad6a2fb7feeadf33819ec03d13b14ece6ea0a7af825be8a4f9a"
+    },
+    {
+      "path": "data/anime-image-dimensions.json",
+      "bytes": 42680,
+      "sha256": "eb02944fa0d8bf7f22aa23998d26047751f3a788b6b0eda9de7e8155ac4f71b1"
+    },
+    {
+      "path": "lib/anime-cinema-effects.ts",
+      "bytes": 2368,
+      "sha256": "e7acd512b531dbfc2a2ebd30c05d5ea49c2119e9c3bf298343dcb5ccfa670176"
+    },
+    {
+      "path": "lib/anime-cinema-runtime.ts",
+      "bytes": 10867,
+      "sha256": "f05b247fb56fc7690341556aa1cd9905c583fb30edbb112c4ce4177a4cd5c1fa"
+    },
+    {
+      "path": "lib/anime-image.ts",
+      "bytes": 1655,
+      "sha256": "85663293c4ea8e109d21d16b8461fa41f8427e7d7728050d9200601e6aa41e18"
+    },
+    {
+      "path": "next.config.ts",
+      "bytes": 503,
+      "sha256": "2d20ae7235796c100ca9541220ec6f597cab7a3f73fc13962aaed2975c449c2a"
+    },
+    {
+      "path": "scripts/check-anime-cinema-runtime.mjs",
+      "bytes": 12765,
+      "sha256": "8261131de3a5b5ddab5232e4fddd2662f7fd7b6e9c80c63a98691a30b63d88ff"
+    },
+    {
+      "path": "scripts/check-anime-hero.mjs",
+      "bytes": 4437,
+      "sha256": "14262f04b2adc532e4769416e36f39697b9038045215f945ce5520cc02509387"
+    },
+    {
+      "path": "scripts/check-anime-image-loading.mjs",
+      "bytes": 2789,
+      "sha256": "7681aab665962bae01ff157826374a0564e10b1dc6fd2b4a19a4310202dab91f"
+    },
+    {
+      "path": "scripts/check-scroll-progress.mjs",
+      "bytes": 3617,
+      "sha256": "061c300f80e2093c5a207b86db639c618dfef042e9f54835f80192d123af773a"
+    }
+  ]
+}

@@ -13,8 +13,9 @@ const records=JSON.parse(read('data/anime-catalog.json')),routes=JSON.parse(read
 const experiences=new Function(stripTypeScriptTypes(read('lib/anime-experience.ts')).replace(/^import .*;\s*$/gm,'').replace(/^export /gm,'')+'\nreturn animeExperience;')();
 const styles=new Proxy({},{get:(_target,name)=>String(name)});
 function loadComponent(file){
+ if(file.endsWith('.json'))return JSON.parse(read(file));
  const javascript=ts.transpileModule(read(file),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText,exports={};
- const componentRequire=name=>name.endsWith('.module.css')?{__esModule:true,default:styles}:name==='@/lib/anime-cinema-runtime'?{mountAnimeCinema(){}}:name==='@/lib/anime-cinema-art'?loadComponent('lib/anime-cinema-art.ts'):name==='@/lib/anime-routes'?{animeProductHref:id=>routes[id].path}:name==='./AnimeProductLink'?{__esModule:true,default:({productId,...props})=>React.createElement(require('next/link').default,props)}:name==='./AnimeActionScene'?loadComponent('components/anime/AnimeActionScene.tsx'):require(name);
+ const componentRequire=name=>name.endsWith('.module.css')?{__esModule:true,default:styles}:name==='@/lib/anime-cinema-runtime'?{mountAnimeCinema(){}}:name==='@/lib/anime-cinema-art'?loadComponent('lib/anime-cinema-art.ts'):name==='@/lib/anime-routes'?{animeProductHref:id=>routes[id].path}:name==='./AnimeProductLink'?{__esModule:true,default:({productId,...props})=>React.createElement(require('next/link').default,props)}:name==='./AnimeActionScene'?loadComponent('components/anime/AnimeActionScene.tsx'):name==='./AnimeCatalogImage'?loadComponent('components/anime/AnimeCatalogImage.tsx'):name==='@/lib/anime-image'?loadComponent('lib/anime-image.ts'):name==='@/data/anime-image-dimensions.json'?loadComponent('data/anime-image-dimensions.json'):require(name);
  new Function('require','exports',javascript)(componentRequire,exports);return exports;
 }
 const exports=loadComponent('components/anime/AnimeUniverseHero.tsx');

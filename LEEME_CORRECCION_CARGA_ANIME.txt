@@ -1,0 +1,48 @@
+EUStore — Corrección de carga de Anime Shop — 19/10/2026
+
+Este ZIP contiene solo archivos actualizados o nuevos. Incluye la optimización anterior del scroll y la corrección actual; sustituye EUStore_Optimizacion_Anime_Scroll_2026-10-19.zip.
+Aplícalo al proyecto que ya tiene la Actualización Premium y el Pulido Final. No es un proyecto completo.
+
+APLICAR
+1. Guarda una copia del proyecto o un commit de respaldo.
+2. Detén el servidor local con Ctrl+C.
+3. Copia el CONTENIDO de esta carpeta a la raíz del proyecto (donde está package.json), combinando las carpetas y reemplazando los archivos indicados.
+4. No reemplaces la carpeta entera del proyecto. No hay que borrar public, instalar dependencias nuevas ni volver a descargar los productos.
+
+PROBAR COMO PRODUCCIÓN (PowerShell en la raíz)
+npm.cmd run build
+npm.cmd run start
+
+Abre http://localhost:5178. Para revisar desde un teléfono conectado a la misma Wi-Fi, usa la IP local de tu PC con el puerto 5178.
+Prueba una primera visita en ventana privada, cambia Anime/Cartoon/Rock/Urbanas/Todas desde ambas barras, filtra una franquicia, baja, carga más diseños, entra a una ficha y vuelve.
+Compara con Oversize en el mismo equipo y red. También prueba desplazamiento continuo por toda la página. Ctrl+C detiene el servidor de producción.
+
+COMPROBACIONES OPCIONALES DESPUÉS DEL BUILD
+node scripts/check-anime-image-loading.mjs
+node scripts/check-anime-build.mjs
+node scripts/check-anime-catalog-navigation.mjs
+node scripts/check-anime-cinema-runtime.mjs
+node scripts/check-scroll-progress.mjs
+
+PUBLICAR DESPUÉS DE COMPROBAR
+Revisa git status -sb. Para preparar únicamente los archivos de este parche:
+$parche = Get-Content .\MANIFIESTO_CORRECCION_CARGA_ANIME.json -Raw | ConvertFrom-Json
+$parche.files | ForEach-Object { git add -- $_.path }
+git add -- MANIFIESTO_CORRECCION_CARGA_ANIME.json
+git diff --cached --stat
+git commit -m "Corrige carga de imágenes y fluidez de Anime Shop"
+git push origin master
+
+Netlify ya está conectado a GitHub: espera el deploy automático de ese nuevo commit y comprueba que quede Published antes de probar el dominio. No hace falta desplegar con Netlify CLI.
+
+QUÉ CAMBIA
+- Las tarjetas y las tres fotos pequeñas del hero usan las fotos WebP ya existentes y sus originales mediante srcset; evitan conversiones dinámicas en la primera visita.
+- Las primeras cuatro tarjetas cargan sin esperar a entrar en pantalla. Al acercarse a una línea con puntero, foco o toque se anticipan solo sus cuatro primeras fotos; respeta ahorro de datos/2G.
+- Las demás fotos siguen cargando cerca del área visible; no se descargan todos los diseños de golpe.
+- Arte de categorías y foto principal/zoom del producto se sirven directamente, sin una conversión adicional.
+- Las imágenes que aún usan el optimizador vuelven a WebP, sin AVIF como primera opción.
+- Se elimina el desenfoque repetido de las etiquetas y el aislamiento de pintura de las tarjetas introducido en el parche anterior.
+- Conserva la pausa del hero fuera de pantalla y los ajustes anteriores del scroll y de las precargas masivas.
+
+El catálogo, los precios, las imágenes originales, las escenas del hero y la restauración del listado se conservan.
+La compilación y las verificaciones locales pasaron. Se comprobó Chrome de escritorio y una vista de 390 px; no se midieron FPS ni se probaron físicamente todos los dispositivos o la red de Netlify. La velocidad final debe confirmarse tras este deploy, especialmente en el celular donde notaste la demora.
