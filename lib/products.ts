@@ -1,9 +1,12 @@
 import {withCommercial} from './commercial';
+import {getLiveCatalog} from './live-catalog';
+import {toLiveGeneral} from './live-products';
 import snapshot from '@/data/catalog.json';
 import type {Product} from './types';
 import {cache} from 'react';
 // No client imports: the catalog and connection configuration remain server-side.
 export const getProducts=cache(async ():Promise<Product[]>=>{
+ const live=await getLiveCatalog();if(live)return live.products.filter(p=>p.section!=='anime').map(toLiveGeneral).sort((a,b)=>a.rank-b.rank);
  const url=process.env.SUPABASE_URL,key=process.env.SUPABASE_ANON_KEY;
  if(!url&&!key)return (snapshot as Product[]).filter(p=>p.state!=='inactive').map(withCommercial).sort((a,b)=>a.rank-b.rank);
  if(!url||!key)throw new Error('Supabase configuration incomplete');

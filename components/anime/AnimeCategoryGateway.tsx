@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import {ArrowDown,ArrowUpRight,Sparkles} from 'lucide-react';
-import {animeProducts} from '@/data/anime-products';
-import {animeCommercial} from '@/lib/anime-commercial';
+import {getAnimeProducts,getLiveAnimePricing} from '@/lib/live-products';
+import {animeCommercialFor} from '@/lib/anime-commercial';
 import styles from './anime.module.css';
 
-export default function AnimeCategoryGateway(){
+export default async function AnimeCategoryGateway(){
+ const animeProducts=await getAnimeProducts(),animeCommercial=animeCommercialFor(await getLiveAnimePricing());
   return <section className={styles.categoryGateway} aria-labelledby="camisetas-lines-title">
     <div className={styles.gatewayHeader}>
       <div>

@@ -8,6 +8,7 @@ export function groupOf(p:Product){return (groups as Record<string,string>)[p.id
 export function ruleOf(p:Product){const g=groupOf(p);return rules[/^B1-[BCDE]$/.test(g)?'B1-standard':g]}
 export {discount} from './product-display';
 export function withCommercial(p:Product):Product{
+ if(p._live)return p;
  // Confirmed display corrections apply to both the local snapshot and Supabase.
  // IDs, slugs, stock and commercial rules remain unchanged.
  const correction=(editorial as Record<string,Pick<Product,'name'|'color'|'description'|'seoTitle'|'seoDescription'>>)[p.id];

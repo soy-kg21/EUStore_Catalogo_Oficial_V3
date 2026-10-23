@@ -1,3 +1,5 @@
+import {getLiveCatalog} from '@/lib/live-catalog';
+import LiveCatalogRefresh from '@/components/store/LiveCatalogRefresh';
 import type {Metadata} from 'next';
 import './globals.css';
 import '@/components/experience/editorial-video.css';
@@ -31,12 +33,13 @@ export const metadata:Metadata={
       }
 };
 
-export default function Layout({
+export default async function Layout({
   children
 }:{
   children:React.ReactNode
 }){
 
+  const live=await getLiveCatalog();
   return (
     <html lang="es-CO" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head><script id="eu-theme-init" dangerouslySetInnerHTML={{__html:`try{if(localStorage.getItem("eu-theme")==="light")document.documentElement.dataset.theme="light"}catch{}`}}/></head>
@@ -46,6 +49,7 @@ export default function Layout({
           Saltar al contenido
         </a>
 
+        {process.env.EUSTORE_LIVE_CATALOG==='1'&&<LiveCatalogRefresh revision={live?.revision||null}/>}
         <AnimeHistoryBridge/>
         <Header/>
         <ScrollProgress/>

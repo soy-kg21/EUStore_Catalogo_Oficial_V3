@@ -1,3 +1,4 @@
+import {getAnimeProducts} from '@/lib/live-products';
 import Link from 'next/link';
 import {getProducts,queryProducts,type Params} from '@/lib/products';
 import {categories} from '@/lib/config';
@@ -10,7 +11,7 @@ import ProductCard from './ProductCard';
 import AnimeSearchCard from './AnimeSearchCard';
 
 export default async function Catalog({params,category}:{params:Params;category?:string}){
-  const all=await getProducts();
+  const all=await getProducts(),animeProducts=await getAnimeProducts();
   const values=Object.fromEntries(Object.entries(params).map(([k,v])=>[k,typeof v==='string'&&v!=='all'?v:'']));
   const globalSearch=!category&&!!values.q?.trim();
   const generalResult=queryProducts(all,values,category);

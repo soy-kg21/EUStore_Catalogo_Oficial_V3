@@ -31,6 +31,7 @@ export default function ProductDetail({ product }: { product: Product }) {
   const [feedback, setFeedback] = useState('');
 
   const add = useCallback((selected: string) => {
+    if (product.variants?.find(v=>v.size===selected)?.quantity===0) throw new Error('Esta talla está agotada.');
     if (!product.sizes.includes(selected)) throw new Error('Elige una talla válida.');
     const rows = readCart();
     const line = rows.find((item) => item.id === product.id && item.size === selected);
@@ -46,7 +47,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     setSize(selected);
     setFeedback('Añadido a tu selección.');
     return { id: product.id, size: selected, status: 'added_to_selection' };
-  }, [product.id, product.sizes]);
+  }, [product.id, product.sizes, product.variants]);
 
   useEffect(() => {
     type ModelContext = {
@@ -118,7 +119,7 @@ export default function ProductDetail({ product }: { product: Product }) {
         <div className="thumbnails">
           {product.images.map((image, index) => (
             <button key={image} aria-label={`Ver foto ${index + 1}`} aria-pressed={index === active} onClick={() => selectPhoto(index)}>
-              <Image quality={85} src={image.replace('.webp', '-480.webp')} alt={`Vista ${index + 1}`} width={80} height={100} sizes="80px" />
+              <Image quality={85} src={image} alt={`Vista ${index + 1}`} width={80} height={100} sizes="80px" />
             </button>
           ))}
         </div>
@@ -133,10 +134,10 @@ export default function ProductDetail({ product }: { product: Product }) {
         {product.state === 'review' && <p className="notice">Esta referencia tiene una discrepancia de color en el catálogo. Confirma el color de la fotografía con el asesor.</p>}
         <div className="size-label"><strong>Selecciona tu talla</strong><span>{size || 'Sin seleccionar'}</span></div>
         <div className="sizes" role="group" aria-label="Tallas comerciales">
-          {product.sizes.map((productSize) => <button key={productSize} aria-pressed={size === productSize} onClick={() => { setSize(productSize); setFeedback(''); }}>{productSize}</button>)}
+          {product.sizes.map((productSize) => <button key={productSize} disabled={product.variants?.find(v=>v.size===productSize)?.quantity===0} aria-pressed={size === productSize} onClick={() => { setSize(productSize); setFeedback(''); }}>{productSize}</button>)}
         </div>
         <p className="stock-note">Tallas de referencia. Confirmaremos existencias antes de cerrar tu pedido.</p>
-        {size ? <a href={wa(message)} target="_blank" rel="noopener noreferrer" className="button whatsapp"><MessageCircle size={20} /> COMPRAR POR WHATSAPP</a> : <button className="button whatsapp" onClick={() => setFeedback('Selecciona una talla para continuar.')}><MessageCircle size={20} /> COMPRAR POR WHATSAPP</button>}
+        {size&&product.variants?.find(v=>v.size===size)?.quantity!==0 ? <a href={wa(message)} target="_blank" rel="noopener noreferrer" className="button whatsapp"><MessageCircle size={20} /> COMPRAR POR WHATSAPP</a> : <button className="button whatsapp" onClick={() => setFeedback('Selecciona una talla para continuar.')}><MessageCircle size={20} /> COMPRAR POR WHATSAPP</button>}
         <button className="button add-button" onClick={() => { try { add(size); } catch (error) { setFeedback((error as Error).message); } }}><ShoppingBag size={18} /> AÑADIR A MI SELECCIÓN</button>
         <div className="feedback" role="status">{feedback} {feedback.startsWith('Añadido') && <button onClick={() => window.dispatchEvent(new Event('eu-open-cart'))} style={{ textDecoration: 'underline' }}>Ver selección</button>}</div>
         <p className="stock-note"><Check size={13} style={{ display: 'inline', marginRight: 5 }} />Asesoría de talla y condiciones de entrega por WhatsApp.</p>

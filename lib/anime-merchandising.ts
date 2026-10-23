@@ -7,6 +7,7 @@ const doubles=new Set(merchandising.doublePrintIds.map(canonicalId));
 export function isDoublePrint(id:string){return doubles.has(canonicalId(id));}
 /** Filter first; five doubles + one other from position one; paginate last. */
 export function orderAnimeShopProducts<T extends AnimeClientProduct>(products:T[],filters:Pick<AnimeFilters,'linea'>):T[]{
+ if(products.length&&products.every(p=>Number.isFinite(p.position)))return [...products].sort((a,b)=>a.position!-b.position!);
  const priority:readonly string[]=Object.prototype.hasOwnProperty.call(merchandising.byLine,filters.linea)?merchandising.byLine[filters.linea as AnimeLine]:merchandising.all;
  const available=new Map(products.map(product=>[product.id,product]));const featured:T[]=[];
  for(const legacyId of priority){const id=canonicalId(legacyId),product=available.get(id);if(product){featured.push(product);available.delete(id);}}

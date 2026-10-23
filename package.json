@@ -1,6 +1,6 @@
 {
   "name": "eustore-anime-universe-v5",
-  "version": "5.0.0",
+  "version": "5.2.0",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
@@ -31,11 +31,13 @@
     "test:anime-scene": "node scripts/check-anime-cinema.mjs",
     "test:anime-journey": "node scripts/check-anime-journey.mjs",
     "test:anime-cinema": "node scripts/check-anime-cinema.mjs",
-    "test:anime-cinema-runtime": "node scripts/check-anime-cinema-runtime.mjs"
+    "test:anime-cinema-runtime": "node scripts/check-anime-cinema-runtime.mjs",
+    "test:live-sync": "node --test scripts/check-live-sync.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
     "@hookform/resolvers": "^5.7.1",
+    "@netlify/blobs": "11.1.4",
     "@shadcn/react": "^0.3.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",

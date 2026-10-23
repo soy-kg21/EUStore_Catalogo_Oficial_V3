@@ -15,7 +15,7 @@ export function searchCatalog(general:Product[],anime:AnimeProduct[],params:Sear
   const q=normalizeAnimeText(val('q').slice(0,100)),size=val('size'),color=val('color'),brand=val('brand'),availability=val('availability');
   const max=Number(val('max'))||Infinity;
   const generalMatches=general.filter(p=>p.state!=='inactive'&&(!q||normalizeAnimeText(`${p.name} ${p.sku} ${p.brand??''} ${p.category} ${p.color}`).includes(q))&&(!size||p.sizes.includes(size))&&(!color||p.color===color)&&(!brand||p.brand===brand)&&(!Number.isFinite(max)||(!p.pricingPending&&p.price<=max))&&(!availability||(availability==='confirmed'?p.stock!==null&&p.stock>0:p.stock===null)));
-  const animeMatches=anime.filter(p=>!p.canonicalId&&(!q||normalizeAnimeText(`${p.name} ${p.id} ${p.category} ${p.line} ${p.searchAliases?.join(' ')||''} camiseta camisetas`).includes(q))&&(!size||p.sizes.includes(size))&&!color&&!brand&&(!Number.isFinite(max)||animeCommercial.unitPrice<=max)&&availability!=='confirmed');
+  const animeMatches=anime.filter(p=>!p.canonicalId&&(!q||normalizeAnimeText(`${p.name} ${p.id} ${p.category} ${p.line} ${p.searchAliases?.join(' ')||''} camiseta camisetas`).includes(q))&&(!size||p.sizes.includes(size))&&!color&&!brand&&(!Number.isFinite(max)||p.price<=max)&&availability!=='confirmed');
   // Alternar inventarios permite descubrir ambos cuando la consulta coincide en los dos.
   const matches:CatalogMatch[]=[];
   for(let i=0;i<Math.max(generalMatches.length,animeMatches.length);i++){
@@ -23,7 +23,7 @@ export function searchCatalog(general:Product[],anime:AnimeProduct[],params:Sear
     if(generalMatches[i])matches.push({kind:'general',product:generalMatches[i]});
   }
   const pending=(m:CatalogMatch)=>m.kind==='general'&&!!m.product.pricingPending;
-  const price=(m:CatalogMatch)=>m.kind==='anime'?animeCommercial.unitPrice:m.product.price;
+  const price=(m:CatalogMatch)=>m.product.price;
   if(val('sort')==='price-asc')matches.sort((a,b)=>Number(pending(a))-Number(pending(b))||price(a)-price(b));
   if(val('sort')==='price-desc')matches.sort((a,b)=>Number(pending(a))-Number(pending(b))||price(b)-price(a));
   if(val('sort')==='name')matches.sort((a,b)=>a.product.name.localeCompare(b.product.name,'es'));
@@ -36,7 +36,7 @@ export function toCatalogSuggestion(match:CatalogMatch):CatalogSuggestion{
   return {id:p.id,slug:p.slug,name:p.name,
     color:match.kind==='anime'?match.product.category:match.product.color,
     images:match.kind==='anime'?[match.product.thumbnail]:match.product.images.slice(0,1),
-    price:match.kind==='anime'?animeCommercial.unitPrice:match.product.price,
+    price:match.product.price,
     pricingPending:match.kind==='general'&&!!match.product.pricingPending,
     href:match.kind==='anime'?animeProductHref(p.id):`/producto/${p.slug}`};
 }

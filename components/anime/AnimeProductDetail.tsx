@@ -9,7 +9,7 @@ import {animeLines,animeCategorySlug,type AnimeClientProduct} from '@/lib/anime-
 import {animeProductHref,animeLinePath} from '@/lib/anime-routes';
 import {isDoublePrint} from '@/lib/anime-merchandising';
 import {trackAnimeEvent,animeAbsoluteUrl} from '@/lib/anime-events';
-import {ORIGIN,wa} from '@/lib/config';
+import {ORIGIN,wa,money} from '@/lib/config';
 import AnimeProductOptions from './AnimeProductOptions';
 import AnimeShareButton from './AnimeShareButton';
 import AnimeProductCard from './AnimeProductCard';
@@ -37,8 +37,8 @@ export default function AnimeProductDetail({product,related=[]}:{product:AnimeCl
     <section className={styles.detailInfo}>
      <p className={styles.kicker}>{lineName} Division / {product.id}</p><h1>{product.name}</h1>
      {double&&<p className={styles.printTag}><Check size={14}/> Doble estampado</p>}
-     <div className={styles.detailPrice}><strong>$68.000 <small>COP</small></strong><span>Combina 2 camisetas por <b>$93.000</b></span></div>
-     <p className={styles.detailIntro}>Elige tu talla y añádela al combo. Puedes combinarla con diseños de Anime, Cartoon, Rock y Urbanas.</p>
+     <div className={styles.detailPrice}><strong>{money(product.price)} <small>COP</small></strong>{(product.position===undefined||product.offer)&&<span>Combina 2 camisetas por <b>{money(product.offer?.total||93000)}</b></span>}</div>
+     <p className={styles.detailIntro}>{product.description||'Elige tu talla y añádela al combo. Puedes combinarla con diseños de Anime, Cartoon, Rock y Urbanas.'}</p>
      <AnimeProductOptions product={product}/>
      <AnimeShareButton name={product.name} path={animeProductHref(product.id)}/>
      <p className={styles.shippingNote}><Truck size={18}/><span>Envío estándar incluido de 1 a 5 camisetas. Cobertura y contraentrega por confirmar.</span></p>

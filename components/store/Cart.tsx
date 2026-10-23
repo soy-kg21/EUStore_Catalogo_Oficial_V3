@@ -32,6 +32,7 @@ export default function Cart() {
   const [actionError, setActionError] = useState('');
   const [retry, setRetry] = useState(0);
 
+  useEffect(()=>{const refresh=()=>{setRetry(n=>n+1);setQuoteState({key:'',data:null,error:''});};window.addEventListener('eu-catalog-updated',refresh);window.addEventListener('focus',refresh);return()=>{window.removeEventListener('eu-catalog-updated',refresh);window.removeEventListener('focus',refresh);};},[]);
   useEffect(() => {
     if (!ready || !lines.length) return;
 
@@ -103,7 +104,7 @@ export default function Cart() {
   });
   if (rows.some(row => row === null)) return <p role="status">Actualizando precios de tu selección…</p>;
 
-  const message = `Hola Evolución Urbana, quisiera asesoría para esta selección:\n\n${data.rows.map(row => `${row.product.name}\nSKU: ${row.product.sku} | Talla: ${row.size} | Cantidad: ${row.quantity}\n${row.total===null?'Precio por confirmar':money(row.total)+' COP'}\n${ORIGIN}/producto/${row.product.slug}`).join('\n\n')}\n\n${data.subtotal===null?'Solicito cotización personalizada.':'Productos: '+money(data.subtotal)+' COP'}\n${data.shippingPending?'Envío por cotizar con asesor':'Envío incluido'}\n${data.total===null?'Total pendiente de confirmación':'Total: '+money(data.total)+' COP'}\n${data.warehouses.length>1?'Despachos separados por bodega, conservando beneficios y descuentos.':''}\n${data.advance?'Pago anticipado para los despachos mayoristas; confirmar condiciones de cada despacho.':'Pago contra entrega.'}\nMi ciudad es: \nPor favor confirmar disponibilidad y total.`;
+  const message = `Hola Evolución Urbana, quisiera asesoría para esta selección:\n\n${data.rows.map(row => `${row.product.name}\nSKU: ${row.product.sku} | Talla: ${row.size} | Cantidad: ${row.quantity}\n${row.total===null?'Precio por confirmar':money(row.total)+' COP'}\n${ORIGIN}/producto/${row.product.slug}`).join('\n\n')}\n\n${data.subtotal===null?'Solicito cotización personalizada.':'Productos: '+money(data.subtotal)+' COP'}\n${data.shippingPending?'Envío por cotizar con asesor':'Envío incluido'}\n${data.total===null?'Total pendiente de confirmación':'Total: '+money(data.total)+' COP'}\n${data.warehouses.length>1?'Despachos separados, conservando beneficios y descuentos.':''}\n${data.advance?'Pago anticipado para los despachos mayoristas; confirmar condiciones de cada despacho.':'Pago contra entrega.'}\nMi ciudad es: \nPor favor confirmar disponibilidad y total.`;
 
   return (
     <div className="cart-grid">
@@ -128,16 +129,16 @@ export default function Cart() {
       </section>
       <aside className="cart-summary" aria-busy={pending}>
         <h2>Tu selección</h2>
-        <p>Los beneficios por cantidad se calculan por bodega.</p>
+        <p>Los beneficios por cantidad se calculan por grupo de entrega.</p>
         {pending ? <p role="status" className="cart-updating">Actualizando precios y beneficios…</p> : <>
         {data.requiresQuote&&<div className="quote-alert" role="status"><h3>Una selección a tu medida.</h3><p>{data.pricePending?'Un asesor te ayudará a confirmar la mejor tarifa para tu selección.':'Tus productos ya tienen precio; falta cotizar el envío.'}</p>{data.reasons.map(reason=><p key={reason}>{reason}</p>)}</div>}
         {data.subtotal!==null&&<div className="summary-total"><span>Productos</span><strong>{money(data.subtotal)}</strong></div>}
         <p>{data.shippingPending?'Envío: cotización con asesor.':'Envío incluido.'}</p>
         {data.total!==null&&<div className="summary-total"><span>Total</span><strong>{money(data.total)}</strong></div>}
-        <p>{data.advance?'Pago anticipado para los despachos mayoristas (desde 6 unidades por bodega).':'Pago contra entrega hasta 5 unidades por bodega.'}</p>
-        {data.b1>0&&<p>Tu calzado de B1 incluye seguro de transporte y medias de obsequio.</p>}
-        {data.b2>0&&<p>Tu calzado de B2 incluye seguro de transporte.</p>}
-        {data.warehouses.length>1&&<div className="logistics-note"><h3>Tu look, en entregas separadas.</h3><p>Elegiste productos de {data.warehouses.length} bodegas. Llegarán en despachos separados y conservarás los beneficios, ofertas y descuentos que correspondan a cada uno.</p><a href={wa('Hola, quisiera entender cómo funcionan los despachos separados y los beneficios de mi selección.')} target="_blank" rel="noopener noreferrer">Resolver una duda por WhatsApp ↗</a></div>}
+        <p>{data.advance?'Pago anticipado para los despachos mayoristas (desde 6 unidades por grupo de entrega).':'Pago contra entrega hasta 5 unidades por grupo de entrega.'}</p>
+        {data.b1>0&&<p>Tu calzado seleccionado incluye seguro de transporte y medias de obsequio.</p>}
+        {data.b2>0&&<p>Tu calzado seleccionado incluye seguro de transporte.</p>}
+        {data.warehouses.length>1&&<div className="logistics-note"><h3>Tu look, en entregas separadas.</h3><p>Elegiste productos de {data.warehouses.length} grupos de entrega. Llegarán en despachos separados y conservarás los beneficios, ofertas y descuentos que correspondan a cada uno.</p><a href={wa('Hola, quisiera entender cómo funcionan los despachos separados y los beneficios de mi selección.')} target="_blank" rel="noopener noreferrer">Resolver una duda por WhatsApp ↗</a></div>}
         <p>Confirmaremos existencias y cobertura contigo antes de cerrar el pedido.</p>
         </>}
         <a className="button whatsapp" href={pending ? undefined : wa(message)} aria-disabled={pending || undefined} onClick={event => { if(pending) event.preventDefault(); }} target="_blank" rel="noopener noreferrer"><MessageCircle size={18}/>{pending ? 'ACTUALIZANDO SELECCIÓN…' : data.requiresQuote?'RECIBIR ASESORÍA PERSONALIZADA':'CONTINUAR POR WHATSAPP'}</a>

@@ -16,5 +16,5 @@ export function animeLocationFilters(pathname:string,search:string):AnimeFilters
  const category=parts[1]&&parts[1]!=='todos'&&!/^eu-anime-|^\d/.test(parts[1])?parts[1]:'';
  return {linea,categoria:animeCategorySlug(params.get('categoria')||category),q:(params.get('q')||'').slice(0,100),...(params.get('estampado')==='doble'?{doble:true}:{})};
 }
-export function animeProductHref(id:string){const key=id.toUpperCase(),canonical=(animeIndex.aliases as Record<string,string>)[key]||key;const route=animePublicRoutes[canonical];if(!route)throw new Error('Referencia de Anime Shop inexistente');return route.path;}
+export function animeProductHref(id:string){const key=id.toUpperCase(),canonical=(animeIndex.aliases as Record<string,string>)[key]||key;const route=animePublicRoutes[canonical];if(!route){if(/^EU-[A-F0-9]{24}$/.test(id))return '/anime/'+id.toLowerCase();throw new Error('Referencia de Anime Shop inexistente');}return route.path;}
 export function isAnimeShopPath(path:string){return /^\/(?:anime|cartoon|rock|urbanas|urbanos|shop|p)(?:\/|$)/.test(path);}

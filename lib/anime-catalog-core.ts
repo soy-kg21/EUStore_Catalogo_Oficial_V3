@@ -1,11 +1,13 @@
 export type AnimeLine = 'anime' | 'cartoon' | 'rock' | 'urbanos';
+import type {LiveCommerce} from './live-types';
 export type AnimeProduct = {
+ position?:number;variants?:{size:string;quantity:number|null}[];description?:string;benefits?:string;conditions?:string;offer?:{quantity:number;total:number};_live?:LiveCommerce;
   id:string; slug:string; name:string; image:string; thumbnail:string; backdrop:string;
-  category:string; line:AnimeLine; sizes:readonly string[]; price:number; isNew:boolean; availability:'Disponible';
+  category:string; line:AnimeLine; sizes:readonly string[]; price:number; isNew:boolean; availability:'Disponible'|'Por confirmar'|'Agotado';
   material:string; weightGrams:number|null; fit:string; releaseBatch:string; sourceName:string;
   canonicalId?:string; searchAliases?:string[]; supplier?:{pdf:string;page:number;key:string;name:string};
 };
-export type AnimeClientProduct = Omit<AnimeProduct,'sourceName'|'releaseBatch'|'supplier'|'canonicalId'>;
+export type AnimeClientProduct = Omit<AnimeProduct,'sourceName'|'releaseBatch'|'supplier'|'canonicalId'|'_live'>;
 export const animeLines = [{id:'anime',name:'Anime'},{id:'cartoon',name:'Cartoon'},{id:'rock',name:'Rock'},{id:'urbanos',name:'Urbanas'}] as const;
 export const normalizeAnimeText=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es').trim();
 export const animeCategorySlug=(s:string)=>normalizeAnimeText(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -35,6 +37,7 @@ function diversify<T extends AnimeClientProduct>(rows:T[]):T[]{
 /** 19 nuevos + 6 originales por bloque completo de 25 mientras ambas listas alcancen.
  * Al agotarse una lista, mostrar el resto una sola vez, sin ocultar productos. */
 export function orderAnimeProducts<T extends AnimeClientProduct>(products:T[]):T[]{
+  if(products.length&&products.every(p=>Number.isFinite(p.position)))return [...products].sort((a,b)=>a.position!-b.position!);
   const fresh=diversify(products.filter(p=>p.isNew)),original=diversify(products.filter(p=>!p.isNew));
   const result:T[]=[];let n=0,o=0;
   while(n<fresh.length&&o<original.length){

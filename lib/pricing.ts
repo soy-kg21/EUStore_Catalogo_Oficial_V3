@@ -1,6 +1,8 @@
+import {quoteLive} from './live-pricing';
 import type {Product,CartLine} from './types';
 import {ruleOf,withCommercial} from './commercial';
 export function quote(lines:CartLine[],products:Product[]){
+ if(products.some(p=>p._live)||products.length===0)return quoteLive(lines,products);
  const catalog=products.map(withCommercial);
  const rows=lines.map(l=>{const p=catalog.find(p=>p.id===l.id&&p.state!=='inactive');if(!p||!p.sizes.includes(l.size)||!Number.isInteger(l.quantity)||l.quantity<1||l.quantity>100)throw new Error('Selección inválida: revisa referencia, talla y cantidad.');return {...l,product:p,unit:p.price as number|null,total:p.price*l.quantity as number|null,reason:''}});
  const qty=(w:string,c?:string)=>rows.filter(r=>r.product.warehouse===w&&(!c||r.product.category===c)).reduce((a,r)=>a+r.quantity,0);
