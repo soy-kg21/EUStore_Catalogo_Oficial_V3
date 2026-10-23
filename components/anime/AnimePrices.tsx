@@ -1,8 +1,9 @@
-import {animePublicTotals,animeWholesaleTiers} from '@/lib/anime-commercial';
+import {getLiveAnimePricing} from '@/lib/live-products';
+import {animePublicTotals as baselineTotals,animeWholesaleTiers as baselineWholesale} from '@/lib/anime-commercial';
 import {money} from '@/lib/config';
 import {ArrowUpRight,Layers,Truck,Wallet} from 'lucide-react';
 import styles from './shop-premium.module.css';
-export default function AnimePrices(){return <section className={styles.prices} id="precios" aria-labelledby="anime-prices-title">
+export default async function AnimePrices(){const pricing=await getLiveAnimePricing(),animePublicTotals=pricing?.retail||baselineTotals,animeWholesaleTiers=pricing?.wholesale.map(([from,to,unit])=>({from,to,unit}))||baselineWholesale;return <section className={styles.prices} id="precios" aria-labelledby="anime-prices-title">
  <div className={styles.sectionHeading}><div><p className={styles.kicker}>Más de tu estilo</p><h2 id="anime-prices-title">Un combo<br/>a tu medida<span className={styles.priceDot}>.</span></h2></div><div className={styles.priceIntro}><Layers size={22}/><p>Mezcla Anime, Cartoon, Rock y Urbanas.<br/>El precio se calcula por cantidad.</p><a href="#coleccion">Armar mi combo <ArrowUpRight size={16}/></a></div></div>
  <div className={styles.priceBenefits} aria-label="Beneficios de los combos de una a cinco camisetas">
   <span><Truck size={20}/><span><b>Envío estándar incluido</b><small>De 1 a 5 camisetas</small></span></span>

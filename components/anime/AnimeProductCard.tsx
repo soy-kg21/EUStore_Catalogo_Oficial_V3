@@ -22,10 +22,10 @@ function AnimeProductCard({product,onNavigate,quantity=0,eager=false}:{product:A
    <p className={styles.meta}><span title={product.category}>{product.category}</span><span>REF: {reference}</span></p>
    <h3><AnimeProductLink productId={product.id} href={href} onClick={onNavigate}>{product.name}</AnimeProductLink></h3>
    <div className={`price-stack ${styles.price}`}>
-    <strong>{animeCommercial.promoQuantity} por {money(animeCommercial.promoTotal)}</strong>
+    {product.position===undefined||product.offer?<strong>{product.offer?.quantity||animeCommercial.promoQuantity} por {money(product.offer?.total||animeCommercial.promoTotal)}</strong>:<strong>{money(product.price)}</strong>}
     <small>1 camiseta {money(product.price)}</small>
    </div>
-   <p className={`product-benefits ${styles.benefits}`} title={animeCommercial.conditions}>Envío incluido · Contra entrega</p>
+   <p className={`product-benefits ${styles.benefits}`} title={product.conditions||animeCommercial.conditions}>{product.benefits||product.conditions||'Consulta las condiciones de entrega'}</p>
    <span className={`card-sizes ${styles.sizes}`}>{product.sizes.join(' / ')}</span>
   </div>
  </article>;

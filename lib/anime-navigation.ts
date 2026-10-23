@@ -24,7 +24,7 @@ export function parseAnimeSnapshot(value:unknown,now=Date.now()):AnimeListSnapsh
  if(!value||typeof value!=='object')return null;
  const s=value as AnimeListSnapshot;
  if(s.version!==1||!safeAnimeListUrl(s.url)||typeof s.key!=='string'||!Number.isInteger(s.count)||s.count<24||s.count>2000||!Number.isFinite(s.scroll)||s.scroll<0||!Number.isFinite(s.width)||s.width<=0||!Number.isFinite(s.savedAt)||now-s.savedAt>MAX_AGE||s.savedAt>now+60000)return null;
- if(s.productId!==undefined&&!/^EU-ANIME-\d{3,4}$/.test(s.productId))return null;
+ if(s.productId!==undefined&&!/^EU-(?:ANIME-\d{3,4}|[A-F0-9]{24})$/.test(s.productId))return null;
  if(s.cardTop!==undefined&&!Number.isFinite(s.cardTop))return null;
  if([s.filterOffset,s.filterFloor].some(value=>value!==undefined&&(!Number.isFinite(value)||value<0)))return null;
  return s;

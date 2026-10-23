@@ -63,3 +63,8 @@ pnpm.cmd test:anime-build
 Las pruebas de geometría y desplazamiento ejecutan el controlador con adaptadores de DOM y reloj. No sustituyen una inspección visual en Chrome/Safari o en un teléfono real. El entorno de esta entrega no proporciona un navegador de prueba; esa revisión visual queda pendiente al abrirlo localmente. El informe de comprobaciones está en `docs/VERIFICACION_ANIME_UNIVERSE_V5_1.json`.
 
 La entrega no publica en Vercel, no cambia campañas y no conecta ni actualiza una base de datos o el agente de WhatsApp. Los archivos V1–V4 y las herramientas antiguas se conservan como historial, sin intervenir en el hero V5.
+
+
+## Conector BackOffice V5.2
+
+Publicación propia desde Productos. Consulta docs/CONECTOR_BACKOFFICE.md antes de activar EUSTORE_LIVE_CATALOG. El conector usa snapshots completos en Netlify Blobs, cambios condicionados por ETag y fotos con verificación SHA-256. No envía costos, proveedores ni credenciales al catálogo público. Validación de protocolo: pnpm test:live-sync.

@@ -7,8 +7,8 @@ export function parseAnimeSelection(raw:string):AnimeSelection[]{
  for(const item of input.slice(0,200)){
   if(typeof item!=='string'&&(!item||typeof item!=='object'))continue;
   const value=(typeof item==='string'?{id:item}:item) as {id?:unknown;size?:unknown;quantity?:unknown};if(typeof value.id!=='string')continue;
-  const id=aliases[value.id]||value.id;if(!ids.has(id))continue;
-  const size=typeof value.size==='string'&&['S','M','L','XL'].includes(value.size)?value.size:undefined;
+  const id=aliases[value.id]||value.id;if(!ids.has(id)&&!/^EU-[A-F0-9]{24}$/.test(id))continue;
+  const size=typeof value.size==='string'&&value.size.length>0&&value.size.length<=40?value.size:undefined;
   const quantity=value.quantity===undefined?1:typeof value.quantity==='number'&&Number.isInteger(value.quantity)?Math.min(99,Math.max(0,value.quantity)):0;if(!quantity)continue;
   const row={id,...(size?{size}:{}),quantity},key=animeSelectionLineKey(row),previous=lines.get(key);
   lines.set(key,{...row,quantity:Math.min(99,quantity+(previous?.quantity||0))});if(lines.size>=100)break;

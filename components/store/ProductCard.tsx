@@ -34,7 +34,7 @@ export default function ProductCard({
       <div className="card-info">
         <p>{product.color}</p>
         <Link href={`/producto/${product.slug}`}><h3>{product.name}</h3></Link>
-        <ProductPrice product={product}/><p className="product-benefits">{product.warehouse==='B3'?'Envío según cantidad · Contra entrega':'Envío incluido · Contra entrega'}</p>{product.warehouse==='B1'&&<p className="product-benefits">Seguro + medias de obsequio</p>}
+        <ProductPrice product={product}/>{product.benefits.slice(0,3).map((benefit,i)=><p key={i} className="product-benefits">{benefit.replace(/\bpor bodega\b/gi,'por selección')}</p>)}
         <span className="card-sizes">
           {product.sizes.length > 6
             ? `${product.sizes[0]} — ${product.sizes[product.sizes.length - 1]}`

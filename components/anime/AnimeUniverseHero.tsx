@@ -8,9 +8,9 @@ import {animeProductHref} from '@/lib/anime-routes';
 import {cinemaArtForLine} from '@/lib/anime-cinema-art';
 import styles from './universe.module.css';
 import {mountAnimeCinema} from '@/lib/anime-cinema-runtime';
-type Props={products:AnimeClientProduct[];division:string;title:[string,string];description:string;navigation?:ReactNode;line?:string};
+type Props={products:AnimeClientProduct[];division:string;title:[string,string];description:string;navigation?:ReactNode;line?:string;promoLabel?:string};
 /** Each line keeps its four approved characters; the mixed shop opens with the original Gojo. */
-export default function AnimeUniverseHero({products,title,description,navigation,line='anime'}:Props){
+export default function AnimeUniverseHero({products,title,description,navigation,line='anime',promoLabel='2 por $93.000'}:Props){
  const root=useRef<HTMLElement>(null);
  const artwork=cinemaArtForLine(line);
  useLayoutEffect(()=>{if(root.current)return mountAnimeCinema(root.current);},[]);
@@ -21,7 +21,7 @@ export default function AnimeUniverseHero({products,title,description,navigation
   })}<div className={styles.shade}/><div className={styles.grain}/></div><canvas className={styles.effects} aria-hidden="true"/>
   <nav className={styles.breadcrumb} aria-label="Inicio de Anime Shop"><a href="#anime-inicio" data-cinema-home><Home size={11}/> Inicio</a></nav>
   <div className={styles.edition} data-cinema="edition"><span/> {artwork[0].edition}</div>
-  <div className={styles.commerce} data-cinema="commerce"><div className={styles.copy} data-cinema="copy"><h1 id="anime-hero-title" data-cinema="copy-title">{title[0]==='DE TU UNIVERSO.'?'TU UNIVERSO':title[0]}<br/><em>{title[1]==='A LA CALLE.'?'A LA CALLE':title[1]}</em></h1><p className={styles.description} data-cinema="copy-description">{title[0]==='DE TU UNIVERSO.'?<>Tu anime favorito. Tu próxima camiseta.<br/>Elige tus diseños y arma tu combo.</>:description}</p><div className={styles.actions} data-cinema="copy-actions"><a href="#anime-discover" className={styles.enter} data-cinema-explore>Explorar la colección <ArrowUpRight size={17}/></a><a href="#precios" className={styles.prices}>2 por $93.000</a></div></div>
+  <div className={styles.commerce} data-cinema="commerce"><div className={styles.copy} data-cinema="copy"><h1 id="anime-hero-title" data-cinema="copy-title">{title[0]==='DE TU UNIVERSO.'?'TU UNIVERSO':title[0]}<br/><em>{title[1]==='A LA CALLE.'?'A LA CALLE':title[1]}</em></h1><p className={styles.description} data-cinema="copy-description">{title[0]==='DE TU UNIVERSO.'?<>Tu anime favorito. Tu próxima camiseta.<br/>Elige tus diseños y arma tu combo.</>:description}</p><div className={styles.actions} data-cinema="copy-actions"><a href="#anime-discover" className={styles.enter} data-cinema-explore>Explorar la colección <ArrowUpRight size={17}/></a><a href="#precios" className={styles.prices}>{promoLabel}</a></div></div>
    <div className={styles.selection} data-cinema="selection"><span className={styles.selectionHeading}>TRES FORMAS DE EMPEZAR <ArrowUpRight size={12}/></span><div className={styles.products}>{products.slice(0,3).map((product,index)=><AnimeProductLink productId={product.id} key={product.id} href={animeProductHref(product.id)} className={styles.look} aria-label={`Ver camiseta ${product.name}`}><AnimeCatalogImage product={product} alt={product.name} sizes="(max-width:700px) 27vw, (max-width:1100px) 12vw, 150px" priority={index===0} eager/></AnimeProductLink>)}</div><span className={styles.selectionNote}>{title[0]==='DE TU UNIVERSO.'?'Diseños del catálogo · Doble estampado':'Diseños del catálogo · Elige tu universo'}</span></div>
   </div>
   <button type="button" className={`${styles.label} ${styles.labelB}`} data-cinema="label-b" onClick={()=>window.dispatchEvent(new Event('eu-open-anime-filters'))}><div><small>TU OUTFIT. TUS REGLAS.</small><strong>Elige tu universo.</strong></div><ArrowUpRight size={17}/></button>

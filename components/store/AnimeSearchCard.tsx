@@ -16,8 +16,8 @@ export default function AnimeSearchCard({product,priority=false}:{product:AnimeP
     </AnimeProductLink>
     <div className="card-info">
       <p>{product.category}</p><AnimeProductLink productId={product.id} href={href}><h3>{product.name}</h3></AnimeProductLink>
-      <div className="price-stack"><strong>{money(animeCommercial.unitPrice)} <small>COP</small></strong></div>
-      <p className="product-benefits">{animeCommercial.promoLabel}</p>
+      <div className="price-stack"><strong>{money(product.price)} <small>COP</small></strong></div>
+      <p className="product-benefits">{product.position===undefined?animeCommercial.promoLabel:product.offer?`${product.offer.quantity} por ${money(product.offer.total)}`:''}</p>
       <p className="product-benefits">{animeCommercial.conditions}</p>
       <span className="card-sizes">{product.sizes.join(' / ')}</span>
     </div>
