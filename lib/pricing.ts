@@ -2,7 +2,7 @@ import {quoteLive} from './live-pricing';
 import type {Product,CartLine} from './types';
 import {ruleOf,withCommercial} from './commercial';
 export function quote(lines:CartLine[],products:Product[]){
- if(products.some(p=>p._live)||products.length===0)return quoteLive(lines,products);
+ if(lines.some(l=>products.find(p=>p.id===l.id)?._live)||products.length===0)return quoteLive(lines,products.map(p=>{if(p._live)return p;const c=withCommercial(p),r=ruleOf(c),w=c.warehouse||'',buckets:Record<string,string>={"B1": "ac2c5a647314030aca259625", "B2": "b59911216dae93e2b58ad8f1", "B3": "39ee572347a7732f37ac5f40", "B4": "2620dd993a9eaa70a3c90fe0", "B5": "05174c6880fa3ccb9b1991ea", "B6": "17025e42553b9818edde10de", "B7": "fac51e9dcf81cf856afda292"};return {...c,variants:c.variants||c.sizes.map(size=>({size,quantity:null})),_live:{bucket:buckets[w]||'legacy-'+w,rule:r?{kind:'unit' as const,retail:r.retail,wholesale:r.wholesale||[],mixed:r.mixed,mixedScope:r.mixedScope==='warehouse'?'bucket':'cart'}:null,quoteFrom:['B1','B2','B3','B4'].includes(w)?6:null,shippingFrom:w==='B3'?4:6,advance:w==='B4'}};}));
  const catalog=products.map(withCommercial);
  const rows=lines.map(l=>{const p=catalog.find(p=>p.id===l.id&&p.state!=='inactive');if(!p||!p.sizes.includes(l.size)||!Number.isInteger(l.quantity)||l.quantity<1||l.quantity>100)throw new Error('Selección inválida: revisa referencia, talla y cantidad.');return {...l,product:p,unit:p.price as number|null,total:p.price*l.quantity as number|null,reason:''}});
  const qty=(w:string,c?:string)=>rows.filter(r=>r.product.warehouse===w&&(!c||r.product.category===c)).reduce((a,r)=>a+r.quantity,0);
