@@ -3,13 +3,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import type { Product } from '@/lib/types';
+import {catalogCollections} from '@/lib/catalog-collections';
 
 export default function ProductCard({
   product,
   priority = false,
+  label,
 }: {
   product: Product;
   priority?: boolean;
+  label?: string;
 }) {
   return (
     <article className="product-card">
@@ -23,11 +26,11 @@ export default function ProductCard({
           preload={priority}
         />
         <span className="card-label">
-          {product.category === 'camisetas'
+          {label ?? (product.collection?catalogCollections[product.collection].label:product.category === 'camisetas'
             ? 'OVERSIZE · 270G'
             : product.category === 'conjuntos'
               ? 'CAMISETA + PANTALONETA'
-              : 'SELECCIÓN URBANA'}
+              : 'SELECCIÓN URBANA')}
         </span>
         <span className="card-arrow"><ArrowUpRight size={19} /></span>
       </Link>

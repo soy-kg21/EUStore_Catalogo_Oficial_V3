@@ -3,6 +3,7 @@ import type {Product} from './types';
 import type {AnimeProduct} from './anime-catalog-core';
 import {normalizeAnimeText} from './anime-catalog-core';
 import {animeCommercial} from './anime-commercial';
+import {collectionSearchText} from './catalog-collections';
 
 type SearchParams=Record<string,string|string[]|undefined>;
 export type CatalogMatch={kind:'general';product:Product}|{kind:'anime';product:AnimeProduct};
@@ -14,7 +15,7 @@ export function searchCatalog(general:Product[],anime:AnimeProduct[],params:Sear
   const val=(key:string)=>typeof params[key]==='string'?String(params[key]):'';
   const q=normalizeAnimeText(val('q').slice(0,100)),size=val('size'),color=val('color'),brand=val('brand'),availability=val('availability');
   const max=Number(val('max'))||Infinity;
-  const generalMatches=general.filter(p=>p.state!=='inactive'&&(!q||normalizeAnimeText(`${p.name} ${p.sku} ${p.brand??''} ${p.category} ${p.color}`).includes(q))&&(!size||p.sizes.includes(size))&&(!color||p.color===color)&&(!brand||p.brand===brand)&&(!Number.isFinite(max)||(!p.pricingPending&&p.price<=max))&&(!availability||(availability==='confirmed'?p.stock!==null&&p.stock>0:p.stock===null)));
+  const generalMatches=general.filter(p=>p.state!=='inactive'&&(!q||normalizeAnimeText(`${p.name} ${p.sku} ${p.brand??''} ${p.category} ${collectionSearchText(p)} ${p.color}`).includes(q))&&(!size||p.sizes.includes(size))&&(!color||p.color===color)&&(!brand||p.brand===brand)&&(!Number.isFinite(max)||(!p.pricingPending&&p.price<=max))&&(!availability||(availability==='confirmed'?p.stock!==null&&p.stock>0:p.stock===null)));
   const animeMatches=anime.filter(p=>!p.canonicalId&&(!q||normalizeAnimeText(`${p.name} ${p.id} ${p.category} ${p.line} ${p.searchAliases?.join(' ')||''} camiseta camisetas`).includes(q))&&(!size||p.sizes.includes(size))&&!color&&!brand&&(!Number.isFinite(max)||p.price<=max)&&availability!=='confirmed');
   // Alternar inventarios permite descubrir ambos cuando la consulta coincide en los dos.
   const matches:CatalogMatch[]=[];

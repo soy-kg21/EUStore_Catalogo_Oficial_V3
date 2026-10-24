@@ -1,6 +1,6 @@
 import {withCommercial} from './commercial';
 import {getLiveCatalog} from './live-catalog';
-import {toLiveGeneral} from './live-products';
+import {toLiveGeneral,withCatalogCollection} from './live-general-product';
 import {mergePublishedProducts} from './publication-overlay';
 import snapshot from '@/data/catalog.json';
 import type {Product} from './types';
@@ -10,7 +10,7 @@ export const getProducts=cache(async ():Promise<Product[]>=>{
  const live=await getLiveCatalog(),published=live?.products.filter(p=>p.section!=='anime').map(toLiveGeneral)||[];
  if(live&&!live.partial)return published.sort((a,b)=>a.rank-b.rank);
  const url=process.env.SUPABASE_URL,key=process.env.SUPABASE_ANON_KEY;
- if(!url&&!key){const baseline=(snapshot as Product[]).filter(p=>p.state!=='inactive').map(withCommercial);return (live?mergePublishedProducts(baseline,published,live,['general','importadas']):baseline).sort((a,b)=>a.rank-b.rank);}
+ if(!url&&!key){const baseline=(snapshot as Product[]).filter(p=>p.state!=='inactive').map(withCommercial).map(withCatalogCollection);return (live?mergePublishedProducts(baseline,published,live,['general','importadas']):baseline).sort((a,b)=>a.rank-b.rank);}
  if(!url||!key)throw new Error('Supabase configuration incomplete');
  const result:Product[]=[];
  for(let offset=0;;offset+=500){
@@ -18,18 +18,9 @@ export const getProducts=cache(async ():Promise<Product[]>=>{
  if(!response.ok)throw new Error('Catalog temporarily unavailable');
  const rows=await response.json() as {payload:Product}[];result.push(...rows.map(r=>r.payload));if(rows.length<500)break;
  }
- const baseline=result.filter(p=>p.state!=='inactive').map(withCommercial);
+ const baseline=result.filter(p=>p.state!=='inactive').map(withCommercial).map(withCatalogCollection);
  return (live?mergePublishedProducts(baseline,published,live,['general','importadas']):baseline).sort((a,b)=>a.rank-b.rank);
 });
 export const getProduct=async(slug:string)=>(await getProducts()).find(p=>p.slug===slug);
-export type Params=Record<string,string|string[]|undefined>;
-export function queryProducts(products:Product[],params:Params,category?:string){
- const val=(key:string)=>typeof params[key]==='string'?String(params[key]):'';
- const clean=(v:string)=>v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
- const q=clean(val('q')).slice(0,100),size=val('size'),color=val('color'),brand=val('brand'),availability=val('availability');
- const max=Number(val('max'))||Infinity;
- const list=products.filter(p=>(!category||p.category===category)&&(!q||clean(`${p.name} ${p.sku} ${p.brand??''} ${p.category} ${p.color}`).includes(q))&&(!size||p.sizes.includes(size))&&(!color||p.color===color)&&(!brand||p.brand===brand)&&(!Number.isFinite(max)||(!p.pricingPending&&p.price<=max))&&(!availability||(availability==='confirmed'?p.stock!==null&&p.stock>0:p.stock===null)));
- if(val('sort')==='price-asc')list.sort((a,b)=>Number(!!a.pricingPending)-Number(!!b.pricingPending)||a.price-b.price);if(val('sort')==='price-desc')list.sort((a,b)=>Number(!!a.pricingPending)-Number(!!b.pricingPending)||b.price-a.price);if(val('sort')==='name')list.sort((a,b)=>a.name.localeCompare(b.name,'es'));
- const pages=Math.max(1,Math.ceil(list.length/24));const page=Math.min(pages,Math.max(1,parseInt(val('page'))||1));
- return {items:list.slice((page-1)*24,page*24),total:list.length,page,pages};
-}
+export {queryProducts} from './product-query';
+export type {Params} from './product-query';
