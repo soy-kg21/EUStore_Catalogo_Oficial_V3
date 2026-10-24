@@ -1,7 +1,7 @@
 'use client';
 
 import {useEffect,useRef,useState} from 'react';
-import {ArrowUpRight,Footprints,MessageCircle,Pause,Play,Ruler,Search,ShoppingBag,Tag} from 'lucide-react';
+import {ArrowUpRight,Footprints,MessageCircle,Ruler,Search,ShoppingBag,Tag} from 'lucide-react';
 import {wa} from '@/lib/config';
 import styles from './imported-messages.module.css';
 
@@ -31,10 +31,9 @@ export default function ImportedMessages(){
   const [inView,setInView]=useState(false);
   const [pageVisible,setPageVisible]=useState(true);
   const [reduced,setReduced]=useState(false);
-  const [paused,setPaused]=useState(false);
   const [hovered,setHovered]=useState(false);
   const [focused,setFocused]=useState(false);
-  const running=inView&&pageVisible&&!reduced&&!paused&&!hovered&&!focused;
+  const running=inView&&pageVisible&&!reduced&&!hovered&&!focused;
 
   useEffect(()=>{
     const node=region.current;
@@ -56,7 +55,7 @@ export default function ImportedMessages(){
 
   useEffect(()=>{
     if(!running){setSlide(old=>old.previous===null?old:{...old,previous:null});return;}
-    const timer=window.setTimeout(()=>setSlide(old=>({current:(old.current+1)%groups.length,previous:old.current})),4000);
+    const timer=window.setTimeout(()=>setSlide(old=>({current:(old.current+1)%groups.length,previous:old.current})),3000);
     return ()=>window.clearTimeout(timer);
   },[running,slide.current]);
 
@@ -66,15 +65,11 @@ export default function ImportedMessages(){
     return ()=>window.clearTimeout(timer);
   },[slide.previous]);
 
-  return <section ref={region} className={styles.carousel} data-rotating={running} data-in-view={inView} aria-label="Descubre tus zapatillas importadas" aria-roledescription="carrusel" onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>
-    <div className={styles.viewport} aria-live={paused||focused||reduced?'polite':'off'} onFocusCapture={()=>setFocused(true)} onBlurCapture={event=>{if(!event.currentTarget.contains(event.relatedTarget as Node|null))setFocused(false);}}>
-      {groups.map((messages,index)=><div key={index} className={styles.group} role="group" aria-roledescription="grupo de mensajes" aria-label={`${index+1} de ${groups.length}`} aria-hidden={index!==slide.current} inert={index!==slide.current} data-current={index===slide.current} data-enter={index===slide.current&&slide.previous!==null} data-leave={index===slide.previous}>
+  return <section ref={region} className={styles.carousel} data-reduced={reduced} data-rotating={running} data-in-view={inView} aria-label="Descubre tus zapatillas importadas" aria-roledescription="carrusel" onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>
+    <div className={styles.viewport} aria-live={focused||reduced?'polite':'off'} onFocusCapture={()=>setFocused(true)} onBlurCapture={event=>{if(!event.currentTarget.contains(event.relatedTarget as Node|null))setFocused(false);}}>
+      {groups.map((messages,index)=><div key={index} className={styles.group} role="group" aria-roledescription="grupo de mensajes" aria-label={`${index+1} de ${groups.length}`} aria-hidden={!reduced&&index!==slide.current} inert={!reduced&&index!==slide.current} data-current={index===slide.current} data-enter={index===slide.current&&slide.previous!==null} data-leave={index===slide.previous}>
         {messages.map(({title,text,icon:Icon,href})=><a className={styles.message} key={title} href={href} {...(href.startsWith('https:')?{target:'_blank',rel:'noopener noreferrer'}:{})}><Icon size={21} aria-hidden="true"/><span><strong>{title}</strong><small>{text}</small></span></a>)}
       </div>)}
-    </div>
-    <div className={styles.controls} aria-label="Controles de los mensajes">
-      {groups.map((_,index)=><button key={index} type="button" className={styles.dot} aria-label={`Ver grupo de mensajes ${index+1}`} aria-pressed={index===slide.current} onClick={()=>setSlide(old=>old.current===index?old:{current:index,previous:inView&&!reduced?old.current:null})}><span aria-hidden="true"/></button>)}
-      {!reduced&&<button type="button" className={styles.pause} aria-label={paused?'Reanudar anuncios':'Pausar anuncios'} aria-pressed={paused} onClick={()=>setPaused(old=>!old)}>{paused?<Play size={13} aria-hidden="true"/>:<Pause size={13} aria-hidden="true"/>}</button>}
     </div>
   </section>;
 }

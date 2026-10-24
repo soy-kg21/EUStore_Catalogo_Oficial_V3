@@ -31,7 +31,7 @@ export default async function Catalog({params,category}:{params:Params;category?
     <div className="catalog-head"><p className="eyebrow">ENCUENTRA LO QUE VA CONTIGO</p><h1 className="page-title">{category==='zapatillas'?'Zapatillas nacionales.':cat?.name||'Todo el catálogo.'}</h1><p className="page-intro">{cat?.detail||'Explora prendas y calzado. Combina tu estilo, elige tu talla y conversemos.'}</p></div>
     {category==='camisetas'&&<AnimeCategoryGateway/>}
     {(category==='zapatillas'||category==='conjuntos')&&<CollectionGateway category={category}/>}
-    {category!=='zapatillas'&&<ImportedCollectionLink/>}
+    {!category&&<ImportedCollectionLink/>}
     <div className="catalog-layout" id={category?`catalogo-${category}`:undefined}>
       <aside aria-label="Filtros del catálogo"><Filters path={path} options={options} values={values}/></aside>
       <section className="catalog-results">

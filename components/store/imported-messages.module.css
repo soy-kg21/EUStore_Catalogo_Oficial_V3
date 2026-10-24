@@ -11,15 +11,11 @@
 .message strong{font-size:12px;font-weight:600;line-height:1.45}
 .message small{font-size:11px;color:var(--eu-secondary,#b1bbb3);line-height:1.5}
 .message:hover strong{color:var(--eu-link,#ccff00)}
-.message:focus-visible,.controls button:focus-visible{outline:2px solid var(--eu-link,#ccff00);outline-offset:-2px}
-.controls{display:flex;justify-content:flex-end;align-items:center;gap:0;margin-top:3px}
-.controls button{display:grid;place-items:center;min-width:30px;min-height:30px;padding:0;border:0;background:none;color:var(--eu-secondary,#b1bbb3);border-radius:6px}
-.dot>span{display:block;width:5px;height:5px;border-radius:10px;background:var(--eu-secondary,#b1bbb3);opacity:.45;transition:width .2s,background .2s}
-.dot[aria-pressed=true]>span{width:17px;background:var(--eu-link,#ccff00);opacity:1}
-.controls .pause{margin-left:5px;border-left:1px solid var(--eu-stroke,#ffffff26);border-radius:0}
-.controls button:hover{color:var(--eu-link,#ccff00)}
+.message:focus-visible{outline:2px solid var(--eu-link,#ccff00);outline-offset:-2px}
 @keyframes message-enter{from{transform:translateX(100%)}to{transform:translateX(0)}}
 @keyframes message-leave{from{transform:translateX(0)}to{transform:translateX(-100%)}}
 @media(max-width:1100px){.group{gap:13px}.message{gap:10px}}
-@media(max-width:700px){.carousel{padding:10px 0 4px;margin-bottom:26px}.group{grid-template-columns:1fr;gap:0}.message{justify-content:flex-start;gap:15px;padding:13px 4px;min-height:66px}.message+.message{border-left:0;border-top:1px solid var(--eu-stroke,#ffffff26)}.message>span{gap:3px}.controls button{min-width:44px;min-height:44px}}
-@media(prefers-reduced-motion:reduce){.group[data-enter=true],.group[data-leave=true]{animation:none}.dot>span{transition:none}}
+@media(max-width:700px){.carousel{padding:10px 0 4px;margin-bottom:26px}.group{grid-template-columns:1fr;gap:0}.message{justify-content:flex-start;gap:15px;padding:13px 4px;min-height:66px}.message+.message{border-left:0;border-top:1px solid var(--eu-stroke,#ffffff26)}.message>span{gap:3px}}
+@media(prefers-reduced-motion:reduce){.group[data-enter=true],.group[data-leave=true]{animation:none}}
+ .carousel[data-reduced=true] .viewport{gap:20px}
+.carousel[data-reduced=true] .group{grid-area:auto;visibility:visible;pointer-events:auto}
