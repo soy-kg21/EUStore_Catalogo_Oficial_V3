@@ -15,7 +15,7 @@
 @keyframes message-enter{from{transform:translateX(100%)}to{transform:translateX(0)}}
 @keyframes message-leave{from{transform:translateX(0)}to{transform:translateX(-100%)}}
 @media(max-width:1100px){.group{gap:13px}.message{gap:10px}}
-@media(max-width:700px){.carousel{padding:10px 0 4px;margin-bottom:26px}.group{grid-template-columns:1fr;gap:0}.message{justify-content:flex-start;gap:15px;padding:13px 4px;min-height:66px}.message+.message{border-left:0;border-top:1px solid var(--eu-stroke,#ffffff26)}.message>span{gap:3px}}
+@media(max-width:700px){.carousel{padding:12px 0;margin-bottom:26px}.group{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}.message{justify-content:flex-start;gap:8px;padding:8px 9px;min-height:100px;align-items:center}.message+.message{border-left:1px solid var(--eu-stroke,#ffffff26);border-top:0}.message>svg{width:17px;height:17px}.message>span{gap:4px}.message strong{font-size:12px;line-height:1.4}.message small{font-size:11px;line-height:1.45}.carousel[data-mobile=false] .message:nth-child(3){display:none}}
 @media(prefers-reduced-motion:reduce){.group[data-enter=true],.group[data-leave=true]{animation:none}}
  .carousel[data-reduced=true] .viewport{gap:20px}
 .carousel[data-reduced=true] .group{grid-area:auto;visibility:visible;pointer-events:auto}

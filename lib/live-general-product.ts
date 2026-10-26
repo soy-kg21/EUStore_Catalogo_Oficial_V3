@@ -14,6 +14,7 @@ function classification(warehouse:string,category:string,imported=false):{catego
   if(['B1','B2','B3'].includes(warehouse))return {category:'zapatillas',collection:'nacionales'};
   if(warehouse==='B6')return {category:'conjuntos',collection:'conjuntos-buzos'};
   const value=normalize(category);
+  if(/buzo|sudadera|hoodie/.test(value))return {category:'conjuntos',collection:'conjuntos-buzos'};
   if(warehouse==='B5'){
     if(/^(?:conjunto|conjuntos|camiseta\s*\+\s*pantaloneta)(?:\s|$)/.test(value))return {category:'conjuntos',collection:'conjuntos-cortos'};
     if(/^(?:camiseta|camisetas|oversize)(?:\s|$)/.test(value))return {category:'camisetas',collection:'oversize'};
@@ -26,5 +27,5 @@ export function withCatalogCollection(product:Product):Product{
 export function toLiveGeneral(p:LiveProduct):Product{
   if(p.section==='anime')throw new Error('Anime conserva su catálogo y sus fichas propios.');
   const variants=p.sizes,stock=variants.some(v=>v.quantity===null)?null:variants.reduce((sum,v)=>sum+(v.quantity||0),0);
-  return {...classification(warehouses[p.commerce.bucket]||'',p.category,p.section==='importadas'),sizeSystem:p.sizeSystem,id:p.route.id,sku:'EU-'+p.id.slice(0,8).toUpperCase(),slug:p.route.slug,name:p.name,brand:p.brand||null,model:p.name,price:p.price,previousPrice:p.regularPrice&&p.regularPrice>p.price?p.regularPrice:null,currency:'COP',color:p.color,sizes:variants.map(v=>v.size),images:[...new Set(Object.values(p.images))],state:'active',stock,warehouse:null,family:null,description:p.description,benefits:[p.benefits,p.conditions,p.payment].filter(Boolean),sizeNote:['EUR','EU'].includes(p.sizeSystem)?'Tallas europeas (EUR).':p.sizeSystem==='LETRAS'?'Revisa la talla de esta referencia y consulta sus medidas.':'Confirma las medidas de esta referencia.',material:p.materials||null,weight:p.extras.weight,featured:p.extras.featured,rank:p.position,seoTitle:p.name+' | Evolución Urbana',seoDescription:p.description||p.name,_live:p.commerce,variants};
+  return {...classification(warehouses[p.commerce.bucket]||'',p.category,p.section==='importadas'),labels:p.labels,sizeSystem:p.sizeSystem,id:p.route.id,sku:'EU-'+p.id.slice(0,8).toUpperCase(),slug:p.route.slug,name:p.name,brand:p.brand||null,model:p.name,price:p.price,previousPrice:p.regularPrice&&p.regularPrice>p.price?p.regularPrice:null,currency:'COP',color:p.color,sizes:variants.map(v=>v.size),images:[...new Set(Object.values(p.images))],state:'active',stock,warehouse:null,family:null,description:p.description,benefits:[p.benefits,p.conditions,p.payment].filter(Boolean),sizeNote:['EUR','EU'].includes(p.sizeSystem)?'Tallas europeas (EUR).':p.sizeSystem==='LETRAS'?'Revisa la talla de esta referencia y consulta sus medidas.':'Confirma las medidas de esta referencia.',material:p.materials||null,weight:p.extras.weight,featured:p.extras.featured,rank:p.position,seoTitle:p.name+' | Evolución Urbana',seoDescription:p.description||p.name,_live:p.commerce,variants};
 }

@@ -15,7 +15,7 @@ import AnimeShareButton from './AnimeShareButton';
 import AnimeProductCard from './AnimeProductCard';
 import styles from './shop-premium.module.css';
 export default function AnimeProductDetail({product,related=[]}:{product:AnimeClientProduct;related?:AnimeClientProduct[]}){
- const [zoom,setZoom]=useState(false),double=isDoublePrint(product.id),lineName=animeLines.find(line=>line.id===product.line)!.name;
+ const [zoom,setZoom]=useState(false),double=isDoublePrint(product),lineName=animeLines.find(line=>line.id===product.line)!.name;
  useLayoutEffect(()=>{
   if(!consumeAnimeProduct(product.id))return;
   let frame=0;

@@ -12,6 +12,6 @@
 .strip[data-reduced=true] .group{grid-area:auto;visibility:visible;pointer-events:auto}
 @keyframes service-enter{from{transform:translateX(100%)}to{transform:translateX(0)}}
 @keyframes service-leave{from{transform:translateX(0)}to{transform:translateX(-100%)}}
-@media(max-width:700px){.strip{padding:10px 5%}.group{grid-template-columns:1fr}.group>span{justify-content:flex-start;text-align:left;padding:12px 4px;font-size:11px;letter-spacing:.035em;gap:13px;min-height:45px}.group>span+span{border-left:0;border-top:1px solid var(--eu-border,#ffffff12)}.group svg{width:18px;height:18px}}
+@media(max-width:700px){.strip{padding:12px 4%;min-height:76px}.group{grid-template-columns:repeat(2,minmax(0,1fr))}.group>span{justify-content:center;text-align:left;padding:8px 10px;font-size:11px;letter-spacing:.02em;gap:8px;min-height:52px;line-height:1.5}.group>span+span{border-left:1px solid var(--eu-border,#ffffff12);border-top:0}.group svg{width:17px;height:17px}.strip[data-mobile=false] .group>span:nth-child(3){display:none}}
 @media(min-width:2000px){.strip{min-height:82px}.group>span{font-size:17px;gap:18px}.group svg{width:23px;height:23px}}
 @media(prefers-reduced-motion:reduce){.group[data-enter=true],.group[data-leave=true]{animation:none}}

@@ -1,3 +1,4 @@
+import {collectionOf} from '@/lib/catalog-presentation.mjs';
 import ServiceAnnouncements from '@/components/home/ServiceAnnouncements';
 import Lookbook from '@/components/home/Lookbook';
 import {resolveLooks} from '@/lib/looks';
@@ -24,8 +25,11 @@ import { jsonLd, siteSchema } from '@/lib/seo';
 export default async function Home() {
   const all = await getProducts();
   const looks = resolveLooks(all);
-  const chosen = all.filter((product) => product.featured).slice(0, 4);
-  const featured = chosen.length === 4 ? chosen : all.slice(0, 4);
+  const featured = ['oversize','nacionales','conjuntos-cortos','importadas'].flatMap(collection=>{
+    const rows=all.filter(product=>collectionOf(product)===collection);
+    const product=rows.find(product=>product.featured)||rows[0];
+    return product?[product]:[];
+  });
 
   return (
     <>

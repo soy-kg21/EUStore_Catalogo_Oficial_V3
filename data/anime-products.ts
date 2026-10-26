@@ -12,6 +12,6 @@ const byId=new Map(animeProductRecords.map(p=>[p.id,p]));
 export function getAnimeProduct(slug:string){return bySlug.get(slug);}
 export function getCanonicalAnimeProduct(product:AnimeProduct){return byId.get(product.canonicalId||product.id)!;}
 export function toAnimeClientProduct(product:AnimeProduct):AnimeClientProduct{
-  const {id,slug,name,image,thumbnail,backdrop,category,line,sizes,price,isNew,material,weightGrams,fit,availability,position,variants,description,benefits,conditions,offer}=product;
-  return {id,slug,name,image,thumbnail,backdrop,category,line,sizes,price,isNew,material,weightGrams,fit,availability,position,variants,description,benefits,conditions,offer,searchAliases:aliasMap.get(id)||[]};
+  const {id,slug,name,image,thumbnail,backdrop,category,line,sizes,price,isNew,material,weightGrams,fit,availability,labels,position,variants,description,benefits,conditions,offer}=product;
+  return {id,slug,name,image,thumbnail,backdrop,category,line,sizes,price,isNew,material,weightGrams,fit,availability,labels,position,variants,description,benefits,conditions,offer,searchAliases:aliasMap.get(id)||[]};
 }

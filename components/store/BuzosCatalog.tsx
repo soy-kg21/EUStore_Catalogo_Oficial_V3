@@ -1,3 +1,5 @@
+import CatalogNavigation from './CatalogNavigation';
+import CatalogPageScroll from './CatalogPageScroll';
 import Image from 'next/image';
 import Link from 'next/link';
 import {ArrowDown,ArrowUpRight,MessageCircle,Layers} from 'lucide-react';
@@ -18,7 +20,7 @@ export default function BuzosCatalog({products,params}:{products:Product[];param
     const x=order.indexOf(a.toUpperCase()),y=order.indexOf(b.toUpperCase());
     return x>=0&&y>=0?x-y:a.localeCompare(b,'es',{numeric:true});
   }),colors:[...new Set(products.map(p=>p.color).filter(Boolean))].sort(),brands:[...new Set(products.map(p=>p.brand).filter((x):x is string=>!!x))].sort()};
-  const pageLink=(page:number)=>{const query=new URLSearchParams(values);query.set('page',String(page));return `${path}?${query}#coleccion-buzos`;};
+  const pageLink=(page:number)=>{const query=new URLSearchParams(values);query.set('page',String(page));return `${path}?${query}#catalogo-productos`;};
   return <main id="contenido" className={`page-main ${styles.page}`}>
     <nav className="breadcrumb" aria-label="Ruta de navegación"><Link href="/">Inicio</Link><span>/</span><Link href="/categoria/conjuntos">Conjuntos</Link><span>/</span><span aria-current="page">Buzos y sudaderas</span></nav>
     <section className={styles.hero} aria-labelledby="buzos-title">
@@ -26,11 +28,12 @@ export default function BuzosCatalog({products,params}:{products:Product[];param
       <div className={styles.heroCopy}><p className={styles.eyebrow}><span aria-hidden="true"/>EVOLUCIÓN URBANA / COMFORT DIVISION</p><h1 id="buzos-title">Buzos y<br/><em>sudaderas.</em></h1><p className={styles.statement}>Comodidad que se lleva con actitud.</p><p className={styles.intro}>Tu conjunto, a tu manera. Explora las referencias publicadas, elige tu talla y dale otra expresión a tu estilo.</p><div className={styles.actions}><a className={styles.primary} href="#coleccion-buzos">ENCONTRAR MI CONJUNTO <ArrowDown size={18} aria-hidden="true"/></a><a className={styles.secondary} href={advice} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true"/>Compra con asesoría <ArrowUpRight size={16} aria-hidden="true"/></a></div></div>
       <div className={styles.heroFooter}><span><i aria-hidden="true"/>TU ESTILO SIGUE EVOLUCIONANDO</span><span>ELIGE CON CONFIANZA. LLÉVALO A TU MANERA.</span><ArrowUpRight size={20} aria-hidden="true"/></div>
     </section>
+    <CatalogPageScroll page={result.page}/>
     <section id="coleccion-buzos" className={styles.collection} style={{marginTop:42}} aria-labelledby="buzos-collection-title">
       <div className={styles.collectionHeading}><div><p className={styles.sectionKicker}>EL LOOK COMPLETO EMPIEZA AQUÍ</p><h2 id="buzos-collection-title">Encuentra tu próxima combinación.</h2></div><Link href="/categoria/conjuntos#catalogo-conjuntos">Ver camiseta + pantaloneta <ArrowUpRight size={17} aria-hidden="true"/></Link></div>
-      <div className="catalog-layout"><aside aria-label="Buscar y filtrar buzos y sudaderas"><Filters key={JSON.stringify(values)} path={path} options={options} values={values}/></aside><div className="catalog-results">
-        <div className="catalog-toolbar"><nav className="category-tabs" aria-label="Colecciones de conjuntos"><Link href="/categoria/conjuntos#catalogo-conjuntos">Camiseta + pantaloneta</Link><Link className="active" href={path+'#coleccion-buzos'} aria-current="page">Buzos y sudaderas</Link><Link href="/catalogo">Todo el catálogo</Link></nav><span role="status">{result.total} {result.total===1?'referencia':'referencias'}</span></div>
-        {result.items.length?<div className="product-grid">{result.items.map(product=><ProductCard key={product.id} product={product}/>)}</div>:<div className={`empty-state ${styles.empty}`}><Layers size={32} aria-hidden="true"/><h3>{products.length?'Probemos otra combinación.':'Tu próxima combinación está en camino.'}</h3><p>{products.length?'Prueba otra talla, color o rango de precio.':'Consulta por el conjunto que tienes en mente. Aquí aparecerán las referencias cuando estén publicadas.'}</p>{products.length?<Link className="button" href={path+'#coleccion-buzos'}>VER TODA ESTA LÍNEA <ArrowUpRight size={17}/></Link>:<a className="button" href={advice} target="_blank" rel="noopener noreferrer">CONSULTAR REFERENCIAS <ArrowUpRight size={17}/></a>}</div>}
+      <div className="catalog-layout"><aside aria-label="Buscar y filtrar buzos y sudaderas"><Filters key={JSON.stringify(values)} path={path} options={options} values={values}/></aside><div className="catalog-results" id="catalogo-resultados">
+        <div className="catalog-toolbar"><CatalogNavigation active="conjuntos-buzos"/><span role="status">{result.total} {result.total===1?'referencia':'referencias'}</span></div>
+        {result.items.length?<div className="product-grid" id="catalogo-productos">{result.items.map(product=><ProductCard key={product.id} product={product}/>)}</div>:<div className={`empty-state ${styles.empty}`} id="catalogo-productos"><Layers size={32} aria-hidden="true"/><h3>{products.length?'Probemos otra combinación.':'Tu próxima combinación está en camino.'}</h3><p>{products.length?'Prueba otra talla, color o rango de precio.':'Consulta por el conjunto que tienes en mente. Aquí aparecerán las referencias cuando estén publicadas.'}</p>{products.length?<Link className="button" href={path+'#coleccion-buzos'}>VER TODA ESTA LÍNEA <ArrowUpRight size={17}/></Link>:<a className="button" href={advice} target="_blank" rel="noopener noreferrer">CONSULTAR REFERENCIAS <ArrowUpRight size={17}/></a>}</div>}
         {result.pages>1&&<nav className="pagination" aria-label="Páginas de buzos y sudaderas">{result.page>1&&<Link href={pageLink(result.page-1)} rel="prev">Anterior</Link>}<span>Página {result.page} de {result.pages}</span>{result.page<result.pages&&<Link href={pageLink(result.page+1)} rel="next">Siguiente</Link>}</nav>}
       </div></div>
     </section>

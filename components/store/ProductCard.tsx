@@ -16,7 +16,7 @@ export default function ProductCard({
 }) {
   return (
     <article className="product-card">
-      <Link href={`/producto/${product.slug}`} className="card-image">
+      <Link prefetch={false} href={`/producto/${product.slug}`} className="card-image">
         <Image quality={85}
           src={product.images[0]}
           sizes="(max-width: 600px) 48vw, (max-width: 1000px) 32vw, 25vw"
@@ -36,7 +36,7 @@ export default function ProductCard({
       </Link>
       <div className="card-info">
         <p>{product.color}</p>
-        <Link href={`/producto/${product.slug}`}><h3>{product.name}</h3></Link>
+        <Link prefetch={false} href={`/producto/${product.slug}`}><h3>{product.name}</h3></Link>
         <ProductPrice product={product}/>{product.benefits.slice(0,3).map((benefit,i)=><p key={i} className="product-benefits">{benefit.replace(/\bpor bodega\b/gi,'por selección')}</p>)}
         <span className="card-sizes">
           {product.sizes.length > 6

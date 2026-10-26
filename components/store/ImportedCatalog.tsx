@@ -6,7 +6,10 @@ import {queryProducts,type Params} from '@/lib/products';
 import type {Product} from '@/lib/types';
 import {orderedShoeSizes} from '@/lib/shoe-sizes';
 import Filters from './Filters';
-import ProductCard from './ProductCard';
+import ResponsiveImportedGrid from './ResponsiveImportedGrid';
+import CatalogNavigation from './CatalogNavigation';
+import CatalogPageScroll from './CatalogPageScroll';
+import {publicProduct} from '@/lib/product-display';
 import ImportedMessages from './ImportedMessages';
 import styles from './imported-collection.module.css';
 
@@ -16,8 +19,9 @@ const advice=wa('Hola, quiero asesoría para elegir unas zapatillas importadas.'
 export default function ImportedCatalog({products,params}:{products:Product[];params:Params}){
   const values=Object.fromEntries(Object.entries(params).map(([key,value])=>[key,typeof value==='string'&&value!=='all'?value:'']));
   const result=queryProducts(products,values,'zapatillas');
+  const mobileResult=queryProducts(products,{...values,display:'mobile'},'zapatillas');
   const options={sizes:orderedShoeSizes(products.flatMap(p=>p.sizes)),colors:[...new Set(products.map(p=>p.color).filter(Boolean))].sort(),brands:[...new Set(products.map(p=>p.brand).filter((brand):brand is string=>!!brand))].sort()};
-  const pageLink=(page:number)=>{const query=new URLSearchParams(values);query.set('page',String(page));return `${path}?${query}#coleccion-importadas`;};
+  const pageLink=(page:number)=>{const query=new URLSearchParams(values);query.set('page',String(page));return `${path}?${query}#catalogo-productos`;};
   const filtered=Object.entries(values).some(([key,value])=>key!=='page'&&!!value);
   return <main id="contenido" className={`page-main ${styles.page}`}>
     <nav className="breadcrumb" aria-label="Ruta de navegación"><Link href="/">Inicio</Link><span>/</span><Link href="/categoria/zapatillas">Zapatillas</Link><span>/</span><span aria-current="page">Importadas</span></nav>
@@ -34,13 +38,14 @@ export default function ImportedCatalog({products,params}:{products:Product[];pa
       <div className={styles.heroFooter}><span><i aria-hidden="true"/>COLECCIÓN EN LÍNEA</span><span>ELIGE CON CONFIANZA. CAMINA A TU MANERA.</span><ArrowUpRight size={20} aria-hidden="true"/></div>
     </section>
     <ImportedMessages/>
+    <CatalogPageScroll page={result.page}/>
     <section id="coleccion-importadas" className={styles.collection} aria-labelledby="importadas-collection-title">
       <div className={styles.collectionHeading}><div><p className={styles.sectionKicker}>TU PRÓXIMO PAR ESTÁ AQUÍ</p><h2 id="importadas-collection-title">Elige el que habla por ti.</h2></div><Link href="/categoria/zapatillas#catalogo-zapatillas">Explorar nacionales <ArrowUpRight size={17} aria-hidden="true"/></Link></div>
       <div className="catalog-layout">
         <aside aria-label="Buscar y filtrar zapatillas importadas"><Filters key={JSON.stringify(values)} path={path} options={options} values={values}/></aside>
-        <div className="catalog-results">
-          <div className="catalog-toolbar"><nav className="category-tabs" aria-label="Colecciones de zapatillas"><Link href="/categoria/zapatillas#catalogo-zapatillas">Nacionales</Link><Link className="active" href={path+'#coleccion-importadas'} aria-current="page">Importadas</Link><Link href="/catalogo">Todo el catálogo</Link></nav><span role="status">{result.total} {result.total===1?'referencia':'referencias'}</span></div>
-          {result.items.length?<div className="product-grid">{result.items.map(product=><ProductCard key={product.id} product={product} label="LÍNEA IMPORTADA"/>)}</div>:<div className={`empty-state ${styles.empty}`}><Footprints size={32} aria-hidden="true"/><h3>{products.length?'Probemos otra combinación.':'Encuentra tu próxima evolución.'}</h3><p>{products.length?'Prueba otra talla, color o rango de precio para encontrar tu par.':'Consulta por la referencia que buscas o explora nuestra colección de zapatillas nacionales.'}</p>{products.length?<Link className="button" href={path+'#coleccion-importadas'}>VER TODAS LAS IMPORTADAS <ArrowUpRight size={17}/></Link>:<a className="button" href={advice} target="_blank" rel="noopener noreferrer">CONSULTAR REFERENCIAS <ArrowUpRight size={17}/></a>}</div>}
+        <div className="catalog-results" id="catalogo-resultados">
+          <div className="catalog-toolbar"><CatalogNavigation active="importadas"/><span role="status">{result.total} {result.total===1?'referencia':'referencias'}</span></div>
+          {result.items.length?<ResponsiveImportedGrid desktop={result.items.map(publicProduct)} mobile={mobileResult.items.map(publicProduct)}/>:<div className={`empty-state ${styles.empty}`} id="catalogo-productos"><Footprints size={32} aria-hidden="true"/><h3>{products.length?'Probemos otra combinación.':'Encuentra tu próxima evolución.'}</h3><p>{products.length?'Prueba otra talla, color o rango de precio para encontrar tu par.':'Consulta por la referencia que buscas o explora nuestra colección de zapatillas nacionales.'}</p>{products.length?<Link className="button" href={path+'#coleccion-importadas'}>VER TODAS LAS IMPORTADAS <ArrowUpRight size={17}/></Link>:<a className="button" href={advice} target="_blank" rel="noopener noreferrer">CONSULTAR REFERENCIAS <ArrowUpRight size={17}/></a>}</div>}
           {result.pages>1&&<nav className="pagination" aria-label="Páginas de zapatillas importadas">{result.page>1&&<Link href={pageLink(result.page-1)} rel="prev">Anterior</Link>}<span>Página {result.page} de {result.pages}</span>{result.page<result.pages&&<Link href={pageLink(result.page+1)} rel="next">Siguiente</Link>}</nav>}
           {filtered&&result.items.length>0&&<Link className={styles.clearFilters} href={path+'#coleccion-importadas'}>Ver la colección completa <ArrowUpRight size={15} aria-hidden="true"/></Link>}
         </div>

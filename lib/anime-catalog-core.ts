@@ -1,7 +1,7 @@
 export type AnimeLine = 'anime' | 'cartoon' | 'rock' | 'urbanos';
 import type {LiveCommerce} from './live-types';
 export type AnimeProduct = {
- position?:number;variants?:{size:string;quantity:number|null}[];description?:string;benefits?:string;conditions?:string;offer?:{quantity:number;total:number};_live?:LiveCommerce;
+ labels?:string[];position?:number;variants?:{size:string;quantity:number|null}[];description?:string;benefits?:string;conditions?:string;offer?:{quantity:number;total:number};_live?:LiveCommerce;
   id:string; slug:string; name:string; image:string; thumbnail:string; backdrop:string;
   category:string; line:AnimeLine; sizes:readonly string[]; price:number; isNew:boolean; availability:'Disponible'|'Por confirmar'|'Agotado';
   material:string; weightGrams:number|null; fit:string; releaseBatch:string; sourceName:string;
