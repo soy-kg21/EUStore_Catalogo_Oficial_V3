@@ -5,3 +5,25 @@
 @media(max-width:1100px){.hero{min-height:545px}.heroCopy{max-width:650px}.hero h1{font-size:72px}.actions{gap:8px 17px}.details{gap:13px}.details>div{gap:10px}.details small{font-size:10px}.advice{flex-wrap:wrap;gap:20px}.advice>a{margin-left:85px}.promo{padding:26px}.gateway h3{max-width:280px}}
 @media(max-width:700px){.page{padding-top:22px}.hero{min-height:0;border-radius:18px}.heroImage{object-position:70% top}.hero:before{background:linear-gradient(90deg,#07100fe6,#07100f38),linear-gradient(0deg,#07100fff 0%,#07100fe8 35%,#07100f45 100%)}.heroCopy{padding:25px 22px 22px;max-width:100%}.eyebrow{font-size:8px;letter-spacing:.1em;max-width:255px}.hero h1{font-size:clamp(43px,11.7vw,72px);margin:115px 0 20px;line-height:.98}.statement{font-size:23px}.statement br{display:none}.intro{font-size:12px;max-width:320px;line-height:1.75;margin-top:14px}.heroSignature{display:none}.heroSignature>span:first-child{display:none}.heroSignature>span:last-child{font-size:13px}.actions{align-items:flex-start;flex-direction:column;gap:9px;margin-top:22px}.primary{font-size:10px;min-height:46px;padding:13px 18px}.secondary{font-size:11px;min-height:39px}.heroFooter{margin:0 22px;padding:17px 0;font-size:8px;letter-spacing:.08em}.heroFooter>span:nth-child(2){display:none}.details{grid-template-columns:1fr;gap:0;padding:10px 0 16px;margin-bottom:26px}.details>div{justify-content:flex-start;padding:13px 4px;gap:15px}.details>div+div{border-left:0;border-top:1px solid var(--eu-stroke,#ffffff26)}.details span{gap:3px}.details strong{font-size:12px}.details small{font-size:11px}.collection{scroll-margin-top:85px}.collectionHeading{display:block;margin-bottom:20px}.collectionHeading h2{font-size:27px;max-width:290px}.collectionHeading>a{margin-top:9px;font-size:11px}.sectionKicker{font-size:8px}.advice{padding:23px 20px;margin-top:38px;gap:18px;align-items:flex-start}.adviceIcon{width:43px;height:43px}.adviceIcon svg{width:22px}.advice h2{font-size:23px}.advice>div>p:last-child{font-size:11px}.advice>a{margin-left:0;width:100%}.empty h3{font-size:23px}.empty p{font-size:12px}.promo{padding:23px 22px;border-radius:16px}.banner{min-height:300px}.banner .promoCopy{max-width:100%}.banner .promoImage{object-position:73% center}.banner:before{background:linear-gradient(90deg,#07110ff2,#07110f60),linear-gradient(0deg,#07110fe6,transparent 95%)}.banner h3{font-size:33px;max-width:260px}.promo p{font-size:11px;max-width:270px}.promoStatus{font-size:7px;margin-bottom:17px}.promoKicker{font-size:7px}.promoAction{font-size:9px;gap:16px;padding:11px 14px}.promoSymbol{right:20px;bottom:21px;font-size:24px}.gateway{min-height:310px}.gateway h3{font-size:30px;max-width:250px}.gateway .promoStatus{margin-bottom:18px}}
 @media(prefers-reduced-motion:reduce){.promo,.promoImage,.promoAction{transition:none}.promo:hover .promoImage{transform:none}}
+
+/* V5.7: compact sizing preserves original variant keys and a 44px touch target. */
+.importedDetail .sizePanel{padding:16px;margin:22px 0 16px}
+.sizePanel :global(.size-label){margin-bottom:12px;font-size:12px;gap:10px}
+.sizeOptions{display:flex;flex-wrap:wrap;gap:7px;max-width:none}
+.sizeOptions button{flex:0 0 auto;flex-direction:row;gap:4px;min-width:48px;min-height:44px;padding:7px 8px;border-radius:7px}
+.sizeOptions button strong{font-size:15px;font-weight:600}.sizeOptions button small{font-size:8px;letter-spacing:.02em}
+.sizeOptions button>svg{position:static;width:10px;height:10px}
+/* Horizontal mobile artwork, followed by the same two actions. Desktop is unchanged. */
+@media(max-width:700px){
+ .hero{min-height:0;border-radius:16px;display:block}
+ .heroImage{height:210px!important;object-position:75% center}
+ .heroCopy{display:grid;grid-template-rows:210px auto;padding:0;max-width:none}
+ .hero .eyebrow{position:absolute;top:16px;left:20px;right:16px;max-width:none;font-size:7px;letter-spacing:.08em}
+ .hero h1{grid-row:1;align-self:end;margin:0;padding:55px 20px 24px;max-width:75%;font-size:clamp(30px,9vw,43px);line-height:1;letter-spacing:-.055em}
+ .hero .statement,.hero .intro,.heroFooter{display:none}
+ .hero .actions{grid-row:2;flex-direction:row;align-items:center;gap:8px 12px;margin:0;padding:14px 18px;background:#0a1210;border-top:1px solid #ffffff1c}
+ .hero .actions .primary{min-height:44px;gap:10px;padding:10px 13px;font-size:9px}
+ .hero .actions .secondary{min-height:44px;gap:6px;font-size:10px}
+ .hero .actions .secondary svg{width:15px;height:15px}
+ .importedDetail .sizePanel{padding:14px}
+}

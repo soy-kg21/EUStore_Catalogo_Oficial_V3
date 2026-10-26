@@ -37,3 +37,8 @@
 /* Commercial price colors stay inside Anime cards, including related designs. */
 .card .price strong{color:var(--eu-link,var(--eu-accent,#ccff00))}
 :global(html:not([data-theme=light])) .card .price strong{opacity:.8}
+
+/* Product copy stays compact; complete delivery terms remain in the product detail. */
+.benefits{min-height:0;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.meta>span:last-child{max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

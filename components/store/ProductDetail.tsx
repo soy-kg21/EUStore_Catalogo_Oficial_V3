@@ -1,6 +1,7 @@
 'use client';
 
 import ProductPrice from './ProductPrice';
+import {productReference,shortProductDescription} from '@/lib/product-content';
 import Image from 'next/image';
 import { Check, Maximize2, MessageCircle, ShoppingBag } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -13,8 +14,9 @@ import importedStyles from './imported-collection.module.css';
 
 export default function ProductDetail({ product }: { product: Product }) {
   const imported=product.collection==='importadas',footwear=product.category==='zapatillas',buzos=product.collection==='conjuntos-buzos';
+  const reference=productReference(product),sizeSystem=footwear&&!imported?'Nac':product.sizeSystem;
   const sizes=footwear?orderedShoeSizes(product.sizes):product.sizes;
-  const units=[...new Set(sizes.map(value=>shoeSizeLabel(value,product.sizeSystem).system).filter(Boolean))];
+  const units=[...new Set(sizes.map(value=>shoeSizeLabel(value,sizeSystem).system).filter(Boolean))];
   const [active, setActive] = useState(0);
   const gallery = useRef<HTMLDivElement>(null);
   const activePhoto = useRef(0);
@@ -89,7 +91,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     return () => controller.abort();
   }, [add, product.sizes]);
 
-  const message = `Hola Evolución Urbana, estoy interesado en:\nProducto: ${product.name}\nCódigo: ${product.sku}\nColor: ${product.color}\nTalla: ${size}\nPrecio: ${product.pricingPending ? "Por confirmar" : money(product.price)+" COP"}\n${ORIGIN}/producto/${product.slug}\nQuisiera confirmar disponibilidad, envío y forma de pago.`;
+  const message = `Hola Evolución Urbana, estoy interesado en:\nProducto: ${product.name}\nCódigo: ${reference||'Por confirmar'}\nColor: ${product.color}\nTalla: ${size}\nPrecio: ${product.pricingPending ? "Por confirmar" : money(product.price)+" COP"}\n${ORIGIN}/producto/${product.slug}\nQuisiera confirmar disponibilidad, envío y forma de pago.`;
 
   return (
     <div className={`detail-grid ${footwear?importedStyles.importedDetail:''}`}>
@@ -133,23 +135,24 @@ export default function ProductDetail({ product }: { product: Product }) {
         <p className="eyebrow">{imported?'CALZADO / ZAPATILLAS IMPORTADAS':footwear?'CALZADO / ZAPATILLAS NACIONALES':buzos?'STREETWEAR / BUZOS Y SUDADERAS':product.category === 'camisetas' ? 'STREETWEAR / OVERSIZE 270G' : 'STREETWEAR / CONJUNTOS'}</p>
         <h1>{product.name}</h1>
         <div className="product-price"><ProductPrice product={product}/><small>{footwear?'Precio por par':product.category==='conjuntos'?'Precio por conjunto':'Precio individual'}</small></div><ul className="benefit-list">{product.benefits.map(b=><li key={b}><Check size={14}/>{b}</li>)}</ul>
-        <p className="product-meta">Referencia {product.sku}{product.brand ? ` · ${imported?'Marca':'Marca registrada en catálogo'}: ${product.brand}` : ''}</p>
-        <p className="product-description">{product.description}</p>
+        <p className="product-meta">Referencia {reference||'Por confirmar'}{product.brand ? ` · ${imported?'Marca':'Marca registrada en catálogo'}: ${product.brand}` : ''}</p>
+        <p className="product-description">{shortProductDescription(product)}</p>
         <p><strong>Color:</strong> {product.color}</p>
         {product.state === 'review' && <p className="notice">Esta referencia tiene una discrepancia de color en el catálogo. Confirma el color de la fotografía con el asesor.</p>}
         <div className={footwear?importedStyles.sizePanel:undefined}>
           <div className="size-label"><strong>Selecciona tu talla</strong><span>{size || (footwear&&units.length===1?'Sistema '+units[0]:'Sin seleccionar')}</span></div>
           <div className={footwear?importedStyles.sizeOptions:'sizes'} role="group" aria-label={footwear?`Tallas de zapatillas ${imported?'importadas':'nacionales'}`:'Tallas comerciales'}>
-            {sizes.map(productSize=>{const unavailable=product.variants?.find(v=>v.size===productSize)?.quantity===0,display=shoeSizeLabel(productSize,product.sizeSystem);return <button type="button" key={productSize} disabled={unavailable} aria-label={`Talla ${productSize}${unavailable?', agotada':''}`} aria-pressed={size===productSize} onClick={()=>{setSize(productSize);setFeedback('');}}>{footwear?<><strong>{display.label}</strong>{display.system&&<small>{display.system}</small>}{size===productSize&&<Check size={12} aria-hidden="true"/>}</>:productSize}</button>;})}
+            {sizes.map(productSize=>{const unavailable=product.variants?.find(v=>v.size===productSize)?.quantity===0,display=shoeSizeLabel(productSize,sizeSystem);return <button type="button" key={productSize} disabled={unavailable} aria-label={`Talla ${productSize}${unavailable?', agotada':''}`} aria-pressed={size===productSize} onClick={()=>{setSize(productSize);setFeedback('');}}>{footwear?<><strong>{display.label}</strong>{display.system&&<small>{display.system}</small>}{size===productSize&&<Check size={12} aria-hidden="true"/>}</>:productSize}</button>;})}
           </div>
           <p className="stock-note">{imported?'Selecciona la talla de esta referencia. Confirmaremos existencias y ajuste antes de cerrar tu pedido.':'Tallas de referencia. Confirmaremos existencias antes de cerrar tu pedido.'}</p>
-          {footwear&&<a className={importedStyles.sizeAdvice} href={wa(`Hola, necesito asesoría para elegir mi talla en las zapatillas ${imported?'importadas':'nacionales'} ${product.name}. Referencia ${product.sku}.`)} target="_blank" rel="noopener noreferrer">¿Tienes dudas con tu talla? Te asesoramos ↗</a>}
+          {footwear&&<a className={importedStyles.sizeAdvice} href={wa(`Hola, necesito asesoría para elegir mi talla en las zapatillas ${imported?'importadas':'nacionales'} ${product.name}. Referencia ${reference||'Por confirmar'}.`)} target="_blank" rel="noopener noreferrer">¿Tienes dudas con tu talla? Te asesoramos ↗</a>}
         </div>
         {size&&product.variants?.find(v=>v.size===size)?.quantity!==0 ? <a href={wa(message)} target="_blank" rel="noopener noreferrer" className="button whatsapp"><MessageCircle size={20} /> COMPRAR POR WHATSAPP</a> : <button className="button whatsapp" onClick={() => setFeedback('Selecciona una talla para continuar.')}><MessageCircle size={20} /> COMPRAR POR WHATSAPP</button>}
         <button className="button add-button" onClick={() => { try { add(size); } catch (error) { setFeedback((error as Error).message); } }}><ShoppingBag size={18} /> AÑADIR A MI SELECCIÓN</button>
         <div className="feedback" role="status">{feedback} {feedback.startsWith('Añadido') && <button onClick={() => window.dispatchEvent(new Event('eu-open-cart'))} style={{ textDecoration: 'underline' }}>Ver selección</button>}</div>
         <p className="stock-note"><Check size={13} style={{ display: 'inline', marginRight: 5 }} />Asesoría de talla y condiciones de entrega por WhatsApp.</p>
-        <details className="details-row"><summary>{imported?'Detalles de estas zapatillas':'Características y tallaje'}</summary><p>{product.material && product.material !== 'Pendiente de ficha técnica' ? `Material declarado: ${product.material}. ` : ''}{product.weight ? `Gramaje declarado: ${product.weight} g. ` : ''}{product.sizeNote}</p></details>
+        <details className="details-row product-facts" open><summary>Detalles de esta referencia</summary><dl><div><dt>Referencia</dt><dd>{reference||'Por confirmar'}</dd></div>{product.brand&&<div><dt>Marca</dt><dd>{product.brand}</dd></div>}<div><dt>Colección</dt><dd>{imported?'Zapatillas importadas':footwear?'Zapatillas nacionales':buzos?'Buzos y sudaderas':product.category==='camisetas'?'Camisetas oversize':'Camiseta + pantaloneta'}</dd></div>{product.color&&<div><dt>Color</dt><dd>{product.color}</dd></div>}{product.material&&<div><dt>Material</dt><dd>{product.material}</dd></div>}{product.weight&&<div><dt>Gramaje</dt><dd>{product.weight} g</dd></div>}<div><dt>Disponibilidad</dt><dd>{product.stock===null?'Por confirmar':product.stock>0?'Disponible':'Agotado'}</dd></div><div><dt>Tallas</dt><dd>{sizes.map(v=>footwear?shoeSizeLabel(v,sizeSystem).label:v).join(' · ')}{footwear&&units.length===1?' '+units[0]:''}</dd></div></dl></details>
+        <details className="details-row"><summary>Características y tallaje</summary><p>{product.material && product.material !== 'Pendiente de ficha técnica' ? `Material declarado: ${product.material}. ` : ''}{product.weight ? `Gramaje declarado: ${product.weight} g. ` : ''}{product.sizeNote}</p></details>
         <details className="details-row"><summary>Envíos y pago</summary><p>{imported?'Confirma disponibilidad de tu talla, forma de pago y condiciones de entrega para esta referencia con nuestro asesor. Revisa el resumen de tu selección antes de confirmar el pedido. No se realizan cobros en esta web.':'Las condiciones dependen de la colección, cantidad y ciudad. Consulta el resumen de tu selección; la cobertura y disponibilidad se confirman con el asesor. No se realizan cobros en esta web.'}</p></details>
       </section>
     </div>

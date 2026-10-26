@@ -6,7 +6,7 @@ export function shoeSizeLabel(value:string,system=''){
   const match=raw.match(/^(?:(EUR|EU|US|UK)\s*)?(\d+(?:[.,]\d+)?)(?:\s*(EUR|EU|US|UK))?$/i);
   if(!match)return {label:raw,system:system.toUpperCase()};
   const unit=(match[1]||match[3]||system).toUpperCase();
-  return {label:match[2],system:unit==='EU'?'EUR':unit};
+  return {label:match[2],system:unit==='EU'?'EUR':unit==='NAC'?'Nac':unit};
 }
 
 export function orderedShoeSizes(sizes:string[]){

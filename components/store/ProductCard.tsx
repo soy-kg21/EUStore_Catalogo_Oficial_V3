@@ -1,4 +1,5 @@
 import ProductPrice from './ProductPrice';
+import {productReference,shortProductDescription} from '@/lib/product-content';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
@@ -35,9 +36,9 @@ export default function ProductCard({
         <span className="card-arrow"><ArrowUpRight size={19} /></span>
       </Link>
       <div className="card-info">
-        <p>{product.color}</p>
+        <p className="card-meta"><span>{product.color}</span><span className="card-reference" title={productReference(product)}>REF: {productReference(product)||'Por asignar'}</span></p>
         <Link prefetch={false} href={`/producto/${product.slug}`}><h3>{product.name}</h3></Link>
-        <ProductPrice product={product}/>{product.benefits.slice(0,3).map((benefit,i)=><p key={i} className="product-benefits">{benefit.replace(/\bpor bodega\b/gi,'por selección')}</p>)}
+        <ProductPrice product={product}/><p className="product-benefits product-copy">{shortProductDescription(product,110)}</p>
         <span className="card-sizes">
           {product.sizes.length > 6
             ? `${product.sizes[0]} — ${product.sizes[product.sizes.length - 1]}`

@@ -4,6 +4,7 @@ import AnimeProductLink from '@/components/anime/AnimeProductLink';
 import {ArrowUpRight} from 'lucide-react';
 import type {AnimeProduct} from '@/lib/anime-catalog-core';
 import {animeCommercial} from '@/lib/anime-commercial';
+import {shortProductDescription,animeShippingSummary} from '@/lib/product-content';
 import {money} from '@/lib/config';
 
 export default function AnimeSearchCard({product,priority=false}:{product:AnimeProduct;priority?:boolean}){
@@ -18,7 +19,8 @@ export default function AnimeSearchCard({product,priority=false}:{product:AnimeP
       <p>{product.category}</p><AnimeProductLink productId={product.id} href={href}><h3>{product.name}</h3></AnimeProductLink>
       <div className="price-stack"><strong>{money(product.price)} <small>COP</small></strong></div>
       <p className="product-benefits">{product.position===undefined?animeCommercial.promoLabel:product.offer?`${product.offer.quantity} por ${money(product.offer.total)}`:''}</p>
-      <p className="product-benefits">{animeCommercial.conditions}</p>
+      <p className="product-benefits">{shortProductDescription(product,95)}</p>
+      <p className="product-benefits anime-shipping-summary">{animeShippingSummary}</p>
       <span className="card-sizes">{product.sizes.join(' / ')}</span>
     </div>
   </article>;

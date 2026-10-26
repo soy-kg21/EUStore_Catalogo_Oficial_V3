@@ -1,3 +1,4 @@
+import {productReference} from '@/lib/product-content';
 import {getAnimeProducts} from '@/lib/live-products';
 import type {Metadata} from 'next';
 import {animeProducts,toAnimeClientProduct,type AnimeProduct} from '@/data/anime-products';
@@ -14,6 +15,6 @@ export function animeProductMetadata(product:AnimeProduct):Metadata{
 export default async function AnimeProductPage({product}:{product:AnimeProduct}){
  const animeProducts=await getAnimeProducts();
  const path=animeProductHref(product.id),related=selectAnimeRecommendations(product,animeProducts).map(toAnimeClientProduct);
- const schema={'@context':'https://schema.org','@type':'Product',name:product.name,sku:product.id,image:[ORIGIN+product.image],url:ORIGIN+path,description:`Camiseta ${product.name}. Disponible en tallas ${product.sizes.join(', ')}.`,...(product.material!=='Por confirmar'?{material:product.material}:{}),offers:{'@type':'Offer',url:ORIGIN+path,priceCurrency:'COP',price:product.price,availability:product.availability==='Agotado'?'https://schema.org/OutOfStock':'https://schema.org/InStock',seller:{'@type':'Organization',name:'Evolución Urbana'}}};
+ const schema={'@context':'https://schema.org','@type':'Product',name:product.name,sku:productReference(product)||undefined,image:[ORIGIN+product.image],url:ORIGIN+path,description:`Camiseta ${product.name}. Disponible en tallas ${product.sizes.join(', ')}.`,...(product.material!=='Por confirmar'?{material:product.material}:{}),offers:{'@type':'Offer',url:ORIGIN+path,priceCurrency:'COP',price:product.price,availability:product.availability==='Agotado'?'https://schema.org/OutOfStock':'https://schema.org/InStock',seller:{'@type':'Organization',name:'Evolución Urbana'}}};
  return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:jsonLd(schema)}}/><AnimeProductDetail key={product.id} product={toAnimeClientProduct(product)} related={related}/></>;
 }
