@@ -34,7 +34,7 @@ La barra verde mantiene su diseño y asigna un 16 % del recorrido a la introducc
 
 La distribución móvil reserva la altura real del título, los botones y las tres camisetas. En pantallas cortas se permite leer el bloque inicial antes del tramo fijado. Categorías y productos siguen en flujo normal al terminar, sin un bloque vacío entre ambos.
 
-Los fondos de categorías son cinematográficos. Anime conserva a Gojo y Urbanas usa la escena nocturna de moda callejera. Los conteos son diseños canónicos, no existencias físicas: 644 Anime, 163 Cartoon, 170 Rock, 232 Urbanas; 1.209 en total.
+Los fondos de categorías son cinematográficos. Anime conserva a Gojo y Urbanas usa la escena nocturna de moda callejera. Los conteos son diseños canónicos, no existencias físicas: 642 Anime, 165 Cartoon, 170 Rock, 232 Urbanas; 1.209 en total.
 
 La colección tiene un selector compacto de líneas y sus propios filtros, disponibles entre los productos sin regresar a la escena. Los filtros, las franquicias y las categorías actualizan los productos sin desmontar la escena. Se eliminó el enlace «Catálogo general» del bloque cinematográfico; el menú general original sigue disponible. Las reglas de precios, selección, tallas, enlaces propios, metadatos sociales y orden de cinco dobles más una referencia restante se mantienen.
 

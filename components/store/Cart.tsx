@@ -104,7 +104,9 @@ export default function Cart() {
   });
   if (rows.some(row => row === null)) return <p role="status">Actualizando precios de tu selección…</p>;
 
-  const message = `Hola Evolución Urbana, quisiera asesoría para esta selección:\n\n${data.rows.map(row => `${row.product.name}\nSKU: ${row.product.sku} | Talla: ${row.size} | Cantidad: ${row.quantity}\n${row.total===null?'Precio por confirmar':money(row.total)+' COP'}\n${ORIGIN}/producto/${row.product.slug}`).join('\n\n')}\n\n${data.subtotal===null?'Solicito cotización personalizada.':'Productos: '+money(data.subtotal)+' COP'}\n${data.shippingPending?'Envío por cotizar con asesor':'Envío incluido'}\n${data.total===null?'Total pendiente de confirmación':'Total: '+money(data.total)+' COP'}\n${data.warehouses.length>1?'Despachos separados, conservando beneficios y descuentos.':''}\n${data.advance?'Pago anticipado para los despachos mayoristas; confirmar condiciones de cada despacho.':'Pago contra entrega.'}\nMi ciudad es: \nPor favor confirmar disponibilidad y total.`;
+  const hasImported=data.rows.some(row=>row.product.collection==='importadas');
+  const paymentNote=hasImported?'Zapatillas importadas: pago anticipado por unidad y envío incluido en el precio. Las condiciones de los demás artículos se detallan por separado.':data.advance?'Pago anticipado para los despachos mayoristas; confirmar condiciones de cada despacho.':'Pago contraentrega sujeto a cobertura.';
+  const message = `Hola Evolución Urbana, quisiera asesoría para esta selección:\n\n${data.rows.map(row => `${row.product.name}\nSKU: ${row.product.sku} | Talla: ${row.size} | Cantidad: ${row.quantity}\n${row.total===null?'Precio por confirmar':money(row.total)+' COP'}\n${ORIGIN}/producto/${row.product.slug}`).join('\n\n')}\n\n${data.subtotal===null?'Solicito cotización personalizada.':'Productos: '+money(data.subtotal)+' COP'}\n${data.shippingPending?'Envío por cotizar con asesor':'Envío incluido'}\n${data.total===null?'Total pendiente de confirmación':'Total: '+money(data.total)+' COP'}\n${data.warehouses.length>1?'Despachos separados, conservando beneficios y descuentos.':''}\n${paymentNote}\nMi ciudad es: \nPor favor confirmar disponibilidad y total.`;
 
   return (
     <div className="cart-grid">
@@ -135,7 +137,7 @@ export default function Cart() {
         {data.subtotal!==null&&<div className="summary-total"><span>Productos</span><strong>{money(data.subtotal)}</strong></div>}
         <p>{data.shippingPending?'Envío: cotización con asesor.':'Envío incluido.'}</p>
         {data.total!==null&&<div className="summary-total"><span>Total</span><strong>{money(data.total)}</strong></div>}
-        <p>{data.advance?'Pago anticipado para los despachos mayoristas (desde 6 unidades por grupo de entrega).':'Pago contra entrega hasta 5 unidades por grupo de entrega.'}</p>
+        <p>{paymentNote}</p>
         {data.b1>0&&<p>Tu calzado seleccionado incluye seguro de transporte y medias de obsequio.</p>}
         {data.b2>0&&<p>Tu calzado seleccionado incluye seguro de transporte.</p>}
         {data.warehouses.length>1&&<div className="logistics-note"><h3>Tu look, en entregas separadas.</h3><p>Elegiste productos de {data.warehouses.length} grupos de entrega. Llegarán en despachos separados y conservarás los beneficios, ofertas y descuentos que correspondan a cada uno.</p><a href={wa('Hola, quisiera entender cómo funcionan los despachos separados y los beneficios de mi selección.')} target="_blank" rel="noopener noreferrer">Resolver una duda por WhatsApp ↗</a></div>}

@@ -1,7 +1,7 @@
 // Integration checks against a running local development server.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-const base=process.env.CATALOG_TEST_URL||'http://localhost:5173';
+const base=process.env.CATALOG_TEST_URL||'http://localhost:5178';
 const catalog=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url),'utf8'));
 const p=g=>catalog.find(p=>p.commercialGroup===g);
 const line=(g,n)=>({id:p(g).id,size:p(g).sizes[0],quantity:n});

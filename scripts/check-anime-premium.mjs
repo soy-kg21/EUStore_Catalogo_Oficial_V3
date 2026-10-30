@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {productReference} from '../lib/product-content.ts';
 import fs from 'node:fs';
 import {stripTypeScriptTypes} from 'node:module';
 import {animeQuote} from '../lib/anime-commercial.ts';
@@ -31,7 +32,7 @@ rows=changeAnimeSelection(rows,id,'M',{nextSize:'L'});eq(rows.length,2);eq(rows.
 rows=changeAnimeSelection(rows,id,'L',{quantity:0});eq(rows,[{id:second,size:'S',quantity:1}]);
 eq(parseAnimeSelection(JSON.stringify([{id,size:'M',quantity:150},{id,size:'S',quantity:-1},{id,size:'L',quantity:1.4}])) ,[{id,size:'M',quantity:99}]);
 const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n);
-const {animeSelectionMessage}=load('lib/anime-message.ts',{animeQuote,animeProductHref,money},'animeSelectionMessage');
+const {animeSelectionMessage}=load('lib/anime-message.ts',{animeQuote,animeProductHref,money,productReference},'animeSelectionMessage');
 for(const [quantity,total] of [[1,68000],[2,93000],[3,126000],[4,152000],[5,180000],[6,192000],[11,352000],[12,348000],[23,667000],[24,624000],[48,1248000]]){
  const text=animeSelectionMessage([{id,size:'M',quantity}],animeProductRecords,'https://independiente.test');
  eq(text.includes(money(total)),true);eq(text.includes(`Cantidad: ${quantity}`),true);eq(text.includes('https://independiente.test/anime/gojo-diseno-2'),true);eq(text.includes('evolucionurbana.store'),false);

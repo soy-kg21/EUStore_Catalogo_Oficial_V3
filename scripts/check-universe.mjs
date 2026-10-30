@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {productReference} from '../lib/product-content.ts';
 import fs from 'node:fs';
 import {stripTypeScriptTypes} from 'node:module';
 import {normalizeAnimeText,animeCategorySlug,animeLines} from '../lib/anime-catalog-core.ts';
@@ -7,7 +8,7 @@ const load=(file,bindings,exports)=>new Function(...Object.keys(bindings),stripT
 const publicRoutes=json('data/anime-public-routes.json'),animeIndex=json('data/anime-index.json'),animeProductRecords=json('data/anime-catalog.json'),products=animeProductRecords.filter(p=>!p.canonicalId).map(p=>({...p,searchAliases:Object.entries(animeIndex.aliases).filter(([,target])=>target===p.id).map(([id])=>id)})),byId=new Map(animeProductRecords.map(p=>[p.id,p]));
 const {animePublicRoutes,animeLinePath,animeProductHref}=load('lib/anime-routes.ts',{animeCategorySlug,animeLines,publicRoutes,animeIndex},'animePublicRoutes,animeLinePath,animeProductHref');
 const {resolveAnimeProduct}=load('lib/anime-product-lookup.ts',{animeProductRecords,animePublicRoutes,getCanonicalAnimeProduct:p=>byId.get(p.canonicalId||p.id)},'resolveAnimeProduct');
-const {searchAnimeReferences}=load('lib/anime-reference-search.ts',{normalizeAnimeText},'searchAnimeReferences');
+const {searchAnimeReferences}=load('lib/anime-reference-search.ts',{normalizeAnimeText,productReference},'searchAnimeReferences');
 let checks=0;const eq=(a,b)=>{assert.deepEqual(a,b);checks++;};
 eq(products.length,1209);eq(Object.keys(publicRoutes).length,1209);eq(new Set(Object.values(publicRoutes).map(r=>r.path)).size,1209);
 for(const product of products){const route=publicRoutes[product.id];eq(animeProductHref(product.id),route.path);eq(resolveAnimeProduct(route.slug,route.line)?.id,product.id);eq(route.path,animeLinePath[product.line]+'/'+route.slug);assert.match(route.slug,/^[a-z0-9]+(?:-[a-z0-9]+)*$/);eq(route.path.startsWith('/p/'),false);eq(products.some(p=>p.line===product.line&&animeCategorySlug(p.category)===route.slug),false);for(const image of [product.image,product.thumbnail,product.backdrop])eq(fs.existsSync(new URL('../public'+image,import.meta.url)),true);}

@@ -61,7 +61,7 @@ export default function ImportedMessages(){
   },[]);
 
   useEffect(()=>{
-    if(!running){setSlide(old=>old.previous===null?old:{...old,previous:null});return;}
+    if(!running)return;
     const timer=window.setTimeout(()=>setSlide(old=>({current:(old.current+1)%displayGroups.length,previous:old.current})),compact?4000:3000);
     return ()=>window.clearTimeout(timer);
   },[running,slide.current,compact,displayGroups.length]);

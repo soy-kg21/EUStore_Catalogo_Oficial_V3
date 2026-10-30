@@ -13,8 +13,8 @@ for(const item of review.review){
  if(item.decision!=='nuevo')continue;
  const p=products.find(p=>p.supplier.key===entry.key);assert(p);
  assert.equal(p.name,item.name);assert.equal(p.category,item.category);assert.equal(p.line,item.line);
- assert.equal(p.weightGrams,null);assert.equal(p.fit,'Por confirmar');assert.equal(p.isNew,true);
- assert.equal(p.material,item.supplierName.includes('POLIÉSTER')?'Poliéster':'Por confirmar');
+ assert.equal(p.weightGrams,180);assert.equal(p.fit,'Tradicional (clásica)');assert.equal(p.isNew,true);
+ assert.equal(p.material,'Algodón peinado 100%');
  assert.equal(entry.catalogId,p.id);
  assert(filterAnimeProducts(catalog,readAnimeFilters('?linea='+p.line+'&q='+p.id)).some(x=>x.id===p.id));
 }

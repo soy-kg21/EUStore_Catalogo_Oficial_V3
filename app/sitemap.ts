@@ -12,6 +12,6 @@ export default async function sitemap(){
     ...(await getProducts()).map(p=>({url:ORIGIN+'/producto/'+p.slug})),
     ...['/shop','/cartoon','/rock','/urbanas'].map(path=>({url:ORIGIN+path})),
     ...[...new Set(animeProducts.map(p=>animeLinePath[p.line]+'/'+animeCategorySlug(p.category)))].map(path=>({url:ORIGIN+path})),
-    ...animeProducts.map(p=>({url:ORIGIN+animeProductHref(p.id)}))
+    ...animeProducts.map(p=>({url:ORIGIN+animeProductHref(p)}))
   ];
 }

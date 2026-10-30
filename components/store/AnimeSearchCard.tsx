@@ -8,7 +8,7 @@ import {shortProductDescription,animeShippingSummary} from '@/lib/product-conten
 import {money} from '@/lib/config';
 
 export default function AnimeSearchCard({product,priority=false}:{product:AnimeProduct;priority?:boolean}){
-  const href=animeProductHref(product.id);
+  const href=animeProductHref(product);
   return <article className="product-card">
     <AnimeProductLink productId={product.id} href={href} className="card-image">
       <Image src={product.thumbnail} alt={product.name} width={480} height={640} sizes="(max-width: 600px) 48vw, (max-width: 1000px) 32vw, 25vw" style={{objectFit:'contain'}} preload={priority} unoptimized/>

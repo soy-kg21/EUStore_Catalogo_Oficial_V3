@@ -30,7 +30,7 @@ export default function AnimeProductDetail({product,related=[]}:{product:AnimeCl
  const sameLine=related.every(item=>item.line===product.line);
  const moreHref=sameUniverse?categoryHref:sameLine?animeLinePath[product.line]:'/shop';
  const moreLabel=sameUniverse?`Ver ${product.category}`:sameLine?`Ver más de ${lineName}`:'Explorar todas las líneas';
- const consult=(origin:string)=>`Hola Evolución Urbana 👕\n\nQuiero consultar la referencia ${reference} — ${product.name}.\nColección: ${lineName} · ${product.category}.\n${origin}${animeProductHref(product.id)}\n\nQuiero confirmar tallas, disponibilidad y la promoción aplicable.`;
+ const consult=(origin:string)=>`Hola Evolución Urbana 👕\n\nQuiero consultar la referencia ${reference} — ${product.name}.\nColección: ${lineName} · ${product.category}.\n${origin}${animeProductHref(product)}\n\nQuiero confirmar tallas, disponibilidad y la promoción aplicable.`;
  return <main id="contenido" className={styles.shell}>
   <div className={styles.detailShell}>
    <nav className={styles.breadcrumb} aria-label="Ruta de navegación"><AnimeCollectionLink href="/shop">Anime Shop</AnimeCollectionLink><span>/</span><AnimeCollectionLink href={animeLinePath[product.line]}>{lineName}</AnimeCollectionLink><span>/</span><AnimeCollectionLink href={categoryHref}>{product.category}</AnimeCollectionLink></nav>
@@ -42,7 +42,7 @@ export default function AnimeProductDetail({product,related=[]}:{product:AnimeCl
      <div className={styles.detailPrice}><strong>{money(product.price)} <small>COP</small></strong>{(product.position===undefined||product.offer)&&<span>Combina 2 camisetas por <b>{money(product.offer?.total||93000)}</b></span>}</div>
      <p className={styles.detailIntro}>{shortProductDescription(product)}</p>
      <AnimeProductOptions product={product}/>
-     <AnimeShareButton name={product.name} path={animeProductHref(product.id)}/>
+     <AnimeShareButton name={product.name} path={animeProductHref(product)}/>
      <p className={styles.shippingNote}><Truck size={18}/><span>Envío estándar incluido de 1 a 5 camisetas. Cobertura y contraentrega por confirmar.</span></p>
      <div className={styles.detailAccordions}>
       <details open><summary>Detalles de esta referencia</summary><dl><div><dt>Referencia</dt><dd>{reference}</dd></div><div><dt>Línea</dt><dd>{lineName}</dd></div><div><dt>Universo</dt><dd>{product.category}</dd></div><div><dt>Material</dt><dd>{product.material||'Por confirmar'}</dd></div>{product.weightGrams&&<div><dt>Gramaje</dt><dd>{product.weightGrams} g</dd></div>}<div><dt>Horma</dt><dd>{product.fit||'Por confirmar'}</dd></div><div><dt>Disponibilidad</dt><dd>{product.availability}</dd></div><div><dt>Tallas disponibles</dt><dd>{product.sizes.join(' · ')}</dd></div></dl></details>

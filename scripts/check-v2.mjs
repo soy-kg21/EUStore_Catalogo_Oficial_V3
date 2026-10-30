@@ -1,7 +1,7 @@
 // Integration checks: run the production server first with pnpm start.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-const base=process.env.CATALOG_TEST_URL||'http://localhost:5173';
+const base=process.env.CATALOG_TEST_URL||'http://localhost:5178';
 const products=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url),'utf8'));
 let count=0;
 for(const group of ['B1-A','B1-B','B1-C','B1-D','B1-E','B1-F','B1-G','B2-A','B5-270']){

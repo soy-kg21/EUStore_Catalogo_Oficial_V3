@@ -15,8 +15,8 @@ export function searchCatalog(general:Product[],anime:AnimeProduct[],params:Sear
   const val=(key:string)=>typeof params[key]==='string'?String(params[key]):'';
   const q=normalizeAnimeText(val('q').slice(0,100)),size=val('size'),color=val('color'),brand=val('brand'),availability=val('availability');
   const max=Number(val('max'))||Infinity;
-  const generalMatches=general.filter(p=>p.state!=='inactive'&&(!q||normalizeAnimeText(`${p.name} ${p.reference||''} ${p.sku} ${p.brand??''} ${p.category} ${collectionSearchText(p)} ${p.color}`).includes(q))&&(!size||p.sizes.includes(size))&&(!color||p.color===color)&&(!brand||p.brand===brand)&&(!Number.isFinite(max)||(!p.pricingPending&&p.price<=max))&&(!availability||(availability==='confirmed'?p.stock!==null&&p.stock>0:p.stock===null)));
-  const animeMatches=anime.filter(p=>!p.canonicalId&&(!q||normalizeAnimeText(`${p.name} ${p.id} ${p.category} ${p.line} ${p.searchAliases?.join(' ')||''} camiseta camisetas`).includes(q))&&(!size||p.sizes.includes(size))&&!color&&!brand&&(!Number.isFinite(max)||p.price<=max)&&availability!=='confirmed');
+  const generalMatches=general.filter(p=>p.state!=='inactive'&&(!q||normalizeAnimeText(`${p.name} ${p.reference||''} ${p.sku} ${p.brand??''} ${p.category} ${collectionSearchText(p)} ${p.color}`).includes(q))&&(!size||p.sizes.includes(size))&&(!color||p.color===color)&&(!brand||p.brand===brand)&&(!Number.isFinite(max)||(!p.pricingPending&&p.price<=max))&&(!availability||(availability==='confirmed'?p.stock!==0:false)));
+  const animeMatches=anime.filter(p=>!p.canonicalId&&(!q||normalizeAnimeText(`${p.name} ${p.id} ${p.reference||''} ${p.category} ${p.line} ${p.searchAliases?.join(' ')||''} camiseta camisetas`).includes(q))&&(!size||p.sizes.includes(size))&&!color&&!brand&&(!Number.isFinite(max)||p.price<=max)&&(!availability||(availability==='confirmed'?p.availability!=='Agotado':false)));
   // Alternar inventarios permite descubrir ambos cuando la consulta coincide en los dos.
   const matches:CatalogMatch[]=[];
   for(let i=0;i<Math.max(generalMatches.length,animeMatches.length);i++){
@@ -39,5 +39,5 @@ export function toCatalogSuggestion(match:CatalogMatch):CatalogSuggestion{
     images:match.kind==='anime'?[match.product.thumbnail]:match.product.images.slice(0,1),
     price:match.product.price,
     pricingPending:match.kind==='general'&&!!match.product.pricingPending,
-    href:match.kind==='anime'?animeProductHref(p.id):`/producto/${p.slug}`};
+    href:match.kind==='anime'?animeProductHref(p):`/producto/${p.slug}`};
 }

@@ -19,20 +19,27 @@ import {ORIGIN,money,wa} from '@/lib/config';
 import type {AnimeClientProduct} from '@/lib/anime-catalog-core';
 import styles from './shop-premium.module.css';
 export default function AnimeComboDrawer(){
- const selection=useAnimeSelection(),[open,setOpen]=useState(false),[products,setProducts]=useState<AnimeClientProduct[]>([]),[loading,setLoading]=useState(false),[error,setError]=useState(false),[attempt,setAttempt]=useState(0);
- const [pricing,setPricing]=useState<LiveRule|null>(null),[confirmed,setConfirmed]=useState<{key:string;quote:ReturnType<typeof animeQuote>}|null>(null),[quoteError,setQuoteError]=useState('');
- const selectionKey=JSON.stringify(selection.rows);
- const path=usePathname();
- useEffect(()=>{const refresh=()=>{setAttempt(n=>n+1);setConfirmed(null);};window.addEventListener('eu-catalog-updated',refresh);window.addEventListener('focus',refresh);return()=>{window.removeEventListener('eu-catalog-updated',refresh);window.removeEventListener('focus',refresh);};},[]);
- const ids=[...new Set(selection.rows.map(row=>row.id))].sort().join(',');
- useEffect(()=>{const show=()=>{setOpen(true);trackAnimeEvent('view_combo');};window.addEventListener('eu-open-anime-combo',show);return ()=>window.removeEventListener('eu-open-anime-combo',show);},[]);
+ const selection=useAnimeSelection(),[open,setOpen]=useState(false),[attempt,setAttempt]=useState(0);
+ const [catalogState,setCatalogState]=useState<{key:string;items:AnimeClientProduct[];pricing:LiveRule|null;error:boolean}>({key:'',items:[],pricing:null,error:false});
+ const [quoteState,setQuoteState]=useState<{key:string;quote:ReturnType<typeof animeQuote>|null;error:string}>({key:'',quote:null,error:''});
+ const selectionKey=JSON.stringify(selection.rows),ids=[...new Set(selection.rows.map(row=>row.id))].sort().join(',');
+ const catalogKey=ids+':'+attempt,quoteKey=selectionKey+':'+attempt,path=usePathname();
+ useEffect(()=>{const refresh=()=>setAttempt(n=>n+1);window.addEventListener('eu-catalog-updated',refresh);return()=>window.removeEventListener('eu-catalog-updated',refresh);},[]);
+ useEffect(()=>{const show=()=>{setOpen(true);trackAnimeEvent('view_combo');};window.addEventListener('eu-open-anime-combo',show);return()=>window.removeEventListener('eu-open-anime-combo',show);},[]);
  useEffect(()=>{
-  if(!ids)return;const controller=new AbortController();setLoading(true);setError(false);
-  fetch(`/api/anime-selection?ids=${encodeURIComponent(ids)}`,{signal:controller.signal}).then(response=>{if(!response.ok)throw new Error();return response.json() as Promise<{items:AnimeClientProduct[];pricing:LiveRule|null}>;}).then(data=>{if(!controller.signal.aborted){setProducts(data.items);setPricing(data.pricing);setLoading(false);}}).catch(err=>{if(err.name!=='AbortError'){setError(true);setLoading(false);}});
-  return ()=>controller.abort();
- },[open,ids,attempt]);
- useEffect(()=>{setConfirmed(null);setQuoteError('');if(!selection.rows.length||selection.rows.some(r=>!r.size))return;const controller=new AbortController();fetch('/api/anime-quote',{method:'POST',headers:{'Content-Type':'application/json'},body:selectionKey,signal:controller.signal}).then(async response=>{const data=await response.json() as {quote:ReturnType<typeof animeQuote>;error?:string};if(!response.ok)throw Error(data.error||'No se pudo actualizar el precio.');if(!controller.signal.aborted)setConfirmed({key:selectionKey,quote:data.quote});}).catch(error=>{if(error.name!=='AbortError')setQuoteError(error.message);});return()=>controller.abort();},[selectionKey,attempt]);
- const currentQuote=confirmed?.key===selectionKey?confirmed.quote:null;
+  if(!ids)return;const controller=new AbortController();
+  fetch('/api/anime-selection?ids='+encodeURIComponent(ids),{signal:controller.signal}).then(async response=>{if(!response.ok)throw Error();return response.json() as Promise<{items:AnimeClientProduct[];pricing:LiveRule|null}>;}).then(data=>{if(!controller.signal.aborted)setCatalogState({key:catalogKey,...data,error:false});}).catch(error=>{if(error.name!=='AbortError')setCatalogState({key:catalogKey,items:[],pricing:null,error:true});});
+  return()=>controller.abort();
+ },[ids,catalogKey]);
+ useEffect(()=>{
+  const rows=JSON.parse(selectionKey) as {size?:string}[];if(!rows.length||rows.some(row=>!row.size))return;
+  const controller=new AbortController(),timer=window.setTimeout(()=>{
+   fetch('/api/anime-quote',{method:'POST',headers:{'Content-Type':'application/json'},body:selectionKey,signal:controller.signal}).then(async response=>{const data=await response.json() as {quote:ReturnType<typeof animeQuote>;error?:string};if(!response.ok)throw Error(data.error||'No se pudo actualizar el precio.');if(!controller.signal.aborted)setQuoteState({key:quoteKey,quote:data.quote,error:''});}).catch(error=>{if(error.name!=='AbortError')setQuoteState({key:quoteKey,quote:null,error:error.message});});
+  },200);
+  return()=>{window.clearTimeout(timer);controller.abort();};
+ },[selectionKey,quoteKey]);
+ const products=catalogState.items,pricing=catalogState.pricing,loading=!!ids&&catalogState.key!==catalogKey,error=catalogState.key===catalogKey&&catalogState.error;
+ const currentQuote=quoteState.key===quoteKey?quoteState.quote:null,quoteError=quoteState.key===quoteKey?quoteState.error:'';
  const quote=currentQuote||(selection.count?animeQuote(selection.count,'public',pricing):null),byId=new Map(products.map(product=>[product.id,product]));
  const complete=selection.rows.length>0&&!loading&&!error&&!quoteError&&!!currentQuote&&selection.rows.every(row=>row.size&&byId.has(row.id));
  const message=animeSelectionMessage(selection.rows,products,typeof window==='undefined'?ORIGIN:window.location.origin,currentQuote);
@@ -45,7 +52,7 @@ export default function AnimeComboDrawer(){
      {loading&&!products.length&&<p className={styles.comboStatus}><LoaderCircle className={styles.spinner} size={18}/> Cargando tu selección…</p>}
      {error&&<div className={styles.comboStatus}><p>No pudimos cargar los diseños.</p><button type="button" onClick={()=>setAttempt(n=>n+1)}>Volver a intentar</button></div>}
      {selection.rows.map(row=>{const product=byId.get(row.id);return <article className={styles.comboLine} key={animeSelectionLineKey(row)}>
-      {product?<AnimeProductLink productId={row.id} className={styles.comboPhoto} href={animeProductHref(row.id)} onClick={()=>setOpen(false)}><Image quality={85} src={product.thumbnail} alt={product.name} fill sizes="80px"/></AnimeProductLink>:<div className={styles.comboPhoto}/>}
+      {product?<AnimeProductLink productId={row.id} className={styles.comboPhoto} href={animeProductHref(product||row.id)} onClick={()=>setOpen(false)}><Image quality={85} src={product.thumbnail} alt={product.name} fill sizes="80px"/></AnimeProductLink>:<div className={styles.comboPhoto}/>}
       <div className={styles.comboLineInfo}><span>{product?productReference(product)||'Referencia por confirmar':row.id}</span><h3>{product?.name||'Cargando diseño…'}</h3><label>Talla <select aria-label={`Talla de ${product?.name||row.id}`} value={row.size||''} onChange={event=>selection.setSize(row.id,row.size,event.target.value)}><option value="" disabled>Elegir</option>{(product?.sizes||[]).map(size=><option key={size} disabled={product?.variants?.find(v=>v.size===size)?.quantity===0}>{size}</option>)}</select></label><div className={styles.comboLineActions}><div className={styles.quantity}><button type="button" aria-label={`Reducir cantidad de ${product?.name||row.id}`} disabled={row.quantity<=1} onClick={()=>selection.setQuantity(row.id,row.size,row.quantity-1)}><Minus size={14}/></button><output>{row.quantity}</output><button type="button" aria-label={`Aumentar cantidad de ${product?.name||row.id}`} disabled={row.quantity>=99} onClick={()=>selection.setQuantity(row.id,row.size,row.quantity+1)}><Plus size={14}/></button></div><button type="button" className={styles.removeLine} aria-label={`Quitar ${product?.name||row.id}, talla ${row.size||'sin elegir'}`} onClick={()=>selection.remove(row.id,row.size)}><Trash2 size={17}/></button></div></div>
      </article>;})}
      <Link href="/shop#coleccion" className={styles.addAnother} onClick={()=>setOpen(false)}><Plus size={16}/> Añadir otro diseño</Link>

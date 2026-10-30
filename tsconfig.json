@@ -47,6 +47,13 @@
   "exclude": [
     "node_modules",
     "examples",
-    "vite.config.ts"
+    "vite.config.ts",
+    ".sites-runtime/**",
+    "vendor/**",
+    ".next-native/cache/**",
+    ".next-native/server/**",
+    ".next-mobile/**",
+    "mobile-runtime/**",
+    "correcciones-2026-10-29/**"
   ]
 }

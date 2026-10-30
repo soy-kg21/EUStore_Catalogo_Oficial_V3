@@ -12,7 +12,8 @@ export function useAnimeListNavigation({filters,count,filterOpen,gridFilterOpen,
 }){
  const key=animeNavigationKey(filters),localFilterEdit=useRef(false);
  const placement=useRef<{key:string;saved:AnimeListSnapshot|null;intent:AnimeReturnIntent|null;placed:boolean}|null>(null);
- const restoreRef=useRef(restore);restoreRef.current=restore;
+ const restoreRef=useRef(restore);
+ useLayoutEffect(()=>{restoreRef.current=restore;},[restore]);
  useEffect(()=>{
   const remember=(event:Event)=>{
    const productId=(event as CustomEvent<string>).detail,card=document.getElementById('anime-card-'+productId);

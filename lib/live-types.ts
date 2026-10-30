@@ -1,4 +1,4 @@
 export type LiveRule={kind:'unit'|'total';retail:number[];wholesale:number[][];mixed?:number;mixedScope?:string};
-export type LiveCommerce={bucket:string;rule:LiveRule|null;quoteFrom:number|null;shippingFrom:number;advance:boolean};
+export type LiveCommerce={bucket:string;rule:LiveRule|null;quoteFrom:number|null;shippingFrom:number;advance:boolean;perUnit?:boolean};
 export type LiveProduct={reference?:string;id:string;name:string;section:string;category:string;line:string;brand:string;color:string;description:string;labels:string[];price:number;regularPrice:number|null;position:number;sizeSystem:string;benefits:string;materials:string;conditions:string;payment:string;sizes:{size:string;quantity:number|null}[];images:{principal:string;detalle:string};route:{id:string;slug:string};commerce:LiveCommerce;extras:{isNew:boolean;fit:string;weight:number|null;featured:boolean}};
 export type LiveSnapshot={schema:string;revision:string;createdAt:string;products:LiveProduct[];partial?:boolean;removedRoutes?:{section:string;id:string;slug:string}[]};

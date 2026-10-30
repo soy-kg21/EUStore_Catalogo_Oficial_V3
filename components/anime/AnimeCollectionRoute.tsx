@@ -12,7 +12,7 @@ export async function collectionFilters(line:AnimeLine|'',searchParams?:AnimeSea
  return animeLocationFilters(line?animeLinePath[line]:'/shop',`?${search}`);
 }
 export function categoryParams(line:AnimeLine){return [...new Set(animeProducts.filter(p=>p.line===line).map(p=>animeCategorySlug(p.category)))];}
-export function collectionParams(line:AnimeLine){return [...new Set([...categoryParams(line),...Object.values(animePublicRoutes).filter(row=>row.line===line).map(row=>row.slug),...Object.keys(legacyRoutes).filter(path=>path.startsWith(animeLinePath[line]+'/')).map(path=>path.split('/')[2])])];}
+export function collectionParams(line:AnimeLine){return [...new Set([...categoryParams(line),...Object.values(animePublicRoutes).filter(row=>row.line===line).slice(0,4).map(row=>row.slug),])];}
 function categoryName(line:AnimeLine,slug:string){return animeProducts.find(p=>p.line===line&&animeCategorySlug(p.category)===slug)?.category;}
 export async function categoryMetadata(line:AnimeLine,slug:string):Promise<Metadata>{
  const product=await resolveLiveAnimeProduct(slug,line);if(product)return animeProductMetadata(product);
@@ -22,6 +22,6 @@ export async function categoryMetadata(line:AnimeLine,slug:string):Promise<Metad
 export async function CollectionRoute({line,slug,searchParams}:{line:AnimeLine;slug:string;searchParams?:AnimeSearchParams}){
  if(slug==='todos')permanentRedirect('/shop');
  const product=await resolveLiveAnimeProduct(slug,line);
- if(product){if(animeProductHref(product.id)!==`${animeLinePath[line]}/${slug}`)permanentRedirect(animeProductHref(product.id));return <AnimeProductPage product={product}/>;}
+ if(product){if(animeProductHref(product)!==`${animeLinePath[line]}/${slug}`)permanentRedirect(animeProductHref(product));return <AnimeProductPage product={product}/>;}
  const category=(await getAnimeProducts()).find(p=>p.line===line&&animeCategorySlug(p.category)===slug)?.category;if(category){const filters=await collectionFilters(line,searchParams);return <AnimeShopPage filters={{...filters,linea:line,categoria:slug}}/>;}notFound();
 }

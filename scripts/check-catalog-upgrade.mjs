@@ -72,7 +72,7 @@ for(const bad of [[line(byGroup('B5-270'),-1)],[line(byGroup('B5-270'),1),line(b
 }
 // Inspect every combo's real product links and images in server-rendered output.
 const Offers=load('app/ofertas/page.tsx').default,html=renderToStaticMarkup(await Offers());
-const blocks=[...html.matchAll(/<article\b[^>]*id="combo-([^"]+)"[^>]*>([\s\S]*?)<\/article>/g)];eq(blocks.length,4);
+const blocks=[...html.matchAll(/<article\b[^>]*id="combo-([^"]+)"[^>]*>([\s\S]*?)<\/article>/g)];eq(blocks.length,9);
 for(const [,category,block] of blocks){
  const links=[...block.matchAll(/href="(\/[^"#]+)"/g)].map(m=>m[1]);
  if(category==='anime'){

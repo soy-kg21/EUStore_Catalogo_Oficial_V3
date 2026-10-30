@@ -11,7 +11,7 @@ import {money} from '@/lib/config';
 import styles from './catalog-card.module.css';
 
 function AnimeProductCard({product,onNavigate,quantity=0,eager=false}:{product:AnimeClientProduct;quantity?:number;onNavigate?:()=>void;eager?:boolean}){
- const href=animeProductHref(product.id),reference=(productReference(product)||'Por confirmar').replace('EU-ANIME-','');
+ const href=animeProductHref(product),reference=(productReference(product)||'Por confirmar').replace('EU-ANIME-','');
  return <article className={`product-card ${styles.card}`} id={`anime-card-${product.id}`}>
   <AnimeProductLink productId={product.id} href={href} className={`card-image ${styles.media}`} onClick={onNavigate} aria-label={`Ver ${product.name}`}>
    <AnimeCatalogImage product={product} alt={`${product.name}, referencia ${reference}`} eager={eager}/>

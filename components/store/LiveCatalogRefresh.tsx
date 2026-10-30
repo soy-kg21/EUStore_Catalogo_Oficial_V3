@@ -8,7 +8,7 @@ export default function LiveCatalogRefresh({revision}:{revision:string|null}){
   let running=false,lastChecked=0;
   const controller=new AbortController();
   const check=async()=>{
-   if(running||document.visibilityState!=='visible'||Date.now()-lastChecked<15000)return;
+   if(running||document.visibilityState!=='visible'||Date.now()-lastChecked<60000)return;
    running=true;lastChecked=Date.now();
    try{
     const response=await fetch('/api/catalog-revision',{cache:'no-store',signal:controller.signal});
@@ -18,7 +18,7 @@ export default function LiveCatalogRefresh({revision}:{revision:string|null}){
     }
    }catch{}finally{running=false;}
   };
-  const timer=setInterval(check,60000);
+  const timer=setInterval(check,300000);
   window.addEventListener('focus',check);document.addEventListener('visibilitychange',check);
   return()=>{controller.abort();clearInterval(timer);window.removeEventListener('focus',check);document.removeEventListener('visibilitychange',check);};
  },[router]);
