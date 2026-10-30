@@ -31,4 +31,14 @@ eq(p.availability,'Confirmado');eq(p.material,'Algodón peinado 100%');eq(p.fit,
 const {toLiveGeneral}=load('lib/live-general-product.ts'),{quoteLive}=load('lib/live-pricing.ts'),imported=toLiveGeneral(original.products.find(p=>p.section==='importadas'));
 for(const quantity of [1,2,6,12]){const q=quoteLive([{id:imported.id,size:imported.sizes[0],quantity}],[{...imported,variants:imported.variants.map(v=>({...v,quantity:null}))}]);eq(q.total,quantity*imported.price);eq(q.shipping,0);eq(q.advance,true);}
 const baseline=JSON.parse(fs.readFileSync(path.join(root,'data/catalog.json')));for(const item of baseline.filter(p=>p.warehouse==='B5')){const client=load('lib/commercial.ts').withCommercial(item);eq(client.weight,item.weight);eq(client.material,item.material);}
-console.log('PASS: '+checks+' regresiones de cotización real, slugs, enlaces anteriores, búsqueda, disponibilidad, prepago por unidad y separación de B5.');
+const assets=load('data/catalog-assets.json');
+for(const item of original.products.filter(p=>p.section==='importadas')){
+ const mapped=toLiveGeneral(item);
+ for(const source of Object.values(item.images)){
+  const sha=/^\/api\/catalog-media\/([a-f0-9]{64})$/.exec(source)?.[1];
+  if(sha&&assets[sha]){eq(mapped.images.includes(assets[sha]),true);eq(fs.existsSync(path.join(root,'public',assets[sha])),true);}
+ }
+}
+const uploaded={...original.products.find(p=>p.section==='importadas'),images:{front:'/api/catalog-media/'+'a'.repeat(64)}};
+if(!assets['a'.repeat(64)])eq(toLiveGeneral(uploaded).images[0],uploaded.images.front);
+console.log('PASS: '+checks+' regresiones de cotización, rutas, políticas, separación de B5 e imágenes importadas.');

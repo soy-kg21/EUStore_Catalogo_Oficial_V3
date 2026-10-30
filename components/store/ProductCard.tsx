@@ -20,6 +20,7 @@ export default function ProductCard({
       <Link prefetch={false} href={`/producto/${product.slug}`} className="card-image">
         <Image quality={85}
           src={product.images[0]}
+          unoptimized={product.images[0].startsWith('/api/catalog-media/')}
           sizes="(max-width: 600px) 48vw, (max-width: 1000px) 32vw, 25vw"
           alt={product.name}
           width={800}
