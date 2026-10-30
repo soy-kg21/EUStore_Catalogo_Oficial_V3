@@ -7,7 +7,7 @@ import { Check, Maximize2, MessageCircle, ShoppingBag } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { readCart, saveCart } from '@/lib/cart';
-import { money, ORIGIN, wa } from '@/lib/config';
+import { ORIGIN, wa } from '@/lib/config';
 import type { Product } from '@/lib/types';
 import {orderedShoeSizes,shoeSizeLabel} from '@/lib/shoe-sizes';
 import importedStyles from './imported-collection.module.css';
