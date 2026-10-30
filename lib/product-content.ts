@@ -1,4 +1,35 @@
 import references from '@/data/product-references.json';
+import {money} from './config';
+import type {Product} from './types';
+import type {quote} from './pricing';
+
+export function productInquiryMessage(product:Product,size:string,origin:string){
+ return [
+  'Hola Evolución Urbana, estoy interesado en:',
+  [`Producto: ${product.name}`,`Código: ${productReference(product)||'Por confirmar'}`,`Color: ${product.color}`,`Talla: ${size}`,`Precio: ${product.pricingPending?'Por confirmar':money(product.price)+' COP'}`].join('\n'),
+  `${origin}/producto/${product.slug}`,
+  product.collection==='importadas'?'Pago anticipado por unidad. El envío está incluido en el precio.':'Quisiera asesoría sobre talla y entrega.',
+  'Quiero confirmar disponibilidad, talla y entrega por WhatsApp.',
+ ].join('\n\n');
+}
+export function cartInquiryMessage(data:ReturnType<typeof quote>,origin:string,paymentNote:string){
+ return [
+  'Hola Evolución Urbana, quisiera asesoría para esta selección:',
+  ...data.rows.map((row,index)=>[
+   `${index+1}. Producto: ${row.product.name}`,
+   `Código: ${productReference(row.product)||row.product.sku}`,
+   `Color: ${row.product.color}`,
+   `Talla: ${row.size}`,
+   `Cantidad: ${row.quantity}`,
+   `Subtotal: ${row.total===null?'Por confirmar':money(row.total)+' COP'}`,
+  ].join('\n')+'\n\n'+`${origin}/producto/${row.product.slug}`),
+  [data.subtotal===null?'Solicito cotización personalizada.':'Productos: '+money(data.subtotal)+' COP',data.shippingPending?'Envío por cotizar con asesor':'Envío incluido',data.total===null?'Total pendiente de confirmación':'Total: '+money(data.total)+' COP'].join('\n'),
+  data.warehouses.length>1?'Despachos separados, conservando beneficios y descuentos.':'',
+  paymentNote,
+  'Mi ciudad es:',
+  'Por favor confirmar disponibilidad y total.',
+ ].filter(Boolean).join('\n\n');
+}
 
 type ProductContent={id?:string;sourceId?:string;slug?:string;sku?:string;reference?:string;name?:string;color?:string;category?:string;section?:string;channel?:string;line?:string;weight?:number|null;weightGrams?:number|null;description?:string;material?:string|null;materials?:string;profile?:{reference?:string;description?:string;name?:string;color?:string;category?:string};commercial?:{materialsConfirmed?:string|null}};
 const original=references as Record<string,string>;

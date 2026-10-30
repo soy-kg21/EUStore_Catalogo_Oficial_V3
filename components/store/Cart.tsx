@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import {cartInquiryMessage} from '@/lib/product-content';
 import Link from 'next/link';
 import { MessageCircle } from 'lucide-react';
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
@@ -106,7 +107,7 @@ export default function Cart() {
 
   const hasImported=data.rows.some(row=>row.product.collection==='importadas');
   const paymentNote=hasImported?'Zapatillas importadas: pago anticipado por unidad y envío incluido en el precio. Las condiciones de los demás artículos se detallan por separado.':data.advance?'Pago anticipado para los despachos mayoristas; confirmar condiciones de cada despacho.':'Pago contraentrega sujeto a cobertura.';
-  const message = `Hola Evolución Urbana, quisiera asesoría para esta selección:\n\n${data.rows.map(row => `${row.product.name}\nSKU: ${row.product.sku} | Talla: ${row.size} | Cantidad: ${row.quantity}\n${row.total===null?'Precio por confirmar':money(row.total)+' COP'}\n${ORIGIN}/producto/${row.product.slug}`).join('\n\n')}\n\n${data.subtotal===null?'Solicito cotización personalizada.':'Productos: '+money(data.subtotal)+' COP'}\n${data.shippingPending?'Envío por cotizar con asesor':'Envío incluido'}\n${data.total===null?'Total pendiente de confirmación':'Total: '+money(data.total)+' COP'}\n${data.warehouses.length>1?'Despachos separados, conservando beneficios y descuentos.':''}\n${paymentNote}\nMi ciudad es: \nPor favor confirmar disponibilidad y total.`;
+  const message = cartInquiryMessage(data,ORIGIN,paymentNote);
 
   return (
     <div className="cart-grid">
@@ -114,7 +115,7 @@ export default function Cart() {
         {rows.map((row) => row && (
           <article key={`${row.id}:${row.size}`} className="cart-line">
             <Link href={`/producto/${row.product.slug}`}>
-              <Image quality={85} src={row.product.images[0].replace('.webp', '-480.webp')} alt={row.product.name} width={480} height={600} sizes="(max-width: 700px) 28vw, 160px" />
+              <Image quality={85} unoptimized={row.product.images[0].startsWith('/api/catalog-media/')} src={row.product.images[0]} alt={row.product.name} width={480} height={600} sizes="(max-width: 700px) 28vw, 160px" />
             </Link>
             <div>
               <Link href={`/producto/${row.product.slug}`}><h2>{row.product.name}</h2></Link>

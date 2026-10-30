@@ -1,7 +1,7 @@
 'use client';
 
 import ProductPrice from './ProductPrice';
-import {productReference,shortProductDescription} from '@/lib/product-content';
+import {productReference,shortProductDescription,productInquiryMessage} from '@/lib/product-content';
 import Image from 'next/image';
 import { Check, Maximize2, MessageCircle, ShoppingBag } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -91,7 +91,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     return () => controller.abort();
   }, [add, product.sizes]);
 
-  const message = `Hola Evolución Urbana, estoy interesado en:\nProducto: ${product.name}\nCódigo: ${reference||'Por confirmar'}\nColor: ${product.color}\nTalla: ${size}\nPrecio: ${product.pricingPending ? "Por confirmar" : money(product.price)+" COP"}\n${ORIGIN}/producto/${product.slug}\n${imported?'Pago anticipado por unidad. El envío está incluido en el precio. Quiero asesoría de este artículo y confirmar talla y entrega por WhatsApp.':'Quisiera asesoría sobre talla y entrega.'}`;
+  const message = productInquiryMessage(product,size,ORIGIN);
 
   return (
     <div className={`detail-grid ${footwear?importedStyles.importedDetail:''}`}>
@@ -101,8 +101,7 @@ export default function ProductDetail({ product }: { product: Product }) {
             onScroll={event => {
               const rail = event.currentTarget;
               const index = Math.min(product.images.length - 1, Math.max(0, Math.round(rail.scrollLeft / Math.max(1, rail.clientWidth))));
-              activePhoto.current = index;
-              setActive(index);
+              if(activePhoto.current!==index){activePhoto.current=index;setActive(index);}
             }}
             onKeyDown={event => {
               if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {

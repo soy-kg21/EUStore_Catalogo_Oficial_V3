@@ -41,4 +41,15 @@ for(const item of original.products.filter(p=>p.section==='importadas')){
 }
 const uploaded={...original.products.find(p=>p.section==='importadas'),images:{front:'/api/catalog-media/'+'a'.repeat(64)}};
 if(!assets['a'.repeat(64)])eq(toLiveGeneral(uploaded).images[0],uploaded.images.front);
-console.log('PASS: '+checks+' regresiones de cotización, rutas, políticas, separación de B5 e imágenes importadas.');
+const content=load('lib/product-content.ts'),config=load('lib/config.ts'),origin='https://www.evolucionurbana.store';
+const inquiry=content.productInquiryMessage(imported,imported.sizes[0],origin);
+eq(inquiry.includes('interesado en:\n\nProducto:'),true);
+eq(inquiry.includes('\\n'),false);
+eq(new URL(config.wa(inquiry)).searchParams.get('text'),inquiry);
+const q=quoteLive([{id:imported.id,size:imported.sizes[0],quantity:1}],[{...imported,variants:imported.variants.map(v=>({...v,quantity:null}))}]);
+const multi=content.cartInquiryMessage({...q,rows:[...q.rows,...q.rows]},origin,'Pago anticipado.');
+eq(multi.includes('\n\n2. Producto:'),true);
+eq(multi.includes('\\n'),false);
+eq(multi.includes('\n\nMi ciudad es:\n\n'),true);
+eq(new URL(config.wa(multi)).searchParams.get('text'),multi);
+console.log('PASS: '+checks+' regresiones de cotización, rutas, políticas, imágenes y párrafos de WhatsApp.');
