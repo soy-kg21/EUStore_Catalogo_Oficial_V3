@@ -16,6 +16,6 @@ export default async function AnimePrices(){const pricing=await getLiveAnimePric
   <span>{i+1} {i===0?'camiseta':'camisetas'}</span><strong>{money(total)}</strong><small>{i===0?'Precio individual':'Total de las camisetas'}</small>
   <div className={styles.priceMeter} aria-hidden="true">{[0,1,2,3,4].map(n=><i key={n} data-filled={n<=i}/>)}</div>
  </div>)}</div>
- <p className={styles.priceConditions}>Precios en COP. Envío estándar incluido de 1 a 5 camisetas; cobertura y contraentrega sujetos a validación. Referencias y tallas se confirman antes de cerrar el pedido.</p>
+ <p className={styles.priceConditions}>Precios en COP para S, M, L y XL. De 1 a 5 camisetas: envío estándar incluido y contraentrega sujetos a cobertura y validación. Zonas alejadas: extra logístico de $18.000 a $22.000 según destino, por confirmar antes del cierre. Desde XXL: por encargo, con recargo por validar y pago anticipado.</p>
  <details className={styles.wholesale}><summary>¿Quieres 6 camisetas o más?<span>Ver precios mayoristas +</span></summary><div><p>{animeWholesaleTiers.map(tier=><span key={tier.from}>De {tier.from} a {tier.to}: <b>{money(tier.unit)} por camiseta.</b> </span>)} Desde 49: cotización personalizada.</p><p>Pago anticipado, sin contraentrega y transporte separado por cotizar. Exclusivo para referencias de Anime Shop.</p></div></details>
  </section>;}

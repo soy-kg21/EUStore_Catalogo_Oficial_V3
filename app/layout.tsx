@@ -1,5 +1,6 @@
 import {getLiveCatalog} from '@/lib/live-catalog';
 import LiveCatalogRefresh from '@/components/store/LiveCatalogRefresh';
+import TrafficMonitor from '@/components/store/TrafficMonitor';
 import type {Metadata} from 'next';
 import './globals.css';
 import '@/components/experience/editorial-video.css';
@@ -51,6 +52,7 @@ export default async function Layout({
 
         {process.env.EUSTORE_LIVE_CATALOG==='1'&&<LiveCatalogRefresh revision={live?.revision||null}/>}
         <AnimeHistoryBridge/>
+        {process.env.EUSTORE_TRAFFIC_ENABLED==='1'&&<TrafficMonitor/>}
         <Header/>
         <ScrollProgress/>
         {children}

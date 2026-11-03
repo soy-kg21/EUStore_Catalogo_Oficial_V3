@@ -62,7 +62,7 @@ export default function AnimeComboDrawer(){
      <div className={styles.comboTotal}><span>Total camisetas</span><strong>{quote?.merchandise===null?'Por cotizar':money(quote!.merchandise!)}<small>{quote?.merchandise===null?'':' COP'}</small></strong></div>
      <p className={styles.shippingNote}><Truck size={17}/>{quote?.shippingPending?'Pago anticipado. Transporte separado por cotizar.':'Envío estándar incluido. Contraentrega sujeta a cobertura.'}</p>
      {complete?<a href={wa(message)} className={styles.primary} target="_blank" rel="noopener noreferrer" onClick={()=>trackAnimeEvent('click_whatsapp',{quantity:selection.count,total:quote?.merchandise,source:'combo'})}>Continuar por WhatsApp <ArrowUpRight size={18}/></a>:<button type="button" className={styles.primary} disabled>{loading?'Cargando selección…':error?'Reintenta cargar tu selección':quoteError?'Revisa las cantidades disponibles':selection.rows.every(r=>r.size)?'Actualizando precios…':'Elige las tallas para continuar'}</button>}
-     <p className={styles.comboDisclaimer}>Confirmamos disponibilidad y condiciones antes de cerrar tu pedido. Podrás revisar el mensaje en WhatsApp.</p>
+     <p className={styles.comboDisclaimer}>Confirmamos tallas y cobertura antes del cierre. Zonas alejadas: extra logístico por validar. Desde XXL: encargo, recargo y pago anticipado. Podrás revisar el mensaje en WhatsApp.</p>
     </div>
    </>}
   </SheetContent></Sheet>

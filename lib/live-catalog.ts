@@ -8,6 +8,7 @@ import recovered from '@/data/recovered-publication.json';
 import {syncService,productionContext} from './catalog-sync-core.mjs';
 import {supabaseCatalogStore} from './supabase-catalog-store.mjs';
 import {packCatalog,unpackCatalog,readPublicCatalogEntry} from './catalog-read-cache.mjs';
+import {currentCommercialPublication} from './commercial-release.mjs';
 
 const storageFetch:typeof fetch=(input,init)=>fetch(input,{...init,cache:'no-store',signal:AbortSignal.timeout(15000)});
 const provider=()=>process.env.EUSTORE_STORAGE_PROVIDER||(process.env.VERCEL?'supabase':'netlify');
@@ -27,12 +28,12 @@ export function catalogService(){
  return syncService({getStore:store,token:process.env.EUSTORE_PUBLISH_TOKEN,baselineAssets:assets,production:process.env.EUSTORE_LIVE_CATALOG==='1'&&productionContext(process.env.EUSTORE_BUILD_CONTEXT,process.env.CONTEXT,process.env.VERCEL_ENV)});
 }
 export const getLiveCatalog=cache(async():Promise<LiveSnapshot>=>{
- if(process.env.EUSTORE_LIVE_CATALOG!=='1')return recovered as unknown as LiveSnapshot;
+ if(process.env.EUSTORE_LIVE_CATALOG!=='1')return currentCommercialPublication(recovered) as unknown as LiveSnapshot;
  await connection();
- if(provider()==='supabase')return unpackCatalog(await publicEntry()) as LiveSnapshot;
+ if(provider()==='supabase')return currentCommercialPublication(unpackCatalog(await publicEntry())) as LiveSnapshot;
  const document=await catalogService().read();
  if(!document)throw new Error('Falta activar la publicación recuperada en el almacenamiento.');
- return document;
+ return currentCommercialPublication(document);
 });
 export const getLiveRevision=cache(async():Promise<string|null>=>{
  if(process.env.EUSTORE_LIVE_CATALOG!=='1')return recovered.revision;

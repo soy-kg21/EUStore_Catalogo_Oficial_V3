@@ -1,6 +1,6 @@
 import type {LiveRule} from './live-types';
 // Precios confirmados por el propietario. La selección Anime Shop se cotiza aparte.
-export const animePublicTotals = [68000, 93000, 126000, 152000, 180000] as const;
+export const animePublicTotals = [68000, 93000, 126000, 156000, 185000] as const;
 // Compatibilidad con consumidores anteriores: todos reciben la tarifa vigente.
 export const animeRegularTotals = animePublicTotals;
 export const animeWholesaleTiers = [
@@ -11,7 +11,7 @@ export const animeWholesaleTiers = [
 export const animeCommercial = {
   unitPrice:68000, promoQuantity:2, promoTotal:93000, currency:'COP',
   promoLabel:'2 POR $93.000', unitLabel:'1 und. $68.000',
-  conditions:'Promoción pública vigente de Anime Shop. Envío estándar incluido de 1 a 5 camisetas y contraentrega sujetos a cobertura y validación.',
+ conditions:'De 1 a 5: envío estándar incluido y contraentrega en zonas habilitadas, previa validación. Zonas alejadas: extra logístico de $18.000 a $22.000 según destino, por confirmar. S, M, L y XL de línea; desde XXL, encargo con recargo por validar y pago anticipado.',
 } as const;
 export function animeQuote(quantity:number, _channel:'public'|'regular'='public', pricing?:LiveRule|null) {
   if(!Number.isSafeInteger(quantity)||quantity<1)throw new Error('Cantidad inválida');

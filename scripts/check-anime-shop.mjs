@@ -12,7 +12,7 @@ for(let n=1;n<=5;n++){
  assert.equal(animeQuote(n,'regular').merchandise,animeRegularTotals[n-1]);
  assert.equal(animeQuote(n).advance,false);
 }
-assert.equal(animeQuote(4).merchandise,152000);assert.notEqual(animeQuote(4).merchandise,2*animeQuote(2).merchandise);
+assert.equal(animeQuote(4).merchandise,156000);assert.notEqual(animeQuote(4).merchandise,2*animeQuote(2).merchandise);
 for(const [n,unit] of [[6,32000],[11,32000],[12,29000],[23,29000],[24,26000],[48,26000]]){
  const q=animeQuote(n);assert.equal(q.merchandise,n*unit);assert(q.advance&&q.shippingPending&&!q.requiresHuman);
 }
