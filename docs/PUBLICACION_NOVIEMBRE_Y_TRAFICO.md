@@ -15,6 +15,8 @@ Estado verificado el 2 de noviembre de 2026: migración aplicada en el proyecto 
 
 ## Verificación después de publicar
 
+Verificación previa del 3 de noviembre de 2026: Chrome → API real de Next → PostgreSQL local con esta migración → resumen privado → CRM temporal. Una entrada, cambio interno a Cartoon, ficha, Atrás y catálogo general produjeron 1 sesión y 5 vistas; una búsqueda no duplicó vistas y el clic a WhatsApp produjo 1 clic, sin enviar mensaje. El CRM mostró esos mismos contadores y la campaña. Se recibieron heartbeat; el resumen sin clave devolvió 401. Estos datos de prueba no se escribieron en producción. Regresión automatizada del monitor: node --test scripts/check-traffic-client.mjs.
+
 1. Comparar las cinco tarjetas de precios, selección de varias referencias y mensaje de WhatsApp con las tarifas aprobadas. Comprobar que las demás líneas conservan sus precios.
 2. Publicar posteriormente las reglas revisadas desde BackOffice permite que el documento persistente también almacene las tarifas nuevas. La compatibilidad del código cubre sólo la tabla anterior exacta hasta esa publicación; no fuerza tarifas futuras.
 3. Abrir el catálogo desde una sesión de prueba sin DNT/GPC: una página vista y luego un clic a WhatsApp. No enviar el mensaje.
@@ -25,6 +27,8 @@ Estado verificado el 2 de noviembre de 2026: migración aplicada en el proyecto 
 ## Límites prácticos
 
 Sesiones activas: actividad recibida en los últimos 90 segundos. El navegador envía señal cada 45 segundos sólo estando visible; el CRM consulta cada 15 segundos y deja de hacerlo al ocultarse. No son personas identificadas: varias pestañas/dispositivos pueden sumar sesiones. No se crean clientes ni pedidos automáticamente.
+
+Se registran entradas y cambios de ruta, incluidas las colecciones con navegación interna de Anime Shop, fichas y Atrás/Adelante. El monitor escucha tanto el cambio de ruta de Next como el evento eu-anime-filters y evita contar dos veces la misma transición. Buscar, desplazarse o filtrar sin cambiar de ruta no suma otra página vista. Si una página se abre oculta, su primera vista se registra al mostrarse. La prueba local utiliza localhost de forma coherente porque Next normaliza las IP de bucle local en Request.url; no se ha relajado la comprobación de origen para producción.
 
 La procedencia es un dominio y la campaña usa sólo utm_campaign validada (máximo 80 caracteres alfanuméricos, espacio, punto, guion y guion bajo). No se recopilan fbclid, texto de WhatsApp, búsqueda, IP persistente ni rutas con parámetros. El límite por sesión y la deduplicación reducen ruido, pero no garantizan excluir todo bot. La limitación por IP existe sólo en memoria del servidor y no es un firewall distribuido.
 
