@@ -86,6 +86,9 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
     figureBox.set((fig.left-box.left)/width,(box.bottom-fig.bottom)/height,fig.width/width,fig.height/height);
     U.uFigLod.value = Math.max(0,Math.log2(figure.naturalHeight/(fig.height*dpr)));
 
+    // WebGL allocates an immutable mip chain at upload. Reallocate it when
+    // rotating a phone or crossing a breakpoint, before uploading new glyphs.
+    if (lettering.width !== Math.round(width*dpr) || lettering.height !== Math.round(height*dpr)) ink.dispose();
     lettering.width = Math.round(width*dpr);
     lettering.height = Math.round(height*dpr);
     ctx!.setTransform(dpr,0,0,dpr,0,0);
