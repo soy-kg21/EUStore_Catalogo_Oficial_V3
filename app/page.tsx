@@ -2,6 +2,8 @@ import Link from 'next/link';
 import {ArrowUpRight} from 'lucide-react';
 import {collectionOf} from '@/lib/catalog-presentation.mjs';
 import {getProducts} from '@/lib/products';
+import {getAnimeProducts} from '@/lib/live-products';
+import {catalogCollections} from '@/lib/catalog-collections';
 import {categories, money, wa} from '@/lib/config';
 import {jsonLd, siteSchema} from '@/lib/seo';
 import ServiceAnnouncements from '@/components/home/ServiceAnnouncements';
@@ -14,18 +16,39 @@ import {ClosingScene, MaterialLens, StoryInteractions} from '@/components/home/n
 import '@/components/home/niebla/story.css';
 
 export default async function Home() {
-  const all = await getProducts();
-  const featured = ['oversize','nacionales','conjuntos-cortos','importadas'].flatMap(collection => {
-    const rows = all.filter(product => collectionOf(product) === collection);
-    const product = rows.find(product => product.featured) ?? rows[0];
+  const [all, animeShop] = await Promise.all([getProducts(),getAnimeProducts()]);
+  const collections = ['oversize','nacionales','conjuntos-cortos','importadas'] as const;
+  const productsByCollection = collections.map(collection =>
+    all.filter(product => collectionOf(product) === collection),
+  );
+  const featured = [0,1].flatMap(round => productsByCollection.flatMap(rows => {
+    const first = rows.find(product => product.featured) ?? rows[0];
+    const product = round === 0 ? first : rows.find(item => item.id !== first?.id && item.stock !== 0);
     return product ? [product] : [];
-  });
+  }));
   const groups = categories.flatMap(category => {
     const rows = all.filter(product => product.category === category.slug);
     if (!rows.length) return [];
     const priced = rows.filter(product => !product.pricingPending && product.price > 0);
     return [{...category, count: rows.length, image: rows[0].images[0],
       from: priced.length ? Math.min(...priced.map(product => product.price)) : null}];
+  });
+  const collectionCards = [
+    {visual:'importadas',name:'Importadas',href:catalogCollections.importadas.path,
+      products:productsByCollection[3],detail:'Calzado de la línea importada.'},
+    {visual:'anime',name:'Anime',href:'/shop',
+      products:animeShop.filter(product=>product.line!=='rock' && product.availability!=='Agotado').map(product=>({
+        price:product.price,pricingPending:false,images:[product.image],
+      })),detail:'Camisetas Anime, Cartoon y Urbanas.'},
+    {visual:'zapatillas',name:'Nacionales',href:catalogCollections.nacionales.path,
+      products:productsByCollection[1],detail:'Calzado de la línea nacional.'},
+    {visual:'camisetas',name:'Oversize',href:catalogCollections.oversize.path,
+      products:productsByCollection[0],detail:'Camisetas de corte amplio.'},
+    {visual:'conjuntos',name:'Conjuntos',href:'/categoria/conjuntos',
+      products:all.filter(product=>product.category==='conjuntos'),detail:'Arma tu look completo.'},
+  ].map(({products,...category})=>{
+    const prices=products.filter(product=>!product.pricingPending && product.price>0).map(product=>product.price);
+    return {...category,image:products[0]?.images[0] ?? '',from:prices.length ? Math.min(...prices) : null};
   });
   const shoe = all.find(product => product.slug === 'vans-old-skool-negro-blanco');
   return <main id="contenido" className="home-story niebla-home" data-home-story>
@@ -34,15 +57,15 @@ export default async function Home() {
 
     <section className="eu-collection eu-chapter" id="categorias" aria-labelledby="category-title">
       <div className="eu-collection-pin">
-        <div className="eu-running"><span>Colección / Evolución Urbana</span><span>{String(groups.length).padStart(2,'0')} categorías</span></div>
+        <div className="eu-running"><span>Colección / Evolución Urbana</span><span>{String(collectionCards.length).padStart(2,'0')} categorías</span></div>
         <div className="eu-collection-window">
           <div className="eu-collection-track">
             <div className="eu-collection-intro">
               <h2 className="eu-display" id="category-title">Moda urbana.<br /><em>A tu manera.</em></h2>
-              <p>Explora camisetas, zapatillas y conjuntos.</p>
+              <p>Explora calzado, camisetas y conjuntos.</p>
             </div>
-            {groups.map((group,index) => <Link prefetch={false} href={'/categoria/'+group.slug} key={group.slug} className="eu-collection-card">
-              <div className="eu-collection-photo"><CategoryVisual category={group.slug} fallback={group.image} /></div>
+            {collectionCards.map((group,index) => <Link prefetch={false} href={group.href} key={group.visual} className="eu-collection-card">
+              <div className="eu-collection-photo"><CategoryVisual category={group.visual} fallback={group.image} /></div>
               <div className="eu-card-caption"><small>{String(index+1).padStart(2,'0')}</small><h3>{group.name}</h3><ArrowUpRight size={20}/></div>
               <p>{group.from !== null ? 'Desde '+money(group.from)+' COP' : group.detail}</p>
             </Link>)}

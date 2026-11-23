@@ -22,7 +22,13 @@ const groups=[
  ],
 ] as const;
 
-const mobileMessages=groups.flat().filter(message=>message.label!=='Viste a tu manera');
+const shortMobileLabels: Readonly<Record<string,string>> = {
+  'Elige tus diseños y tallas':'Diseños y tallas',
+  'Encuentra tu próximo par':'Tu próximo par',
+  'Revisa tu selección y pide':'Revisa tu selección',
+};
+const mobileMessages=groups.flat().filter(message=>message.label!=='Viste a tu manera')
+  .map(({icon,label})=>({icon,label:shortMobileLabels[label] ?? label}));
 const mobileGroups=Array.from({length:4},(_,index)=>mobileMessages.slice(index*2,index*2+2));
 
 export default function ServiceAnnouncements(){
@@ -71,7 +77,7 @@ export default function ServiceAnnouncements(){
  return <div ref={region} className={styles.strip} role="region" tabIndex={0} aria-label="Beneficios de compra; pausa al mantener el foco" aria-roledescription="carrusel" data-reduced={reduced} data-mobile={compact} data-rotating={running} data-in-view={inView} onFocus={()=>setFocused(true)} onBlur={()=>setFocused(false)} onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>
   <div className={styles.viewport} aria-live="off">
    {displayGroups.map((announcements,index)=><div key={index} className={styles.group} role="group" aria-label={`${index+1} de ${displayGroups.length}`} aria-hidden={!reduced&&index!==slide.current} inert={!reduced&&index!==slide.current} data-current={index===slide.current} data-enter={index===slide.current&&slide.previous!==null} data-leave={index===slide.previous}>
-    {announcements.map(({icon:Icon,label})=><span key={label}><Icon size={19} aria-hidden="true"/>{label}</span>)}
+    {announcements.map(({icon:Icon,label})=><span key={label}><Icon size={19} aria-hidden="true"/><span className={styles.label}>{label}</span></span>)}
    </div>)}
   </div>
  </div>;

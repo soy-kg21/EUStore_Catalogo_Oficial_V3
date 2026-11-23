@@ -1,3 +1,5 @@
+import {watchFeaturedPiece} from './featured-motion';
+
 const clamp=(n:number)=>Math.max(0,Math.min(1,n));
 const ease=(n:number)=>1-(1-clamp(n))**3;
 const format=new Intl.NumberFormat('es-CO');
@@ -41,133 +43,114 @@ function cursorRing(signal:AbortSignal){
   signal.addEventListener('abort',()=>{hide();ring.remove();},{once:true});
 }
 
-function animatePiece(piece:HTMLElement, fine:boolean, signal:AbortSignal){
-  const title=piece.querySelector('h3'), link=title?.closest('a');
-  if(!title||!link)return;
-  const name=title.textContent ?? '';
-  const originalLabel=link.getAttribute('aria-label');
-  link.setAttribute('aria-label',name);
-  let frame=0;
-  function scramble(){
-    cancelAnimationFrame(frame);
-    const start=performance.now(),letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    function step(now:number){
-      const p=clamp((now-start)/620);
-      title!.textContent=Array.from(name,(c,i)=> i<name.length*p||c===' ' ? c : letters[Math.floor(Math.random()*letters.length)]).join('');
-      if(p<1)frame=requestAnimationFrame(step);
-    }
-    frame=requestAnimationFrame(step);
-  }
-  function reset(){cancelAnimationFrame(frame);title!.textContent=name;piece.removeAttribute('data-tilt');piece.style.removeProperty('--rx');piece.style.removeProperty('--ry');}
-  piece.addEventListener('focusin',scramble,{signal});
-  piece.addEventListener('focusout',reset,{signal});
-  if(fine){
-    piece.addEventListener('pointerenter',scramble,{signal});
-    piece.addEventListener('pointerleave',reset,{signal});
-    piece.addEventListener('pointermove',e=>{
-      const b=piece.getBoundingClientRect(),x=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;
-      piece.dataset.tilt='';
-      piece.style.setProperty('--rx',((.5-y)*28)+'deg');piece.style.setProperty('--ry',((x-.5)*36)+'deg');
-      piece.style.setProperty('--spot-x',(x*100)+'%');piece.style.setProperty('--spot-y',(y*100)+'%');
-    },{passive:true,signal});
-  }
-  signal.addEventListener('abort',()=>{reset();if(originalLabel===null)link.removeAttribute('aria-label');else link.setAttribute('aria-label',originalLabel);},{once:true});
-}
-
-export function startStory(main:HTMLElement,reduced:boolean,fine:boolean){
+export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
   const strip=main.querySelector<HTMLElement>('.eu-collection')!;
   const track=strip.querySelector<HTMLElement>('.eu-collection-track')!;
   const pin=strip.querySelector<HTMLElement>('.eu-collection-pin')!;
   const cards=[...strip.querySelectorAll<HTMLElement>('.eu-collection-card')];
   const stats=main.querySelector<HTMLElement>('.eu-stats')!;
   const counters=[...stats.querySelectorAll<HTMLElement>('[data-total]')];
-  const pieces = [...main.querySelectorAll<HTMLElement>('.eu-piece')];
-  const pieceSection = main.querySelector<HTMLElement>('.eu-pieces')!;
-  const social = main.querySelector<HTMLElement>('.eu-social')!;
-  if (reduced) {
-    counters.forEach(counter=>counter.textContent=format.format(Number(counter.dataset.total)));
-    return ()=>{};
-  }
-  const controller = new AbortController();
-  const {signal} = controller;
-  if (fine) cursorRing(signal);
-  pieces.forEach(piece=>animatePiece(piece,fine,signal));
+  const pieceSection=main.querySelector<HTMLElement>('.eu-pieces')!;
+  const social=main.querySelector<HTMLElement>('.eu-social')!;
+  if(reduced) return ()=>{};
 
-  let travel = 0, top = 0, raf = 0, lastX = -1;
-  let offsets:number[] = [];
-  function setEntry(element:HTMLElement, top:number) {
-    const progress = ease((innerHeight-top)/(innerHeight*.3));
-    element.style.setProperty('--entry-opacity',String(.12+.88*progress));
-    element.style.setProperty('--entry-offset',((1-progress)*44)+'px');
-  }
+  const controller=new AbortController();
+  const {signal}=controller;
+  if(fine) cursorRing(signal);
+  const pieces=[...pieceSection.querySelectorAll<HTMLElement>('.eu-piece')].map(piece=>({
+    piece, motion:watchFeaturedPiece(piece,fine,signal),
+  }));
+  let travel=0, railRate=1, top=0, raf=0, lastX=-1, lastScroll=window.scrollY;
+  let collectionWasVisible=false, piecesWereVisible=false;
+  let cardGeometry:{left:number;width:number}[]=[];
+
   function paint() {
     raf=0;
-    if (document.hidden) return;
-    const rect = strip.getBoundingClientRect();
-    const width = pin.clientWidth;
-    const x = Math.max(0,Math.min(travel,top-rect.top));
-    const counted = ease((innerHeight*.9-stats.getBoundingClientRect().top)/(innerHeight*.6));
-    const pieceBounds = pieces.map(piece=>piece.getBoundingClientRect());
-    const socialTop = social.getBoundingClientRect().top;
+    const currentScroll=window.scrollY;
+    const direction=Math.sign(currentScroll-lastScroll);
+    lastScroll=currentScroll;
+    const bottom=innerHeight;
+    const collection=strip.getBoundingClientRect();
+    const collectionVisible=collection.top<bottom && collection.bottom>top;
+    if(collectionVisible) {
+      const width=pin.clientWidth;
+      const x=Math.max(0,Math.min(travel,(top-collection.top)*railRate));
+      if(x!==lastX || !collectionWasVisible) {
+        lastX=x;
+        track.style.transform='translate3d('+(-x)+'px,0,0)';
+        strip.style.setProperty('--rail',String(travel ? x/travel : 1));
+        cards.forEach((card,index)=>{
+          const {left,width:cardWidth}=cardGeometry[index];
+          const start=left-x;
+          const progress=ease((width-start)/(width*.4));
+          card.toggleAttribute('data-slide-in-view',start<width && start+cardWidth>0);
+          card.style.setProperty('--cut',((1-progress)*100)+'%');
+          card.style.setProperty('--blur',((1-progress)*14)+'px');
+          card.style.setProperty('--zoom',String(1.25-.25*progress));
+          card.style.setProperty('--brightness',String(.55+.45*progress));
+        });
+      }
+    } else if(collectionWasVisible) {
+      cards.forEach(card=>card.removeAttribute('data-slide-in-view'));
+    }
+    collectionWasVisible=collectionVisible;
 
-    strip.toggleAttribute('data-cards-active',rect.top<innerHeight && rect.bottom>top);
-    if (x !== lastX) {
-      lastX = x;
-      track.style.transform='translate3d('+(-x)+'px,0,0)';
-      strip.style.setProperty('--rail',String(travel ? x/travel : 1));
-      cards.forEach((card,i)=>{
-        const e=ease((width-(offsets[i]-x))/(width*.5));
-        card.style.setProperty('--cut',((1-e)*100)+'%');
-        card.style.setProperty('--blur',((1-e)*14)+'px');
-        card.style.setProperty('--zoom',String(1.25-.25*e));
-        card.style.setProperty('--brightness',String(.55+.45*e));
+    const statsTop=stats.getBoundingClientRect().top;
+    if(statsTop<bottom) {
+      const counted=ease((bottom*.9-statsTop)/(bottom*.6));
+      counters.forEach(counter=>{
+        const value=format.format(Math.round(Number(counter.dataset.total)*counted));
+        if(counter.textContent!==value)counter.textContent=value;
       });
     }
-    counters.forEach(counter=>{
-      const value=format.format(Math.round(Number(counter.dataset.total)*counted));
-      if(counter.textContent!==value)counter.textContent=value;
-    });
-    pieces.forEach((piece,i)=>{
-      const r = pieceBounds[i];
-      setEntry(piece,r.top);
-      if (!fine && r.bottom>0 && r.top<innerHeight) {
-        const position=clamp((r.top+r.height*.5)/innerHeight)-.5;
-        piece.style.setProperty('--rx',(-position*10)+'deg');
-        piece.style.setProperty('--ry',(position*5)+'deg');
-      }
-    });
-    setEntry(social,socialTop);
-  }
-  function schedule(){
-    if (document.hidden) {
-      cancelAnimationFrame(raf);
-      raf=0;
-      strip.removeAttribute('data-cards-active');
-    } else if (!raf) {
-      raf=requestAnimationFrame(paint);
+
+    const pieceBounds=pieceSection.getBoundingClientRect();
+    const piecesVisible=pieceBounds.top<bottom && pieceBounds.bottom>top;
+    if(piecesVisible) {
+      const bounds=pieces.map(({piece})=>piece.getBoundingClientRect());
+      pieces.forEach(({motion},index)=>motion.update(bounds[index],top,bottom,direction));
+    } else if(piecesWereVisible) {
+      pieces.forEach(({motion})=>motion.suspend());
+    }
+    piecesWereVisible=piecesVisible;
+
+    const socialTop=social.getBoundingClientRect().top;
+    if(socialTop<bottom) {
+      const progress=ease((bottom-socialTop)/(bottom*.3));
+      social.style.setProperty('--entry-opacity',String(.12+.88*progress));
+      social.style.setProperty('--entry-offset',((1-progress)*44)+'px');
     }
   }
-  function measure(){
-    if (signal.aborted) return;
+  function schedule() {
+    if(document.hidden) {
+      cancelAnimationFrame(raf);
+      raf=0;
+      cards.forEach(card=>card.removeAttribute('data-slide-in-view'));
+      pieces.forEach(({motion})=>motion.suspend());
+      collectionWasVisible=false;
+    } else if(!raf) raf=requestAnimationFrame(paint);
+  }
+  function measure() {
+    if(signal.aborted) return;
     strip.dataset.pinned='';
     top=parseFloat(getComputedStyle(pin).top)||0;
+    railRate=pin.clientWidth<=820 ? 1.19 : 1;
     travel=Math.max(0,track.scrollWidth-pin.clientWidth);
-    offsets=cards.map(card=>card.offsetLeft);
+    cardGeometry=cards.map(card=>({left:card.offsetLeft,width:card.offsetWidth}));
     lastX=-1;
-    strip.style.setProperty('--travel',travel+'px');
+    strip.style.setProperty('--travel',(travel/railRate)+'px');
     schedule();
   }
   strip.addEventListener('focusin',event=>{
     const card=(event.target as Element).closest<HTMLElement>('.eu-collection-card');
-    if(!card||!card.matches(':focus-visible'))return;
+    if(!card || !card.matches(':focus-visible'))return;
     const pos=card.getBoundingClientRect();
-    if(pos.left>=0&&pos.right<=pin.clientWidth)return;
+    if(pos.left>=0 && pos.right<=pin.clientWidth)return;
     const destination=scrollY+strip.getBoundingClientRect().top-top;
     const reveal=Math.max(0,Math.min(travel,card.offsetLeft-pin.clientWidth*.15));
-    window.scrollTo({top:destination+reveal,behavior:'instant'});
+    window.scrollTo({top:destination+reveal/railRate,behavior:'instant'});
   },{signal});
 
-  pieceSection.dataset.entering='';
   social.dataset.entering='';
   const resize=new ResizeObserver(measure);
   resize.observe(pin);
@@ -180,15 +163,17 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean){
     controller.abort();
     resize.disconnect();
     cancelAnimationFrame(raf);
-    delete pieceSection.dataset.entering;
     delete social.dataset.entering;
     strip.removeAttribute('data-pinned');
-    strip.removeAttribute('data-cards-active');
+    strip.style.removeProperty('--travel');
+    strip.style.removeProperty('--rail');
     track.style.removeProperty('transform');
-    cards.forEach(card=>card.removeAttribute('style'));
-    [social,...pieces].forEach(el=>{
-      for(const property of ['--rx','--ry','--entry-opacity','--entry-offset'])el.style.removeProperty(property);
+    cards.forEach(card=>{
+      card.removeAttribute('data-slide-in-view');
+      card.removeAttribute('style');
     });
+    social.style.removeProperty('--entry-opacity');
+    social.style.removeProperty('--entry-offset');
     counters.forEach(counter=>counter.textContent=format.format(Number(counter.dataset.total)));
   };
 }

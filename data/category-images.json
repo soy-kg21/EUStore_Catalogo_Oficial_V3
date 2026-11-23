@@ -5,13 +5,23 @@
     "/media/categorias/categoria_camisetas_img3.webp"
   ],
   "zapatillas": [
-    "/media/categorias/categoria_zapatillas_img1.webp",
-    "/media/categorias/categoria_zapatillas_img2.webp",
-    "/media/categorias/categoria_zapatillas_img3.webp"
+    "/media/categorias/inicio/nacionales-1-editorial.webp",
+    "/media/categorias/inicio/nacionales-2-editorial.webp",
+    "/media/categorias/inicio/nacionales-3-editorial.webp"
   ],
   "conjuntos": [
     "/media/categorias/categoria_conjunto_cp_img1.webp",
     "/media/categorias/categoria_conjunto_cp_img2.webp",
     "/media/categorias/categoria_conjunto_cp_img3.webp"
+  ],
+  "importadas": [
+    "/media/categorias/inicio/importadas-shox-gris-rojo-editorial.webp",
+    "/media/categorias/inicio/importadas-b94-floral-editorial.webp",
+    "/media/categorias/inicio/importadas-dunk-blanco-naranja-editorial.webp"
+  ],
+  "anime": [
+    "/media/categorias/inicio/anime-gojo-doble.webp",
+    "/media/categorias/inicio/anime-cartoon-doble.webp",
+    "/media/categorias/inicio/anime-urbana-doble.webp"
   ]
 }

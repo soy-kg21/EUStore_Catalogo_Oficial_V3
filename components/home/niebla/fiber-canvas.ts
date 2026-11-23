@@ -1,3 +1,4 @@
+import {trackSceneTouch} from './scene-touch';
 import {drawLettering, fiberTiming, readSceneProgress, sceneCopy, smooth} from './scene-timing';
 
 const stripWidth = 3;
@@ -22,6 +23,7 @@ export function mountFiberCanvas(root: HTMLElement, signal: AbortSignal) {
   const copy = sceneCopy(root,closing);
   let visible = false;
   let frameId = 0;
+  let contactX = -1000, contactY = 0, lastTouch = -Infinity;
   let width = 1, height = 1, pinnedTop = 0, travel = 1;
 
   function measure() {
@@ -43,9 +45,9 @@ export function mountFiberCanvas(root: HTMLElement, signal: AbortSignal) {
     schedule();
   }
 
-  function drawFibers(layer: HTMLCanvasElement, entering: number, leaving: number, salt: number) {
+  function drawFibers(layer: HTMLCanvasElement, entering: number, leaving: number, salt: number, contact: number) {
     if (!context || entering === 0 || leaving === 1) return;
-    if (entering === 1 && leaving === 0) {
+    if (entering === 1 && leaving === 0 && contact === 0) {
       context.globalAlpha = 1;
       context.drawImage(layer,0,0);
       return;
@@ -57,7 +59,9 @@ export function mountFiberCanvas(root: HTMLElement, signal: AbortSignal) {
       const drop = smooth(delay,delay+.43,leaving);
       const rise = smooth(delay,delay+.43,entering);
       const slice = Math.min(stripWidth,width-x);
-      const offset = (drop*drop*1.13 - (1-rise)**2*.91)*height;
+      const near = Math.max(0,1-Math.abs(x-contactX)/(width*.28));
+      const ripple = near*near*contact*Math.sin(x*.77+salt)*(.028+contactY*.042);
+      const offset = (drop*drop*1.13 - (1-rise)**2*.91+ripple)*height;
       const alpha = (1-smooth(.58,1,drop))*smooth(0,.35,rise);
       if (alpha <= 0 || Math.abs(offset) >= height) continue;
       const tail = height*.028*(drop+1-rise);
@@ -69,23 +73,25 @@ export function mountFiberCanvas(root: HTMLElement, signal: AbortSignal) {
       context.drawImage(layer,x,0,slice,height,x,offset,slice,height);
     }
   }
-  function paint() {
+  function paint(now=performance.now()) {
     frameId = 0;
     if (!context || !visible || signal.aborted || document.hidden) return;
     const progress = readSceneProgress(root,height,pinnedTop,travel,closing);
     const timing = fiberTiming(progress,closing);
+    const contact = 1-smooth(.10,.46,(now-lastTouch)/1000);
     copy.update(progress);
     root.style.setProperty('--fiber-dark',String(timing.dark*.73));
     root.style.setProperty('--fiber-zoom',String(closing ? 1.12-.06*progress : 1.06+.1*progress));
     context.clearRect(0,0,width,height);
-    drawFibers(word.canvas,timing.wordIn,timing.wordOut,7);
+    drawFibers(word.canvas,timing.wordIn,timing.wordOut,7,contact);
     if (timing.ghost > 0) {
       context.globalAlpha = timing.ghost;
       context.drawImage(word.canvas,0,0);
     }
-    drawFibers(headline.canvas,timing.titleIn,0,11);
-    drawFibers(subject.canvas,timing.figureIn,timing.figureOut,17);
+    drawFibers(headline.canvas,timing.titleIn,0,11,contact*.45);
+    drawFibers(subject.canvas,timing.figureIn,timing.figureOut,17,contact);
     context.globalAlpha = 1;
+    if(contact>0)schedule();
   }
   function schedule(){
     if (visible && !document.hidden && !frameId) frameId=requestAnimationFrame(paint);
@@ -94,6 +100,14 @@ export function mountFiberCanvas(root: HTMLElement, signal: AbortSignal) {
 
   const intersection = new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;schedule();});
   const resize = new ResizeObserver(measure);
+  trackSceneTouch(frame,signal,touch=>{
+    if(!visible)return;
+    const bounds=frame.getBoundingClientRect();
+    contactX=touch.clientX-bounds.left;
+    contactY=Math.max(0,Math.min(1,(touch.clientY-bounds.top)/height));
+    lastTouch=performance.now();
+    schedule();
+  });
   window.addEventListener('scroll',schedule,{passive:true,signal});
   document.addEventListener('visibilitychange',schedule,{signal});
   signal.addEventListener('abort',()=>{

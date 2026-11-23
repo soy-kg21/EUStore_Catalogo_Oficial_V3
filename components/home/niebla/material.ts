@@ -62,7 +62,11 @@ export function mountLens(canvas: HTMLCanvasElement, image: HTMLImageElement, si
     if (visible && !document.hidden && !raf) raf=requestAnimationFrame(render);
     else if (!visible || document.hidden) { cancelAnimationFrame(raf);raf=0;previous=0; }
   }
-  const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;schedule();});
+  const observer=new IntersectionObserver(([entry])=>{
+    visible=entry.isIntersecting;
+    canvas.toggleAttribute('data-in-view',visible);
+    schedule();
+  });
   const size=new ResizeObserver(resize);
   const listeners=new AbortController();
   frame.addEventListener('pointermove',e=>{
@@ -76,6 +80,7 @@ export function mountLens(canvas: HTMLCanvasElement, image: HTMLImageElement, si
     if(disposed)return;
     disposed=true;listeners.abort();observer.disconnect();size.disconnect();cancelAnimationFrame(raf);
     delete canvas.dataset.ready;
+    delete canvas.dataset.inView;
     geometry.dispose();material.dispose();texture.dispose();renderer.dispose();
   }
   function recover(){

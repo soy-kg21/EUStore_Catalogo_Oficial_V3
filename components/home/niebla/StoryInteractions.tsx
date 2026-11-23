@@ -17,6 +17,10 @@ async function loadLens(canvas:HTMLCanvasElement,signal:AbortSignal){
     const {mountLensFallback} = await import('./material-fallback');
     if (!signal.aborted) mountLensFallback(frame,image,signal);
   }
+  if (matchMedia('(pointer: coarse), (max-width: 820px)').matches) {
+    await fallback();
+    return;
+  }
   try {
     const {mountLens} = await import('./material');
     if (!signal.aborted && !mountLens(canvas,image,signal,()=>{void fallback().catch(()=>{});})) await fallback();
@@ -28,7 +32,10 @@ export function MaterialLens(){
   const ref=useNearbyMotion(loadLens);
   return <>
     <canvas ref={ref} className="eu-lens" aria-hidden="true"/>
-    <div className="eu-lens-fallback" aria-hidden="true"/>
+    <div className="eu-lens-fallback" aria-hidden="true">
+      <canvas className="eu-lens-optical"/>
+      <canvas className="eu-lens-magnified"/>
+    </div>
   </>;
 }
 export function ClosingScene({children}:{children:ReactNode}){

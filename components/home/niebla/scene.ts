@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import {createFogField} from './fog-field';
 import {VS, FOG_FS, COMP_FS} from './shaders';
-import {drawLettering, fiberTiming, readSceneProgress, sceneCopy, smooth} from './scene-timing';
+import {trackSceneTouch} from './scene-touch';
+import {clampProgress, drawLettering, fiberTiming, readSceneProgress, sceneCopy, smooth} from './scene-timing';
 
 export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () => void) {
   const canvas = root.querySelector<HTMLCanvasElement>('.niebla-screen')!;
@@ -36,7 +37,7 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     uWordCh:val(new THREE.Vector3(1,0,0)),uBgScale:val(new THREE.Vector2()),
     uRes:val(new THREE.Vector2()),uAspect:val(1),uDpr:val(1),uBgZoom:val(1.06),
     uWordOut:val(0),uWordIn:val(1),uFigOut:val(0),uFigIn:val(1),uFigA:val(1),
-    uFigLod:val(0),uHeadIn:val(0),uGhost:val(0),uDark:val(0),uFray:val(0),uLight:val(0),
+    uTouch:val(0),uFigLod:val(0),uHeadIn:val(0),uGhost:val(0),uDark:val(0),uFray:val(0),uLight:val(0),
   };
   const mist = {tField:val(flow.field),uTime:val(0),uAspect:U.uAspect,uIntroR:val(8),uFront:val(1),uBack:val(1)};
   function pass(fragmentShader: string, uniforms: Record<string,THREE.IUniform>) {
@@ -51,7 +52,7 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
   const imagePass = pass(COMP_FS,U);
   let width = 1, height = 1, pinnedTop = 0, travel = 1, small = false;
   let raf = 0, previous = 0, time = 0, onScreen = false, stopped = false, shaderFailed = false;
-  let lastMove = -Infinity, pointerX = .5, pointerY = .5, speed = 0;
+  let lastMove = -Infinity, pointerX = .5, pointerY = .5, speed = 0, touchInput = false, lastScroll = -1;
   const lifecycle = new AbortController();
   const figureBox = new THREE.Vector4();
   gpu.debug.onShaderError = () => { shaderFailed = true; };
@@ -62,15 +63,16 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     width = Math.round(box.width);
     height = Math.round(box.height);
     if (!width || !height) return;
-    small = width <= 820;
-    const dpr = Math.min(devicePixelRatio || 1, small ? 1.5 : 2);
+    small = width <= 820 || matchMedia('(pointer: coarse)').matches;
+    const dpr = Math.min(devicePixelRatio || 1, small ? 1 : 2);
     const aspect = width / height;
     const bgAspect = background.naturalWidth/background.naturalHeight;
     pinnedTop = parseFloat(getComputedStyle(frame).top) || 0;
     travel = Math.max(1,root.offsetHeight-height);
     gpu.setPixelRatio(dpr);
     gpu.setSize(width,height,false);
-    target.setSize(Math.max(1,Math.round(width*dpr*.4)),Math.max(1,Math.round(height*dpr*.4)));
+    const mistScale = dpr*(small ? .32 : .4);
+    target.setSize(Math.max(1,Math.round(width*mistScale)),Math.max(1,Math.round(height*mistScale)));
     U.uDpr.value = dpr;
     U.uRes.value.set(width*dpr,height*dpr);
     U.uAspect.value = aspect;
@@ -94,6 +96,12 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
   function render(now: number) {
     raf = 0;
     if (stopped || document.hidden || !onScreen) {previous = 0;return;}
+    const scrollPosition = window.scrollY;
+    if (small && scrollPosition === lastScroll && now-lastMove>800 && previous && now-previous<27) {
+      raf=requestAnimationFrame(render);
+      return;
+    }
+    lastScroll=scrollPosition;
     const dt = previous ? Math.max(.001,Math.min(.05,(now-previous)/1000)) : 1/60;
     previous = now;
     time += dt;
@@ -105,17 +113,20 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     box.y += cropped;
     box.z *= 1-cropped;
     box.w *= 1-cropped;
-    const real = now-lastMove < 2500;
+    const contact = touchInput ? 1-smooth(.14,.72,(now-lastMove)/1000) : Number(now-lastMove < 2500);
+    const touch = touchInput ? contact : 0;
     const sweep = Math.sin(time*.4+1.2);
-    const x = real ? pointerX : .5+(small ? .34 : .4)*sweep;
-    const y = real ? pointerY : (small ? .64 : .6)+(small ? .2 : .3)*(1-sweep*sweep)+.02*Math.sin(time*1.3);
+    const idleX = .5+(small ? .34 : .4)*sweep;
+    const idleY = (small ? .64 : .6)+(small ? .2 : .3)*(1-sweep*sweep)+.02*Math.sin(time*1.3);
+    const x = idleX+(pointerX-idleX)*contact;
+    const y = idleY+(pointerY-idleY)*contact;
     const mouse = U.uMouse.value;
-    const ease = 1-Math.exp(-dt*7);
+    const ease = 1-Math.exp(-dt*(7+touch*14));
     const vx = (x-mouse.x)*ease/dt, vy = (y-mouse.y)*ease/dt;
     mouse.x += vx*dt;
     mouse.y += vy*dt;
     speed += (Math.hypot(vx*U.uAspect.value,vy)-speed)*.2;
-    flow.advance(dt,vx,vy,mouse.x,mouse.y,U.uAspect.value);
+    flow.advance(dt,vx*(1+touch*.8),vy*(1+touch*.8),mouse.x,mouse.y,U.uAspect.value);
     mist.uTime.value = time;
     const fade = closing ? 0 : smooth(.3,.8,progress);
     mist.uFront.value = 1-.55*fade;
@@ -130,7 +141,10 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     U.uBgZoom.value = closing ? 1.12-.06*progress : 1.06+.1*progress;
     U.uLight.value = Number(document.documentElement.dataset.theme === 'light');
     const fray = closing ? smooth(.85,1,progress) : (1-smooth(0,.15,progress))*(.4+.6*smooth(0,1.5,time));
-    U.uFray.value = fray*(.45+.55*Math.min(1,speed*1.2))*(small ? .6 : 1)*(real ? 1 : .75);
+    U.uTouch.value = touch;
+    const dragFray = touch*(closing ? smooth(.38,.79,progress) : 1-smooth(.35,.78,progress));
+    U.uFray.value = Math.max(fray*(small ? .65 : 1)*(.75+.25*contact),dragFray*1.18)
+      *(.45+.55*Math.min(1,speed*(1.2+touch*.9)));
     copy.update(progress);
     try {
       gpu.setRenderTarget(target);
@@ -146,8 +160,10 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     raf = requestAnimationFrame(render);
   }
   function schedule() {
-    if (!document.hidden && onScreen && !raf && !stopped) raf = requestAnimationFrame(render);
-    else if (document.hidden || !onScreen) {cancelAnimationFrame(raf);raf=0;previous=0;}
+    const active = !document.hidden && onScreen && !stopped;
+    root.toggleAttribute('data-motion-active',active);
+    if (active && !raf) raf=requestAnimationFrame(render);
+    else if (!active) {cancelAnimationFrame(raf);raf=0;previous=0;}
   }
   const visibility = new IntersectionObserver(([entry]) => {onScreen=entry.isIntersecting;schedule();});
   const resize = new ResizeObserver(measure);
@@ -160,6 +176,7 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     resize.disconnect();
     cancelAnimationFrame(raf);
     delete root.dataset.renderer;
+    delete root.dataset.motionActive;
     if (!preserveMotion) {
       delete root.dataset.motion;
       copy.reset();
@@ -173,11 +190,17 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
   signal.addEventListener('abort',() => stop(),{once:true,signal:lifecycle.signal});
   canvas.addEventListener('webglcontextlost',recover,{once:true,signal:lifecycle.signal});
   document.addEventListener('visibilitychange',schedule,{signal:lifecycle.signal});
-  frame.addEventListener('pointermove',event=>{
+  function move(clientX:number,clientY:number,touch:boolean) {
+    if (!onScreen) return;
     const box=frame.getBoundingClientRect();
-    pointerX=(event.clientX-box.left)/width;
-    pointerY=1-(event.clientY-box.top)/height;
+    pointerX=clampProgress((clientX-box.left)/width);
+    pointerY=1-clampProgress((clientY-box.top)/height);
+    touchInput=touch;
     lastMove=performance.now();
+  }
+  trackSceneTouch(frame,lifecycle.signal,touch=>move(touch.clientX,touch.clientY,true));
+  frame.addEventListener('pointermove',event=>{
+    if(event.pointerType!=='touch')move(event.clientX,event.clientY,false);
   },{passive:true,signal:lifecycle.signal});
   root.dataset.motion = '';
   measure();

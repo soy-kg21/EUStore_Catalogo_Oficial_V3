@@ -33,7 +33,7 @@ uniform sampler2D tBg,tFog,tText,tFig;
 uniform vec2 uRes,uBgScale,uMouse;
 uniform vec4 uFig;
 uniform vec3 uWordCh;
-uniform float uLight; uniform float uDpr,uAspect,uBgZoom,uFigLod,uWordOut,uWordIn,uHeadIn,uFigOut,uFigIn,uFray,uDark,uFigA,uGhost;
+uniform float uLight,uTouch; uniform float uDpr,uAspect,uBgZoom,uFigLod,uWordOut,uWordIn,uHeadIn,uFigOut,uFigIn,uFray,uDark,uFigA,uGhost;
 float h1(float n){return fract(sin(n)*43758.5453123);}
 float vn1(float x){float i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(h1(i),h1(i+1.),f);}
 // Hilos: cada columna de 1,6 px cae (salida) o llega desde arriba (entrada) con un retardo por ruido.
@@ -59,7 +59,7 @@ vec4 fig(vec2 p){
 void main(){
   vec2 uv=vUv;
   vec4 fg=texture2D(tFog,uv);
-  vec2 buv=(uv-.5)*uBgScale/uBgZoom+.5-(uMouse-.5)*.012;
+  vec2 buv=(uv-.5)*uBgScale/uBgZoom+.5-(uMouse-.5)*(.012+.035*uTouch);
   vec3 col=texture2D(tBg,buv).rgb;
   float l=dot(col,vec3(.299,.587,.114));
   col=pow(mix(vec3(l),col,.12),vec3(1.18))*.78;
