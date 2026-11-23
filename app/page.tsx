@@ -1,162 +1,103 @@
+import Link from 'next/link';
+import {ArrowUpRight, Layers, MessageCircle, Truck} from 'lucide-react';
 import {collectionOf} from '@/lib/catalog-presentation.mjs';
-import ServiceAnnouncements from '@/components/home/ServiceAnnouncements';
-import Lookbook from '@/components/home/Lookbook';
+import {getProducts} from '@/lib/products';
+import {categories, money, wa} from '@/lib/config';
 import {resolveLooks} from '@/lib/looks';
+import {jsonLd, siteSchema} from '@/lib/seo';
+import ServiceAnnouncements from '@/components/home/ServiceAnnouncements';
 import CategoryVisual from '@/components/home/CategoryVisual';
+import Lookbook from '@/components/home/Lookbook';
+import ProductCard from '@/components/store/ProductCard';
 import SocialLinks from '@/components/store/SocialLinks';
 import NieblaHero from '@/components/home/niebla/NieblaHero';
-import EditorialVideo from '@/components/experience/EditorialVideo';
-import Link from 'next/link';
-import {
-
-  ArrowRight,
-  ArrowUpRight,
-  Layers,
-  MessageCircle,
-  Truck,
-} from 'lucide-react';
-import HomeMotion from '@/components/home/HomeMotion';
-import ProductCard from '@/components/store/ProductCard';
-import { categories, wa, money } from '@/lib/config';
-import { getProducts } from '@/lib/products';
-import {discount} from '@/lib/product-display';
-import { jsonLd, siteSchema } from '@/lib/seo';
+import {ClosingScene, MaterialLens, StoryInteractions} from '@/components/home/niebla/StoryInteractions';
+import '@/components/home/niebla/story.css';
 
 export default async function Home() {
   const all = await getProducts();
   const looks = resolveLooks(all);
-  const featured = ['oversize','nacionales','conjuntos-cortos','importadas'].flatMap(collection=>{
-    const rows=all.filter(product=>collectionOf(product)===collection);
-    const product=rows.find(product=>product.featured)||rows[0];
-    return product?[product]:[];
+  const featured = ['oversize','nacionales','conjuntos-cortos','importadas'].flatMap(collection => {
+    const rows = all.filter(product => collectionOf(product) === collection);
+    const product = rows.find(product => product.featured) ?? rows[0];
+    return product ? [product] : [];
   });
+  const groups = categories.flatMap(category => {
+    const rows = all.filter(product => product.category === category.slug);
+    if (!rows.length) return [];
+    const priced = rows.filter(product => !product.pricingPending && product.price > 0);
+    return [{...category, count: rows.length, image: rows[0].images[0],
+      from: priced.length ? Math.min(...priced.map(product => product.price)) : null}];
+  });
+  const shoe = all.find(product => product.slug === 'vans-old-skool-negro-blanco');
+  return <main id="contenido" className="home-story niebla-home" data-home-story>
+    <StoryInteractions />
+    <NieblaHero />
 
-  return (
-    <>
-    <main id="contenido" className="home-story niebla-home" data-home-story>
-      <HomeMotion />
-
-      <NieblaHero />
-
-      <ServiceAnnouncements />
-
-      <section className="category-story" id="categorias" aria-labelledby="category-title">
-        <div className="category-story-intro" data-reveal>
-          <p className="story-kicker"><span /> EXPLORA POR CATEGORÍA</p>
-          <div>
-            <h2 id="category-title">ENCUENTRA TU ESENCIA.</h2>
-            <p>Descubre la colección que habla por ti.</p>
-          </div>
-          <span className="category-story-index">02 — 05</span>
-        </div>
-
-        <div className="category-rail" aria-label="Categorías disponibles">
-          {categories.map((category, index) => {
-            const products = all.filter((item) => item.category === category.slug);
-            const product = products.find((item) => item.featured) ?? products[0];
-            if (!product) return null;
-            const lowest=products.filter(p=>!p.pricingPending).sort((a,b)=>a.price-b.price)[0];
-            const maxOff=Math.max(...products.map(discount));
-
-            return (
-              <Link
-                className="story-category-card"
-                key={category.slug}
-                href={`/categoria/${category.slug}`}
-                data-reveal
-              >
-                <CategoryVisual category={category.slug} fallback={product.images[0]} />
-                <span className="story-category-overlay" />
-                <div className="story-category-top">
-                  <span>0{index + 1}</span>
-                  <span>{maxOff>0?`HASTA −${maxOff}%`:`${products.length} REFERENCIAS`}</span>
-                </div>
-                <div className="story-category-copy">
-                  <p>{category.detail}</p>
-                  <h3>{category.name}</h3><p className="category-benefit">Envío incluido · Contra entrega*</p>{lowest&&<p className="category-price">Desde {money(lowest.price)} <small>COP</small></p>}
-                </div>
-                <span className="story-category-action" aria-hidden="true">
-                  VER COLECCIÓN <ArrowUpRight size={18} />
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-
-        <div className="category-scroll-hint">
-          <span>ELIGE TU COLECCIÓN</span><i aria-hidden="true" /><span>*Condiciones de envío y pago según cantidad. <Link href="/contacto">Consultar condiciones</Link></span>
-        </div>
-      </section>
-
-      <section className="editorial-selection" aria-labelledby="featured-title">
-        <div className="editorial-heading" data-reveal>
-          <div>
-            <p className="story-kicker"><span /> CURADURÍA EVOLUCIÓN</p>
-            <h2 id="featured-title">PIEZAS QUE<br />MARCAN EL RITMO.</h2>
-          </div>
-          <div className="editorial-heading-note">
-            <p>Una selección para construir el look completo, sin perder tu identidad.</p>
-            <Link href="/catalogo">VER TODO <ArrowRight size={17} /></Link>
-          </div>
-        </div>
-
-        <div className="eu-curation-film">
-          <EditorialVideo
-            desktop="/media/curaduria/curaduria-pc-original.mp4"
-            mobile="/media/curaduria/curaduria-mobile-original.mp4"
-            desktopPoster="/media/curaduria/curaduria-pc-original.webp"
-            mobilePoster="/media/curaduria/curaduria-mobile-original.webp"
-            label="Looks urbanos en una escena nocturna"
-          />
-          <div className="eu-curation-copy">
-            <p className="story-kicker"><span /> CURADURÍA / EVOLUCIÓN</p>
-            <h3>LA CALLE ES<br />TU ESCENARIO.</h3>
-            <Link className="story-button story-button-light" href="/catalogo">
-              ENCUENTRA TU LOOK <ArrowUpRight size={19} aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-
-        <div className="product-grid editorial-product-grid">
-          {featured.map((product, index) => (
-            <div key={product.id} data-reveal className={`editorial-product editorial-product-${index + 1}`}>
-              <ProductCard product={product} priority={index < 2} />
+    <section className="eu-collection eu-chapter" id="categorias" aria-labelledby="category-title">
+      <div className="eu-collection-pin">
+        <div className="eu-running"><span>Colección / Evolución Urbana</span><span>{String(groups.length).padStart(2,'0')} categorías</span></div>
+        <div className="eu-collection-window">
+          <div className="eu-collection-track">
+            <div className="eu-collection-intro">
+              <h2 className="eu-display" id="category-title">De pies<br /><em>a cabeza.</em></h2>
+              <p>Elige tu silueta, encuentra tu par y arma el conjunto.</p>
             </div>
-          ))}
+            {groups.map((group,index) => <Link prefetch={false} href={'/categoria/'+group.slug} key={group.slug} className="eu-collection-card">
+              <div className="eu-collection-photo"><CategoryVisual category={group.slug} fallback={group.image} /></div>
+              <div className="eu-card-caption"><small>{String(index+1).padStart(2,'0')}</small><h3>{group.name}</h3><ArrowUpRight size={20}/></div>
+              <p>{group.from !== null ? 'Desde '+money(group.from)+' COP' : group.detail}</p>
+            </Link>)}
+          </div>
         </div>
-      </section>
+        <div className="eu-rail-progress" aria-hidden="true"><i /></div>
+      </div>
+    </section>
 
-      <section className="look-story lookbook-story" aria-labelledby="look-title">
-        <div className="look-story-number" aria-hidden="true">04</div>
-        <div className="lookbook-heading">
-          <div><p className="story-kicker"><span /> EL ARTE DE COMBINAR</p>
-            <h2 id="look-title">COMBINA CON<br /><em>INTENCIÓN.</em></h2></div>
-          <p>Ideas para inspirarte.<br />Tu manera de llevarlas.</p>
+    <section className="eu-material" aria-labelledby="material-title">
+      <div className="eu-material-pin">
+        <img className="eu-material-photo" src="/niebla/zapatilla-lluvia.webp" alt="Detalle editorial de una zapatilla negra con franja blanca, cordones y gotas de agua." loading="lazy" />
+        <MaterialLens />
+        <div className="eu-material-copy"><p className="eu-label">Materiales / Zapatillas</p>
+          <h2 id="material-title" className="eu-display">Bajo la lluvia.<br /><em>Cada puntada.</em></h2>
+          <Link prefetch={false} className="eu-text-link" href={shoe ? '/producto/'+shoe.slug : '/categoria/zapatillas'}>
+            {shoe ? shoe.name : 'Ver zapatillas'} <ArrowUpRight size={17}/>
+          </Link>
         </div>
-        {looks.length ? <Lookbook looks={looks}/> : <div className="lookbook"><p>Descubre las piezas para construir tu próximo look.</p><Link className="story-button" href="/catalogo">EXPLORAR CATÁLOGO <ArrowUpRight size={19}/></Link></div>}
-        <div className="lookbook-benefits">
-          <span><MessageCircle/>Asesoría para elegir tu talla</span>
-          <span><Layers/>Beneficios según tu selección</span>
-          <span><Truck/>Entrega y disponibilidad por confirmar</span>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="home-final-cta" data-reveal>
-        <p>¿NO SABES POR DÓNDE EMPEZAR?</p>
-        <h2>ENCUENTRA TU<br />PRÓXIMA EVOLUCIÓN.</h2>
-        <Link className="story-button" href={wa("Hola, quiero asesoría para armar mi próximo look.")} target="_blank" rel="noopener noreferrer">
-          HABLAR CON UN ASESOR <ArrowUpRight size={19} />
-        </Link>
-        <SocialLinks /><span>05 — 05</span>
-      </section>
+    <section className="eu-stats eu-chapter" aria-label="El catálogo general en cifras">
+      <p className="eu-label">El catálogo, en cifras</p>
+      <dl>{groups.map(group => <div key={group.slug}><dt>{group.name}</dt><dd>
+        <span data-total={group.count} aria-hidden="true">{group.count.toLocaleString('es-CO')}</span><small aria-hidden="true">refs.</small>
+        <span className="sr-only">{group.count} referencias</span>
+      </dd></div>)}</dl>
+    </section>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: jsonLd(siteSchema()),
-        }}
-      />
-    </main>
-    </>
-  );
+    <section className="eu-pieces eu-chapter" aria-labelledby="featured-title">
+      <div className="eu-section-heading"><div><p className="eu-label">Curaduría / Evolución Urbana</p>
+        <h2 className="eu-display" id="featured-title">Piezas <em>({String(featured.length).padStart(2,'0')})</em></h2></div>
+        <Link className="eu-text-link" href="/catalogo">Explorar catálogo <ArrowUpRight size={18}/></Link>
+      </div>
+      <div className="eu-piece-grid">{featured.map(product => <div className="eu-piece" key={product.id}><ProductCard product={product} /></div>)}</div>
+    </section>
+
+    <section className="look-story lookbook-story eu-looks eu-chapter" aria-labelledby="look-title">
+      <div className="eu-section-heading"><div><p className="eu-label">Lookbook / El arte de combinar</p>
+        <h2 id="look-title" className="eu-display">Combina con<br/><em>intención.</em></h2></div>
+        <p>Explora las piezas de cada look y consulta tu talla.</p></div>
+      {looks.length ? <Lookbook looks={looks}/> : <Link className="eu-text-link" href="/catalogo">Explorar catálogo <ArrowUpRight size={18}/></Link>}
+      <div className="lookbook-benefits"><span><MessageCircle/>Asesoría para elegir tu talla</span><span><Layers/>Beneficios según tu selección</span><span><Truck/>Entrega y disponibilidad por confirmar</span></div>
+    </section>
+    <ServiceAnnouncements />
+
+    <ClosingScene>
+      <div className="eu-close-title"><p className="eu-label">Asesoría de estilo</p><h2 className="eu-display" id="close-title">Encuentra tu <br/>próxima <br/>evolución.</h2></div>
+      <div className="eu-close-contact"><p>¿Qué look tienes en mente? Hablemos de tallas, combinaciones y envíos.</p>
+        <a className="niebla-button" href={wa('Hola, quiero asesoría para armar mi próximo look.')} target="_blank" rel="noopener noreferrer">Hablar con un asesor <ArrowUpRight size={18}/></a></div>
+    </ClosingScene>
+    <section className="eu-social eu-chapter" aria-label="Redes y contacto de Evolución Urbana"><SocialLinks /></section>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{__html:jsonLd(siteSchema())}}/>
+  </main>;
 }

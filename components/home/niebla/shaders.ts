@@ -108,3 +108,31 @@ void main(){
   col=mix(col,col*col*(3.-2.*col),.35);
   gl_FragColor=vec4(max(col-.01,0.),1.);
 }`;
+export const FAB_FS = `
+varying vec2 vUv;
+uniform sampler2D tFab;
+uniform vec2 uRes,uFabScale,uLens,uMouse;
+uniform float uDpr,uAspect,uLensR,uZoom,uProg;
+void main(){
+  vec2 uv=vUv;
+  float z=1.14-.1*uProg;
+  vec2 par=(uMouse-.5)*.012;
+  vec2 fuv=(uv-.5)*uFabScale/z+.5-par;
+  vec2 lc=(uLens-.5)*uFabScale/z+.5-par;
+  vec2 dpx=(uv-uLens)*uRes;
+  float R=uLensR*uDpr, r=length(dpx)/R;
+  vec3 col=texture2D(tFab,fuv).rgb*.72;
+  float e=smoothstep(.5,1.,r);
+  vec2 dir=dpx/max(length(dpx),1.);
+  vec2 luv=lc+(fuv-lc)/uZoom*(1.+.4*e*e);
+  vec2 off=dir*uFabScale*e*e*.007;
+  vec3 lcol=vec3(texture2D(tFab,luv+off).r,texture2D(tFab,luv).g,texture2D(tFab,luv-off).b)*1.08;
+  lcol*=1.-.28*e*e;
+  lcol+=vec3(.5)*smoothstep(.93,.985,r)*(1.-smoothstep(.985,1.,r))*.55;
+  vec2 sp=dpx/R-vec2(-.42,.46); lcol+=vec3(.16)*exp(-dot(sp,sp)*9.);
+  col*=1.-.4*(1.-smoothstep(1.,1.32,r))*step(1.,r);
+  col=mix(col,lcol,1.-smoothstep(.992,1.,r));
+  float v=length((uv-.5)*vec2(uAspect*.75,1.));
+  col*=1.-.55*smoothstep(.45,1.1,v);
+  gl_FragColor=vec4(max(col-.008,0.),1.);
+}`;

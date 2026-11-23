@@ -14,7 +14,8 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
   const background = get<HTMLImageElement>('.niebla-land');
   const figure = get<HTMLImageElement>('.niebla-figure');
   const opening = [...root.querySelectorAll<HTMLElement>('.niebla-opening')];
-  const endingLink = get<HTMLAnchorElement>('.niebla-end');
+  const closing = root.hasAttribute('data-closing');
+  const endingLink = root.querySelector<HTMLAnchorElement>('.niebla-end');
   await Promise.all([background.decode(), figure.decode(), document.fonts.load('800 100px NieblaArchivo')]);
   if (signal.aborted) return;
 
@@ -100,7 +101,7 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
       const baseline = el.nextElementSibling!.getBoundingClientRect().top-box.top;
       const style = getComputedStyle(el);
       ctx!.font = '800 '+style.fontSize+' NieblaArchivo';
-      ctx!.fillStyle = el.closest('h1') ? '#f00' : '#0f0';
+      ctx!.fillStyle = el.closest('.niebla-word') ? '#f00' : '#0f0';
       ctx!.save();
       ctx!.translate(rect.left-box.left,baseline);
       ctx!.scale(rect.width / Math.max(1,ctx!.measureText(el.textContent!).width),1);
@@ -116,10 +117,11 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
     const dt = previous ? Math.min(.05,(now-previous)/1000) : 1/60;
     previous = now;
     time += dt;
-    const s = Math.max(0, Math.min(1, (scrollY-start)/travel));
+    const progress = closing ? (height+parseFloat(getComputedStyle(frame).top)-root.getBoundingClientRect().top)/(height+travel) : (scrollY-start)/travel;
+    const s = Math.max(0, Math.min(1, progress));
     // The announcement scrolls away before the header pins. Fit the real look
     // above the visible lower edge throughout those first pixels of travel.
-    const cropped = Math.min(.22, Math.max(0,start-scrollY)/height);
+    const cropped = closing ? 0 : Math.min(.22, Math.max(0,start-scrollY)/height);
     const box = U.uFig.value.copy(figureBox);
     box.x += box.z*cropped*.5;
     box.y += cropped;
@@ -147,15 +149,23 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
     U.uBgZoom.value = 1.06+.1*s;
     U.uLight.value = Number(document.documentElement.dataset.theme === 'light');
     U.uFray.value = (1-smooth(0,.15,s))*(.45+.55*Math.min(1,speed*1.2))*(.4+.6*smooth(0,1.5,time))*(small ? .6 : 1)*(real ? 1 : .75);
+    if (closing) {
+      U.uWordOut.value = U.uFigOut.value = U.uHeadIn.value = U.uDark.value = U.uGhost.value = 0;
+      U.uWordIn.value = smooth(.2,.75,s);
+      U.uFigIn.value = smooth(.35,.98,s);
+      U.uBgZoom.value = 1.12-.06*s;
+      U.uFray.value = smooth(.85,1,s)*(.45+.55*Math.min(1,speed))* .75;
+      mist.uFront.value = mist.uBack.value = 1;
+    }
     if (s !== previousScroll) {
       previousScroll = s;
       const open = 1-smooth(0,.07,s);
-      const end = smooth(.88,1,s);
+      const end = closing ? smooth(.72,.90,s) : smooth(.88,1,s);
       root.style.setProperty('--opening',String(open));
       root.style.setProperty('--ending',String(end));
       opening.forEach(el => {if(el.inert !== (open < .1)) el.inert = open < .1;});
-      endingLink.inert = end < .1;
-      root.toggleAttribute('data-ending',!endingLink.inert);
+      if (endingLink) endingLink.inert = end < .1;
+      root.toggleAttribute('data-ending',end >= .1);
     }
     gpu.setRenderTarget(target);
     gpu.render(fogPass.scene,camera);
@@ -181,7 +191,7 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
     root.style.removeProperty('--opening');
     root.style.removeProperty('--ending');
     opening.forEach(el => {el.inert=false;});
-    endingLink.inert=false;
+    if (endingLink) endingLink.inert=false;
     for(const resource of [ink,terrain,subject,flow.field,target,geometry,fogPass.material,imagePass.material,gpu]) resource.dispose();
   }
   signal.addEventListener('abort',stop,{once:true});
