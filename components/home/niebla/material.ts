@@ -22,7 +22,7 @@ export function mountLens(canvas: HTMLCanvasElement, image: HTMLImageElement, si
   const camera = new THREE.OrthographicCamera(-1,1,1,-1,0,1);
   const pointer = new THREE.Vector2();
   let lastMove = -Infinity, raf = 0, previous = 0, time = 0, visible = false;
-  const section = frame.parentElement!;
+  const section = frame.closest<HTMLElement>('.eu-material')!;
   function resize() {
     const width=frame.clientWidth,height=frame.clientHeight;
     if (!width || !height) return;

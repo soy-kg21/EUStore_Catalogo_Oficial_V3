@@ -66,7 +66,7 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
   const lens=frame.querySelector<HTMLElement>('.eu-lens-fallback')!;
   const glass=lens.querySelector<HTMLCanvasElement>('.eu-lens-optical')!;
   const backup=lens.querySelector<HTMLCanvasElement>('.eu-lens-magnified')!;
-  const section=frame.parentElement!;
+  const section=frame.closest<HTMLElement>('.eu-material')!;
   const software=backup.getContext('2d',{alpha:false});
   let optical:ReturnType<typeof createOpticalLens>;
   try {optical=createOpticalLens(glass,image);} catch {optical=undefined;}

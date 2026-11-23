@@ -8,6 +8,34 @@ html[data-theme=light] .niebla-home {
   --chapter-line:#16201338;--chapter-accent:#476300;
 }
 .eu-chapter {background:var(--chapter-bg);color:var(--chapter-fg)}
+.eu-scene-range {display:contents}
+.eu-material-legend {position:absolute;inset:0;pointer-events:none}
+html.lenis.lenis-smooth {scroll-behavior:auto!important}
+/* Give the sticky frame room on both sides of the chapter. Its parent's moving
+   edge uncovers the already framed photograph, then covers it on the way out. */
+@media(prefers-reduced-motion:no-preference) {
+  .niebla-home :is(.eu-collection[data-pinned],.eu-material,.eu-closing[data-motion]) {
+    overflow:clip;
+  }
+  .niebla-home :is(.eu-collection[data-pinned],.eu-material,.eu-closing[data-motion]) > .eu-scene-range {
+    display:block;position:absolute;inset:-100svh 0;
+  }
+  .niebla-home .eu-collection[data-pinned] > .eu-scene-range {bottom:0}
+  .niebla-home .eu-material-legend {position:sticky;inset:auto;top:0;height:100svh}
+  .niebla-home .eu-collection[data-pinned] .eu-collection-pin,
+  .niebla-home .eu-material .eu-material-pin,
+  .niebla-home .eu-closing[data-motion] .niebla-frame {
+    position:sticky;top:0;height:100svh;
+  }
+  .niebla-home .eu-collection[data-pinned] {
+    height:calc(100svh + var(--travel,0px) + var(--rail-hold,35svh));
+  }
+  .niebla-home .eu-collection-pin {padding-top:var(--site-header-height,82px)}
+  .niebla-home .eu-running {top:calc(var(--site-header-height,82px) + 2%)}
+  .niebla-home .eu-material-copy {top:max(17%,var(--site-header-height,82px) + 14px)}
+  .niebla-home .niebla.eu-closing[data-motion] {height:100svh}
+  .niebla-home .eu-closing[data-motion] .eu-closing-copy {top:calc(var(--site-header-height,82px) + 3%)}
+}
 .niebla-home .eu-display {
   font:800 clamp(56px,7.4vw,144px)/.9 NieblaArchivo,'Arial Narrow',sans-serif;
   letter-spacing:-.02em;text-transform:uppercase;margin:0;color:inherit;
@@ -29,8 +57,8 @@ html[data-theme=light] .niebla-home {
 .eu-collection-intro p,.eu-section-heading>p {font-size:clamp(15px,1.15vw,20px);line-height:1.45;max-width:27ch;color:var(--chapter-muted)}
 .eu-collection-intro p {margin-top:clamp(20px,4vh,42px)}
 .eu-collection-card {display:block;width:clamp(164px,min(30vw,36svh),405px);color:inherit}
-.eu-collection-photo {position:relative;height:clamp(190px,54svh,660px);overflow:hidden;background:#202221;clip-path:inset(0 var(--cut,0%) 0 0)}
-.eu-collection-photo .category-frames {position:absolute;inset:0;transform:scale(var(--zoom,1));filter:blur(var(--blur,0px)) brightness(var(--brightness,1));}
+.eu-collection-photo {position:relative;height:clamp(190px,min(63svh,var(--panel-height) - 138px),700px);overflow:hidden;background:#202221;clip-path:inset(0 var(--cut,0%) 0 0)}
+.eu-collection-photo .category-frames {position:absolute;inset:0;transform:scale(var(--zoom,1));filter:var(--photo-filter,none)}
 .eu-collection-photo img {object-fit:cover;object-position:center}
 .niebla-home .eu-collection-card:not([data-slide-in-view]) .category-frames.has-slides img {animation-play-state:paused}
 @media(min-width:821px) {
@@ -105,6 +133,8 @@ html[data-theme=light] .niebla-home {
 .eu-closing[data-motion] .eu-closing-copy {opacity:var(--ending,0)}
 .eu-closing[data-motion]:not([data-ending]) .eu-closing-copy:not(:focus-within) {pointer-events:none}
 .eu-closing .eu-closing-copy:focus-within {opacity:1}
+.eu-closing[data-motion] .eu-closing-copy:not(:focus-within) .eu-close-title {transform:translateY(calc((1 - var(--ending,0)) * 24px))}
+.eu-closing[data-motion] .eu-closing-copy:not(:focus-within) .eu-close-contact {transform:translateY(calc((1 - var(--ending,0)) * 40px))}
 .eu-closing .eu-label {color:#e2e5de;text-shadow:0 1px 6px #000}
 .eu-close-title .eu-display {font-size:clamp(48px,5.5vw,105px);text-shadow:0 2px 20px #0005}
 .eu-close-contact {max-width:min(25vw,350px);font-size:clamp(16px,1.3vw,22px);line-height:1.4;text-shadow:0 1px 8px #111}
@@ -134,7 +164,7 @@ html[data-theme=light] .niebla-home {
   .eu-section-heading>.eu-text-link,.eu-section-heading>p {margin-top:16px}
   .eu-collection-intro {width:69vw}
   .eu-collection-card {width:min(63vw,34svh)}
-  .eu-collection-photo {height:min(51svh,92vw)}
+  .eu-collection-photo {height:min(56svh,100vw)}
   .eu-material-copy {top:11%}
   .eu-material-pin::after {background:linear-gradient(160deg,#0d1011dc,transparent 70%)}
   .eu-material-copy .eu-display {font-size:clamp(47px,12vw,72px)}

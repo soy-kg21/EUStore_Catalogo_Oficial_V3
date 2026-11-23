@@ -1,5 +1,45 @@
 import {watchFeaturedPiece} from './featured-motion';
 
+async function smoothWheel(signal:AbortSignal) {
+  const {default:Lenis}=await import('lenis');
+  if(signal.aborted) return;
+  const wheel=new Lenis({
+    lerp:.085,wheelMultiplier:.9,syncTouch:false,autoRaf:false,
+    virtualScroll:({event,deltaX,deltaY})=>event.type==='wheel' && !event.ctrlKey
+      && Math.abs(deltaY)>Math.abs(deltaX) && !document.body.hasAttribute('data-scroll-locked'),
+    prevent:node=>node.matches('[role=dialog],textarea,select,[contenteditable=true]'),
+  });
+  let frame=0;
+  function advance() {
+    // An anchor, focus change or scrollbar drag can move the document mid-burst.
+    if(wheel.isScrolling==='smooth' && Math.abs(wheel.actualScroll-wheel.animatedScroll)>2) {
+      interrupt();
+      return;
+    }
+    frame=0;
+    wheel.raf(performance.now());
+    if(wheel.isScrolling==='smooth') frame=requestAnimationFrame(advance);
+  }
+  wheel.on('virtual-scroll',()=>{
+    if(frame) return;
+    if(Math.abs(wheel.animatedScroll-wheel.actualScroll)>1) wheel.resize();
+    // Prime the clock before accepting a new wheel burst after an idle period.
+    wheel.raf(performance.now());
+    frame=requestAnimationFrame(advance);
+  });
+  function interrupt() {
+    if(!frame) return;
+    cancelAnimationFrame(frame);
+    frame=0;
+    wheel.stop();
+    wheel.start();
+  }
+  document.addEventListener('pointerdown',interrupt,{capture:true,passive:true,signal});
+  document.addEventListener('keydown',interrupt,{capture:true,signal});
+  document.addEventListener('visibilitychange',interrupt,{signal});
+  signal.addEventListener('abort',()=>{cancelAnimationFrame(frame);wheel.destroy();},{once:true});
+}
+
 const clamp=(n:number)=>Math.max(0,Math.min(1,n));
 const ease=(n:number)=>1-(1-clamp(n))**3;
 const format=new Intl.NumberFormat('es-CO');
@@ -56,13 +96,33 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
 
   const controller=new AbortController();
   const {signal}=controller;
-  if(fine) cursorRing(signal);
+  const entrances = new Map<Element,Animation>();
+  const chapterEntries = new IntersectionObserver(entries=>{
+    for (const entry of entries) {
+      entrances.get(entry.target)?.cancel();
+      entrances.delete(entry.target);
+      if (!entry.isIntersecting || !entry.intersectionRatio) continue;
+      const offset = entry.boundingClientRect.top < innerHeight*.3 ? -18 : 24;
+      const animation = entry.target.animate([
+        {opacity:.35,transform:'translate3d(0,'+offset+'px,0)'},
+        {opacity:1,transform:'translate3d(0,0,0)'},
+      ],{duration:540,easing:'cubic-bezier(.16,1,.3,1)'});
+      entrances.set(entry.target,animation);
+    }
+  },{rootMargin:'0px 0px -4% 0px'});
+  for (const element of main.querySelectorAll('.eu-stats > .eu-label,.eu-stats dl > div,.eu-section-heading,.eu-carrier-window,.eu-shipping-note,.eu-shipping + [role=region]')) {
+    chapterEntries.observe(element);
+  }
+  if(fine) {
+    cursorRing(signal);
+    void smoothWheel(signal).catch(()=>{/* Keep the browser's native wheel if the chunk is unavailable. */});
+  }
   const pieces=[...pieceSection.querySelectorAll<HTMLElement>('.eu-piece')].map(piece=>({
     piece, motion:watchFeaturedPiece(piece,fine,signal),
   }));
-  let travel=0, railRate=1, top=0, raf=0, lastX=-1, lastScroll=window.scrollY;
+  let travel=0, railRate=1, top=0, headerHeight=0, raf=0, lastX=-1, lastScroll=window.scrollY;
   let collectionWasVisible=false, piecesWereVisible=false;
-  let cardGeometry:{left:number;width:number}[]=[];
+  let cardGeometry:{left:number;width:number;reveal:number}[]=[];
 
   function paint() {
     raf=0;
@@ -82,12 +142,14 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
         cards.forEach((card,index)=>{
           const {left,width:cardWidth}=cardGeometry[index];
           const start=left-x;
-          const progress=ease((width-start)/(width*.4));
+          const progress=ease((width-start)/(width*.5));
           card.toggleAttribute('data-slide-in-view',start<width && start+cardWidth>0);
+          if(progress===cardGeometry[index].reveal) return;
+          cardGeometry[index].reveal=progress;
           card.style.setProperty('--cut',((1-progress)*100)+'%');
-          card.style.setProperty('--blur',((1-progress)*14)+'px');
+          card.style.setProperty('--photo-filter',progress>.995 ? 'none' :
+            'blur('+((1-progress)*14)+'px) brightness('+(.55+.45*progress)+')');
           card.style.setProperty('--zoom',String(1.25-.25*progress));
-          card.style.setProperty('--brightness',String(.55+.45*progress));
         });
       }
     } else if(collectionWasVisible) {
@@ -108,7 +170,7 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     const piecesVisible=pieceBounds.top<bottom && pieceBounds.bottom>top;
     if(piecesVisible) {
       const bounds=pieces.map(({piece})=>piece.getBoundingClientRect());
-      pieces.forEach(({motion},index)=>motion.update(bounds[index],top,bottom,direction));
+      pieces.forEach(({motion},index)=>motion.update(bounds[index],headerHeight,bottom,direction));
     } else if(piecesWereVisible) {
       pieces.forEach(({motion})=>motion.suspend());
     }
@@ -134,21 +196,34 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     if(signal.aborted) return;
     strip.dataset.pinned='';
     top=parseFloat(getComputedStyle(pin).top)||0;
-    railRate=pin.clientWidth<=820 ? 1.19 : 1;
+    headerHeight=parseFloat(getComputedStyle(main).getPropertyValue('--site-header-height'))||82;
     travel=Math.max(0,track.scrollWidth-pin.clientWidth);
-    cardGeometry=cards.map(card=>({left:card.offsetLeft,width:card.offsetWidth}));
+    cardGeometry=cards.map(card=>({left:card.offsetLeft,width:card.offsetWidth,reveal:-1}));
     lastX=-1;
-    strip.style.setProperty('--travel',(travel/railRate)+'px');
+    strip.style.setProperty('--travel',travel+'px');
+    railRate=travel/Math.max(1,strip.offsetHeight-pin.offsetHeight);
     schedule();
   }
   strip.addEventListener('focusin',event=>{
     const card=(event.target as Element).closest<HTMLElement>('.eu-collection-card');
     if(!card || !card.matches(':focus-visible'))return;
     const pos=card.getBoundingClientRect();
-    if(pos.left>=0 && pos.right<=pin.clientWidth)return;
+    const section=strip.getBoundingClientRect();
+    if(pos.left>=0 && pos.right<=pin.clientWidth && pos.top>=section.top && pos.bottom<=section.bottom)return;
     const destination=scrollY+strip.getBoundingClientRect().top-top;
     const reveal=Math.max(0,Math.min(travel,card.offsetLeft-pin.clientWidth*.15));
-    window.scrollTo({top:destination+reveal/railRate,behavior:'instant'});
+    window.scrollTo({top:destination+(railRate ? reveal/railRate : 0),behavior:'instant'});
+  },{signal});
+
+  main.addEventListener('focusin',event=>{
+    const link=event.target;
+    if(!(link instanceof HTMLAnchorElement) || !link.matches(':focus-visible'))return;
+    const chapter=link.closest('.eu-material,.eu-closing');
+    if(!chapter)return;
+    const edge=chapter.getBoundingClientRect(), box=link.getBoundingClientRect();
+    if(box.top<edge.top || box.bottom>edge.bottom) {
+      window.scrollTo({top:scrollY+edge.top,behavior:'instant'});
+    }
   },{signal});
 
   social.dataset.entering='';
@@ -161,6 +236,8 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
   document.addEventListener('visibilitychange',schedule,{signal});
   return ()=>{
     controller.abort();
+    chapterEntries.disconnect();
+    entrances.forEach(animation=>animation.cancel());
     resize.disconnect();
     cancelAnimationFrame(raf);
     delete social.dataset.entering;

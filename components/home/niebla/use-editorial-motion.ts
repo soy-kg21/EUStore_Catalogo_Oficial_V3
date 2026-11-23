@@ -38,8 +38,14 @@ export function useNearbyMotion<T extends HTMLElement>(mount: (node:T,signal:Abo
 
 export async function loadEditorialScene(root: HTMLElement, signal: AbortSignal) {
   const images = Array.from(root.querySelectorAll<HTMLImageElement>('.niebla-land,.niebla-figure'));
-  await Promise.all([...images.map(image=>image.decode()),document.fonts.load('800 100px NieblaArchivo')]);
+  try {
+    await Promise.all([...images.map(image=>image.decode()),document.fonts.load('800 100px NieblaArchivo')]);
+  } catch {
+    if(!signal.aborted)root.dataset.staticScene='';
+    return;
+  }
   if (signal.aborted) return;
+  delete root.dataset.staticScene;
 
   let attempted = false;
   async function useCanvas() {
@@ -52,6 +58,7 @@ export async function loadEditorialScene(root: HTMLElement, signal: AbortSignal)
       // The original image and links remain available if canvas creation fails.
     }
     delete root.dataset.motion;
+    root.dataset.staticScene='';
     sceneCopy(root,root.hasAttribute('data-closing')).reset();
   }
   // Clear the section if the component is removed while switching renderers.

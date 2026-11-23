@@ -121,3 +121,29 @@
   .niebla-top {top:10px;padding-top:6px}
 }
 @media(prefers-reduced-motion:reduce) {.niebla-intro {display:none}}
+
+/* The opening scene fills the space behind the floating home navigation. */
+.niebla-home > .niebla:not([data-closing]) {--screen:100svh}
+/* Reserve the scroll distance before the images decode and the renderer starts.
+   Otherwise a fast first wheel gesture can move Collection by more than a screen. */
+@media (scripting:enabled) and (prefers-reduced-motion:no-preference) {
+  .niebla-home > .niebla:not([data-closing],[data-static-scene]) {height:280svh}
+  .niebla-home > .niebla:not([data-closing],[data-static-scene],[data-motion]) > .niebla-frame {position:sticky;top:0}
+  .niebla-home > .niebla.eu-closing:not([data-static-scene]) {height:100svh}
+}
+.niebla-home > .niebla:not([data-closing])[data-motion] .niebla-frame {top:0}
+.niebla-home .niebla-top {top:calc(var(--site-header-height,82px) + 8px)}
+.niebla[data-renderer=webgl] .niebla-intro {visibility:hidden}
+@media(max-width:580px) and (min-height:600px) {
+  .niebla-home > .niebla:not([data-closing]) .niebla-caption {top:calc(var(--site-header-height,76px) + 54px)}
+  .niebla-home > .niebla:not([data-closing]) .niebla-figure {
+    top:auto;bottom:10%;height:min(69%,calc(var(--screen)*.9 - var(--site-header-height,76px) - 114px));
+  }
+  .niebla-home > .niebla:not([data-motion]):not([data-closing]) .niebla-figure {
+    bottom:auto;top:max(calc(var(--screen)*.21),calc(var(--site-header-height,76px) + 114px));
+    height:min(calc(var(--screen)*.69),calc(var(--screen)*.9 - var(--site-header-height,76px) - 114px));
+  }
+}
+@media(max-height:540px) and (orientation:landscape) {
+  .niebla-home .niebla-top {top:var(--site-header-height,76px)}
+}

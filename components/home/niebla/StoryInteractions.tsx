@@ -41,15 +41,15 @@ export function MaterialLens(){
 export function ClosingScene({children}:{children:ReactNode}){
   const ref=useNearbyMotion(loadEditorialScene);
   return <section className="niebla eu-closing" data-closing ref={ref} aria-labelledby="close-title">
-    <div className="niebla-frame">
+    <div className="eu-scene-range"><div className="niebla-frame">
       <img className="niebla-land" src="/niebla/llanura.webp" alt="" loading="lazy"/>
       <EditorialWordmark/>
       <img className="niebla-figure" src="/niebla/esencial-grafico-modelo.webp"
         alt="Look Esencial gráfico de Evolución Urbana con camiseta oversize blanca, pantalón negro y zapatillas blancas." loading="lazy"/>
       <canvas className="niebla-screen" aria-hidden="true"/>
       <canvas className="niebla-fibers" aria-hidden="true"/>
-      <div className="eu-closing-copy">{children}</div>
-    </div>
+    </div></div>
+    <div className="eu-closing-copy">{children}</div>
   </section>;
 }
 export function StoryInteractions(){

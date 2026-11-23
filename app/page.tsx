@@ -56,7 +56,7 @@ export default async function Home() {
     <NieblaHero />
 
     <section className="eu-collection eu-chapter" id="categorias" aria-labelledby="category-title">
-      <div className="eu-collection-pin">
+      <div className="eu-scene-range"><div className="eu-collection-pin">
         <div className="eu-running"><span>Colección / Evolución Urbana</span><span>{String(collectionCards.length).padStart(2,'0')} categorías</span></div>
         <div className="eu-collection-window">
           <div className="eu-collection-track">
@@ -72,13 +72,15 @@ export default async function Home() {
           </div>
         </div>
         <div className="eu-rail-progress" aria-hidden="true"><i /></div>
-      </div>
+      </div></div>
     </section>
 
     <section className="eu-material" aria-labelledby="material-title">
-      <div className="eu-material-pin">
+      <div className="eu-scene-range"><div className="eu-material-pin">
         <img className="eu-material-photo" src="/niebla/zapatilla-lluvia.webp" alt="Detalle editorial de una zapatilla negra con franja blanca, cordones y gotas de agua." loading="lazy" />
         <MaterialLens />
+      </div></div>
+      <div className="eu-material-legend">
         <div className="eu-material-copy"><p className="eu-label">Detalle de calzado</p>
           <h2 id="material-title" className="eu-display">Costuras<br /><em>y textura.</em></h2>
           <Link prefetch={false} className="eu-text-link" href={shoe ? '/producto/'+shoe.slug : '/categoria/zapatillas'}>

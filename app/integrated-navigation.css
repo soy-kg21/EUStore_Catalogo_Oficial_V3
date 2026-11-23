@@ -11,3 +11,72 @@
 /* Esencia is available from the main navigation on wide screens and the drawer. */
 @media(min-width:1280px){.header .desktop-nav{display:flex;gap:clamp(10px,1.1vw,24px);font-size:clamp(10px,.72vw,14px)}}
 @media(min-width:1151px) and (max-width:1279px){.header .desktop-nav{display:none}.header .mobile-menu{display:flex}.header-actions{margin-left:auto}}
+
+/* The sticky shell reserves one measured height. Only its three islands receive clicks. */
+.header.home-navigation {
+  --nav-height:clamp(78px,10svh,98px);
+  --nav-fill:#151716f5;
+  --nav-edge:#ffffff27;
+  --nav-control:48px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  gap:clamp(8px,1.4vw,25px);
+  height:var(--nav-height)!important;
+  margin-bottom:calc(-1 * var(--nav-height));
+  padding:0 clamp(12px,3.5vw,72px);
+  background:transparent!important;
+  border:0;
+  box-shadow:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  pointer-events:none;
+}
+html[data-theme=light] .header.home-navigation {
+  --nav-fill:#fafaf5f5;
+  --nav-edge:#18201a33;
+  background:transparent!important;
+}
+.home-navigation :is(.brand-logo,.desktop-nav,.header-actions,.mobile-menu) {
+  grid-row:1;
+  align-items:center;
+  min-height:var(--nav-control);
+  border:1px solid var(--nav-edge);
+  border-radius:999px;
+  background:var(--nav-fill);
+  box-shadow:0 4px 16px #080a091a;
+  pointer-events:auto;
+}
+.home-navigation .brand-logo {
+  grid-column:1;justify-self:start;position:static;transform:none;
+  padding:4px clamp(10px,1vw,18px);gap:8px;
+}
+.home-navigation .brand-logo img {width:30px;height:34px}
+.header.home-navigation .desktop-nav {
+  grid-column:2;justify-self:center;gap:2px;padding:4px;
+  font-size:clamp(12px,.88vw,15px);
+}
+.home-navigation .desktop-nav a {
+  display:inline-flex;align-items:center;min-height:38px;padding:0 clamp(7px,.62vw,14px);
+  border-radius:999px;white-space:nowrap;
+}
+.home-navigation .desktop-nav a[aria-current=page] {
+  background:var(--eu-accent);color:#141710;
+}
+.home-navigation .desktop-nav a::after {display:none}
+.home-navigation .desktop-nav a:hover:not([aria-current=page]) {background:var(--nav-edge)}
+.home-navigation .header-actions {grid-column:3;justify-self:end;margin:0;gap:0;padding:2px 4px}
+.home-navigation .header-actions :is(.icon-button,.theme-toggle) {
+  width:44px;height:44px;border:0;background:transparent;
+}
+.home-navigation .header-actions :is(.icon-button,.theme-toggle):hover {background:var(--nav-edge)}
+.home-navigation .mobile-menu {grid-column:2;justify-self:center;width:var(--nav-control)}
+.home-navigation :is(a,button):focus-visible {outline:2px solid currentColor;outline-offset:2px}
+@media(max-width:1279px) {
+  .header.home-navigation {--nav-control:46px}
+}
+@media(max-width:600px) {
+  .header.home-navigation {--nav-height:76px;grid-template-columns:auto auto 1fr;padding:0 10px;gap:6px}
+  .home-navigation .brand-logo {padding:4px 10px}
+  .home-navigation .brand-logo img {width:24px;height:30px}
+  .home-navigation .header-actions {padding:0 2px}
+}

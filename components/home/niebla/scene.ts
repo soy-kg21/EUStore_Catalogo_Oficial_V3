@@ -40,6 +40,9 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     uTouch:val(0),uFigLod:val(0),uHeadIn:val(0),uGhost:val(0),uDark:val(0),uFray:val(0),uLight:val(0),
   };
   const mist = {tField:val(flow.field),uTime:val(0),uAspect:U.uAspect,uIntroR:val(8),uFront:val(1),uBack:val(1)};
+  const intro = root.querySelector('.niebla-intro')?.getAnimations()[0];
+  const introStart = intro && typeof intro.currentTime==='number'
+    ? performance.now()-intro.currentTime : -Infinity;
   function pass(fragmentShader: string, uniforms: Record<string,THREE.IUniform>) {
     const scene = new THREE.Scene();
     const material = new THREE.ShaderMaterial({vertexShader:VS,fragmentShader,uniforms,depthTest:false,depthWrite:false});
@@ -53,6 +56,7 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
   let width = 1, height = 1, pinnedTop = 0, travel = 1, small = false;
   let raf = 0, previous = 0, time = 0, onScreen = false, stopped = false, shaderFailed = false;
   let lastMove = -Infinity, pointerX = .5, pointerY = .5, speed = 0, touchInput = false, lastScroll = -1;
+  let visualProgress = -1;
   const lifecycle = new AbortController();
   const figureBox = new THREE.Vector4();
   gpu.debug.onShaderError = () => { shaderFailed = true; };
@@ -105,7 +109,11 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     const dt = previous ? Math.max(.001,Math.min(.05,(now-previous)/1000)) : 1/60;
     previous = now;
     time += dt;
-    const progress = readSceneProgress(root,height,pinnedTop,travel,closing);
+    const destination = readSceneProgress(root,height,pinnedTop,travel,closing);
+    // Soften short wheel steps. Touch, restored positions and long jumps follow the document directly.
+    if (small || visualProgress<0 || Math.abs(destination-visualProgress)>.18) visualProgress=destination;
+    else visualProgress+=(destination-visualProgress)*(1-Math.exp(-dt*23));
+    const progress = Math.abs(destination-visualProgress)<.0005 ? destination : visualProgress;
     const timing = fiberTiming(progress,closing);
     const cropped = closing ? 0 : Math.min(.22, Math.max(0,root.getBoundingClientRect().top-pinnedTop)/height);
     const box = U.uFig.value.copy(figureBox);
@@ -128,6 +136,8 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     speed += (Math.hypot(vx*U.uAspect.value,vy)-speed)*.2;
     flow.advance(dt,vx*(1+touch*.8),vy*(1+touch*.8),mouse.x,mouse.y,U.uAspect.value);
     mist.uTime.value = time;
+    const introPhase = (now-introStart)/900;
+    mist.uIntroR.value = introPhase<1 ? -.4+(1.3+U.uAspect.value*.5)*smooth(0,1,introPhase) : 8;
     const fade = closing ? 0 : smooth(.3,.8,progress);
     mist.uFront.value = 1-.55*fade;
     mist.uBack.value = 1-.4*fade;
@@ -145,7 +155,7 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     const dragFray = touch*(closing ? smooth(.38,.79,progress) : 1-smooth(.35,.78,progress));
     U.uFray.value = Math.max(fray*(small ? .65 : 1)*(.75+.25*contact),dragFray*1.18)
       *(.45+.55*Math.min(1,speed*(1.2+touch*.9)));
-    copy.update(progress);
+    copy.update(destination);
     try {
       gpu.setRenderTarget(target);
       gpu.render(fogPass.scene,camera);
@@ -163,7 +173,7 @@ export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () 
     const active = !document.hidden && onScreen && !stopped;
     root.toggleAttribute('data-motion-active',active);
     if (active && !raf) raf=requestAnimationFrame(render);
-    else if (!active) {cancelAnimationFrame(raf);raf=0;previous=0;}
+    else if (!active) {cancelAnimationFrame(raf);raf=0;previous=0;visualProgress=-1;}
   }
   const visibility = new IntersectionObserver(([entry]) => {onScreen=entry.isIntersecting;schedule();});
   const resize = new ResizeObserver(measure);

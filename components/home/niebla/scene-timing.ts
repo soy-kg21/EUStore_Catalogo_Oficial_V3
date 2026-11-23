@@ -13,8 +13,8 @@ export function readSceneProgress(root: HTMLElement, visibleHeight: number, pinn
 export function fiberTiming(progress: number, closing: boolean) {
   return closing
     ? {wordOut:0, wordIn:smooth(.2,.75,progress), figureOut:0, figureIn:smooth(.35,.98,progress), titleIn:0, ghost:0, dark:0}
-    : {wordOut:smooth(.07,.53,progress), wordIn:1, figureOut:smooth(.03,.56,progress), figureIn:1,
-      titleIn:smooth(.24,.78,progress), ghost:.16*smooth(.1,.22,progress)*(1-smooth(.36,.56,progress)),
+    : {wordOut:smooth(.07,.46,progress), wordIn:1, figureOut:smooth(.03,.50,progress), figureIn:1,
+      titleIn:smooth(.28,.80,progress), ghost:.16*smooth(.1,.22,progress)*(1-smooth(.36,.56,progress)),
       dark:.8*smooth(.18,.62,progress)};
 }
 
