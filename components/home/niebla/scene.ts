@@ -1,29 +1,20 @@
 import * as THREE from 'three';
 import {createFogField} from './fog-field';
 import {VS, FOG_FS, COMP_FS} from './shaders';
+import {drawLettering, fiberTiming, readSceneProgress, sceneCopy, smooth} from './scene-timing';
 
-function smooth(a: number, b: number, value: number) {
-  const x = Math.min(1, Math.max(0, (value - a) / (b - a)));
-  return x * x * (3 - 2 * x);
-}
-
-export async function mountScene(root: HTMLElement, signal: AbortSignal) {
-  const get = <T extends HTMLElement>(selector: string) => root.querySelector<T>(selector)!;
-  const canvas = get<HTMLCanvasElement>('.niebla-screen');
-  const frame = get('.niebla-frame');
-  const background = get<HTMLImageElement>('.niebla-land');
-  const figure = get<HTMLImageElement>('.niebla-figure');
-  const opening = [...root.querySelectorAll<HTMLElement>('.niebla-opening')];
+export function mountScene(root: HTMLElement, signal: AbortSignal, fallback: () => void) {
+  const canvas = root.querySelector<HTMLCanvasElement>('.niebla-screen')!;
+  const frame = root.querySelector<HTMLElement>('.niebla-frame')!;
+  const background = root.querySelector<HTMLImageElement>('.niebla-land')!;
+  const figure = root.querySelector<HTMLImageElement>('.niebla-figure')!;
+  const letters = root.querySelectorAll<HTMLElement>('[data-ink]');
   const closing = root.hasAttribute('data-closing');
-  const endingLink = root.querySelector<HTMLAnchorElement>('.niebla-end');
-  await Promise.all([background.decode(), figure.decode(), document.fonts.load('800 100px NieblaArchivo')]);
-  if (signal.aborted) return;
-
   const lettering = document.createElement('canvas');
   const ctx = lettering.getContext('2d');
-  if (!ctx) return;
   const context = canvas.getContext('webgl2',{alpha:false,antialias:false,depth:false,stencil:false});
-  if (!context) return;
+  if (!context || !ctx) return false;
+
   const gpu = new THREE.WebGLRenderer({canvas,context});
   const camera = new THREE.OrthographicCamera(-1,1,1,-1,0,1);
   const geometry = new THREE.PlaneGeometry(2,2);
@@ -31,6 +22,7 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
   const ink = new THREE.CanvasTexture(lettering);
   const terrain = new THREE.Texture(background);
   const subject = new THREE.Texture(figure);
+  const copy = sceneCopy(root,closing);
   for (const image of [ink, terrain, subject]) {
     image.generateMipmaps = true;
     image.minFilter = THREE.LinearMipmapLinearFilter;
@@ -57,15 +49,15 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
   }
   const fogPass = pass(FOG_FS,mist);
   const imagePass = pass(COMP_FS,U);
-  let width = 1, height = 1, start = 0, travel = 1, small = false;
-  let raf = 0, previous = 0, time = 0, onScreen = false, stopped = false;
+  let width = 1, height = 1, pinnedTop = 0, travel = 1, small = false;
+  let raf = 0, previous = 0, time = 0, onScreen = false, stopped = false, shaderFailed = false;
   let lastMove = -Infinity, pointerX = .5, pointerY = .5, speed = 0;
   const lifecycle = new AbortController();
   const figureBox = new THREE.Vector4();
-  let previousScroll = -1;
+  gpu.debug.onShaderError = () => { shaderFailed = true; };
 
   function measure() {
-    if (stopped) return;
+    if (stopped || !ctx) return;
     const box = frame.getBoundingClientRect();
     width = Math.round(box.width);
     height = Math.round(box.height);
@@ -74,7 +66,7 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
     const dpr = Math.min(devicePixelRatio || 1, small ? 1.5 : 2);
     const aspect = width / height;
     const bgAspect = background.naturalWidth/background.naturalHeight;
-    start = scrollY + root.getBoundingClientRect().top - parseFloat(getComputedStyle(frame).top);
+    pinnedTop = parseFloat(getComputedStyle(frame).top) || 0;
     travel = Math.max(1,root.offsetHeight-height);
     gpu.setPixelRatio(dpr);
     gpu.setSize(width,height,false);
@@ -87,41 +79,27 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
     figureBox.set((fig.left-box.left)/width,(box.bottom-fig.bottom)/height,fig.width/width,fig.height/height);
     U.uFigLod.value = Math.max(0,Math.log2(figure.naturalHeight/(fig.height*dpr)));
 
-    // WebGL allocates an immutable mip chain at upload. Reallocate it when
-    // rotating a phone or crossing a breakpoint, before uploading new glyphs.
+    // The mip chain must be reallocated when the lettering texture changes dimensions.
     if (lettering.width !== Math.round(width*dpr) || lettering.height !== Math.round(height*dpr)) ink.dispose();
     lettering.width = Math.round(width*dpr);
     lettering.height = Math.round(height*dpr);
-    ctx!.setTransform(dpr,0,0,dpr,0,0);
-    ctx!.fillStyle = '#000';
-    ctx!.fillRect(0,0,width,height);
-    ctx!.globalCompositeOperation = 'lighter';
-    root.querySelectorAll<HTMLElement>('[data-ink]').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const baseline = el.nextElementSibling!.getBoundingClientRect().top-box.top;
-      const style = getComputedStyle(el);
-      ctx!.font = '800 '+style.fontSize+' NieblaArchivo';
-      ctx!.fillStyle = el.closest('.niebla-word') ? '#f00' : '#0f0';
-      ctx!.save();
-      ctx!.translate(rect.left-box.left,baseline);
-      ctx!.scale(rect.width / Math.max(1,ctx!.measureText(el.textContent!).width),1);
-      ctx!.fillText(el.textContent!,0,0);
-      ctx!.restore();
-    });
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0,0,width,height);
+    ctx.globalCompositeOperation = 'lighter';
+    drawLettering(ctx,box,letters,element => element.closest('.niebla-word') ? '#f00' : '#0f0');
     ink.needsUpdate = true;
   }
 
   function render(now: number) {
     raf = 0;
     if (stopped || document.hidden || !onScreen) {previous = 0;return;}
-    const dt = previous ? Math.min(.05,(now-previous)/1000) : 1/60;
+    const dt = previous ? Math.max(.001,Math.min(.05,(now-previous)/1000)) : 1/60;
     previous = now;
     time += dt;
-    const progress = closing ? (height+parseFloat(getComputedStyle(frame).top)-root.getBoundingClientRect().top)/(height+travel) : (scrollY-start)/travel;
-    const s = Math.max(0, Math.min(1, progress));
-    // The announcement scrolls away before the header pins. Fit the real look
-    // above the visible lower edge throughout those first pixels of travel.
-    const cropped = closing ? 0 : Math.min(.22, Math.max(0,start-scrollY)/height);
+    const progress = readSceneProgress(root,height,pinnedTop,travel,closing);
+    const timing = fiberTiming(progress,closing);
+    const cropped = closing ? 0 : Math.min(.22, Math.max(0,root.getBoundingClientRect().top-pinnedTop)/height);
     const box = U.uFig.value.copy(figureBox);
     box.x += box.z*cropped*.5;
     box.y += cropped;
@@ -139,38 +117,32 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
     speed += (Math.hypot(vx*U.uAspect.value,vy)-speed)*.2;
     flow.advance(dt,vx,vy,mouse.x,mouse.y,U.uAspect.value);
     mist.uTime.value = time;
-    mist.uFront.value = 1-.55*smooth(.3,.8,s);
-    mist.uBack.value = 1-.4*smooth(.3,.8,s);
-    U.uWordOut.value = smooth(.07,.46,s);
-    U.uFigOut.value = smooth(.03,.5,s);
-    U.uHeadIn.value = smooth(.28,.8,s);
-    U.uGhost.value = .16*smooth(.1,.22,s)*(1-smooth(.36,.56,s));
-    U.uDark.value = .8*smooth(.18,.62,s);
-    U.uBgZoom.value = 1.06+.1*s;
+    const fade = closing ? 0 : smooth(.3,.8,progress);
+    mist.uFront.value = 1-.55*fade;
+    mist.uBack.value = 1-.4*fade;
+    U.uWordOut.value = timing.wordOut;
+    U.uWordIn.value = timing.wordIn;
+    U.uFigOut.value = timing.figureOut;
+    U.uFigIn.value = timing.figureIn;
+    U.uHeadIn.value = timing.titleIn;
+    U.uGhost.value = timing.ghost;
+    U.uDark.value = timing.dark;
+    U.uBgZoom.value = closing ? 1.12-.06*progress : 1.06+.1*progress;
     U.uLight.value = Number(document.documentElement.dataset.theme === 'light');
-    U.uFray.value = (1-smooth(0,.15,s))*(.45+.55*Math.min(1,speed*1.2))*(.4+.6*smooth(0,1.5,time))*(small ? .6 : 1)*(real ? 1 : .75);
-    if (closing) {
-      U.uWordOut.value = U.uFigOut.value = U.uHeadIn.value = U.uDark.value = U.uGhost.value = 0;
-      U.uWordIn.value = smooth(.2,.75,s);
-      U.uFigIn.value = smooth(.35,.98,s);
-      U.uBgZoom.value = 1.12-.06*s;
-      U.uFray.value = smooth(.85,1,s)*(.45+.55*Math.min(1,speed))* .75;
-      mist.uFront.value = mist.uBack.value = 1;
+    const fray = closing ? smooth(.85,1,progress) : (1-smooth(0,.15,progress))*(.4+.6*smooth(0,1.5,time));
+    U.uFray.value = fray*(.45+.55*Math.min(1,speed*1.2))*(small ? .6 : 1)*(real ? 1 : .75);
+    copy.update(progress);
+    try {
+      gpu.setRenderTarget(target);
+      gpu.render(fogPass.scene,camera);
+      gpu.setRenderTarget(null);
+      gpu.render(imagePass.scene,camera);
+    } catch {
+      recover();
+      return;
     }
-    if (s !== previousScroll) {
-      previousScroll = s;
-      const open = 1-smooth(0,.07,s);
-      const end = closing ? smooth(.72,.90,s) : smooth(.88,1,s);
-      root.style.setProperty('--opening',String(open));
-      root.style.setProperty('--ending',String(end));
-      opening.forEach(el => {if(el.inert !== (open < .1)) el.inert = open < .1;});
-      if (endingLink) endingLink.inert = end < .1;
-      root.toggleAttribute('data-ending',end >= .1);
-    }
-    gpu.setRenderTarget(target);
-    gpu.render(fogPass.scene,camera);
-    gpu.setRenderTarget(null);
-    gpu.render(imagePass.scene,camera);
+    if (shaderFailed) {recover();return;}
+    if (root.dataset.renderer !== 'webgl') root.dataset.renderer = 'webgl';
     raf = requestAnimationFrame(render);
   }
   function schedule() {
@@ -179,23 +151,27 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
   }
   const visibility = new IntersectionObserver(([entry]) => {onScreen=entry.isIntersecting;schedule();});
   const resize = new ResizeObserver(measure);
-  function stop() {
+
+  function stop(preserveMotion = false) {
     if (stopped) return;
     stopped = true;
     lifecycle.abort();
     visibility.disconnect();
     resize.disconnect();
     cancelAnimationFrame(raf);
-    root.removeAttribute('data-motion');
-    root.removeAttribute('data-ending');
-    root.style.removeProperty('--opening');
-    root.style.removeProperty('--ending');
-    opening.forEach(el => {el.inert=false;});
-    if (endingLink) endingLink.inert=false;
-    for(const resource of [ink,terrain,subject,flow.field,target,geometry,fogPass.material,imagePass.material,gpu]) resource.dispose();
+    delete root.dataset.renderer;
+    if (!preserveMotion) {
+      delete root.dataset.motion;
+      copy.reset();
+    }
+    for (const resource of [ink,terrain,subject,flow.field,target,geometry,fogPass.material,imagePass.material,gpu]) resource.dispose();
   }
-  signal.addEventListener('abort',stop,{once:true});
-  canvas.addEventListener('webglcontextlost',stop,{once:true,signal:lifecycle.signal});
+  function recover() {
+    stop(true);
+    fallback();
+  }
+  signal.addEventListener('abort',() => stop(),{once:true,signal:lifecycle.signal});
+  canvas.addEventListener('webglcontextlost',recover,{once:true,signal:lifecycle.signal});
   document.addEventListener('visibilitychange',schedule,{signal:lifecycle.signal});
   frame.addEventListener('pointermove',event=>{
     const box=frame.getBoundingClientRect();
@@ -205,7 +181,8 @@ export async function mountScene(root: HTMLElement, signal: AbortSignal) {
   },{passive:true,signal:lifecycle.signal});
   root.dataset.motion = '';
   measure();
-  visibility.observe(root);
+  visibility.observe(frame);
   resize.observe(frame);
   resize.observe(root);
+  return true;
 }

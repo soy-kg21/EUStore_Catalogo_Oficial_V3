@@ -32,6 +32,7 @@ html[data-theme=light] .niebla-home {
 .eu-collection-photo {position:relative;height:clamp(190px,54svh,660px);overflow:hidden;background:#202221;clip-path:inset(0 var(--cut,0%) 0 0)}
 .eu-collection-photo .category-frames {position:absolute;inset:0;transform:scale(var(--zoom,1));filter:blur(var(--blur,0px)) brightness(var(--brightness,1));}
 .eu-collection-photo img {object-fit:cover;object-position:center}
+.eu-collection:not([data-cards-active]) .eu-collection-photo img {animation-play-state:paused}
 .eu-card-caption {display:flex;align-items:baseline;gap:10px;margin:13px 0 4px}
 .eu-card-caption small {color:var(--chapter-muted);font-size:.75rem}
 .eu-card-caption h3 {font:800 clamp(23px,2.4vw,45px)/1 NieblaArchivo,sans-serif;text-transform:uppercase}
@@ -44,6 +45,12 @@ html[data-theme=light] .niebla-home {
 .eu-material-photo,.eu-lens {position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .eu-lens {opacity:0;transition:opacity .35s}
 .eu-lens[data-ready] {opacity:1}
+.eu-lens-fallback {
+  display:none;position:absolute;top:0;left:0;border:1px solid #f8ffed78;
+  border-radius:50%;pointer-events:none;background-repeat:no-repeat;
+  box-shadow:inset 7px 10px 23px #fff3,inset -7px -10px 25px #0b0e0da0,0 12px 45px #080a09a1;
+}
+.eu-lens-fallback[data-ready] {display:block}
 .eu-material-pin::after {content:'';position:absolute;inset:0;background:linear-gradient(90deg,#0b0d0ed6,transparent 76%),linear-gradient(0deg,#0a0c0d50,transparent 48%);pointer-events:none}
 .eu-material-copy {position:absolute;left:var(--gutter);right:var(--gutter);top:15%;z-index:1;color:#f1f2ed;pointer-events:none}
 .eu-material-copy .eu-label {color:#d2d5cf}
@@ -57,10 +64,13 @@ html[data-theme=light] .niebla-home {
 .eu-stats dt {color:var(--chapter-muted)}
 .eu-stats dd {font-family:Arial,sans-serif;font-weight:300;font-size:clamp(64px,7.7vw,148px);letter-spacing:-.075em;line-height:1.12;margin:16px 0 0;font-variant-numeric:tabular-nums}
 .eu-stats dd small {font-family:inherit;color:var(--chapter-muted);font-size:clamp(16px,1.6vw,32px);letter-spacing:0;margin-left:10px}
-.eu-pieces,.niebla-home .eu-looks {padding:clamp(50px,8svh,100px) var(--gutter);background:var(--chapter-bg);color:var(--chapter-fg)}
+.eu-pieces {padding:clamp(50px,8svh,100px) var(--gutter);background:var(--chapter-bg);color:var(--chapter-fg)}
+.eu-pieces-break {display:none}
 .eu-section-heading {display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:clamp(26px,4vh,50px)}
 .eu-piece-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,40px)}
 .eu-piece {min-width:0;perspective:1000px}
+.eu-pieces[data-entering] .product-card {opacity:var(--entry-opacity,1);transform:translate3d(0,var(--entry-offset,0px),0)}
+.eu-pieces[data-entering] .product-card:focus-within {opacity:1;transform:none}
 .eu-piece .product-card {background:transparent;border:0;color:inherit}
 .eu-piece .card-image {position:relative;border-radius:0;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .8s cubic-bezier(.22,.7,.2,1)}
 .eu-piece[data-tilt] .card-image {transition-duration:.18s}
@@ -69,11 +79,11 @@ html[data-theme=light] .niebla-home {
 .eu-piece .card-info {padding:16px 0 0}
 .eu-piece .card-info h3 {font:800 clamp(23px,2.05vw,39px)/1.05 NieblaArchivo,sans-serif;text-transform:uppercase;min-height:2.1em}
 .eu-piece .card-info h3:hover {color:var(--chapter-accent)}
-.niebla-home .eu-looks:before,.niebla-home .eu-looks:after {display:none}
-.niebla-home .eu-looks .eu-section-heading {position:relative;z-index:1}
+
+
 .niebla.eu-closing {background:#191b1b}
 .niebla.eu-closing[data-motion] {height:165svh}
-.niebla.eu-closing .niebla-word {top:auto;bottom:1%;left:50%;font-size:min(41vw,57svh)}
+.niebla.eu-closing .niebla-word {top:auto;bottom:1%;left:50%;font-size:min(19vw,28svh)}
 .niebla.eu-closing .niebla-figure {left:50%;top:auto;bottom:0;height:90%}
 .niebla.eu-closing:not([data-motion]) .niebla-frame {height:var(--screen);padding:0;overflow:hidden}
 .eu-closing-copy {position:absolute;z-index:4;top:9%;left:var(--gutter);right:var(--gutter);display:flex;align-items:flex-start;justify-content:space-between;gap:15px;color:#f3f5ef}
@@ -86,6 +96,8 @@ html[data-theme=light] .niebla-home {
 .eu-close-contact .niebla-button {font-size:1rem;text-shadow:none}
 .eu-social {padding:clamp(28px,5vw,80px) var(--gutter)}
 .eu-social .social-grid {margin:0 auto;width:100%}
+.eu-social[data-entering] .social-grid {opacity:var(--entry-opacity,1);transform:translate3d(0,var(--entry-offset,0px),0)}
+.eu-social[data-entering] .social-grid:focus-within {opacity:1;transform:none}
 .eu-cursor {position:fixed;top:0;left:0;z-index:2147483646;width:0;height:0;pointer-events:none;mix-blend-mode:difference}
 .eu-cursor::before {content:'';position:absolute;inset:0 auto auto 0;width:30px;height:30px;transform:translate(-50%,-50%);border:1px solid white;border-radius:50%;transition:width .18s,height .18s,border-color .18s}
 .eu-cursor[data-action] {mix-blend-mode:normal}
@@ -101,6 +113,7 @@ html[data-theme=light] .niebla-home {
   .eu-close-contact {max-width:34vw}
 }
 @media(max-width:600px) {
+  .eu-pieces-break {display:initial}
   .eu-section-heading {display:block}
   .eu-section-heading>.eu-text-link,.eu-section-heading>p {margin-top:16px}
   .eu-collection-intro {width:69vw}
@@ -125,7 +138,7 @@ html[data-theme=light] .niebla-home {
   .eu-close-contact p {max-width:32ch}
   .eu-close-contact .niebla-button {margin-top:10px;font-size:.88rem}
   .niebla.eu-closing .niebla-figure {height:59%}
-  .niebla.eu-closing .niebla-word {font-size:49vw;bottom:4%}
+  .niebla.eu-closing .niebla-word {font-size:min(22vw,22svh);bottom:5%}
 }
 @media(max-height:520px) and (orientation:landscape) {
   .eu-close-title .eu-display {font-size:34px}
@@ -142,4 +155,44 @@ html[data-theme=light] .niebla-home {
   .eu-collection-photo .category-frames img {animation:none}
   .eu-rail-progress {display:none}
   .eu-piece .card-image,.eu-lens {transition:none}
+}
+
+.eu-shipping {padding:clamp(52px,9svh,110px) 0;border-block:1px solid var(--chapter-line)}
+.eu-shipping .eu-section-heading,.eu-shipping-note {margin-inline:var(--gutter)}
+.niebla-home .eu-shipping .eu-display {font-size:clamp(36px,9vw,132px)}
+.eu-carrier-window {overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.eu-carrier-track {
+  display:flex;width:max-content;
+  animation:eu-carriers-left 26s linear infinite;animation-play-state:paused;
+}
+.eu-shipping[data-in-view][data-paused=false]:not([data-page-hidden]) .eu-carrier-track {animation-play-state:running}
+@keyframes eu-carriers-left {to {transform:translate3d(-50%,0,0)}}
+.eu-carrier-row {
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:max(100vw,860px);
+  flex:none;gap:clamp(12px,2vw,34px);margin:0;padding:0 clamp(12px,2vw,34px) 0 0;list-style:none;
+}
+.eu-carrier {
+  display:grid;place-items:center;align-content:center;gap:18px;min-width:0;
+  padding:clamp(14px,2vw,26px);border:1px solid var(--chapter-line);border-radius:4px;
+  background:color-mix(in srgb,var(--chapter-fg) 5%,var(--chapter-bg));font-weight:600;
+}
+.eu-carrier-logo {
+  display:grid;place-items:center;width:100%;height:clamp(74px,8vw,120px);
+  padding:clamp(9px,1.35vw,22px);background:#fafaf7;border-radius:2px;
+}
+.eu-carrier-logo img {width:100%;height:100%;min-height:0;object-fit:contain}
+.eu-carrier:nth-child(2) .eu-carrier-logo {background:#030303}
+.eu-shipping-note {display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-top:26px;font-size:.9rem;color:var(--chapter-muted)}
+.eu-shipping-note p {margin:0}
+.eu-shipping-toggle {display:inline-flex;align-items:center;gap:8px;text-align:left;color:var(--chapter-fg);padding:6px 0}
+.eu-shipping-toggle:hover {color:var(--chapter-accent)}
+@media(max-width:600px){
+  .eu-shipping-note {display:grid;gap:8px}
+  .eu-shipping .eu-section-heading>.eu-text-link {margin-top:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .eu-carrier-window {margin-inline:var(--gutter);mask-image:none}
+  .eu-carrier-track {display:block;width:100%;animation:none}
+  .eu-carrier-row {grid-template-columns:repeat(2,minmax(0,1fr));width:100%;padding:0}
+  .eu-carrier-row[aria-hidden],.eu-shipping-toggle {display:none}
 }

@@ -1,47 +1,46 @@
 'use client';
 
 import {useEffect,useRef,type ReactNode} from 'react';
+import EditorialWordmark from './EditorialWordmark';
 import {startStory} from './story-motion';
+import {loadEditorialScene, useNearbyMotion} from './use-editorial-motion';
 
-function useNearbyMotion<T extends HTMLElement>(mount: (node:T,signal:AbortSignal)=>Promise<void>) {
-  const ref=useRef<T>(null);
-  useEffect(()=>{
-    const node=ref.current!;
-    const motion=matchMedia('(prefers-reduced-motion: reduce)');
-    let controller:AbortController | undefined;
-    let near=false;
-    function sync(){
-      if(motion.matches){controller?.abort();controller=undefined;return;}
-      if(!near || controller) return;
-      const current=new AbortController();controller=current;
-      mount(node,current.signal).catch(()=>current.abort());
-    }
-    const io=new IntersectionObserver(([entry])=>{near=entry.isIntersecting;sync();},{rootMargin:'700px 0px'});
-    io.observe(node);motion.addEventListener('change',sync);
-    return ()=>{controller?.abort();io.disconnect();motion.removeEventListener('change',sync);};
-  },[mount]);
-  return ref;
-}
-async function loadLens(node:HTMLCanvasElement,signal:AbortSignal){
-  const {mountLens}=await import('./material');
-  if(!signal.aborted)await mountLens(node,signal);
-}
-async function loadClosing(node:HTMLElement,signal:AbortSignal){
-  const {mountScene}=await import('./scene');
-  if(!signal.aborted)await mountScene(node,signal);
+async function loadLens(canvas:HTMLCanvasElement,signal:AbortSignal){
+  const frame = canvas.parentElement!;
+  const image = frame.querySelector<HTMLImageElement>('.eu-material-photo')!;
+  await image.decode();
+  if (signal.aborted) return;
+  let usesFallback = false;
+  async function fallback() {
+    if (usesFallback || signal.aborted) return;
+    usesFallback = true;
+    const {mountLensFallback} = await import('./material-fallback');
+    if (!signal.aborted) mountLensFallback(frame,image,signal);
+  }
+  try {
+    const {mountLens} = await import('./material');
+    if (!signal.aborted && !mountLens(canvas,image,signal,()=>{void fallback().catch(()=>{});})) await fallback();
+  } catch {
+    await fallback();
+  }
 }
 export function MaterialLens(){
   const ref=useNearbyMotion(loadLens);
-  return <canvas ref={ref} className="eu-lens" aria-hidden="true"/>;
+  return <>
+    <canvas ref={ref} className="eu-lens" aria-hidden="true"/>
+    <div className="eu-lens-fallback" aria-hidden="true"/>
+  </>;
 }
 export function ClosingScene({children}:{children:ReactNode}){
-  const ref=useNearbyMotion(loadClosing);
+  const ref=useNearbyMotion(loadEditorialScene);
   return <section className="niebla eu-closing" data-closing ref={ref} aria-labelledby="close-title">
     <div className="niebla-frame">
       <img className="niebla-land" src="/niebla/llanura.webp" alt="" loading="lazy"/>
-      <div className="niebla-word" aria-hidden="true"><span data-ink>KAEL</span><i data-baseline/></div>
-      <img className="niebla-figure" src="/niebla/codigo-nocturno.webp" alt="" loading="lazy"/>
+      <EditorialWordmark/>
+      <img className="niebla-figure" src="/niebla/esencial-grafico-modelo.webp"
+        alt="Look Esencial gráfico de Evolución Urbana con camiseta oversize blanca, pantalón negro y zapatillas blancas." loading="lazy"/>
       <canvas className="niebla-screen" aria-hidden="true"/>
+      <canvas className="niebla-fibers" aria-hidden="true"/>
       <div className="eu-closing-copy">{children}</div>
     </div>
   </section>;

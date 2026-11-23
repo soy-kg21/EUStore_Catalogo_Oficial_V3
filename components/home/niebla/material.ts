@@ -1,14 +1,13 @@
 import * as THREE from 'three';
 import {FAB_FS,VS} from './shaders';
 
-export async function mountLens(canvas: HTMLCanvasElement, signal: AbortSignal) {
+export function mountLens(canvas: HTMLCanvasElement, image: HTMLImageElement, signal: AbortSignal, fallback: () => void) {
   const frame = canvas.parentElement!;
-  const image = frame.querySelector('img')!;
-  await image.decode();
-  if (signal.aborted) return;
   const context = canvas.getContext('webgl2',{alpha:false,depth:false,antialias:false});
-  if (!context) return;
+  if (!context) return false;
   const renderer = new THREE.WebGLRenderer({canvas,context});
+  let shaderFailed = false;
+  renderer.debug.onShaderError = () => { shaderFailed = true; };
   const texture = new THREE.Texture(image);
   texture.needsUpdate = true;
   const uniforms = {
@@ -49,8 +48,14 @@ export async function mountLens(canvas: HTMLCanvasElement, signal: AbortSignal) 
     lens.x+=(x-lens.x)*factor; lens.y+=(y-lens.y)*factor;
     uniforms.uMouse.value.copy(lens);
     uniforms.uProg.value=THREE.MathUtils.clamp((innerHeight-section.getBoundingClientRect().top)/(section.offsetHeight+innerHeight),0,1);
-    renderer.render(scene,camera);
-    canvas.dataset.ready='';
+    try {
+      renderer.render(scene,camera);
+    } catch {
+      recover();
+      return;
+    }
+    if (shaderFailed) {recover();return;}
+    if (!canvas.hasAttribute('data-ready')) canvas.dataset.ready='';
     raf=requestAnimationFrame(render);
   }
   function schedule(){
@@ -73,7 +78,12 @@ export async function mountLens(canvas: HTMLCanvasElement, signal: AbortSignal) 
     delete canvas.dataset.ready;
     geometry.dispose();material.dispose();texture.dispose();renderer.dispose();
   }
-  signal.addEventListener('abort',stop,{once:true});
-  canvas.addEventListener('webglcontextlost',stop,{once:true,signal:listeners.signal});
+  function recover(){
+    stop();
+    fallback();
+  }
+  signal.addEventListener('abort',stop,{once:true,signal:listeners.signal});
+  canvas.addEventListener('webglcontextlost',recover,{once:true,signal:listeners.signal});
   resize();size.observe(frame);observer.observe(frame);
+  return true;
 }

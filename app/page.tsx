@@ -1,13 +1,12 @@
 import Link from 'next/link';
-import {ArrowUpRight, Layers, MessageCircle, Truck} from 'lucide-react';
+import {ArrowUpRight} from 'lucide-react';
 import {collectionOf} from '@/lib/catalog-presentation.mjs';
 import {getProducts} from '@/lib/products';
 import {categories, money, wa} from '@/lib/config';
-import {resolveLooks} from '@/lib/looks';
 import {jsonLd, siteSchema} from '@/lib/seo';
 import ServiceAnnouncements from '@/components/home/ServiceAnnouncements';
 import CategoryVisual from '@/components/home/CategoryVisual';
-import Lookbook from '@/components/home/Lookbook';
+import ShippingCarriers from '@/components/home/niebla/ShippingCarriers';
 import ProductCard from '@/components/store/ProductCard';
 import SocialLinks from '@/components/store/SocialLinks';
 import NieblaHero from '@/components/home/niebla/NieblaHero';
@@ -16,7 +15,6 @@ import '@/components/home/niebla/story.css';
 
 export default async function Home() {
   const all = await getProducts();
-  const looks = resolveLooks(all);
   const featured = ['oversize','nacionales','conjuntos-cortos','importadas'].flatMap(collection => {
     const rows = all.filter(product => collectionOf(product) === collection);
     const product = rows.find(product => product.featured) ?? rows[0];
@@ -40,8 +38,8 @@ export default async function Home() {
         <div className="eu-collection-window">
           <div className="eu-collection-track">
             <div className="eu-collection-intro">
-              <h2 className="eu-display" id="category-title">De pies<br /><em>a cabeza.</em></h2>
-              <p>Elige tu silueta, encuentra tu par y arma el conjunto.</p>
+              <h2 className="eu-display" id="category-title">Moda urbana.<br /><em>A tu manera.</em></h2>
+              <p>Explora camisetas, zapatillas y conjuntos.</p>
             </div>
             {groups.map((group,index) => <Link prefetch={false} href={'/categoria/'+group.slug} key={group.slug} className="eu-collection-card">
               <div className="eu-collection-photo"><CategoryVisual category={group.slug} fallback={group.image} /></div>
@@ -58,8 +56,8 @@ export default async function Home() {
       <div className="eu-material-pin">
         <img className="eu-material-photo" src="/niebla/zapatilla-lluvia.webp" alt="Detalle editorial de una zapatilla negra con franja blanca, cordones y gotas de agua." loading="lazy" />
         <MaterialLens />
-        <div className="eu-material-copy"><p className="eu-label">Materiales / Zapatillas</p>
-          <h2 id="material-title" className="eu-display">Bajo la lluvia.<br /><em>Cada puntada.</em></h2>
+        <div className="eu-material-copy"><p className="eu-label">Detalle de calzado</p>
+          <h2 id="material-title" className="eu-display">Costuras<br /><em>y textura.</em></h2>
           <Link prefetch={false} className="eu-text-link" href={shoe ? '/producto/'+shoe.slug : '/categoria/zapatillas'}>
             {shoe ? shoe.name : 'Ver zapatillas'} <ArrowUpRight size={17}/>
           </Link>
@@ -76,20 +74,14 @@ export default async function Home() {
     </section>
 
     <section className="eu-pieces eu-chapter" aria-labelledby="featured-title">
-      <div className="eu-section-heading"><div><p className="eu-label">Curaduría / Evolución Urbana</p>
-        <h2 className="eu-display" id="featured-title">Piezas <em>({String(featured.length).padStart(2,'0')})</em></h2></div>
+      <div className="eu-section-heading"><div><p className="eu-label">Evolución Urbana / Catálogo</p>
+        <h2 className="eu-display" id="featured-title">Piezas <br className="eu-pieces-break"/><em>destacadas</em></h2></div>
         <Link className="eu-text-link" href="/catalogo">Explorar catálogo <ArrowUpRight size={18}/></Link>
       </div>
       <div className="eu-piece-grid">{featured.map(product => <div className="eu-piece" key={product.id}><ProductCard product={product} /></div>)}</div>
     </section>
 
-    <section className="look-story lookbook-story eu-looks eu-chapter" aria-labelledby="look-title">
-      <div className="eu-section-heading"><div><p className="eu-label">Lookbook / El arte de combinar</p>
-        <h2 id="look-title" className="eu-display">Combina con<br/><em>intención.</em></h2></div>
-        <p>Explora las piezas de cada look y consulta tu talla.</p></div>
-      {looks.length ? <Lookbook looks={looks}/> : <Link className="eu-text-link" href="/catalogo">Explorar catálogo <ArrowUpRight size={18}/></Link>}
-      <div className="lookbook-benefits"><span><MessageCircle/>Asesoría para elegir tu talla</span><span><Layers/>Beneficios según tu selección</span><span><Truck/>Entrega y disponibilidad por confirmar</span></div>
-    </section>
+    <ShippingCarriers />
     <ServiceAnnouncements />
 
     <ClosingScene>

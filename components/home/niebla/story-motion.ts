@@ -81,57 +81,114 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean){
   const cards=[...strip.querySelectorAll<HTMLElement>('.eu-collection-card')];
   const stats=main.querySelector<HTMLElement>('.eu-stats')!;
   const counters=[...stats.querySelectorAll<HTMLElement>('[data-total]')];
-  const pieces=[...main.querySelectorAll<HTMLElement>('.eu-piece')];
-  if(reduced){counters.forEach(n=>n.textContent=format.format(Number(n.dataset.total)));return ()=>{};}
-  const controller=new AbortController(),{signal}=controller;
-  if(fine)cursorRing(signal);
-  pieces.forEach(piece=>animatePiece(piece,fine,signal));
-  let travel=0,top=0,raf=0;
-  let offsets:number[]=[];
-  function paint(){
-    raf=0;if(document.hidden)return;
-    const rect=strip.getBoundingClientRect(),width=pin.clientWidth;
-    const x=clamp((top-rect.top)/Math.max(1,travel))*travel;
-    track.style.transform='translate3d('+(-x)+'px,0,0)';
-    strip.style.setProperty('--rail',String(travel ? x/travel : 1));
-    cards.forEach((card,i)=>{
-      const e=ease((width-(offsets[i]-x))/(width*.5));
-      card.style.setProperty('--cut',((1-e)*100)+'%');card.style.setProperty('--blur',((1-e)*14)+'px');
-      card.style.setProperty('--zoom',String(1.25-.25*e));card.style.setProperty('--brightness',String(.55+.45*e));
-    });
-    const counted=ease((innerHeight*.9-stats.getBoundingClientRect().top)/(innerHeight*.6));
-    counters.forEach(n=>{const value=format.format(Math.round(Number(n.dataset.total)*counted));if(n.textContent!==value)n.textContent=value;});
-    if(!fine)pieces.forEach(piece=>{
-      const r=piece.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;
-      const p=clamp((r.top+r.height*.5)/innerHeight)-.5;
-      piece.style.setProperty('--rx',(-p*10)+'deg');piece.style.setProperty('--ry',(p*5)+'deg');
-    });
+  const pieces = [...main.querySelectorAll<HTMLElement>('.eu-piece')];
+  const pieceSection = main.querySelector<HTMLElement>('.eu-pieces')!;
+  const social = main.querySelector<HTMLElement>('.eu-social')!;
+  if (reduced) {
+    counters.forEach(counter=>counter.textContent=format.format(Number(counter.dataset.total)));
+    return ()=>{};
   }
-  function schedule(){if(!raf&&!document.hidden)raf=requestAnimationFrame(paint);}
+  const controller = new AbortController();
+  const {signal} = controller;
+  if (fine) cursorRing(signal);
+  pieces.forEach(piece=>animatePiece(piece,fine,signal));
+
+  let travel = 0, top = 0, raf = 0, lastX = -1;
+  let offsets:number[] = [];
+  function setEntry(element:HTMLElement, top:number) {
+    const progress = ease((innerHeight-top)/(innerHeight*.3));
+    element.style.setProperty('--entry-opacity',String(.12+.88*progress));
+    element.style.setProperty('--entry-offset',((1-progress)*44)+'px');
+  }
+  function paint() {
+    raf=0;
+    if (document.hidden) return;
+    const rect = strip.getBoundingClientRect();
+    const width = pin.clientWidth;
+    const x = Math.max(0,Math.min(travel,top-rect.top));
+    const counted = ease((innerHeight*.9-stats.getBoundingClientRect().top)/(innerHeight*.6));
+    const pieceBounds = pieces.map(piece=>piece.getBoundingClientRect());
+    const socialTop = social.getBoundingClientRect().top;
+
+    strip.toggleAttribute('data-cards-active',rect.top<innerHeight && rect.bottom>top);
+    if (x !== lastX) {
+      lastX = x;
+      track.style.transform='translate3d('+(-x)+'px,0,0)';
+      strip.style.setProperty('--rail',String(travel ? x/travel : 1));
+      cards.forEach((card,i)=>{
+        const e=ease((width-(offsets[i]-x))/(width*.5));
+        card.style.setProperty('--cut',((1-e)*100)+'%');
+        card.style.setProperty('--blur',((1-e)*14)+'px');
+        card.style.setProperty('--zoom',String(1.25-.25*e));
+        card.style.setProperty('--brightness',String(.55+.45*e));
+      });
+    }
+    counters.forEach(counter=>{
+      const value=format.format(Math.round(Number(counter.dataset.total)*counted));
+      if(counter.textContent!==value)counter.textContent=value;
+    });
+    pieces.forEach((piece,i)=>{
+      const r = pieceBounds[i];
+      setEntry(piece,r.top);
+      if (!fine && r.bottom>0 && r.top<innerHeight) {
+        const position=clamp((r.top+r.height*.5)/innerHeight)-.5;
+        piece.style.setProperty('--rx',(-position*10)+'deg');
+        piece.style.setProperty('--ry',(position*5)+'deg');
+      }
+    });
+    setEntry(social,socialTop);
+  }
+  function schedule(){
+    if (document.hidden) {
+      cancelAnimationFrame(raf);
+      raf=0;
+      strip.removeAttribute('data-cards-active');
+    } else if (!raf) {
+      raf=requestAnimationFrame(paint);
+    }
+  }
   function measure(){
-    if(signal.aborted)return;
+    if (signal.aborted) return;
     strip.dataset.pinned='';
     top=parseFloat(getComputedStyle(pin).top)||0;
     travel=Math.max(0,track.scrollWidth-pin.clientWidth);
     offsets=cards.map(card=>card.offsetLeft);
-    strip.style.setProperty('--travel',travel+'px');schedule();
+    lastX=-1;
+    strip.style.setProperty('--travel',travel+'px');
+    schedule();
   }
   strip.addEventListener('focusin',event=>{
     const card=(event.target as Element).closest<HTMLElement>('.eu-collection-card');
     if(!card||!card.matches(':focus-visible'))return;
     const pos=card.getBoundingClientRect();
     if(pos.left>=0&&pos.right<=pin.clientWidth)return;
-    window.scrollTo({top:scrollY+strip.getBoundingClientRect().top-top+Math.min(travel,card.offsetLeft-pin.clientWidth*.15),behavior:'instant'});
+    const destination=scrollY+strip.getBoundingClientRect().top-top;
+    const reveal=Math.max(0,Math.min(travel,card.offsetLeft-pin.clientWidth*.15));
+    window.scrollTo({top:destination+reveal,behavior:'instant'});
   },{signal});
-  const resize=new ResizeObserver(measure);resize.observe(pin);resize.observe(track);
-  measure();document.fonts.ready.then(measure);
+
+  pieceSection.dataset.entering='';
+  social.dataset.entering='';
+  const resize=new ResizeObserver(measure);
+  resize.observe(pin);
+  resize.observe(track);
+  measure();
+  document.fonts.ready.then(measure);
   window.addEventListener('scroll',schedule,{passive:true,signal});
   document.addEventListener('visibilitychange',schedule,{signal});
   return ()=>{
-    controller.abort();resize.disconnect();cancelAnimationFrame(raf);
-    delete strip.dataset.pinned;track.style.removeProperty('transform');
+    controller.abort();
+    resize.disconnect();
+    cancelAnimationFrame(raf);
+    delete pieceSection.dataset.entering;
+    delete social.dataset.entering;
+    strip.removeAttribute('data-pinned');
+    strip.removeAttribute('data-cards-active');
+    track.style.removeProperty('transform');
     cards.forEach(card=>card.removeAttribute('style'));
-    pieces.forEach(piece=>{piece.style.removeProperty('--rx');piece.style.removeProperty('--ry');});
-    counters.forEach(n=>n.textContent=format.format(Number(n.dataset.total)));
+    [social,...pieces].forEach(el=>{
+      for(const property of ['--rx','--ry','--entry-opacity','--entry-offset'])el.style.removeProperty(property);
+    });
+    counters.forEach(counter=>counter.textContent=format.format(Number(counter.dataset.total)));
   };
 }
