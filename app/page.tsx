@@ -4,11 +4,11 @@ import Lookbook from '@/components/home/Lookbook';
 import {resolveLooks} from '@/lib/looks';
 import CategoryVisual from '@/components/home/CategoryVisual';
 import SocialLinks from '@/components/store/SocialLinks';
-import HeroMedia from '@/components/home/HeroMedia';
+import NieblaHero from '@/components/home/niebla/NieblaHero';
 import EditorialVideo from '@/components/experience/EditorialVideo';
 import Link from 'next/link';
 import {
-  ArrowDown,
+
   ArrowRight,
   ArrowUpRight,
   Layers,
@@ -33,35 +33,10 @@ export default async function Home() {
 
   return (
     <>
-    <main id="contenido" className="home-story" data-home-story>
+    <main id="contenido" className="home-story niebla-home" data-home-story>
       <HomeMotion />
 
-      <section className="story-hero eu-cinematic" data-hero aria-labelledby="hero-title">
-        <HeroMedia />
-
-        <div className="story-hero-grid">
-          <div className="story-hero-copy">
-            <p className="story-kicker"><span /> EVOLUCIÓN URBANA / COLOMBIA</p>
-            <h1 id="hero-title">VISTE<br /><em>DIFERENTE.</em></h1>
-            <p className="story-hero-statement">Tu estilo no sigue reglas.<br />Tu historia tampoco.</p>
-            <Link className="story-button story-button-light" href="/catalogo">
-              EXPLORAR COLECCIÓN <ArrowUpRight size={19} aria-hidden="true" />
-            </Link>
-          </div>
-
-          <div className="story-hero-side" aria-hidden="true">
-            <span>DROP / 001</span>
-            <span>STREETWEAR ESENCIAL</span>
-          </div>
-
-          <div className="story-hero-foot">
-            <span>PRENDAS CON CARÁCTER</span>
-            <a href="#categorias">DESCUBRE MÁS <ArrowDown size={15} /></a>
-            <span>01 — 05</span>
-          </div>
-          <div className="story-progress-track" aria-hidden="true"><span /></div>
-        </div>
-      </section>
+      <NieblaHero />
 
       <ServiceAnnouncements />
 

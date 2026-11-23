@@ -6,6 +6,7 @@
     "node": "24.x"
   },
   "scripts": {
+    "preview:niebla": "node scripts/run-next.mjs dev --webpack --hostname 127.0.0.1 --port 5189",
     "install:ci": "bash scripts/install-pnpm.sh",
     "dev": "node scripts/run-next.mjs dev --webpack --port 5178",
     "build": "node scripts/run-next.mjs build --webpack",
