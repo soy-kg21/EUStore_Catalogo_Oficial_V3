@@ -1,8 +1,8 @@
-# Evolución Urbana · Anime Universe V5 · Parche 5.1
+# Evolución Urbana · Catálogo V4
 
-Copia independiente del proyecto completo. Anime Shop forma parte del mismo catálogo general.
+Catálogo oficial de Evolución Urbana. Esta edición incorpora el nuevo Inicio y su navegación. Anime Shop y el conector BackOffice forman parte del proyecto y conservan sus propias versiones.
 
-Abre **esta carpeta V5** en VS Code y usa PowerShell:
+Abre la carpeta del catálogo en VS Code y ejecuta estos comandos en PowerShell.
 
 ```powershell
 node --version
@@ -22,7 +22,13 @@ Requiere Node >=22.13 (comprobado con Node 24) y pnpm 11.25.0.
 
 Lee **LEEME_ANIME_UNIVERSE_V5.txt** para la instalación y el recorrido de prueba.
 
-## Parche 5.1
+## Publicación de Catálogo V4
+
+La identificación de la entrega es **Evolución Urbana · Catálogo V4**. El nombre se usará en la publicación de GitHub y en el commit asociado al despliegue de Vercel. La etiqueta Git de la publicación será `catalogo-v4.0.0`.
+
+La integración debe conservar el proyecto de Vercel conectado al catálogo y su dominio. La prueba local carga la publicación incluida en el repositorio. La validación del despliegue debe comprobar las referencias publicadas por el BackOffice y sus fotografías.
+
+## Historial de Anime Shop · Parche 5.1
 
 La composición usa las mismas imágenes de Gojo, iluminación verde/azul/violeta y transiciones del prototipo aprobado. Es una escena por capas con movimiento de cámara, composición y efectos; no contiene un nuevo modelo articulado de Gojo ni una película generada en Blender.
 
@@ -62,7 +68,7 @@ pnpm.cmd test:anime-build
 
 Las pruebas de geometría y desplazamiento ejecutan el controlador con adaptadores de DOM y reloj. No sustituyen una inspección visual en Chrome/Safari o en un teléfono real. El entorno de esta entrega no proporciona un navegador de prueba; esa revisión visual queda pendiente al abrirlo localmente. El informe de comprobaciones está en `docs/VERIFICACION_ANIME_UNIVERSE_V5_1.json`.
 
-La entrega no publica en Vercel, no cambia campañas y no conecta ni actualiza una base de datos o el agente de WhatsApp. Los archivos V1–V4 y las herramientas antiguas se conservan como historial, sin intervenir en el hero V5.
+La entrega de Anime Shop conservó los archivos y herramientas de las versiones anteriores como historial.
 
 
 ## Conector BackOffice V5.2
