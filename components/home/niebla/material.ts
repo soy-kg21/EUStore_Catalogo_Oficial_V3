@@ -22,6 +22,7 @@ export function mountLens(canvas: HTMLCanvasElement, image: HTMLImageElement, si
   const camera = new THREE.OrthographicCamera(-1,1,1,-1,0,1);
   const pointer = new THREE.Vector2();
   let lastMove = -Infinity, raf = 0, previous = 0, time = 0, visible = false;
+  let placementDirty=true, placement:DOMRect, materialHeight=0;
   const section = frame.closest<HTMLElement>('.eu-material')!;
   function resize() {
     const width=frame.clientWidth,height=frame.clientHeight;
@@ -35,6 +36,8 @@ export function mountLens(canvas: HTMLCanvasElement, image: HTMLImageElement, si
     uniforms.uDpr.value=dpr;
     uniforms.uAspect.value=aspect;
     uniforms.uLensR.value=width<=820 ? 92 : 150;
+    materialHeight=section.offsetHeight;
+    placementDirty=true;
   }
   function render(now:number) {
     raf=0;
@@ -42,12 +45,17 @@ export function mountLens(canvas: HTMLCanvasElement, image: HTMLImageElement, si
     const dt=previous ? Math.min(.06,(now-previous)/1000) : 1/60;
     time+=dt; previous=now;
     const real=now-lastMove<2500;
-    const x=real ? pointer.x : .5+.26*Math.sin(time*.42);
-    const y=real ? pointer.y : .5+.18*Math.sin(time*.57+1.2);
-    const lens=uniforms.uLens.value, factor=1-Math.exp(-9*dt);
+    if(placementDirty) {
+      const viewport=innerHeight;
+      placement=frame.getBoundingClientRect();
+      uniforms.uProg.value=THREE.MathUtils.clamp((viewport-section.getBoundingClientRect().top)/(materialHeight+viewport),0,1);
+      placementDirty=false;
+    }
+    const x=real ? (pointer.x-placement.left)/placement.width : .5+.26*Math.sin(time*.42);
+    const y=real ? 1-(pointer.y-placement.top)/placement.height : .5+.18*Math.sin(time*.57+1.2);
+    const lens=uniforms.uLens.value, factor=1-Math.exp(-(real ? 18 : 9)*dt);
     lens.x+=(x-lens.x)*factor; lens.y+=(y-lens.y)*factor;
     uniforms.uMouse.value.copy(lens);
-    uniforms.uProg.value=THREE.MathUtils.clamp((innerHeight-section.getBoundingClientRect().top)/(section.offsetHeight+innerHeight),0,1);
     try {
       renderer.render(scene,camera);
     } catch {
@@ -64,16 +72,17 @@ export function mountLens(canvas: HTMLCanvasElement, image: HTMLImageElement, si
   }
   const observer=new IntersectionObserver(([entry])=>{
     visible=entry.isIntersecting;
+    placementDirty=true;
     canvas.toggleAttribute('data-in-view',visible);
     schedule();
   });
   const size=new ResizeObserver(resize);
   const listeners=new AbortController();
   frame.addEventListener('pointermove',e=>{
-    const rect=frame.getBoundingClientRect();
-    pointer.set((e.clientX-rect.left)/rect.width,1-(e.clientY-rect.top)/rect.height);
+    pointer.set(e.clientX,e.clientY);
     lastMove=performance.now();
   },{passive:true,signal:listeners.signal});
+  window.addEventListener('scroll',()=>{placementDirty=true;},{passive:true,signal:listeners.signal});
   document.addEventListener('visibilitychange',schedule,{signal:listeners.signal});
   let disposed=false;
   function stop(){

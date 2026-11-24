@@ -26,6 +26,8 @@ function createOpticalLens(canvas:HTMLCanvasElement,image:HTMLImageElement) {
   if(!context) return;
   const renderer=new THREE.WebGLRenderer({canvas,context,alpha:true});
   const texture=new THREE.Texture(image);
+  texture.generateMipmaps=false;
+  texture.minFilter=THREE.LinearFilter;
   texture.needsUpdate=true;
   const uniforms={
     tPhoto:{value:texture},
@@ -75,8 +77,11 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
 
   let width=0,height=0,radius=0,scale=1,offsetX=0,offsetY=0,stickyTop=0,scrollLength=1;
   let visible=false,resizeNeeded=true,raf=0,previous=0,x=NaN,y=NaN;
+  let placementDirty=true,placement:DOMRect,progress=0;
   let drawnX=NaN,drawnY=NaN;
   let pointer:{x:number;y:number;touch:boolean} | undefined;
+  let touchOrigin:{x:number;y:number} | undefined;
+  let verticalPan=false;
 
   function useSoftware() {
     optical?.dispose();
@@ -92,7 +97,7 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
     radius=Math.min(width*.205,width<=820 ? 86 : 148);
     if(!width || !height) return;
     const diameter=radius*2;
-    const dpr=Math.min(devicePixelRatio,1.4);
+    const dpr=Math.min(devicePixelRatio,width<=820 ? 1.2 : 1.4);
     lens.style.width=lens.style.height=diameter+'px';
     optical?.resize(diameter,dpr);
     backup.width=backup.height=Math.max(1,Math.round(diameter*dpr));
@@ -102,6 +107,7 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
     stickyTop=parseFloat(getComputedStyle(frame).top)||0;
     scrollLength=Math.max(1,section.offsetHeight-height);
     resizeNeeded=true;
+    placementDirty=true;
     schedule();
   }
 
@@ -125,30 +131,34 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
   function draw(now:number) {
     raf=0;
     if(!visible || signal.aborted || document.hidden || !radius) return;
-    const progress=clampProgress((stickyTop-section.getBoundingClientRect().top)/scrollLength);
+    if(placementDirty) {
+      placement=frame.getBoundingClientRect();
+      progress=clampProgress((stickyTop-section.getBoundingClientRect().top)/scrollLength);
+      placementDirty=false;
+    }
     let targetX=width*(.75-.37*progress);
     let targetY=height*(.59+.17*Math.sin(progress*Math.PI));
     if(pointer) {
-      const bounds=frame.getBoundingClientRect();
       const margin=radius*.62;
-      targetX=Math.max(margin,Math.min(width-margin,pointer.x-bounds.left));
-      targetY=Math.max(margin,Math.min(height-margin,pointer.y-bounds.top-(pointer.touch ? radius*.45 : 0)));
+      targetX=Math.max(margin,Math.min(width-margin,pointer.x-placement.left));
+      targetY=Math.max(margin,Math.min(height-margin,pointer.y-placement.top-(pointer.touch ? radius*.45 : 0)));
     }
 
-    const dt=previous ? Math.min(.04,(now-previous)/1000) : 1/60;
-    const speed=pointer?.touch ? 29 : pointer ? 20 : 11;
+    const dt=previous ? Math.min(.065,(now-previous)/1000) : 1/60;
+    const speed=pointer?.touch ? 45 : pointer ? 20 : 15;
     const blend=1-Math.exp(-speed*dt);
     const nextX=Number.isFinite(x) ? x+(targetX-x)*blend : targetX;
     const nextY=Number.isFinite(y) ? y+(targetY-y)*blend : targetY;
     const moving=Math.hypot(targetX-nextX,targetY-nextY)>.45;
     x=moving ? nextX : targetX;
     y=moving ? nextY : targetY;
-    if(resizeNeeded || Math.hypot(x-drawnX,y-drawnY)>.08 || !Number.isFinite(drawnX)) {
+    if(resizeNeeded || Math.hypot(x-drawnX,y-drawnY)>.24 || !Number.isFinite(drawnX)) {
       resizeNeeded=false;
       drawnX=x;
       drawnY=y;
       lens.style.transform='translate3d('+(x-radius)+'px,'+(y-radius)+'px,0)';
-      lens.toggleAttribute('data-ready',paintImage((x-offsetX)/scale,(y-offsetY)/scale,radius/(scale*1.9)));
+      const ready=paintImage((x-offsetX)/scale,(y-offsetY)/scale,radius/(scale*1.9));
+      if(lens.hasAttribute('data-ready')!==ready)lens.toggleAttribute('data-ready',ready);
     }
     previous=moving ? now : 0;
     if(moving) schedule();
@@ -164,19 +174,32 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
   }
 
   function release() {
+    touchOrigin=undefined;
+    verticalPan=false;
     pointer=undefined;
     schedule();
   }
   function trackTouch(event:TouchEvent) {
     if(event.touches.length!==1) {release();return;}
     const touch=event.touches[0];
-    pointer={x:touch.clientX,y:touch.clientY,touch:true};
+    const point={x:touch.clientX,y:touch.clientY};
+    touchOrigin ??=point;
+    if(verticalPan) return;
+    const horizontal=Math.abs(point.x-touchOrigin.x);
+    const vertical=Math.abs(point.y-touchOrigin.y);
+    if(vertical>12 && vertical>horizontal*1.15) {
+      verticalPan=true;
+      pointer=undefined;
+    } else {
+      pointer={...point,touch:true};
+    }
     schedule();
   }
 
   const resize=new ResizeObserver(measure);
   const intersection=new IntersectionObserver(([entry])=>{
     visible=entry.isIntersecting;
+    placementDirty=true;
     lens.toggleAttribute('data-in-view',visible);
     if(!visible) pointer=undefined;
     schedule();
@@ -195,7 +218,7 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
     if(event.pointerType!=='touch') release();
   },{signal});
   glass.addEventListener('webglcontextlost',useSoftware,{once:true,signal});
-  window.addEventListener('scroll',schedule,passive);
+  window.addEventListener('scroll',()=>{placementDirty=true;schedule();},passive);
   document.addEventListener('visibilitychange',()=>{if(document.hidden) release();else schedule();},{signal});
   signal.addEventListener('abort',()=>{
     intersection.disconnect();

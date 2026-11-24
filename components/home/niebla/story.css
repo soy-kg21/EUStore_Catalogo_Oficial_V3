@@ -73,12 +73,42 @@ html.lenis.lenis-smooth {scroll-behavior:auto!important}
 .eu-collection-window {overflow:auto;scrollbar-width:thin}
 .eu-collection[data-pinned] .eu-collection-window {overflow:clip}
 .eu-collection-track {position:relative;display:flex;align-items:center;gap:4.6vw;width:max-content;padding:0 var(--gutter)}
+.eu-collection[data-native-rail] {
+  view-timeline:--collection-scroll block;
+  view-timeline-inset:0 calc(100% - var(--rail-panel,100svh));
+}
+.eu-collection[data-native-rail] :is(.eu-collection-track,.eu-rail-progress i) {
+  animation-duration:auto;
+  animation-fill-mode:both;
+  animation-timing-function:var(--rail-easing,linear);
+  animation-timeline:--collection-scroll;
+  animation-range:contain;
+}
+.eu-collection[data-native-rail] .eu-collection-track {animation-name:eu-rail-travel}
+.eu-collection[data-native-rail] .eu-rail-progress i {animation-name:eu-rail-fill}
+@keyframes eu-rail-travel {
+  from {transform:translate3d(0,0,0)}
+  to {transform:translate3d(calc(-1 * var(--travel,0px)),0,0)}
+}
+@keyframes eu-rail-fill {
+  from {transform:scaleX(0)}
+  to {transform:scaleX(1)}
+}
 .eu-collection-intro {width:clamp(300px,31vw,540px)}
 .eu-collection-intro p,.eu-section-heading>p {font-size:clamp(15px,1.15vw,20px);line-height:1.45;max-width:27ch;color:var(--chapter-muted)}
 .eu-collection-intro p {margin-top:clamp(20px,4vh,42px)}
 .eu-collection-card {display:block;width:clamp(164px,min(30vw,36svh),405px);color:inherit}
-.eu-collection-photo {position:relative;height:clamp(190px,min(63svh,var(--panel-height) - 138px),700px);overflow:hidden;background:#202221;clip-path:inset(0 var(--cut,0%) 0 0)}
-.eu-collection-photo .category-frames {position:absolute;inset:0;transform:scale(var(--zoom,1));filter:var(--photo-filter,none)}
+.eu-collection-photo {position:relative;height:clamp(190px,min(63svh,var(--panel-height) - 138px),700px);overflow:hidden;background:#202221;clip-path:inset(0 calc((1 - var(--photo-reveal,1)) * 100%) 0 0)}
+.eu-collection-photo .category-frames {position:absolute;inset:0;transform:scale(calc(1.25 - var(--photo-reveal,1) * .25))}
+.eu-collection-card[data-revealing] .category-frames {
+  filter:blur(calc((1 - var(--photo-reveal,1)) * 14px)) brightness(calc(.55 + var(--photo-reveal,1) * .45));
+}
+@media (max-width:820px), (pointer:coarse) {
+  .eu-collection-card[data-revealing] .category-frames {
+    filter:none;
+    opacity:calc(.55 + var(--photo-reveal,1) * .45);
+  }
+}
 .eu-collection-photo img {object-fit:cover;object-position:center}
 .niebla-home .eu-collection-card:not([data-slide-in-view]) .category-frames.has-slides img {animation-play-state:paused}
 @media(min-width:821px) {

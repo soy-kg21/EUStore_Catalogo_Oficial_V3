@@ -43,6 +43,21 @@ async function smoothWheel(signal:AbortSignal) {
 const clamp=(n:number)=>Math.max(0,Math.min(1,n));
 const ease=(n:number)=>1-(1-clamp(n))**3;
 const format=new Intl.NumberFormat('es-CO');
+const railEaseEdge=.12;
+const railCruise=1-railEaseEdge;
+const railRamp=2*railEaseEdge*railCruise;
+
+function mapRailPhase(phase:number,inverse=false) {
+  const reversed=phase>.5;
+  const half=reversed ? 1-phase : phase;
+  const result=inverse
+    ? half<railEaseEdge/(2*railCruise) ? Math.sqrt(half*railRamp) : half*railCruise+railEaseEdge/2
+    : half<railEaseEdge ? half*half/railRamp : (half-railEaseEdge/2)/railCruise;
+  return reversed ? 1-result : result;
+}
+
+const railStops=[0,.03,.06,.09,.12,.88,.91,.94,.97,1];
+const railEasing='linear('+railStops.map(stop=>mapRailPhase(stop).toFixed(6)+' '+Math.round(stop*100)+'%').join(',')+')';
 
 function cursorRing(signal:AbortSignal){
   const ring=document.createElement('div');
@@ -120,7 +135,13 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
   const pieces=[...pieceSection.querySelectorAll<HTMLElement>('.eu-piece')].map(piece=>({
     piece, motion:watchFeaturedPiece(piece,fine,signal),
   }));
-  let travel=0, railRate=1, top=0, headerHeight=0, raf=0, lastX=-1, lastScroll=window.scrollY;
+  const nativeRail=CSS.supports('animation-timeline','--collection-scroll')
+    && CSS.supports('animation-range','contain') && CSS.supports('animation-timing-function',railEasing);
+  if(nativeRail) {
+    strip.dataset.nativeRail='';
+    strip.style.setProperty('--rail-easing',railEasing);
+  }
+  let travel=0, railLength=1, viewportWidth=0, top=0, headerHeight=0, raf=0, lastX=-1, lastScroll=window.scrollY;
   let adjustRailEntry=false, lastHeadroom=-1;
   let collectionWasVisible=false, piecesWereVisible=false;
   let cardGeometry:{left:number;width:number;reveal:number}[]=[];
@@ -133,6 +154,11 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     const bottom=innerHeight;
     const collection=strip.getBoundingClientRect();
     const collectionVisible=collection.top<bottom && collection.bottom>top;
+    const statsBounds=stats.getBoundingClientRect();
+    const pieceBounds=pieceSection.getBoundingClientRect();
+    const piecesVisible=pieceBounds.top<bottom && pieceBounds.bottom>top;
+    const pieceRects=piecesVisible ? pieces.map(({piece})=>piece.getBoundingClientRect()) : [];
+    const socialTop=social.getBoundingClientRect().top;
     if(collectionVisible) {
       if(adjustRailEntry) {
         // Ease the vertical approach to a stop as the horizontal rail starts.
@@ -143,23 +169,24 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
           lastHeadroom=headroom;
         }
       }
-      const width=pin.clientWidth;
-      const x=Math.max(0,Math.min(travel,(top-collection.top)*railRate));
+      const progress=mapRailPhase(clamp((top-collection.top)/railLength));
+      const x=travel*progress;
       if(x!==lastX || !collectionWasVisible) {
         lastX=x;
-        track.style.transform='translate3d('+(-x)+'px,0,0)';
-        strip.style.setProperty('--rail',String(travel ? x/travel : 1));
+        if(!nativeRail) {
+          track.style.transform='translate3d('+(-x)+'px,0,0)';
+          strip.style.setProperty('--rail',String(progress));
+        }
         cards.forEach((card,index)=>{
           const {left,width:cardWidth}=cardGeometry[index];
           const start=left-x;
-          const progress=ease((width-start)/(width*.5));
-          card.toggleAttribute('data-slide-in-view',start<width && start+cardWidth>0);
-          if(progress===cardGeometry[index].reveal) return;
-          cardGeometry[index].reveal=progress;
-          card.style.setProperty('--cut',((1-progress)*100)+'%');
-          card.style.setProperty('--photo-filter',progress>.995 ? 'none' :
-            'blur('+((1-progress)*14)+'px) brightness('+(.55+.45*progress)+')');
-          card.style.setProperty('--zoom',String(1.25-.25*progress));
+          const visible=start<viewportWidth+2 && start+cardWidth>-2;
+          if(card.hasAttribute('data-slide-in-view')!==visible)card.toggleAttribute('data-slide-in-view',visible);
+          const reveal=Math.round(ease((viewportWidth-start)/(viewportWidth*.5))*100)/100;
+          if(reveal===cardGeometry[index].reveal) return;
+          cardGeometry[index].reveal=reveal;
+          card.style.setProperty('--photo-reveal',String(reveal));
+          card.toggleAttribute('data-revealing',visible && reveal<1);
         });
       }
     } else if(collectionWasVisible) {
@@ -167,26 +194,21 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     }
     collectionWasVisible=collectionVisible;
 
-    const statsTop=stats.getBoundingClientRect().top;
-    if(statsTop<bottom) {
-      const counted=ease((bottom*.9-statsTop)/(bottom*.6));
+    if(statsBounds.top<bottom && statsBounds.bottom>0) {
+      const counted=ease((bottom*.9-statsBounds.top)/(bottom*.6));
       counters.forEach(counter=>{
         const value=format.format(Math.round(Number(counter.dataset.total)*counted));
         if(counter.textContent!==value)counter.textContent=value;
       });
     }
 
-    const pieceBounds=pieceSection.getBoundingClientRect();
-    const piecesVisible=pieceBounds.top<bottom && pieceBounds.bottom>top;
     if(piecesVisible) {
-      const bounds=pieces.map(({piece})=>piece.getBoundingClientRect());
-      pieces.forEach(({motion},index)=>motion.update(bounds[index],headerHeight,bottom,direction));
+      pieces.forEach(({motion},index)=>motion.update(pieceRects[index],headerHeight,bottom,direction));
     } else if(piecesWereVisible) {
       pieces.forEach(({motion})=>motion.suspend());
     }
     piecesWereVisible=piecesVisible;
 
-    const socialTop=social.getBoundingClientRect().top;
     if(socialTop<bottom) {
       const progress=ease((bottom-socialTop)/(bottom*.3));
       social.style.setProperty('--entry-opacity',String(.12+.88*progress));
@@ -208,11 +230,14 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     top=parseFloat(getComputedStyle(pin).top)||0;
     headerHeight=parseFloat(getComputedStyle(main).getPropertyValue('--site-header-height'))||82;
     adjustRailEntry=getComputedStyle(strip).getPropertyValue('--rail-entry-inset').trim()==='1';
-    travel=Math.max(0,track.scrollWidth-pin.clientWidth);
+    viewportWidth=pin.clientWidth;
+    travel=Math.max(0,track.scrollWidth-viewportWidth);
     cardGeometry=cards.map(card=>({left:card.offsetLeft,width:card.offsetWidth,reveal:-1}));
     lastX=-1;
     strip.style.setProperty('--travel',travel+'px');
-    railRate=travel/Math.max(1,strip.offsetHeight-pin.offsetHeight);
+    const panelHeight=pin.offsetHeight;
+    railLength=Math.max(1,strip.offsetHeight-panelHeight);
+    if(nativeRail)strip.style.setProperty('--rail-panel',panelHeight+'px');
     schedule();
   }
   strip.addEventListener('focusin',event=>{
@@ -223,7 +248,7 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     if(pos.left>=0 && pos.right<=pin.clientWidth && pos.top>=section.top && pos.bottom<=section.bottom)return;
     const destination=scrollY+strip.getBoundingClientRect().top-top;
     const reveal=Math.max(0,Math.min(travel,card.offsetLeft-pin.clientWidth*.15));
-    window.scrollTo({top:destination+(railRate ? reveal/railRate : 0),behavior:'instant'});
+    window.scrollTo({top:destination+(travel ? mapRailPhase(reveal/travel,true)*railLength : 0),behavior:'instant'});
   },{signal});
 
   main.addEventListener('focusin',event=>{
@@ -253,12 +278,16 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     cancelAnimationFrame(raf);
     delete social.dataset.entering;
     strip.removeAttribute('data-pinned');
+    strip.removeAttribute('data-native-rail');
     strip.style.removeProperty('--travel');
+    strip.style.removeProperty('--rail-panel');
+    strip.style.removeProperty('--rail-easing');
     strip.style.removeProperty('--rail');
     strip.style.removeProperty('--rail-headroom');
     track.style.removeProperty('transform');
     cards.forEach(card=>{
       card.removeAttribute('data-slide-in-view');
+      card.removeAttribute('data-revealing');
       card.removeAttribute('style');
     });
     social.style.removeProperty('--entry-opacity');
