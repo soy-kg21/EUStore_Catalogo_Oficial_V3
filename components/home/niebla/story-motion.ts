@@ -121,6 +121,7 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     piece, motion:watchFeaturedPiece(piece,fine,signal),
   }));
   let travel=0, railRate=1, top=0, headerHeight=0, raf=0, lastX=-1, lastScroll=window.scrollY;
+  let adjustRailEntry=false, lastHeadroom=-1;
   let collectionWasVisible=false, piecesWereVisible=false;
   let cardGeometry:{left:number;width:number;reveal:number}[]=[];
 
@@ -133,6 +134,15 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     const collection=strip.getBoundingClientRect();
     const collectionVisible=collection.top<bottom && collection.bottom>top;
     if(collectionVisible) {
+      if(adjustRailEntry) {
+        // Ease the vertical approach to a stop as the horizontal rail starts.
+        const entry=clamp(1-collection.top/(2*headerHeight));
+        const headroom=headerHeight*entry**2;
+        if(headroom!==lastHeadroom) {
+          strip.style.setProperty('--rail-headroom',headroom+'px');
+          lastHeadroom=headroom;
+        }
+      }
       const width=pin.clientWidth;
       const x=Math.max(0,Math.min(travel,(top-collection.top)*railRate));
       if(x!==lastX || !collectionWasVisible) {
@@ -197,6 +207,7 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     strip.dataset.pinned='';
     top=parseFloat(getComputedStyle(pin).top)||0;
     headerHeight=parseFloat(getComputedStyle(main).getPropertyValue('--site-header-height'))||82;
+    adjustRailEntry=getComputedStyle(strip).getPropertyValue('--rail-entry-inset').trim()==='1';
     travel=Math.max(0,track.scrollWidth-pin.clientWidth);
     cardGeometry=cards.map(card=>({left:card.offsetLeft,width:card.offsetWidth,reveal:-1}));
     lastX=-1;
@@ -244,6 +255,7 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     strip.removeAttribute('data-pinned');
     strip.style.removeProperty('--travel');
     strip.style.removeProperty('--rail');
+    strip.style.removeProperty('--rail-headroom');
     track.style.removeProperty('transform');
     cards.forEach(card=>{
       card.removeAttribute('data-slide-in-view');

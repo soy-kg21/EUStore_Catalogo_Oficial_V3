@@ -37,18 +37,19 @@ html.lenis.lenis-smooth {scroll-behavior:auto!important}
   .niebla-home .eu-closing[data-motion] .eu-closing-copy {top:calc(var(--site-header-height,82px) + 3%)}
 }
 @media (max-width:600px) and (orientation:portrait) and (prefers-reduced-motion:no-preference) {
-  /* Reveal the label and first photo at the section edge before pinning the rail. */
+  /* Let the content enter with its chapter, then clear the floating header. */
   .niebla-home .eu-collection[data-pinned] {
-    height:calc(max(410px,var(--panel-height)) + var(--travel,0px) + var(--rail-hold,18svh));
+    --rail-entry-inset:1;
   }
   .niebla-home .eu-collection[data-pinned] > .eu-scene-range {top:0}
   .niebla-home .eu-collection[data-pinned] .eu-collection-pin {
-    top:var(--site-header-height,82px);
-    height:var(--panel-height);
     align-items:start;
     padding-top:62px;
   }
   .niebla-home .eu-collection[data-pinned] .eu-running {top:14px}
+  .niebla-home .eu-collection[data-pinned] :is(.eu-running,.eu-collection-window) {
+    translate:0 var(--rail-headroom,0px);
+  }
   .niebla-home .eu-collection[data-pinned] .eu-collection-track {align-items:flex-start}
   .niebla-home .eu-collection[data-pinned] .eu-collection-intro {padding-top:20px}
   .niebla-home .eu-collection[data-pinned] .eu-collection-photo {

@@ -5,6 +5,7 @@
   font-display: swap;
 }
 .home-story.niebla-home {overflow:clip}
+.niebla-hero-range {display:contents}
 .niebla {
   --edge:clamp(22px,4vw,80px);
   --acid:#ceff00;
@@ -128,10 +129,15 @@
    Otherwise a fast first wheel gesture can move Collection by more than a screen. */
 @media (scripting:enabled) and (prefers-reduced-motion:no-preference) {
   .niebla-home > .niebla:not([data-closing],[data-static-scene]) {height:280svh}
-  .niebla-home > .niebla:not([data-closing],[data-static-scene],[data-motion]) > .niebla-frame {position:sticky;top:0}
+  .niebla-home > .niebla:not([data-closing],[data-static-scene],[data-motion]) .niebla-frame {position:sticky;top:0}
   .niebla-home > .niebla.eu-closing:not([data-static-scene]) {height:100svh}
 }
 .niebla-home > .niebla:not([data-closing])[data-motion] .niebla-frame {top:0}
+@media (max-width:600px) and (orientation:portrait) and (prefers-reduced-motion:no-preference) {
+  /* Keep the final hero frame in place while the next chapter's edge crosses the screen. */
+  .niebla-home > .niebla:not([data-closing])[data-motion] {overflow:clip}
+  .niebla[data-motion] .niebla-hero-range {display:block;position:absolute;inset:0 0 -100svh}
+}
 .niebla-home .niebla-top {top:calc(var(--site-header-height,82px) + 8px)}
 .niebla[data-renderer=webgl] .niebla-intro {visibility:hidden}
 @media(max-width:580px) and (min-height:600px) {
