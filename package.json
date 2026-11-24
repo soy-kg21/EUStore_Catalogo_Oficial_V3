@@ -1,6 +1,6 @@
 {
-  "name": "eustore-anime-universe-v5",
-  "version": "5.2.0",
+  "name": "evolucion-urbana-catalogo",
+  "version": "4.0.0",
   "private": true,
   "engines": {
     "node": "24.x"
@@ -18,7 +18,7 @@
     "build:vercel": "node scripts/run-next.mjs build --webpack",
     "start:next": "node scripts/run-next.mjs start --port 5178",
     "test:pricing": "node --import ./scripts/test-loader.mjs scripts/check-pricing.mjs",
-    "test:v2": "node --import ./scripts/test-loader.mjs scripts/check-v2.mjs",
+    "test:catalog-v4": "node --import ./scripts/test-loader.mjs scripts/check-catalog-v4.mjs",
     "test:anime": "node --import ./scripts/test-loader.mjs scripts/check-anime.mjs",
     "images:anime": "python3 scripts/optimize-anime-images.py",
     "test:anime-shop": "node --import ./scripts/test-loader.mjs scripts/check-anime-shop.mjs",

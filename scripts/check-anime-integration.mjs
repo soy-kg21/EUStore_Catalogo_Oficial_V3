@@ -7,8 +7,8 @@ import {renderToStaticMarkup} from 'react-dom/server';
 import ts from 'typescript';
 import {animeCategorySlug,animeLines} from '../lib/anime-catalog-core.ts';
 const require=createRequire(import.meta.url),read=file=>fs.readFileSync(new URL('../'+file,import.meta.url),'utf8').replaceAll('\r\n','\n');
-const baseline=JSON.parse(read('data/general-baseline-sha256.json'));
-let path='/anime';const Link=({href,children,...props})=>React.createElement('a',{href,...props},children);
+const baseline=JSON.parse(read('data/catalog-v4-baseline-sha256.json'));
+let path='/anime';const Link=({href,children,prefetch,...props})=>React.createElement('a',{href,...props},children);
 const simple=({children,...props})=>React.createElement('div',props,children);
 const slot={Sheet:simple,SheetContent:simple,SheetTitle:simple,SheetTrigger:simple,SheetDescription:simple,Dialog:simple,DialogContent:simple,DialogTitle:simple,DialogTrigger:simple,DialogDescription:simple};
 const Cart=()=>React.createElement('div',null,'Original catalog cart');
@@ -24,4 +24,4 @@ for(path of ['/','/catalogo','/categoria/camisetas','/categoria/zapatillas','/ca
  for(const href of ['/','/catalogo','/categoria/camisetas','/categoria/zapatillas','/categoria/conjuntos','/anime','/ofertas'])assert(html.includes('href="'+href+'"'),path+': '+href);checks++;
 }
 for(const [file,expected] of Object.entries(baseline)){assert.equal(createHash('sha256').update(read(file)).digest('hex'),expected,file);checks++;}
-console.log(`PASS: ${checks} comprobaciones de integración: mismo menú original, Inicio y tres categorías generales accesibles desde once rutas; ticker, datos generales, estilos base y pie preservados; inicio y tarifa B7 actualizados según el alcance autorizado.`);
+console.log(`Catálogo V4: ${checks} comprobaciones de integración, navegación y huellas de los archivos de referencia.`);

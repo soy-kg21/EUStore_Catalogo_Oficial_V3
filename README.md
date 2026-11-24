@@ -52,6 +52,8 @@ El encabezado, logotipo, anuncio móvil, botón sol/luna y pie son los component
 
 ```powershell
 pnpm.cmd exec tsc --noEmit
+pnpm.cmd test:catalog-v4
+pnpm.cmd test:pricing
 pnpm.cmd test:anime-cinema
 pnpm.cmd test:anime-cinema-runtime
 pnpm.cmd test:anime-journey

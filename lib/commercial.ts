@@ -1,6 +1,7 @@
 import config from '@/data/pricing-policy.json';
 import editorial from '@/data/product-editorial.json';
 import groups from '@/data/commercial-groups.json';
+import {withSocksGift} from './catalog-benefits';
 import type {Product} from './types';
 export type Rule={regular:number;retail:number[];mixed?:number;mixedScope?:string;wholesale?:number[][]};
 export const rules:Record<string,Rule>=config.rules;
@@ -16,6 +17,6 @@ export function withCommercial(p:Product):Product{
  const rule=ruleOf(p),g=groupOf(p);
  const benefits=[p.warehouse==='B3'?'Envío incluido hasta 3 pares; de 4 a 5, recargo por confirmar':'Envío incluido hasta 5 unidades por bodega','Pago contra entrega hasta 5 unidades por bodega'];
  if(p.warehouse==='B1'||p.warehouse==='B2')benefits.push('Seguro de transporte');
- if(p.warehouse==='B1')benefits.push('Medias de obsequio');
- return {...p,description:p.description.replace('con combos automáticos al llevar 2, 3 o 4 pares de esta misma bodega,','con beneficios según la selección,'),commercialGroup:g,pricingPending:false,...(rule?{price:rule.retail[0],previousPrice:rule.regular}:{}),benefits};
+ const socksGift=p.warehouse==='B1'&&p.category==='zapatillas'&&p.collection!=='importadas';
+ return {...p,description:p.description.replace('con combos automáticos al llevar 2, 3 o 4 pares de esta misma bodega,','con beneficios según la selección,'),commercialGroup:g,pricingPending:false,...(rule?{price:rule.retail[0],previousPrice:rule.regular}:{}),benefits:withSocksGift(benefits,socksGift)};
 }

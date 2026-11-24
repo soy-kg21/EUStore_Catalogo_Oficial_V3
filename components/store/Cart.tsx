@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import {cartInquiryMessage} from '@/lib/product-content';
+import {SOCKS_GIFT_BENEFIT} from '@/lib/catalog-benefits';
 import Link from 'next/link';
 import { MessageCircle } from 'lucide-react';
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
@@ -120,6 +121,7 @@ export default function Cart() {
             <div>
               <Link href={`/producto/${row.product.slug}`}><h2>{row.product.name}</h2></Link>
               <p>Talla {row.size} · {row.product.color}</p>
+              {row.product.benefits.includes(SOCKS_GIFT_BENEFIT)&&<p>{SOCKS_GIFT_BENEFIT}</p>}
               <strong aria-busy={pending}>{pending ? 'Actualizando…' : row.total===null ? 'A cotizar' : money(row.total)}</strong>
               <div className="cart-line-actions">
                 <span className="quantity-label">Cantidad</span>
@@ -139,7 +141,7 @@ export default function Cart() {
         <p>{data.shippingPending?'Envío: cotización con asesor.':'Envío incluido.'}</p>
         {data.total!==null&&<div className="summary-total"><span>Total</span><strong>{money(data.total)}</strong></div>}
         <p>{paymentNote}</p>
-        {data.b1>0&&<p>Tu calzado seleccionado incluye seguro de transporte y medias de obsequio.</p>}
+        {data.b1>0&&<p>Tu calzado seleccionado incluye seguro de transporte.</p>}
         {data.b2>0&&<p>Tu calzado seleccionado incluye seguro de transporte.</p>}
         {data.warehouses.length>1&&<div className="logistics-note"><h3>Tu look, en entregas separadas.</h3><p>Elegiste productos de {data.warehouses.length} grupos de entrega. Llegarán en despachos separados y conservarás los beneficios, ofertas y descuentos que correspondan a cada uno.</p><a href={wa('Hola, quisiera entender cómo funcionan los despachos separados y los beneficios de mi selección.')} target="_blank" rel="noopener noreferrer">Resolver una duda por WhatsApp ↗</a></div>}
         <p>Confirmaremos existencias y cobertura contigo antes de cerrar el pedido.</p>
