@@ -36,6 +36,25 @@ html.lenis.lenis-smooth {scroll-behavior:auto!important}
   .niebla-home .niebla.eu-closing[data-motion] {height:100svh}
   .niebla-home .eu-closing[data-motion] .eu-closing-copy {top:calc(var(--site-header-height,82px) + 3%)}
 }
+@media (max-width:600px) and (orientation:portrait) and (prefers-reduced-motion:no-preference) {
+  /* Reveal the label and first photo at the section edge before pinning the rail. */
+  .niebla-home .eu-collection[data-pinned] {
+    height:calc(max(410px,var(--panel-height)) + var(--travel,0px) + var(--rail-hold,18svh));
+  }
+  .niebla-home .eu-collection[data-pinned] > .eu-scene-range {top:0}
+  .niebla-home .eu-collection[data-pinned] .eu-collection-pin {
+    top:var(--site-header-height,82px);
+    height:var(--panel-height);
+    align-items:start;
+    padding-top:62px;
+  }
+  .niebla-home .eu-collection[data-pinned] .eu-running {top:14px}
+  .niebla-home .eu-collection[data-pinned] .eu-collection-track {align-items:flex-start}
+  .niebla-home .eu-collection[data-pinned] .eu-collection-intro {padding-top:20px}
+  .niebla-home .eu-collection[data-pinned] .eu-collection-photo {
+    height:min(56svh,100vw,max(200px,var(--panel-height) - 148px));
+  }
+}
 .niebla-home .eu-display {
   font:800 clamp(56px,7.4vw,144px)/.9 NieblaArchivo,'Arial Narrow',sans-serif;
   letter-spacing:-.02em;text-transform:uppercase;margin:0;color:inherit;
