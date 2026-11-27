@@ -83,7 +83,7 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
   let touchOrigin:{x:number;y:number} | undefined;
   let verticalPan=false;
 
-  function useSoftware() {
+  function switchToSoftware() {
     optical?.dispose();
     optical=undefined;
     lens.removeAttribute('data-optical');
@@ -118,7 +118,7 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
       } catch {
         // A context loss can occur between animation frames.
       }
-      useSoftware();
+      switchToSoftware();
     }
     if(!software) return false;
     const size=sampleRadius*2;
@@ -217,7 +217,7 @@ export function mountLensFallback(frame:HTMLElement,image:HTMLImageElement,signa
   frame.addEventListener('pointerleave',event=>{
     if(event.pointerType!=='touch') release();
   },{signal});
-  glass.addEventListener('webglcontextlost',useSoftware,{once:true,signal});
+  glass.addEventListener('webglcontextlost',switchToSoftware,{once:true,signal});
   window.addEventListener('scroll',()=>{placementDirty=true;schedule();},passive);
   document.addEventListener('visibilitychange',()=>{if(document.hidden) release();else schedule();},{signal});
   signal.addEventListener('abort',()=>{

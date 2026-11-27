@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import {catalogCollections} from '@/lib/catalog-collections';
 import {ArrowUpRight,Layers,MessageCircle,Sparkles} from 'lucide-react';
 import {metadata as meta} from '@/lib/seo';
 import {wa} from '@/lib/config';
@@ -8,9 +9,9 @@ import styles from './essence.module.css';
 export const metadata=meta('Nuestra esencia | Evolución Urbana Store','Tu estilo tiene algo que decir. Descubre nuestra selección de streetwear, Anime Shop y asesoría personalizada en Colombia.','/nosotros');
 
 const edits=[
- {name:'La calle.',label:'STREET / ESSENTIALS',detail:'Siluetas amplias. Actitud propia.',href:'/categoria/camisetas',image:'/media/looks/codigo-nocturno.webp'},
+ {name:'La calle.',label:'STREET / ESSENTIALS',detail:'Siluetas amplias. Actitud propia.',href:catalogCollections.oversize.path,image:'/media/looks/codigo-nocturno.webp'},
  {name:'Tu universo.',label:'ANIME / EXPRESSION',detail:'Lleva contigo lo que te inspira.',href:'/anime',image:'/anime/cinema/gojo-atlas.webp'},
- {name:'El siguiente paso.',label:'SNEAKERS / EDIT',detail:'Ese detalle que completa tu look.',href:'/categoria/zapatillas',image:'/media/categorias/categoria_zapatillas_img1.webp'},
+ {name:'El siguiente paso.',label:'SNEAKERS / EDIT',detail:'Ese detalle que completa tu look.',href:catalogCollections.nacionales.path,image:'/media/categorias/categoria_zapatillas_img1.webp'},
 ];
 
 export default function Page(){

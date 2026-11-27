@@ -8,5 +8,8 @@ export function animeSelectionMessage(rows:AnimeSelection[],products:AnimeClient
  const byId=new Map(products.map(p=>[p.id,p])),quantity=rows.reduce((n,row)=>n+row.quantity,0);if(!quantity)return '';
  const quote=confirmedQuote||animeQuote(quantity);
  const lines=rows.map((row,n)=>{const product=byId.get(row.id);return `${n+1}. ${product?productReference(product)||'Referencia por confirmar':row.id} — ${product?.name||'Camiseta'}\nTalla: ${row.size||'por confirmar'} · Cantidad: ${row.quantity}\n${new URL(animeProductHref(product||row.id),origin).href}`;});
- return ['Hola Evolución Urbana 👕','Quiero confirmar este combo de Anime Shop:',lines.join('\n\n'),`${quantity} ${quantity===1?'camiseta':'camisetas'}\n${quote.merchandise===null?'Total: cotización personalizada':`Total camisetas: ${money(quote.merchandise)} COP`}`,quote.shippingPending?'Pago anticipado. Transporte separado por cotizar.':'Envío estándar incluido y contraentrega sujetos a cobertura y validación. Extra logístico para zonas alejadas por confirmar.','Desde XXL: encargo con recargo por validar y pago anticipado.','Quiero confirmar disponibilidad, tallas y entrega en mi ciudad.'].join('\n\n');
+ const delivery=quote.shippingPending?'Pago anticipado. Transporte separado por cotizar.'
+  :quote.advance?'Pago anticipado para el encargo. Quiero confirmar el recargo y las condiciones de envío.'
+   :'Envío estándar incluido y contraentrega sujetos a cobertura y validación. Extra logístico para zonas alejadas por confirmar.';
+ return ['Hola Evolución Urbana 👕','Quiero confirmar este combo de Anime Shop:',lines.join('\n\n'),`${quantity} ${quantity===1?'camiseta':'camisetas'}\n${quote.merchandise===null?'Total: cotización personalizada':`Total camisetas: ${money(quote.merchandise)} COP`}`,delivery,'Desde XXL: encargo con recargo por validar y pago anticipado.','Quiero confirmar disponibilidad, tallas y entrega en mi ciudad.'].join('\n\n');
 }

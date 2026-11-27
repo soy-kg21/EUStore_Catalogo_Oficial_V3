@@ -19,7 +19,7 @@ function load(file){
  const code=ts.transpileModule(fs.readFileSync(absolute,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText,exports={};cache.set(absolute,exports);
  const resolve=name=>{
   if(name.endsWith('.module.css'))return {__esModule:true,default:styles};
-  if(name==='next/link')return {__esModule:true,default:({href,children,scroll,...props})=>{if(props.onClick)links.set(href,props.onClick);return React.createElement('a',{href,...props},children);}};
+  if(name==='next/link')return {__esModule:true,default:({href,children,scroll,prefetch,...props})=>{if(props.onClick)links.set(href,props.onClick);return React.createElement('a',{href,...props},children);}};
   if(name==='@/lib/anime-selection')return {useAnimeSelection:()=>({rows:[{id:'EU-ANIME-125',size:'M',quantity:1}]})};
   if(name==='@/lib/anime-events')return {trackAnimeEvent(){}};
   if(name==='./AnimeQuickView')return {__esModule:true,default:()=>null};
@@ -29,19 +29,18 @@ function load(file){
  };
  new Function('require','exports',code)(resolve,exports);return exports;
 }
-const {animeExperience}=load('lib/anime-experience.ts'),{animeLocationFilters}=load('lib/anime-routes.ts'),Client=load('components/anime/AnimeShopClient.tsx').default;
+const {animeLocationFilters}=load('lib/anime-routes.ts'),Client=load('components/anime/AnimeShopClient.tsx').default;
 const counts=Object.fromEntries(['anime','cartoon','rock','urbanos'].map(line=>[line,records.filter(p=>p.line===line).length]));
 const render=(pathname)=>{
- const filters=animeLocationFilters(pathname,''),experience=animeExperience[filters.linea||'shop'];
- const hero={products:experience.heroIds.map(id=>records.find(p=>p.id===id)),division:experience.eyebrow,title:experience.title,description:experience.description};
+ const filters=animeLocationFilters(pathname,'');
  const initialSearch='?'+new URLSearchParams({linea:filters.linea,categoria:'',q:''});
- return renderToStaticMarkup(React.createElement(ImageConfigContext.Provider,{value:{...imageConfigDefault,qualities:[75,85]}},React.createElement(Client,{products:records,initialSearch,counts,hero})));
+ return renderToStaticMarkup(React.createElement(ImageConfigContext.Provider,{value:{...imageConfigDefault,qualities:[75,85]}},React.createElement(Client,{products:records,initialSearch,counts})));
 };
 let checks=0;
 assert.equal(Object.values(counts).reduce((a,b)=>a+b,0),1209);checks++;
 for(const pathname of ['/anime','/shop','/cartoon','/rock','/urbanas']){
  links.clear();const html=render(pathname);
- assert(!html.includes('data-cinema="brand-a"'));assert(!html.includes('data-cinema="label-a"'));assert(html.includes('<canvas'));
+ assert(!html.includes('<canvas'));assert(html.includes('href="#coleccion">Explora los diseños'));
  assert.equal((html.match(/aria-label="Líneas de Anime Shop"/g)||[]).length,1);
  assert(html.includes('aria-label="Cambiar línea entre los productos"'));
  assert(!html.includes('href="/catalogo"'));
@@ -50,7 +49,7 @@ for(const pathname of ['/anime','/shop','/cartoon','/rock','/urbanas']){
  for(const count of [1209,...Object.values(counts)])assert(html.includes(count.toLocaleString('es-CO')+' diseños'));
  assert(html.indexOf('id="anime-discover"')<html.indexOf('id="coleccion"'));
  assert(html.indexOf('id="coleccion"')<html.indexOf('id="anime-collection-title"'));
- for(const line of ['anime','cartoon','rock','urbanas'])assert(html.includes(encodeURIComponent(`/anime/universe/${line}.webp`)));
+ for(const line of ['anime','cartoon','rock','urbanas'])assert(html.includes(`src="/anime/universe/${line}.webp"`));
  checks++;
 }
 links.clear();render('/anime');globalThis.window=browser;globalThis.document={querySelector:()=>null};

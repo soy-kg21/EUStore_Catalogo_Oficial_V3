@@ -1,29 +1,28 @@
 import {quoteLive} from './live-pricing';
-import type {Product,CartLine} from './types';
-import {ruleOf,withCommercial} from './commercial';
-export function quote(lines:CartLine[],products:Product[]){
- if(lines.some(l=>products.find(p=>p.id===l.id)?._live)||products.length===0)return quoteLive(lines,products.map(p=>{if(p._live)return p;const c=withCommercial(p),r=ruleOf(c),w=c.warehouse||'',buckets:Record<string,string>={"B1": "ac2c5a647314030aca259625", "B2": "b59911216dae93e2b58ad8f1", "B3": "39ee572347a7732f37ac5f40", "B4": "2620dd993a9eaa70a3c90fe0", "B5": "05174c6880fa3ccb9b1991ea", "B6": "17025e42553b9818edde10de", "B7": "fac51e9dcf81cf856afda292"};return {...c,variants:c.variants||c.sizes.map(size=>({size,quantity:null})),_live:{bucket:buckets[w]||'legacy-'+w,rule:r?{kind:'unit' as const,retail:r.retail,wholesale:r.wholesale||[],mixed:r.mixed,mixedScope:r.mixedScope==='warehouse'?'bucket':'cart'}:null,quoteFrom:['B1','B2','B3','B4'].includes(w)?6:null,shippingFrom:w==='B3'?4:6,advance:w==='B4'}};}));
- const catalog=products.map(withCommercial);
- const rows=lines.map(l=>{const p=catalog.find(p=>p.id===l.id&&p.state!=='inactive');if(!p||!p.sizes.includes(l.size)||!Number.isInteger(l.quantity)||l.quantity<1||l.quantity>100)throw new Error('Selección inválida: revisa referencia, talla y cantidad.');return {...l,product:p,unit:p.price as number|null,total:p.price*l.quantity as number|null,reason:''}});
- const qty=(w:string,c?:string)=>rows.filter(r=>r.product.warehouse===w&&(!c||r.product.category===c)).reduce((a,r)=>a+r.quantity,0);
- const warehouses=[...new Set(rows.map(r=>r.product.warehouse))];
- const count=rows.reduce((a,r)=>a+r.quantity,0);
- const b1=qty('B1'),b2=qty('B2'),b5=qty('B5');
- const reasons=new Set<string>();
- for(const r of rows){
-  const p=r.product,w=p.warehouse||'',n=qty(w),rule=ruleOf(p);
-  if(p.pricingPending)r.reason='El asesor confirmará la tarifa de esta referencia.';
-  else if(n>=6&&['B1','B2','B3','B4'].includes(w))r.reason='Desde 6 unidades de esta bodega, recibe una cotización mayorista personalizada.';
-  else if(n>=6){const tier=rule?.wholesale?.find(([min,max])=>n>=min&&n<=max);if(tier)r.unit=tier[2];else r.reason='Para esta cantidad, consulta una cotización personalizada.'}
-  else if(rule){r.unit=rule.mixed&&(rule.mixedScope==='warehouse'?n:count)>=2?rule.mixed:rule.retail[Math.min(n,5)-1]}
-  if(r.reason){r.unit=null;r.total=null;reasons.add(r.reason)}else r.total=r.unit!*r.quantity;
- }
- const advance=warehouses.some(w=>qty(w||'')>=6);
- const shippingPending=advance||qty('B3')>=4;
- if(qty('B3')>=4&&qty('B3')<=5)reasons.add('Esta selección tiene un recargo logístico de $16.000 a $20.000, que confirmará tu asesor.');
- const pricePending=rows.some(r=>r.total===null);
- const subtotal=pricePending?null:rows.reduce((a,r)=>a+r.total!,0);
- const shipping=shippingPending?null:0;
- const total=subtotal===null||shipping===null?null:subtotal+shipping;
- return {rows,subtotal,shipping,total,requiresQuote:total===null,pricePending,shippingPending,reasons:[...reasons],advance,warehouses,b1,b2,b5};
+import type {CartLine, Product} from './types';
+import {ruleOf, withCommercial} from './commercial';
+
+const buckets: Record<string, string> = {
+  B1:'ac2c5a647314030aca259625', B2:'b59911216dae93e2b58ad8f1', B3:'39ee572347a7732f37ac5f40',
+  B4:'2620dd993a9eaa70a3c90fe0', B5:'05174c6880fa3ccb9b1991ea', B6:'17025e42553b9818edde10de',
+  B7:'fac51e9dcf81cf856afda292',
+};
+
+export function quote(lines: CartLine[], products: Product[]) {
+  const selected = new Set(lines.map(line => line.id));
+  const eligible = products.filter(product => selected.has(product.id) && product.state !== 'inactive');
+  return quoteLive(lines, eligible.map(product => {
+    if (product._live) return product;
+    const current = withCommercial(product);
+    const rule = ruleOf(current);
+    const warehouse = current.warehouse ?? '';
+    return {...current, variants: current.variants ?? current.sizes.map(size => ({size, quantity: null})),
+      _live: {bucket: buckets[warehouse] ?? 'legacy-' + warehouse,
+        rule: rule ? {kind: 'unit' as const, retail: rule.retail, wholesale: rule.wholesale ?? [],
+          mixed: rule.mixed, mixedScope: rule.mixedScope === 'warehouse' ? 'bucket' : 'cart'} : null,
+        quoteFrom: ['B1', 'B2', 'B3', 'B4'].includes(warehouse) ? 6 : null,
+        shippingFrom: warehouse === 'B3' ? 4 : 6, advance: warehouse === 'B4',
+        retailShipping: warehouse === 'B4' ? 'importadas' as const
+          : warehouse === 'B5' && current.category === 'conjuntos' ? 'conjuntos-cortos' as const : undefined}};
+  }));
 }

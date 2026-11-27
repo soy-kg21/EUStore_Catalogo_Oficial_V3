@@ -37,5 +37,5 @@ export function siteSchema(){return {
     },
   ],
 }}
-export function productSchema(p:Product){return {'@context':'https://schema.org','@type':'Product',name:p.name,sku:productReference(p)||undefined,image:p.images.map(i=>ORIGIN+i),description:p.seoDescription,...(p.brand?{brand:{'@type':'Brand',name:p.brand}}:{}),...(p.pricingPending?{}:{offers:{'@type':'Offer',url:ORIGIN+'/producto/'+p.slug,priceCurrency:'COP',price:p.price,availability:p.stock===0?'https://schema.org/OutOfStock':'https://schema.org/InStock'}})}}
+export function productSchema(p:Product){return {'@context':'https://schema.org','@type':'Product',name:p.name,sku:productReference(p)||undefined,image:p.images.map(i=>ORIGIN+i),description:p.seoDescription,...(p.brand?{brand:{'@type':'Brand',name:p.brand}}:{}),...(p.pricingPending?{}:{offers:{'@type':'Offer',url:ORIGIN+'/producto/'+p.slug,priceCurrency:'COP',price:p.price,...(p.stock===0?{availability:'https://schema.org/OutOfStock'}:p.stock!==null&&p.stock>0||p.variants?.some(v=>v.quantity!==null&&v.quantity>0)?{availability:'https://schema.org/InStock'}:{})}})}}
 export const jsonLd=(data:unknown)=>JSON.stringify(data).replace(/</g,'\\u003c');

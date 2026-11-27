@@ -1,14 +1,15 @@
 import {getAnimeProducts} from '@/lib/live-products';
 import {getProducts} from '@/lib/products';
-import {ORIGIN,categories} from '@/lib/config';
-import {animeProducts,animeCategorySlug} from '@/data/anime-products';
+import {ORIGIN} from '@/lib/config';
+import {catalogSections} from '@/lib/catalog-collections';
+import {animeCategorySlug} from '@/data/anime-products';
 import {animeProductHref,animeLinePath} from '@/lib/anime-routes';
 
 export default async function sitemap(){
   const animeProducts=await getAnimeProducts();
   return [
-    ...['','/catalogo','/anime','/ofertas','/nosotros','/contacto','/zapatillas-importadas','/conjuntos-buzos'].map(path=>({url:ORIGIN+path})),
-    ...categories.map(c=>({url:ORIGIN+'/categoria/'+c.slug})),
+    ...['','/catalogo','/ofertas','/nosotros','/contacto'].map(path=>({url:ORIGIN+path})),
+    ...Object.values(catalogSections).map(section=>({url:ORIGIN+section.path})),
     ...(await getProducts()).map(p=>({url:ORIGIN+'/producto/'+p.slug})),
     ...['/shop','/cartoon','/rock','/urbanas'].map(path=>({url:ORIGIN+path})),
     ...[...new Set(animeProducts.map(p=>animeLinePath[p.line]+'/'+animeCategorySlug(p.category)))].map(path=>({url:ORIGIN+path})),

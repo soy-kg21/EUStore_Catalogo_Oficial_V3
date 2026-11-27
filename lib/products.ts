@@ -22,6 +22,13 @@ export const getProducts=cache(async ():Promise<Product[]>=>{
  const baseline=result.filter(p=>p.state!=='inactive').map(withCommercial).map(withCatalogCollection);
  return orderGeneralPresentation((live?mergePublishedProducts(baseline,published,live,['general','importadas']):baseline).sort((a,b)=>a.rank-b.rank));
 });
+export const getImportedProducts = cache(async (): Promise<Product[]> => {
+ const live = await getLiveCatalog();
+ return (live?.products.filter(product => product.section === 'importadas') ?? [])
+  .sort((a, b) => a.position - b.position)
+  .map(toLiveGeneral);
+});
+
 export const getProduct=async(slug:string)=>(await getProducts()).find(p=>p.slug===slug);
 export {queryProducts} from './product-query';
 export type {Params} from './product-query';

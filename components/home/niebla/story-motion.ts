@@ -59,45 +59,6 @@ function mapRailPhase(phase:number,inverse=false) {
 const railStops=[0,.03,.06,.09,.12,.88,.91,.94,.97,1];
 const railEasing='linear('+railStops.map(stop=>mapRailPhase(stop).toFixed(6)+' '+Math.round(stop*100)+'%').join(',')+')';
 
-function cursorRing(signal:AbortSignal){
-  const ring=document.createElement('div');
-  ring.className='eu-cursor'; ring.setAttribute('aria-hidden','true');document.body.appendChild(ring);
-  let x=0,y=0,px=0,py=0,raf=0,shown=false;
-  function draw(){
-    raf=0;x+=(px-x)*.25;y+=(py-y)*.25;
-    ring.style.transform='translate3d('+x+'px,'+y+'px,0)';
-    if(Math.abs(x-px)+Math.abs(y-py)>.25)raf=requestAnimationFrame(draw);
-  }
-  function hide(){
-    shown=false;ring.hidden=true;document.documentElement.classList.remove('eu-ring-on');cancelAnimationFrame(raf);raf=0;
-  }
-  hide();
-  document.addEventListener('pointermove',e=>{
-    const target=e.target;
-    if(e.pointerType==='touch'||!(target instanceof Element)||target.closest('input,textarea,select,[contenteditable=true]')){hide();return;}
-    px=e.clientX;py=e.clientY;
-    if(!shown){x=px;y=py;shown=true;ring.hidden=false;document.documentElement.classList.add('eu-ring-on');}
-    ring.toggleAttribute('data-action',!!target.closest('a,button,[role=button],summary,label[for]'));
-    if(!raf)raf=requestAnimationFrame(draw);
-  },{passive:true,signal});
-  let hitFrame=0;
-  function refreshHover(){
-    hitFrame=0;
-    if(!shown)return;
-    const target=document.elementFromPoint(px,py);
-    if(!target || target.closest('input,textarea,select,[contenteditable=true]')){hide();return;}
-    ring.toggleAttribute('data-action',!!target.closest('a,button,[role=button],summary,label[for]'));
-  }
-  window.addEventListener('scroll',()=>{
-    if(shown && !hitFrame)hitFrame=requestAnimationFrame(refreshHover);
-  },{passive:true,signal});
-  signal.addEventListener('abort',()=>cancelAnimationFrame(hitFrame),{once:true});
-  document.addEventListener('pointerout',e=>{if(!e.relatedTarget)hide();},{signal});
-  document.addEventListener('keydown',e=>{if(e.key==='Tab')hide();},{signal});
-  window.addEventListener('blur',hide,{signal});
-  signal.addEventListener('abort',()=>{hide();ring.remove();},{once:true});
-}
-
 export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
   const strip=main.querySelector<HTMLElement>('.eu-collection')!;
   const track=strip.querySelector<HTMLElement>('.eu-collection-track')!;
@@ -112,31 +73,39 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
   const controller=new AbortController();
   const {signal}=controller;
   const entrances = new Map<Element,Animation>();
+  const calmText = '.eu-stats > .eu-label,.eu-stats dl > div,.eu-shipping .eu-section-heading,.eu-shipping-note,.eu-shipping + [role=region]';
   const chapterEntries = new IntersectionObserver(entries=>{
     for (const entry of entries) {
       entrances.get(entry.target)?.cancel();
       entrances.delete(entry.target);
       if (!entry.isIntersecting || !entry.intersectionRatio) continue;
-      const offset = entry.boundingClientRect.top < innerHeight*.3 ? -18 : 24;
+      const calm = entry.target.matches(calmText);
+      const offset = entry.boundingClientRect.top < innerHeight*.3 ? (calm ? -8 : -18) : (calm ? 14 : 24);
+      const row = entry.target.matches('.eu-stats dl > div')
+        ? [...entry.target.parentElement!.children].indexOf(entry.target) + 1
+        : 0;
       const animation = entry.target.animate([
-        {opacity:.35,transform:'translate3d(0,'+offset+'px,0)'},
+        {opacity:calm ? .55 : .35,transform:'translate3d(0,'+offset+'px,0)'},
         {opacity:1,transform:'translate3d(0,0,0)'},
-      ],{duration:540,easing:'cubic-bezier(.16,1,.3,1)'});
+      ],{duration:calm ? 890 : 540,delay:row*75,fill:'backwards',
+        easing:calm ? 'cubic-bezier(.28,.68,.25,1)' : 'cubic-bezier(.16,1,.3,1)'});
       entrances.set(entry.target,animation);
+      animation.onfinish = () => entrances.delete(entry.target);
+      if (calm) chapterEntries.unobserve(entry.target);
     }
   },{rootMargin:'0px 0px -4% 0px'});
-  for (const element of main.querySelectorAll('.eu-stats > .eu-label,.eu-stats dl > div,.eu-section-heading,.eu-carrier-window,.eu-shipping-note,.eu-shipping + [role=region]')) {
+  for (const element of main.querySelectorAll(calmText+',.eu-section-heading,.eu-carrier-window')) {
     chapterEntries.observe(element);
   }
   if(fine) {
-    cursorRing(signal);
     void smoothWheel(signal).catch(()=>{/* Keep the browser's native wheel if the chunk is unavailable. */});
   }
   const pieces=[...pieceSection.querySelectorAll<HTMLElement>('.eu-piece')].map(piece=>({
     piece, motion:watchFeaturedPiece(piece,fine,signal),
   }));
   const nativeRail=CSS.supports('animation-timeline','--collection-scroll')
-    && CSS.supports('animation-range','contain') && CSS.supports('animation-timing-function',railEasing);
+    && CSS.supports('animation-range','contain 0px contain 100px')
+    && CSS.supports('animation-timing-function',railEasing);
   if(nativeRail) {
     strip.dataset.nativeRail='';
     strip.style.setProperty('--rail-easing',railEasing);
@@ -182,7 +151,7 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
           const start=left-x;
           const visible=start<viewportWidth+2 && start+cardWidth>-2;
           if(card.hasAttribute('data-slide-in-view')!==visible)card.toggleAttribute('data-slide-in-view',visible);
-          const reveal=Math.round(ease((viewportWidth-start)/(viewportWidth*.5))*100)/100;
+          const reveal=Math.round(ease((viewportWidth-start)/Math.max(1,cardWidth))*100)/100;
           if(reveal===cardGeometry[index].reveal) return;
           cardGeometry[index].reveal=reveal;
           card.style.setProperty('--photo-reveal',String(reveal));
@@ -195,7 +164,8 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     collectionWasVisible=collectionVisible;
 
     if(statsBounds.top<bottom && statsBounds.bottom>0) {
-      const counted=ease((bottom*.9-statsBounds.top)/(bottom*.6));
+      const phase=clamp((bottom*.94-statsBounds.top)/(bottom*.73));
+      const counted=phase*phase*(3-2*phase);
       counters.forEach(counter=>{
         const value=format.format(Math.round(Number(counter.dataset.total)*counted));
         if(counter.textContent!==value)counter.textContent=value;
@@ -235,9 +205,10 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     cardGeometry=cards.map(card=>({left:card.offsetLeft,width:card.offsetWidth,reveal:-1}));
     lastX=-1;
     strip.style.setProperty('--travel',travel+'px');
-    const panelHeight=pin.offsetHeight;
-    railLength=Math.max(1,strip.offsetHeight-panelHeight);
-    if(nativeRail)strip.style.setProperty('--rail-panel',panelHeight+'px');
+    // Leave the closing hold outside the horizontal travel and cap its cruise speed.
+    railLength=Math.max(1,Math.ceil(travel/railCruise));
+    strip.style.setProperty('--rail-distance',railLength+'px');
+    if(nativeRail)strip.style.setProperty('--rail-panel',pin.offsetHeight+'px');
     schedule();
   }
   strip.addEventListener('focusin',event=>{
@@ -280,6 +251,7 @@ export function startStory(main:HTMLElement,reduced:boolean,fine:boolean) {
     strip.removeAttribute('data-pinned');
     strip.removeAttribute('data-native-rail');
     strip.style.removeProperty('--travel');
+    strip.style.removeProperty('--rail-distance');
     strip.style.removeProperty('--rail-panel');
     strip.style.removeProperty('--rail-easing');
     strip.style.removeProperty('--rail');

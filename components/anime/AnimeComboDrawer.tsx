@@ -51,16 +51,38 @@ export default function AnimeComboDrawer(){
     <div className={styles.comboLines} aria-busy={loading}><button type="button" className={styles.generalCartLink} onClick={()=>{setOpen(false);window.dispatchEvent(new Event('eu-open-cart'));}}>Ver mi selección del catálogo general <ArrowUpRight size={15}/></button>
      {loading&&!products.length&&<p className={styles.comboStatus}><LoaderCircle className={styles.spinner} size={18}/> Cargando tu selección…</p>}
      {error&&<div className={styles.comboStatus}><p>No pudimos cargar los diseños.</p><button type="button" onClick={()=>setAttempt(n=>n+1)}>Volver a intentar</button></div>}
-     {selection.rows.map(row=>{const product=byId.get(row.id);return <article className={styles.comboLine} key={animeSelectionLineKey(row)}>
+     {selection.rows.map(row=>{
+      const product=byId.get(row.id);
+      const maximum=Math.min(99,product?.variants?.find(variant=>variant.size===row.size)?.quantity??99);
+      return <article className={styles.comboLine} key={animeSelectionLineKey(row)}>
       {product?<AnimeProductLink productId={row.id} className={styles.comboPhoto} href={animeProductHref(product||row.id)} onClick={()=>setOpen(false)}><Image quality={85} src={product.thumbnail} alt={product.name} fill sizes="80px"/></AnimeProductLink>:<div className={styles.comboPhoto}/>}
-      <div className={styles.comboLineInfo}><span>{product?productReference(product)||'Referencia por confirmar':row.id}</span><h3>{product?.name||'Cargando diseño…'}</h3><label>Talla <select aria-label={`Talla de ${product?.name||row.id}`} value={row.size||''} onChange={event=>selection.setSize(row.id,row.size,event.target.value)}><option value="" disabled>Elegir</option>{(product?.sizes||[]).map(size=><option key={size} disabled={product?.variants?.find(v=>v.size===size)?.quantity===0}>{size}</option>)}</select></label><div className={styles.comboLineActions}><div className={styles.quantity}><button type="button" aria-label={`Reducir cantidad de ${product?.name||row.id}`} disabled={row.quantity<=1} onClick={()=>selection.setQuantity(row.id,row.size,row.quantity-1)}><Minus size={14}/></button><output>{row.quantity}</output><button type="button" aria-label={`Aumentar cantidad de ${product?.name||row.id}`} disabled={row.quantity>=99} onClick={()=>selection.setQuantity(row.id,row.size,row.quantity+1)}><Plus size={14}/></button></div><button type="button" className={styles.removeLine} aria-label={`Quitar ${product?.name||row.id}, talla ${row.size||'sin elegir'}`} onClick={()=>selection.remove(row.id,row.size)}><Trash2 size={17}/></button></div></div>
+      <div className={styles.comboLineInfo}>
+       <span>{product?productReference(product)||'Referencia por confirmar':row.id}</span>
+       <h3>{product?.name||(loading?'Cargando diseño…':error?'Diseño pendiente de cargar':'Diseño retirado del catálogo')}</h3>
+       {product&&<label>Talla <select aria-label={`Talla de ${product.name}`} value={row.size||''} onChange={event=>selection.setSize(row.id,row.size,event.target.value)}>
+        <option value="" disabled>Elegir</option>
+        {product.sizes.map(size=>{
+         const available=Math.min(99,product.variants?.find(variant=>variant.size===size)?.quantity??99);
+         const existing=selection.rows.find(other=>other.id===row.id&&other.size===size)?.quantity??0;
+         return <option key={size} disabled={size!==row.size&&row.quantity+existing>available}>{size}</option>;
+        })}
+       </select></label>}
+       <div className={styles.comboLineActions}>
+        <div className={styles.quantity}>
+         <button type="button" aria-label={`Reducir cantidad de ${product?.name||row.id}`} disabled={row.quantity<=1} onClick={()=>selection.setQuantity(row.id,row.size,row.quantity-1)}><Minus size={14}/></button>
+         <output>{row.quantity}</output>
+         <button type="button" aria-label={`Aumentar cantidad de ${product?.name||row.id}`} disabled={!product||row.quantity>=maximum} onClick={()=>selection.setQuantity(row.id,row.size,row.quantity+1)}><Plus size={14}/></button>
+        </div>
+        <button type="button" className={styles.removeLine} aria-label={`Quitar ${product?.name||row.id}, talla ${row.size||'sin elegir'}`} onClick={()=>selection.remove(row.id,row.size)}><Trash2 size={17}/></button>
+       </div>
+      </div>
      </article>;})}
      <Link href="/shop#coleccion" className={styles.addAnother} onClick={()=>setOpen(false)}><Plus size={16}/> Añadir otro diseño</Link>
     </div>
     <div className={styles.comboSummary}>{quoteError&&<p role="alert">{quoteError}</p>}
      {selection.count===1&&<p className={styles.comboHint}>Añade una segunda camiseta: el combo de 2 cuesta {money(pricing?.retail[1]||93000)}.</p>}
      <div className={styles.comboTotal}><span>Total camisetas</span><strong>{quote?.merchandise===null?'Por cotizar':money(quote!.merchandise!)}<small>{quote?.merchandise===null?'':' COP'}</small></strong></div>
-     <p className={styles.shippingNote}><Truck size={17}/>{quote?.shippingPending?'Pago anticipado. Transporte separado por cotizar.':'Envío estándar incluido. Contraentrega sujeta a cobertura.'}</p>
+     <p className={styles.shippingNote}><Truck size={17}/>{quote?.shippingPending?'Pago anticipado. Transporte separado por cotizar.':quote?.advance?'Pago anticipado para el encargo. Consulta las condiciones del envío.':'Envío estándar incluido. Contraentrega sujeta a cobertura.'}</p>
      {complete?<a href={wa(message)} className={styles.primary} target="_blank" rel="noopener noreferrer" onClick={()=>trackAnimeEvent('click_whatsapp',{quantity:selection.count,total:quote?.merchandise,source:'combo'})}>Continuar por WhatsApp <ArrowUpRight size={18}/></a>:<button type="button" className={styles.primary} disabled>{loading?'Cargando selección…':error?'Reintenta cargar tu selección':quoteError?'Revisa las cantidades disponibles':selection.rows.every(r=>r.size)?'Actualizando precios…':'Elige las tallas para continuar'}</button>}
      <p className={styles.comboDisclaimer}>Confirmamos tallas y cobertura antes del cierre. Zonas alejadas: extra logístico por validar. Desde XXL: encargo, recargo y pago anticipado. Podrás revisar el mensaje en WhatsApp.</p>
     </div>

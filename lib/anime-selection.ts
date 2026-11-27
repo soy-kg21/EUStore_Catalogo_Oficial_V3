@@ -15,5 +15,5 @@ export function useAnimeSelection(){
  add:(id:string,size:string,quantity=1)=>write(changeAnimeSelection(parseAnimeSelection(snapshot()),id,size,{add:quantity})),
  remove:(id:string,size?:string)=>write(changeAnimeSelection(parseAnimeSelection(snapshot()),id,size,{quantity:0})),
  setQuantity:(id:string,size:string|undefined,quantity:number)=>write(changeAnimeSelection(parseAnimeSelection(snapshot()),id,size,{quantity})),
- setSize:(id:string,size:string|undefined,nextSize:string)=>{if(['S','M','L','XL'].includes(nextSize))write(changeAnimeSelection(parseAnimeSelection(snapshot()),id,size,{nextSize}));},clear:()=>write([])};
+ setSize:(id:string,size:string|undefined,nextSize:string)=>write(changeAnimeSelection(parseAnimeSelection(snapshot()),id,size,{nextSize})),clear:()=>write([])};
 }

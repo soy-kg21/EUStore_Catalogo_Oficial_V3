@@ -65,18 +65,6 @@
 .shop>.sectionHeading h2{font-family:EUCinemaDisplay,Impact,Arial,sans-serif;text-transform:uppercase;letter-spacing:-.01em;font-size:42px}
 @media(max-width:700px){.shop>.sectionHeading h2{font-size:33px}}
 
-/* V5.1: the collection remains navigable without returning to the scene. */
-.catalogDock{position:sticky;top:calc(var(--site-header-height,82px) + 8px);z-index:30;display:flex;align-items:center;gap:12px;padding:8px;margin:0 0 22px;border:1px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--ink) 96%,transparent);backdrop-filter:blur(14px);box-shadow:0 8px 22px #00000014;font-family:EUCinemaText,Arial,sans-serif}
-.catalogHome,.shell .catalogFilter{display:flex;align-items:center;justify-content:center;gap:7px;flex:none;min-height:42px;padding:0 12px;color:var(--soft);border:1px solid var(--line);border-radius:8px;background:var(--panel);font:500 11px/1 EUCinemaText,Arial,sans-serif}
-.catalogHome:hover,.shell .catalogFilter:hover{color:var(--paper);border-color:var(--accent-ink)}
-.shell .catalogFilter[aria-expanded=true]{color:var(--accent-ink);border-color:var(--accent-ink)}
-.catalogFilter b{font-size:9px}
-.catalogLines{display:flex;flex:1;gap:6px;min-width:0;overflow-x:auto;scrollbar-width:none;touch-action:pan-x pan-y pinch-zoom}
-.catalogLines::-webkit-scrollbar{display:none}
-.catalogLines>a{display:flex;align-items:center;gap:8px;flex:none;padding:0 13px;min-height:42px;color:var(--soft);border:1px solid transparent;border-radius:8px;font-size:12px;white-space:nowrap}
-.catalogLines>a>small{font-size:9px;opacity:.65;font-variant-numeric:tabular-nums}
-.catalogLines>a[aria-current=page]{background:color-mix(in srgb,var(--eu-accent) 10%,var(--panel));color:var(--accent-ink);border-color:color-mix(in srgb,var(--eu-accent) 35%,transparent)}
-.catalogLines>a:hover{color:var(--accent-ink)}
 .gridFilters{margin:0 0 22px;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
 .gridFilters .filterControls{margin-top:16px}
 .gridFilters .categoryField{min-width:min(280px,100%)}
@@ -135,16 +123,10 @@
 .prices .wholesale summary{font:500 12px/1.6 EUCinemaText,Arial,sans-serif}
 .prices .wholesale summary>span{font-size:10px;color:var(--accent-ink)}
 @media(max-width:1000px){
- .catalogDock{gap:6px}.catalogLines>a{padding:0 10px;font-size:11px}
- .catalogHome>span,.catalogFilter>span{display:none}
- .catalogHome,.shell .catalogFilter{padding:0;min-width:40px}
  .prices .priceGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
  .prices .priceTier:last-child{grid-column:auto}
 }
 @media(max-width:700px){
- .catalogDock{top:calc(var(--site-header-height,82px) + 5px);padding:5px;gap:5px;margin-bottom:18px;border-radius:10px}
- .catalogHome,.shell .catalogFilter{min-height:40px;min-width:34px}
- .catalogLines{gap:3px}.catalogLines>a{min-height:40px;padding:0 9px;gap:6px;font-size:10px;border-radius:7px}.catalogLines>a>small{font-size:8px}
  .gridFilters{padding:14px;margin-bottom:18px}.gridFilters .filterControls{flex-direction:column;align-items:stretch;gap:12px}.gridFilters .categoryField{min-width:0;width:100%}.gridFilters .search>input{font-size:16px}.gridFilters .search>input::placeholder{font-size:10px}
  .journeyLine>span:last-child{font-size:8px}
  .journeyControls .journeyFilterButton{font-size:11px;gap:7px;padding:9px}.journeyControls .journeyFilterButton>svg{width:15px;height:15px}
@@ -169,13 +151,9 @@
  .prices .priceConditions{font-size:9px;margin-top:16px}.prices .wholesale{padding:0 12px}.prices .wholesale summary{font-size:11px;gap:10px}.prices .wholesale summary>span{font-size:9px}
 }
 
-/* Categories alone stay within thumb reach; existing filters stay in the category panel. */
-.catalogDock{gap:0;padding:5px}
-.catalogLines>a{min-height:44px}
 @media(min-width:701px) and (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 20px}}
 @media(min-width:1800px){
  .shop{max-width:2000px;padding-inline:4%}.grid{gap:44px 30px}
- .catalogDock{padding:8px;margin-bottom:30px}.catalogLines{gap:10px}.catalogLines>a{font-size:17px;min-height:54px;padding-inline:22px}.catalogLines>a>small{font-size:12px}
  .journeyControls .collectionLead h2{font-size:48px}.journeyControls .collectionLead .kicker{font-size:13px}
  .journeyControls .lineNav>a{min-height:178px;padding:25px}.journeyControls .lineNav .lineNumber{top:18px;left:25px;font-size:14px}
  .journeyControls .lineText{margin-top:28px}.journeyControls .lineText strong{font-size:32px}.journeyControls .lineText small{font-size:11px;max-width:185px}
@@ -184,25 +162,9 @@
 }
 @media(max-width:700px){.inlineFilters .desktopFilters{display:block}}
 
-/* One compact filter popover is shared by categories and the floating dock. */
-.filterPopover{box-sizing:border-box;position:fixed;z-index:45;top:100px;right:4%;width:min(420px,calc(100vw - 24px));max-height:calc(100dvh - 120px);overflow:auto;overscroll-behavior:contain;padding:18px;background:var(--panel);color:var(--paper);border:1px solid var(--stroke);border-radius:13px;box-shadow:0 12px 36px #0005;scrollbar-width:thin;animation:animeFilterReveal .16s ease-out}
-.filterPopover[hidden]{display:none}
-.filterPopover :is(a,button,input,select):focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}.filterPopover button{cursor:pointer}
-.filterPopover .search{border-radius:9px}.filterPopover .search>input{font-size:16px}
-.filterPopover .desktopFilters{display:block;margin-top:16px}
-.filterPopover .filterControls{flex-direction:column;align-items:stretch;gap:12px}
-.filterPopover .categoryField{min-width:0;width:100%}
-.filterPopover select{width:100%;border-radius:8px}
-.filterPopover .resetFilters{margin-left:0}
-.filterPopover .categoryChips{flex-wrap:wrap;overflow:visible;gap:6px;margin:14px 0 0}
-.filterPopover .categoryChips button{border-radius:7px}
-.catalogDock .catalogFilter{margin-left:5px;min-width:42px;min-height:44px;padding-inline:10px}
-@keyframes animeFilterReveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){.filterPopover{animation:none}}
 
-/* Keep cards at the dock's original width; widen only the dock and close its header gap. */
+
 .shop .grid{margin-inline:0;column-gap:clamp(8px,1vw,20px)}
-.shop .catalogDock{margin-inline:-4px;top:calc(var(--site-header-height,82px) + 2px)}
 
 /* Returning to a list must not translate the entire page or animate its position. */
 :global(.route-enter):has(.shell [data-anime-journey]){animation:none;translate:none}
@@ -216,6 +178,5 @@
 @media(min-width:2000px){.priceBenefits{padding:28px;gap:40px}.priceBenefits b{font-size:17px}.priceBenefits small{font-size:13px}.priceBenefits>p{max-width:500px;font-size:14px}}
 
 /* The dock already has a 96% opaque surface; avoid re-blurring the moving catalog. */
-.catalogDock{backdrop-filter:none;-webkit-backdrop-filter:none}
 
 .submitSearch{display:none;min-height:44px;border:1px solid var(--eu-link,#ccff00);border-radius:9px;background:var(--eu-link,#ccff00);color:#101212;font-size:12px;font-weight:700;padding:10px 15px;flex:none}.toolbar[role=search]{display:flex;gap:8px;align-items:center}.toolbar[role=search] .search{flex:1;min-width:0}@media(max-width:700px){.toolbar[role=search] .search input{font-size:16px;min-width:0}.submitSearch{display:inline-flex;align-items:center;padding:10px 12px}}

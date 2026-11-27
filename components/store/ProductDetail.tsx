@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/
 import { readCart, saveCart } from '@/lib/cart';
 import { ORIGIN, wa } from '@/lib/config';
 import type { Product } from '@/lib/types';
-import {orderedShoeSizes,shoeSizeLabel} from '@/lib/shoe-sizes';
+import {catalogSizeVariant,orderedShoeSizes,shoeSizeLabel} from '@/lib/shoe-sizes';
 import importedStyles from './imported-collection.module.css';
 
 export default function ProductDetail({ product }: { product: Product }) {
@@ -38,13 +38,15 @@ export default function ProductDetail({ product }: { product: Product }) {
   const [feedback, setFeedback] = useState('');
 
   const add = useCallback((selected: string) => {
-    if (product.variants?.find(v=>v.size===selected)?.quantity===0) throw new Error('Esta talla está agotada.');
     if (!product.sizes.includes(selected)) throw new Error('Elige una talla válida.');
+    const available=product.variants?.find(v=>v.size===selected)?.quantity;
+    if (available===0) throw new Error('Esta talla está agotada.');
     const rows = readCart();
-    const line = rows.find((item) => item.id === product.id && item.size === selected);
+    const line = catalogSizeVariant(rows.filter(item=>item.id===product.id),selected,imported?product.sizeSystem:undefined);
 
     if (line) {
       if (line.quantity >= 100) throw new Error('Cantidad máxima: 100.');
+      if (available!=null && line.quantity>=available) throw new Error('Ya añadiste todas las unidades disponibles en esta talla.');
       line.quantity += 1;
     } else {
       rows.push({ id: product.id, size: selected, quantity: 1 });
@@ -54,7 +56,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     setSize(selected);
     setFeedback('Añadido a tu selección.');
     return { id: product.id, size: selected, status: 'added_to_selection' };
-  }, [product.id, product.sizes, product.variants]);
+  }, [imported, product.id, product.sizeSystem, product.sizes, product.variants]);
 
   useEffect(() => {
     type ModelContext = {
@@ -150,9 +152,9 @@ export default function ProductDetail({ product }: { product: Product }) {
         <button className="button add-button" onClick={() => { try { add(size); } catch (error) { setFeedback((error as Error).message); } }}><ShoppingBag size={18} /> AÑADIR A MI SELECCIÓN</button>
         <div className="feedback" role="status">{feedback} {feedback.startsWith('Añadido') && <button onClick={() => window.dispatchEvent(new Event('eu-open-cart'))} style={{ textDecoration: 'underline' }}>Ver selección</button>}</div>
         <p className="stock-note"><Check size={13} style={{ display: 'inline', marginRight: 5 }} />Asesoría de talla y condiciones de entrega por WhatsApp.</p>
-        <details className="details-row product-facts" open><summary>Detalles de esta referencia</summary><dl><div><dt>Referencia</dt><dd>{reference||'Por confirmar'}</dd></div>{product.brand&&<div><dt>Marca</dt><dd>{product.brand}</dd></div>}<div><dt>Colección</dt><dd>{imported?'Zapatillas importadas':footwear?'Zapatillas nacionales':buzos?'Buzos y sudaderas':product.category==='camisetas'?'Camisetas oversize':'Camiseta + pantaloneta'}</dd></div>{product.color&&<div><dt>Color</dt><dd>{product.color}</dd></div>}{product.material&&<div><dt>Material</dt><dd>{product.material}</dd></div>}{product.weight&&<div><dt>Gramaje</dt><dd>{product.weight} g</dd></div>}<div><dt>Disponibilidad</dt><dd>{product.stock===0?'Agotado':'Confirmado'}</dd></div><div><dt>Tallas</dt><dd>{sizes.map(v=>footwear?shoeSizeLabel(v,sizeSystem).label:v).join(' · ')}{footwear&&units.length===1?' '+units[0]:''}</dd></div></dl></details>
+        <details className="details-row product-facts" open><summary>Detalles de esta referencia</summary><dl><div><dt>Referencia</dt><dd>{reference||'Por confirmar'}</dd></div>{product.brand&&<div><dt>Marca</dt><dd>{product.brand}</dd></div>}<div><dt>Colección</dt><dd>{imported?'Zapatillas importadas':footwear?'Zapatillas nacionales':buzos?'Buzos y sudaderas':product.category==='camisetas'?'Camisetas Oversize':'Camiseta + pantaloneta'}</dd></div>{product.color&&<div><dt>Color</dt><dd>{product.color}</dd></div>}{product.material&&<div><dt>Material</dt><dd>{product.material}</dd></div>}{product.weight&&<div><dt>Gramaje</dt><dd>{product.weight} g</dd></div>}<div><dt>Disponibilidad</dt><dd>{product.stock===0?'Agotado':'Confirmado'}</dd></div><div><dt>Tallas</dt><dd>{sizes.map(v=>footwear?shoeSizeLabel(v,sizeSystem).label:v).join(' · ')}{footwear&&units.length===1?' '+units[0]:''}</dd></div></dl></details>
         <details className="details-row"><summary>Características y tallaje</summary><p>{product.material && product.material !== 'Pendiente de ficha técnica' ? `Material declarado: ${product.material}. ` : ''}{product.weight ? `Gramaje declarado: ${product.weight} g. ` : ''}{product.sizeNote}</p></details>
-        <details className="details-row"><summary>Envíos y pago</summary><p>{imported?'Pago anticipado por unidad. El envío está incluido en el precio de las zapatillas importadas. Recibe asesoría sobre esta referencia y coordina talla, pago y entrega directamente por WhatsApp. No se realizan cobros en esta web.':'Las condiciones dependen de la colección, cantidad y ciudad. Consulta el resumen de tu selección; la cobertura y disponibilidad se confirman con el asesor. No se realizan cobros en esta web.'}</p></details>
+        <details className="details-row"><summary>Envíos y pago</summary><p>{imported?'Pago anticipado. Envío incluido de 1 a 2 pares. El carrito suma $12.000 para 3 pares, $15.000 para 4 y $16.000 para 5. Desde 6 pares, cotiza precio y envío con un asesor por WhatsApp.':'Las condiciones dependen de la colección, cantidad y ciudad. Consulta el resumen de tu selección. La cobertura y disponibilidad se confirman con el asesor.'}</p></details>
       </section>
     </div>
   );

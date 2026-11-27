@@ -1,4 +1,6 @@
 import {ImageResponse} from 'next/og';
+import {readFile} from 'node:fs/promises';
+import {join} from 'node:path';
 import {resolveLiveAnimeProduct} from '@/lib/live-products';
 import {animePublicRoutes} from '@/lib/anime-routes';
 import {animeLines,type AnimeLine} from '@/lib/anime-catalog-core';
@@ -10,9 +12,22 @@ export async function GET(_request:Request,{params}:{params:Promise<{line:string
  const product=await resolveLiveAnimeProduct(slug,line as AnimeLine);
  if(!product||animePublicRoutes[product.id]?.slug!==slug||product.line!==line)return new Response('Referencia no encontrada',{status:404});
  // Only the configured site origin is fetched, never a URL provided by a visitor.
- const socialAsset=product.position===undefined&&product.image.toLowerCase().endsWith('.webp')?`/anime/social/${product.id}.jpg`:product.image;
+ const originalWebp=product.image.toLowerCase()===`/anime/products/${product.id}.webp`.toLowerCase();
+ const socialAsset=originalWebp?`/anime/social/${product.id}.jpg`:product.image;
  let image:string|undefined;
- try{const response=await fetch(new URL(socialAsset,ORIGIN),{cache:'force-cache',signal:AbortSignal.timeout(8000)});if(response.ok&&response.headers.get('content-type')?.startsWith('image/'))image=`data:${response.headers.get('content-type')};base64,${Buffer.from(await response.arrayBuffer()).toString('base64')}`;}catch{/* A branded, accurate text card remains available if the asset is temporarily unreachable. */}
+ try{
+  const staticAsset=/^\/anime\/(?:products|social)\/EU-ANIME-\d+\.(jpe?g|png)$/i.exec(socialAsset);
+  const local=staticAsset?await readFile(join(process.cwd(),'public',socialAsset.slice(1))).catch(()=>null):null;
+  if(local)image=`data:image/${staticAsset?.[1].toLowerCase()==='png'?'png':'jpeg'};base64,${local.toString('base64')}`;
+  else{
+   const asset=new URL(socialAsset,ORIGIN);
+   if(asset.origin===new URL(ORIGIN).origin){
+    const response=await fetch(asset,{cache:'force-cache',signal:AbortSignal.timeout(8000)});
+    const mime=response.headers.get('content-type')?.split(';')[0];
+    if(response.ok&&(mime==='image/jpeg'||mime==='image/png'))image=`data:${mime};base64,${Buffer.from(await response.arrayBuffer()).toString('base64')}`;
+   }
+  }
+ }catch{/* A branded text card is available when the photo cannot be loaded. */}
  const lineName=animeLines.find(item=>item.id===product.line)!.name;
  return new ImageResponse(<div style={{display:'flex',width:'100%',height:'100%',background:'#101610',color:'#f3f5eb',padding:40,fontFamily:'sans-serif'}}>
   <div style={{display:'flex',flexDirection:'column',width:580,padding:'16px 34px 14px 10px',justifyContent:'space-between'}}>

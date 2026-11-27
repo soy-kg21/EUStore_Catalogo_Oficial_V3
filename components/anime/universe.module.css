@@ -89,3 +89,163 @@
 /* Release large compositing layers and pause portraits once the hero is offscreen. */
 .journey[data-cinema-active=false] :is(.shot,.shotImage,.copy,.copy h1,.description,.actions,.label,.selection,.chapter,.discover){will-change:auto}
 .journey[data-cinema-active=false] .shotImage{animation-play-state:paused!important}
+
+/* The full-width selector background masks the cover as it scrolls past. */
+.staticIntro {
+  position: relative;
+  isolation: isolate;
+}
+.staticIntro .discoverWrap {
+  z-index: 1;
+  margin-top: -1px;
+  background: var(--ink, #101212);
+}
+.staticIntro .discover {
+  scroll-margin-top: calc(var(--site-header-height, 82px) + 10px);
+  will-change: auto;
+}
+.staticCover {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: clamp(320px, 26vw, 480px);
+  padding: clamp(28px, 3.4vw, 58px) 5% clamp(18px, 2vw, 38px);
+  background: #0a1212;
+  color: #f5f8ef;
+  font-family: EUCinemaText, Arial, sans-serif;
+}
+.staticMedia {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+.staticArt {
+  object-fit: cover;
+  object-position: center var(--cover-desktop-focus);
+}
+.staticCover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(0deg, var(--ink, #101212) 0%, #080c0bea 13%, #080c0b62 37%, transparent 64%),
+              linear-gradient(90deg, #091113e8 0%, #0911139b 30%, transparent 64%);
+}
+.staticCover::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: clamp(30px, 7vw, 48px);
+  z-index: -1;
+  background: linear-gradient(to bottom, var(--background, #101212),
+    color-mix(in srgb, var(--background, #101212) 32%, transparent) 38%, transparent);
+  pointer-events: none;
+}
+.staticCopy p {
+  margin: 0 0 12px;
+  color: #ced9cc;
+  font-size: clamp(9px, 1vw, 15px);
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.staticCopy h1 {
+  font: 700 clamp(60px, 7.2vw, 132px)/.94 EUCinemaDisplay, Impact, sans-serif;
+  letter-spacing: -.025em;
+  text-transform: uppercase;
+}
+.staticFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  color: #d5ded0;
+  font-size: clamp(9px, .83vw, 13px);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.staticFooter a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: #f5f8ef;
+}
+.staticFooter svg {
+  flex: none;
+  color: #ccff00;
+}
+.staticFooter a:hover {
+  color: #ccff00;
+}
+@media (max-width: 700px) {
+  .staticCover {
+    min-height: clamp(252px, 76vw, 355px);
+    padding: 25px 6% 12px;
+  }
+  .staticArt {
+    object-position: var(--cover-mobile-focus) top;
+    scale: 1.23;
+    transform-origin: var(--cover-mobile-pivot);
+  }
+  .staticCover::before {
+    background: linear-gradient(0deg, var(--ink, #101212) 0%, #080c0bf0 14%, #080c0b76 40%, transparent 68%),
+                linear-gradient(90deg, #091113db 0%, #09111371 45%, transparent 75%);
+  }
+  .staticCopy h1 {
+    font-size: clamp(42px, 12vw, 66px);
+  }
+  .staticFooter {
+    font-size: clamp(8px, 2.3vw, 11px);
+    line-height: 1.35;
+  }
+  .staticFooter a {
+    flex: none;
+  }
+}
+@media (min-width: 1800px) {
+  .staticIntro .discover {
+    width: min(92%, 2200px);
+    margin-inline: auto;
+  }
+}
+@keyframes animeCoverEnter {
+  from { opacity: .66; }
+  to { opacity: 1; }
+}
+@keyframes animeCoverDepth {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .staticMedia { animation: animeCoverEnter .42s ease-out both; }
+  @supports (animation-timeline: view()) and (timeline-scope: --anime-lines-reveal) {
+    .staticIntro { timeline-scope: --anime-lines-reveal; }
+    .staticIntro .discoverWrap {
+      view-timeline: --anime-lines-reveal block;
+      view-timeline-inset: 0 25%;
+    }
+    .staticArt {
+      animation: animeCoverDepth linear both;
+      animation-timeline: --anime-lines-reveal;
+      animation-range: entry 10% cover 54%;
+    }
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .staticMedia {
+    inset: -8px -14px;
+    transform: translate3d(var(--cover-shift-x, 0px), var(--cover-shift-y, 0px), 0);
+    transition: transform 270ms ease-out;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .staticCover { position: relative; top: auto; }
+}

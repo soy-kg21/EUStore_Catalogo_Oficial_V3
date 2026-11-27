@@ -141,13 +141,15 @@
 .niebla-home .niebla-top {top:calc(var(--site-header-height,82px) + 8px)}
 .niebla[data-renderer=webgl] .niebla-intro {visibility:hidden}
 @media(max-width:580px) and (min-height:600px) {
-  .niebla-home > .niebla:not([data-closing]) .niebla-caption {top:calc(var(--site-header-height,76px) + 54px)}
+  .niebla-home > .niebla:not([data-closing]) {--figure-inset:190px}
+  .niebla-home > .niebla:not([data-closing]) .niebla-top {top:calc(var(--mobile-header-height,62px) + 14px)}
+  .niebla-home > .niebla:not([data-closing]) .niebla-caption {top:calc(var(--mobile-header-height,62px) + 60px)}
   .niebla-home > .niebla:not([data-closing]) .niebla-figure {
-    top:auto;bottom:10%;height:min(69%,calc(var(--screen)*.9 - var(--site-header-height,76px) - 114px));
+    top:auto;bottom:10%;height:min(69%,calc(var(--screen)*.9 - var(--figure-inset)));
   }
   .niebla-home > .niebla:not([data-motion]):not([data-closing]) .niebla-figure {
-    bottom:auto;top:max(calc(var(--screen)*.21),calc(var(--site-header-height,76px) + 114px));
-    height:min(calc(var(--screen)*.69),calc(var(--screen)*.9 - var(--site-header-height,76px) - 114px));
+    bottom:auto;top:max(calc(var(--screen)*.21),var(--figure-inset));
+    height:min(calc(var(--screen)*.69),calc(var(--screen)*.9 - var(--figure-inset)));
   }
 }
 @media(max-height:540px) and (orientation:landscape) {

@@ -1,0 +1,138 @@
+.sheet[data-slot='sheet-content'], .popover[data-slot='popover-content'] {
+  --filter-padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: var(--filter-padding);
+  border: 1px solid var(--eu-stroke);
+  background: var(--eu-surface);
+  color: var(--eu-copy);
+  font-family: EUCinemaText, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.sheet[data-slot='sheet-content'] {
+  bottom: var(--filter-bottom, 0px);
+  width: min(100%, 540px);
+  max-height: min(38rem, calc(var(--filter-height, 100dvh) - 10px));
+  margin-inline: auto;
+  padding-bottom: max(var(--filter-padding), env(safe-area-inset-bottom));
+  border-radius: 20px 20px 0 0;
+  background: var(--mobile-catalog-tint, var(--eu-surface));
+  backdrop-filter: var(--mobile-catalog-blur);
+  -webkit-backdrop-filter: var(--mobile-catalog-blur);
+  box-shadow: 0 -12px 34px #0004;
+}
+
+.sheet[data-state='open'], .sheet[data-state='closed'] { animation-duration: .22s; }
+.popover[data-slot='popover-content'] {
+  width: min(420px, calc(100vw - 24px));
+  max-height: var(--radix-popover-content-available-height);
+  border-radius: 13px;
+}
+
+.heading {
+  display: flex;
+  flex: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.heading h2 { font-size: 17px; font-weight: 650; color: inherit; }
+.close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  margin: -7px -5px -7px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--eu-secondary);
+}
+.close:hover { background: var(--eu-panel); color: var(--eu-copy); }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  min-height: 0;
+}
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  align-items: end;
+  gap: 10px 12px;
+  min-height: 0;
+  padding: 3px;
+  margin: -3px;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+}
+.wide { grid-column: 1 / -1; }
+.field { display: grid; gap: 5px; min-width: 0; color: var(--eu-secondary); font-size: 12px; font-weight: 600; }
+.field :is(input, select, [data-slot='select-trigger']) {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--eu-stroke);
+  border-radius: 8px;
+  background: var(--eu-panel);
+  color: var(--eu-copy);
+  font-size: 14px;
+  font-weight: 400;
+}
+.field input[type='search'], .sheet .field :is(input, select) { font-size: 16px; }
+.field input::placeholder { color: var(--eu-secondary); }
+.field select { color-scheme: dark; }
+:global(html[data-theme='light']) .field select { color-scheme: light; }
+.search { position: relative; }
+.field .search input { padding-inline-start: 35px; }
+.search svg { position: absolute; inset: 14px auto auto 11px; pointer-events: none; color: var(--eu-secondary); }
+
+.optionToggle, .chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+}
+.optionToggle { min-height: 44px; color: var(--eu-copy); font-size: 14px; }
+.optionToggle input { width: 18px; height: 18px; accent-color: var(--eu-link); }
+.chips { gap: 6px; }
+.chips button, .reset {
+  min-height: 40px;
+  padding: 7px 10px;
+  border: 1px solid var(--eu-stroke);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--eu-copy);
+  font-size: 12px;
+}
+.chips button[aria-pressed='true'] { border-color: var(--eu-link); color: var(--eu-link); }
+.actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--eu-stroke);
+}
+.actions :global(.button) { flex: 1; min-width: 0; min-height: 44px; padding: 8px 10px; }
+.actions .reset { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; }
+.form :is(input, select, button, a):focus-visible, .close:focus-visible {
+  outline: 2px solid var(--eu-link);
+  outline-offset: 1px;
+}
+
+.sheet[data-short-viewport] { --filter-padding: 10px; gap: 8px; }
+.sheet[data-short-viewport] .form { overflow: auto; overscroll-behavior-y: contain; padding: 3px; }
+.sheet[data-short-viewport] .fields { min-height: auto; overflow: visible; }
+.sheet[data-short-viewport] .actions { margin-top: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .sheet[data-slot='sheet-content'], .popover[data-slot='popover-content'] { animation: none; }
+}

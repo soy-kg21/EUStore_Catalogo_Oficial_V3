@@ -1,0 +1,209 @@
+.dockStart { display: block; block-size: 0; }
+
+.dock {
+  --dock-top: calc(var(--site-navigation-bottom, 66px) + 2px);
+  position: sticky;
+  top: var(--dock-top);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0 -4px 22px;
+  padding: 5px;
+  border: 1px solid var(--line, var(--eu-stroke));
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--ink, var(--eu-surface)) 96%, transparent);
+  box-shadow: 0 8px 22px #00000014;
+  font-family: EUCinemaText, Arial, sans-serif;
+  scroll-margin-top: calc(var(--dock-top) + 6px);
+}
+
+.links {
+  display: flex;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+.links::-webkit-scrollbar { display: none; }
+
+.links > a {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 13px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--soft, var(--eu-secondary));
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.links > a > small {
+  opacity: .65;
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+
+.links > a[aria-current='page'] {
+  border-color: color-mix(in srgb, var(--eu-accent) 35%, transparent);
+  background: color-mix(in srgb, var(--eu-accent) 10%, var(--panel, var(--eu-panel)));
+  color: var(--accent-ink, var(--eu-link));
+}
+.links > a:hover { color: var(--accent-ink, var(--eu-link)); }
+.dock .links > a:focus-visible { outline-offset: -3px; }
+
+.dock .filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  gap: 6px;
+  min-width: 42px;
+  min-height: 44px;
+  margin-left: 5px;
+  padding: 0 10px;
+  border: 1px solid var(--line, var(--eu-stroke));
+  border-radius: 8px;
+  background: var(--panel, var(--eu-panel));
+  color: var(--soft, var(--eu-copy));
+  cursor: pointer;
+  scroll-margin-top: calc(var(--site-header-height, 82px) + 14px);
+}
+
+.dock .filter:is(:hover, [aria-expanded='true']) {
+  border-color: var(--accent-ink, var(--eu-link));
+  color: var(--accent-ink, var(--eu-link));
+}
+
+.filter > b { font-size: 9px; }
+
+.count {
+  flex: none;
+  margin-inline: 10px 5px;
+  color: var(--eu-secondary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.results {
+  width: min(100%, 86vw);
+  max-width: 1810px;
+  margin-inline: auto;
+  min-width: 0;
+  scroll-margin-top: calc(var(--site-header-height, 82px) + 16px);
+}
+
+/* The load control and footer move down while the visible cards stay in place. */
+:global(html):has(.results) { overflow-anchor: none; }
+
+.results:global(.catalog-results) :global(.product-grid) {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(24px, 2.4vw, 44px) clamp(10px, 1vw, 20px);
+}
+
+.loadMore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: clamp(32px, 3.5vw, 48px) 0 10px;
+  color: var(--eu-secondary);
+  font-size: 13px;
+  text-align: center;
+}
+.loadTrack {
+  width: min(190px, 100%);
+  height: 2px;
+  margin-bottom: 6px;
+  background: var(--eu-stroke);
+}
+.loadTrack > span { display: block; height: 100%; background: var(--eu-link); }
+.loadButton {
+  display: grid;
+  place-items: center;
+  min-width: min(235px, 100%);
+  min-height: 48px;
+  padding: 10px 16px;
+  border: 1px solid var(--eu-stroke);
+  border-radius: 11px;
+  color: var(--eu-copy);
+  font-weight: 600;
+}
+.loadButton > span { display: inline-flex; align-items: center; gap: 12px; }
+.loadButton:hover { color: var(--eu-link); border-color: var(--eu-link); }
+
+@media (max-width: 1000px) {
+  .links > a { padding-inline: 10px; font-size: 11px; }
+}
+@media (max-width: 900px) {
+  .results { width: 100%; }
+  .results:global(.catalog-results) :global(.product-grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .dock { border-radius: 10px; margin-bottom: 18px; }
+  .links { gap: 3px; }
+  .links > a { gap: 6px; padding-inline: 9px; border-radius: 7px; font-size: 10px; }
+  .links > a > small { font-size: 8px; }
+  .count { margin-inline: 5px 0; font-size: 10px; }
+  .count > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}
+@media (max-width:700px), (max-width:1023px) and (pointer:coarse) {
+  .dock { --dock-top: calc(var(--site-navigation-bottom) + 1px); }
+  .dock:global(#catalogo-filtros) { scroll-margin-top: calc(var(--dock-top) - 2px); }
+  .dock[data-current-docked] {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  /* The sticky dock owns both rows' surface, so their borders never meet. */
+  .dock[data-current-docked]::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: calc(1px - var(--dock-top)) -7px -1px;
+    border-radius: 24px 24px 14px 14px;
+    border: 1px solid var(--eu-stroke);
+    background: var(--mobile-catalog-tint, var(--eu-surface));
+    backdrop-filter: var(--mobile-catalog-blur);
+    -webkit-backdrop-filter: var(--mobile-catalog-blur);
+    box-shadow: 0 8px 22px #00000014;
+    pointer-events: none;
+  }
+  .dock[data-current-docked] .filter { background: var(--mobile-catalog-tint, var(--eu-surface)); }
+  .dock .links { gap: 0; }
+  .dock .links > a {
+    flex-grow: 1;
+    justify-content: center;
+    max-inline-size: 116px;
+    margin-inline-end: 3px;
+    overflow: hidden;
+  }
+  .dock .links > a:has(> small) {
+    gap: 4px;
+    padding-inline: 7px;
+  }
+  .dock[data-current-docked] .links > a[aria-current='page'] {
+    flex-grow: 0;
+    max-inline-size: 0;
+    margin-inline-end: 0;
+    padding-inline: 0;
+    border-inline-width: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@media (min-width: 1800px) {
+  .dock { padding: 8px; margin-bottom: 30px; }
+  .links { gap: 10px; }
+  .links > a { min-height: 54px; padding-inline: 22px; font-size: 17px; }
+  .links > a > small { font-size: 12px; }
+}

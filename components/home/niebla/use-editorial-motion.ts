@@ -48,7 +48,7 @@ export async function loadEditorialScene(root: HTMLElement, signal: AbortSignal)
   delete root.dataset.staticScene;
 
   let attempted = false;
-  async function useCanvas() {
+  async function mountCanvasFallback() {
     if (attempted || signal.aborted) return;
     attempted = true;
     try {
@@ -68,8 +68,8 @@ export async function loadEditorialScene(root: HTMLElement, signal: AbortSignal)
   },{once:true});
   try {
     const {mountScene} = await import('./scene');
-    if (!signal.aborted && !mountScene(root,signal,()=>{void useCanvas();})) await useCanvas();
+    if (!signal.aborted && !mountScene(root,signal,()=>{void mountCanvasFallback();})) await mountCanvasFallback();
   } catch {
-    await useCanvas();
+    await mountCanvasFallback();
   }
 }

@@ -196,5 +196,3 @@ html{scroll-behavior:smooth}
   html{scroll-behavior:auto}
   .story-hero-media,.story-hero-copy{transform:none!important;opacity:1!important}
 }
-
-.announcement{position:relative}.announcement-progress{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--eu-accent);transform-origin:left;z-index:3;pointer-events:none;box-shadow:0 0 12px color-mix(in srgb,var(--eu-accent) 50%,transparent);}

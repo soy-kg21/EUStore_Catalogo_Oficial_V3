@@ -11,6 +11,7 @@ const warehouses:Record<string,string>={
   '39ee572347a7732f37ac5f40':'B3','2620dd993a9eaa70a3c90fe0':'B4',
   '05174c6880fa3ccb9b1991ea':'B5','17025e42553b9818edde10de':'B6',
 };
+export function warehouseForBucket(bucket?:string){return bucket?warehouses[bucket]:undefined;}
 const normalize=(value:string)=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().toLowerCase();
 function classification(warehouse:string,category:string,imported=false):{category:string;collection?:CatalogCollection}{
   if(imported||warehouse==='B4')return {category:'zapatillas',collection:'importadas'};
@@ -29,14 +30,21 @@ export function withCatalogCollection(product:Product):Product{
 }
 export function toLiveGeneral(p:LiveProduct):Product{
   if(p.section==='anime')throw new Error('Anime conserva su catálogo y sus fichas propios.');
-  const warehouse=warehouses[p.commerce.bucket]||'';
+  const warehouse=warehouseForBucket(p.commerce.bucket)||'';
   const productClass=classification(warehouse,p.category,p.section==='importadas');
   const imported=productClass.collection==='importadas';
+  const delivery=p.section==='importadas'
+    ? ['Envío incluido de 1 a 2 pares. De 3 a 5 se suma el envío al pedido. Desde 6, cotización con asesor.','Pago anticipado.']
+    : productClass.collection==='conjuntos-cortos'
+      ? ['Envío por cantidad y combinación. Revisa el valor en el resumen del carrito.']
+      : [];
   const benefits=withSocksGift(
-    [p.benefits,p.conditions,p.payment].filter(Boolean),
+    (delivery.length?[...delivery,p.benefits?.replace(/[^.!?]*(?:env[ií]o|despacho)[^.!?]*[.!?]?/gi,'').trim(),...(!imported?[p.payment]:[])]:[p.benefits,p.conditions,p.payment]).filter(Boolean),
     warehouse==='B1'&&productClass.collection==='nacionales',
   );
-  const commerce=imported?{...p.commerce,rule:null,quoteFrom:null,shippingFrom:1e9,advance:true,perUnit:true}:p.commerce;
+  const commerce=imported
+    ? {...p.commerce,rule:null,quoteFrom:6,shippingFrom:6,advance:true,perUnit:true,retailShipping:'importadas' as const}
+    : productClass.collection==='conjuntos-cortos'?{...p.commerce,retailShipping:'conjuntos-cortos' as const}:p.commerce;
   const variants=p.sizes,stock=variants.some(v=>v.quantity===null)?null:variants.reduce((sum,v)=>sum+(v.quantity||0),0);
   // Known photos are public static files. Avoid an authenticated API redirect
   // inside the image optimizer when reviewing protected deployments.

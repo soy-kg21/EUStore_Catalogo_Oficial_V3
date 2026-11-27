@@ -8,6 +8,6 @@ export async function GET(request:Request){
   const animeOnly=params.get('scope')==='anime',line=params.get('line');
   const [general,anime]=await Promise.all([animeOnly?Promise.resolve([]):getProducts(),getAnimeProducts()]);
   const animeRows=animeOnly&&['anime','cartoon','rock','urbanos'].includes(line||'')?anime.filter(p=>p.line===line):anime;
-  const result=searchCatalog(general,animeRows,{q});
-  return Response.json({total:result.total,items:result.items.slice(0,4).map(toCatalogSuggestion)});
+  const result=searchCatalog(general,animeRows,{q,estampado:params.get('estampado')||undefined});
+  return Response.json({total:result.total,items:result.items.slice(0,animeOnly?6:4).map(toCatalogSuggestion)});
 }

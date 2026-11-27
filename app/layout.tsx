@@ -10,7 +10,8 @@ import './integrated-navigation.css';
 import AnimeHistoryBridge from '@/components/anime/AnimeHistoryBridge';
 import Header from '@/components/store/Header';
 import Footer from '@/components/store/Footer';
-import ScrollProgress from '@/components/store/ScrollProgress';
+import StoreCursor from '@/components/store/StoreCursor';
+import KeiChat from '@/components/store/KeiChat';
 import {metadata as meta,isIndexingEnabled} from '@/lib/seo';
 import {ORIGIN} from '@/lib/config';
 
@@ -54,10 +55,11 @@ export default async function Layout({
         <AnimeHistoryBridge/>
         {process.env.EUSTORE_TRAFFIC_ENABLED==='1'&&<TrafficMonitor/>}
         <Header/>
-        <ScrollProgress/>
+        <StoreCursor/>
         {children}
 
         <Footer/>
+        <KeiChat/>
 
       </body>
     </html>

@@ -1,0 +1,27 @@
+.dock{--kei-bottom-gap:14px;position:fixed;z-index:43;left:max(14px,env(safe-area-inset-left));bottom:calc(max(var(--kei-bottom-gap),env(safe-area-inset-bottom)) + 12px + var(--kei-keyboard-inset,0px));display:grid;gap:10px;justify-items:start;max-width:calc(100vw - 28px);color:var(--eu-copy);font-family:EUCinemaText,Arial,sans-serif}
+.trigger{display:inline-flex;align-items:center;gap:8px;min-height:45px;padding:0 15px;border:1px solid var(--eu-stroke);border-radius:999px;background:var(--eu-surface);box-shadow:0 6px 24px #0004;color:var(--eu-copy);font-size:13px;font-weight:650}
+.trigger svg,.header>svg,.contact{color:var(--eu-link)}
+.panel{display:flex;flex-direction:column;width:min(375px,calc(100vw - 28px));max-height:min(550px,calc(var(--kei-visible-height,100dvh) - 108px));overflow:hidden;border:1px solid var(--eu-stroke);border-radius:17px;background:var(--eu-surface);box-shadow:0 14px 42px #0006}
+.header{display:flex;align-items:center;gap:11px;padding:11px 13px;border-bottom:1px solid var(--eu-stroke)}
+.header h2{font-size:18px;line-height:1.2}
+.header small{color:var(--eu-secondary);font-size:12px}
+.icon{border:1px solid var(--eu-stroke);border-radius:11px;background:transparent;color:inherit;display:grid;place-items:center;min-height:42px;min-width:42px}
+.header .icon{margin-left:auto}
+.thread{display:flex;min-height:0;flex-direction:column;gap:9px;overflow:auto;overscroll-behavior:contain;padding:13px}
+.turn{display:grid;gap:8px;min-width:0}
+.reply,.question{padding:9px 11px;border-radius:11px;white-space:pre-line;overflow-wrap:anywhere;font-size:13px;line-height:1.5}
+.reply{background:var(--eu-panel)}
+.reply p+p{margin-top:6px}
+.question{justify-self:end;max-width:89%;background:color-mix(in srgb,var(--eu-link) 11%,var(--eu-surface))}
+.reply ul{display:grid;gap:4px;margin:8px 0 0;padding:0;list-style:none}
+.reply li a,.contact{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid var(--eu-stroke);padding:7px 0}
+.reply li svg,.contact svg{flex:none}
+.reply li small{display:block;color:var(--eu-secondary)}
+.contact{margin-top:6px;font-weight:650}
+.prompts{display:flex;gap:5px;flex-wrap:wrap;padding:0 13px 8px}
+.prompts button{padding:6px 8px;border:1px solid var(--eu-stroke);border-radius:10px;background:transparent;color:inherit;font-size:11px}
+.form{display:flex;gap:5px;padding:8px 11px 11px;border-top:1px solid var(--eu-stroke)}
+.form input{flex:1;min-width:0;padding:8px 10px;border:1px solid var(--eu-stroke);border-radius:10px;background:var(--eu-panel);color:inherit;font-size:16px}
+.form .icon{color:var(--eu-link)}
+.dock :is(button,a):focus-visible{outline-offset:2px}
+@media(max-width:700px){.dock{--kei-bottom-gap:10px;left:max(10px,env(safe-area-inset-left))}}

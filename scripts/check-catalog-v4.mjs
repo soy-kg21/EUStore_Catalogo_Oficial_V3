@@ -42,6 +42,22 @@ for(let page=1;page<=first.pages;page++){
  }
 }
 assert.equal(verifiedProducts,first.total);
+const confirmed=await (await get('/api/products?availability=confirmed')).json();
+assert(confirmed.items.length>0);
+assert(confirmed.items.every(product=>product.variants.some(variant=>variant.quantity>0)));
+const unknown=await (await get('/api/products?availability=unknown')).json();
+assert(unknown.items.length>0);
+assert(unknown.items.every(product=>product.variants.some(variant=>variant.quantity===null)));
+assert.equal((await (await get('/api/products?max=0')).json()).total,0);count+=3;
+const productLinks=(html)=>[...html.matchAll(/class="card-image" href="(\/producto\/[^"]+)"/g)].map(match=>match[1]);
+const oversize='/camisetas-oversize?sort=price-asc';
+const firstOversize=productLinks(await (await get(oversize)).text());
+const secondOversize=productLinks(await (await get(oversize+'&page=2')).text());
+const appendedOversize=productLinks(await (await get(oversize+'&hasta=2')).text());
+assert.equal(firstOversize.length,24);
+assert.equal(secondOversize.length,24);
+assert.deepEqual(appendedOversize,[...firstOversize,...secondOversize]);
+assert.equal(new Set(appendedOversize).size,48);count++;
 const offers=await (await get('/ofertas')).text();
 assert(!/\bB1-[A-G]\b/.test(offers));
 assert(offers.includes('Combos+'));count++;

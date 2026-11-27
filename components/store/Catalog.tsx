@@ -1,44 +1,61 @@
-import {getAnimeProducts} from '@/lib/live-products';
 import Link from 'next/link';
-import {getProducts,queryProducts,type Params} from '@/lib/products';
-import {categories} from '@/lib/config';
-import {animeProducts} from '@/data/anime-products';
-import {searchCatalog,type CatalogMatch} from '@/lib/catalog-search';
-import AnimeCategoryGateway from '@/components/anime/AnimeCategoryGateway';
-import CollectionGateway from './CollectionGateway';
+import {getAnimeProducts} from '@/lib/live-products';
+import {getProducts, queryProducts, type Params} from '@/lib/products';
+import type {GeneralCatalogCategory} from '@/lib/config';
+import {searchCatalog, type CatalogMatch} from '@/lib/catalog-search';
+import {catalogCollections, catalogSearchPath, categoryProducts} from '@/lib/catalog-collections';
+import {orderedShoeSizes} from '@/lib/shoe-sizes';
+import CatalogHeading from './CatalogHeading';
 import CatalogNavigation from './CatalogNavigation';
 import CatalogPageScroll from './CatalogPageScroll';
-import Filters from './Filters';
+import CatalogLoadMore from './CatalogLoadMore';
 import ProductCard from './ProductCard';
 import AnimeSearchCard from './AnimeSearchCard';
-import {categoryProducts} from '@/lib/catalog-collections';
-import {orderedShoeSizes} from '@/lib/shoe-sizes';
+import dockStyles from './catalog-dock.module.css';
 
-export default async function Catalog({params,category}:{params:Params;category?:string}){
-  const published=await getProducts(),all=category?categoryProducts(published,category):published,animeProducts=await getAnimeProducts();
-  const values=Object.fromEntries(Object.entries(params).map(([k,v])=>[k,typeof v==='string'&&v!=='all'?v:'']));
-  const globalSearch=!category&&!!values.q?.trim();
-  const generalResult=queryProducts(all,values,category);
-  const result=globalSearch?searchCatalog(all,animeProducts,values):{
-    ...generalResult,items:generalResult.items.map(product=>({kind:'general',product} as CatalogMatch))};
-  const base=category?all.filter(p=>p.category===category):all;
-  const path=category?'/categoria/'+category:'/catalogo';
-  const cat=categories.find(c=>c.slug===category);
-  const sizes=[...new Set([...base.flatMap(p=>p.sizes),...(globalSearch?animeProducts.flatMap(p=>[...p.sizes]):[])])];
-  const options={sizes:category==='zapatillas'?orderedShoeSizes(sizes):sizes,colors:[...new Set(base.map(p=>p.color))].sort(),brands:[...new Set(base.map(p=>p.brand).filter((x):x is string=>!!x))].sort()};
-  const pageLink=(n:number)=>{const p=new URLSearchParams(values);p.set('page',String(n));return path+'?'+p+'#catalogo-filtros'};
+export default async function Catalog({params, category}: {params: Params; category?: GeneralCatalogCategory}) {
+  const values = Object.fromEntries(Object.entries(params).map(([key, value]) => [key, typeof value === 'string' && value !== 'all' ? value : '']));
+  const globalSearch = !category && Boolean(values.q?.trim());
+  const [published, animeProducts] = await Promise.all([getProducts(), globalSearch ? getAnimeProducts() : []]);
+  const all = category ? categoryProducts(published, category.slug) : published;
+  const path = category?.path ?? catalogSearchPath;
+  const categoryName = category && catalogCollections[category.collection].name;
+
+  let result;
+  if (globalSearch) {
+    result = searchCatalog(all, animeProducts, values, values.hasta);
+  } else {
+    const general = queryProducts(all, values, category?.slug, values.hasta);
+    const items = general.items.map(product => ({kind: 'general', product}) as CatalogMatch);
+    result = {...general, items};
+  }
+
+  const sizes = [...new Set([...all.flatMap(product => product.sizes), ...animeProducts.flatMap(product => [...product.sizes])])];
+  const options = {
+    sizes: category?.slug === 'zapatillas' ? orderedShoeSizes(sizes) : sizes,
+    colors: [...new Set(all.map(product => product.color))].sort(),
+    brands: [...new Set(all.map(product => product.brand).filter((brand): brand is string => Boolean(brand)))].sort(),
+  };
+
   return <main className="page-main" id="contenido">
-    <nav className="breadcrumb"><Link href="/">Inicio</Link><span>/</span><span>{cat?.name||'Catálogo'}</span></nav>
-    <div className="catalog-head"><p className="eyebrow">ENCUENTRA LO QUE VA CONTIGO</p><h1 className="page-title">{category==='zapatillas'?'Zapatillas nacionales.':cat?.name||'Todo el catálogo.'}</h1><p className="page-intro">{cat?.detail||'Explora prendas y calzado. Combina tu estilo, elige tu talla y conversemos.'}</p></div>
-    {category==='camisetas'&&<AnimeCategoryGateway/>}
-    {(category==='zapatillas'||category==='conjuntos')&&<CollectionGateway category={category}/>}
+    <CatalogHeading title={categoryName ?? 'Resultados de búsqueda.'} section={categoryName ?? 'Búsqueda'}
+      detail={category?.detail ?? 'Encuentra tu referencia por nombre, marca o talla.'}/>
     <CatalogPageScroll page={result.page}/>
-    <div className="catalog-layout" data-catalog-start id={category?`catalogo-${category}`:undefined}>
-      <aside id="catalogo-filtros" aria-label="Filtros del catálogo"><Filters path={path} options={options} values={values}/></aside>
-      <section className="catalog-results" id="catalogo-resultados">
-        <div className="catalog-toolbar"><CatalogNavigation active={category||'todo'}/><span>{result.total} referencias</span></div>
-        {result.items.length?<div className="product-grid" id="catalogo-productos">{result.items.map((m,i)=>m.kind==='anime'?<AnimeSearchCard key={m.product.id} product={m.product} priority={i<3}/>:<ProductCard key={m.product.id} product={m.product} priority={i<3}/>)}</div>:<div className="empty-state" id="catalogo-productos"><h2>No encontramos coincidencias.</h2><p>Prueba otra talla, nombre o rango de precio.</p><Link className="button" href={path}>VER TODOS</Link></div>}
-        {result.pages>1&&<nav className="pagination" aria-label="Páginas de productos">{result.page>1&&<Link scroll={false} href={pageLink(result.page-1)}>Anterior</Link>}<span>Página {result.page} de {result.pages}</span>{result.page<result.pages&&<Link scroll={false} href={pageLink(result.page+1)}>Siguiente</Link>}</nav>}
+    <div className={`catalog-results ${dockStyles.results}`} data-catalog-start id={category ? 'catalogo-' + category.slug : undefined}>
+      <section id="catalogo-resultados" aria-label="Productos del catálogo">
+        <CatalogNavigation active={category?.collection} total={result.total} path={path} options={options} values={values}/>
+        {result.items.length > 0
+          ? <div className="product-grid" id="catalogo-productos">
+            {result.items.map((match, index) => match.kind === 'anime'
+              ? <AnimeSearchCard key={match.product.id} product={match.product} priority={index < 3}/>
+              : <ProductCard key={match.product.id} product={match.product} priority={index < 3}/>)}
+          </div>
+          : <div className="empty-state" id="catalogo-productos">
+            <h2>No encontramos coincidencias.</h2>
+            <p>Prueba otra talla, nombre o rango de precio.</p>
+            <Link className="button" href={category?.path ?? '/catalogo'}>{category ? 'VER TODOS' : 'EXPLORAR CATEGORÍAS'}</Link>
+          </div>}
+        <CatalogLoadMore path={path} values={values} shown={result.items.length} total={result.total} page={result.page} pages={result.pages}/>
       </section>
     </div>
   </main>;

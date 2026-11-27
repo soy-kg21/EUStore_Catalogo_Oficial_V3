@@ -4,6 +4,7 @@ import Image from 'next/image';
 import {cartInquiryMessage} from '@/lib/product-content';
 import {SOCKS_GIFT_BENEFIT} from '@/lib/catalog-benefits';
 import Link from 'next/link';
+import {catalogSizeVariant} from '@/lib/shoe-sizes';
 import { MessageCircle } from 'lucide-react';
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import {
@@ -19,7 +20,8 @@ import type { CartLine } from '@/lib/types';
 import QuantityControl from './QuantityControl';
 
 type Quote = ReturnType<typeof quote>;
-type QuoteState = { key: string; data: Quote | null; error: string };
+type QuoteIssue = { id: string; size: string; name: string; maximum: number; duplicate?: boolean };
+type QuoteState = { key: string; data: Quote | null; error: string; issues?: QuoteIssue[] };
 
 export default function Cart() {
   const snapshot = useSyncExternalStore(
@@ -46,9 +48,12 @@ export default function Cart() {
       signal: controller.signal,
     })
       .then(async (response) => {
-        const data = (await response.json()) as Quote & { error?: string };
+        const data = (await response.json()) as Quote & { error?: string; issues?: QuoteIssue[] };
         if (controller.signal.aborted) return;
-        if (!response.ok) throw new Error(data.error || 'No fue posible actualizar la cotización.');
+        if (!response.ok) {
+          setQuoteState({key:quoteKey,data:null,error:data.error||'No fue posible actualizar la cotización.',issues:data.issues});
+          return;
+        }
         setQuoteState({ key: quoteKey, data, error: '' });
       })
       .catch((error: unknown) => {
@@ -93,9 +98,15 @@ export default function Cart() {
     return (
       <div className="notice" role="alert">
         {error}
-        <p>Tu selección se conserva. Puedes intentar actualizar los precios otra vez.</p>
+        {currentQuote?.issues?.length ? <ul>
+          {currentQuote.issues.map(issue=><li key={JSON.stringify([issue.id,issue.size])}>
+            <p>{issue.name} · Talla {issue.size}. {issue.duplicate?'Esta talla ya figura en otra línea.':issue.maximum===0?'Sin disponibilidad.':`Disponibles: ${issue.maximum}.`}</p>
+            <button type="button" onClick={()=>change(lines.filter(line=>line.id!==issue.id||line.size!==issue.size))}>Quitar de mi selección</button>
+            {issue.maximum>0&&<button type="button" onClick={()=>change(lines.map(line=>line.id===issue.id&&line.size===issue.size?{...line,quantity:issue.maximum}:line))}>Ajustar a {issue.maximum}</button>}
+          </li>)}
+        </ul>:<p>Tu selección se conserva. Puedes intentar actualizar los precios otra vez.</p>}
         <button className="button" onClick={() => { setActionError(''); setQuoteState({key: '', data: null, error: ''}); setRetry(value => value + 1); }}>Reintentar</button>
-        <p><button onClick={() => change([])}>Vaciar selección</button></p>
+        {!currentQuote?.issues?.length&&<p><button onClick={() => change([])}>Vaciar selección</button></p>}
       </div>
     );
   }
@@ -107,7 +118,7 @@ export default function Cart() {
   if (rows.some(row => row === null)) return <p role="status">Actualizando precios de tu selección…</p>;
 
   const hasImported=data.rows.some(row=>row.product.collection==='importadas');
-  const paymentNote=hasImported?'Zapatillas importadas: pago anticipado por unidad y envío incluido en el precio. Las condiciones de los demás artículos se detallan por separado.':data.advance?'Pago anticipado para los despachos mayoristas; confirmar condiciones de cada despacho.':'Pago contraentrega sujeto a cobertura.';
+  const paymentNote=hasImported?'Las importadas se pagan por anticipado. Cada despacho mantiene sus propias condiciones de pago y envío.':data.advance?'Esta selección incluye productos de pago anticipado. Confirma las condiciones de cada despacho.':'Pago contraentrega sujeto a cobertura.';
   const message = cartInquiryMessage(data,ORIGIN,paymentNote);
 
   return (
@@ -123,9 +134,12 @@ export default function Cart() {
               <p>Talla {row.size} · {row.product.color}</p>
               {row.product.benefits.includes(SOCKS_GIFT_BENEFIT)&&<p>{SOCKS_GIFT_BENEFIT}</p>}
               <strong aria-busy={pending}>{pending ? 'Actualizando…' : row.total===null ? 'A cotizar' : money(row.total)}</strong>
+              {!pending && row.unit!==null && <p>{money(row.unit)} c/u
+                {row.product.previousPrice && row.product.previousPrice>row.unit ? ' · −'+Math.round((1-row.unit/row.product.previousPrice)*100)+'% frente al regular' : ''}
+                {data.dispatches.length>1 ? ' · Despacho '+row.dispatch : ''}</p>}
               <div className="cart-line-actions">
                 <span className="quantity-label">Cantidad</span>
-                <QuantityControl quantity={row.quantity} name={row.product.name} onChange={quantity => change(lines.map(line => line.id === row.id && line.size === row.size ? { ...line, quantity } : line))} />
+                <QuantityControl quantity={row.quantity} name={row.product.name} maximum={Math.min(100,catalogSizeVariant(row.product.variants??[],row.size,row.product.collection==='importadas'?row.product.sizeSystem:undefined)?.quantity??100)} onChange={quantity => change(lines.map(line => line.id === row.id && line.size === row.size ? { ...line, quantity } : line))} />
                 <button type="button" className="cart-remove" onClick={() => change(lines.filter(line => line.id !== row.id || line.size !== row.size))}>Eliminar</button>
               </div>
             </div>
@@ -138,12 +152,11 @@ export default function Cart() {
         {pending ? <p role="status" className="cart-updating">Actualizando precios y beneficios…</p> : <>
         {data.requiresQuote&&<div className="quote-alert" role="status"><h3>Una selección a tu medida.</h3><p>{data.pricePending?'Un asesor te ayudará a confirmar la mejor tarifa para tu selección.':'Tus productos ya tienen precio; falta cotizar el envío.'}</p>{data.reasons.map(reason=><p key={reason}>{reason}</p>)}</div>}
         {data.subtotal!==null&&<div className="summary-total"><span>Productos</span><strong>{money(data.subtotal)}</strong></div>}
-        <p>{data.shippingPending?'Envío: cotización con asesor.':'Envío incluido.'}</p>
+        <div className="summary-total"><span>Envío</span><strong>{data.shippingPending?'Por cotizar':data.shipping===0?'Incluido':money(data.shipping!)}</strong></div>
         {data.total!==null&&<div className="summary-total"><span>Total</span><strong>{money(data.total)}</strong></div>}
         <p>{paymentNote}</p>
-        {data.b1>0&&<p>Tu calzado seleccionado incluye seguro de transporte.</p>}
-        {data.b2>0&&<p>Tu calzado seleccionado incluye seguro de transporte.</p>}
-        {data.warehouses.length>1&&<div className="logistics-note"><h3>Tu look, en entregas separadas.</h3><p>Elegiste productos de {data.warehouses.length} grupos de entrega. Llegarán en despachos separados y conservarás los beneficios, ofertas y descuentos que correspondan a cada uno.</p><a href={wa('Hola, quisiera entender cómo funcionan los despachos separados y los beneficios de mi selección.')} target="_blank" rel="noopener noreferrer">Resolver una duda por WhatsApp ↗</a></div>}
+        {data.dispatches.length>1&&<div className="logistics-note"><h3>Despachos separados</h3><p>La cantidad de cada despacho determina sus descuentos y beneficios.</p>
+          {data.dispatches.map(group=><p key={group.id}><strong>Despacho {group.id}</strong> · {group.quantity} {group.quantity===1?'unidad':'unidades'} · {group.shipping===null?'Envío por cotizar':group.shipping===0?'Envío incluido':'Envío '+money(group.shipping)} · {group.advance?'pago anticipado':'contraentrega según cobertura'}</p>)}</div>}
         <p>Confirmaremos existencias y cobertura contigo antes de cerrar el pedido.</p>
         </>}
         <a className="button whatsapp" href={pending ? undefined : wa(message)} aria-disabled={pending || undefined} onClick={event => { if(pending) event.preventDefault(); }} target="_blank" rel="noopener noreferrer"><MessageCircle size={18}/>{pending ? 'ACTUALIZANDO SELECCIÓN…' : data.requiresQuote?'RECIBIR ASESORÍA PERSONALIZADA':'CONTINUAR POR WHATSAPP'}</a>

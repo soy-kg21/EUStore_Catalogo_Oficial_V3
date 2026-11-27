@@ -16,3 +16,14 @@ export function orderedShoeSizes(sizes:string[]){
     return sizeOrder.compare(a,b);
   });
 }
+
+export function catalogSizeVariant<T extends {size:string}>(variants:readonly T[],size:string,shoeSystem?:string){
+  const exact=variants.find(variant=>variant.size===size);
+  if(exact||!shoeSystem)return exact;
+  const requested=shoeSizeLabel(size,shoeSystem);
+  if(!/^\d+(?:[.,]\d+)?$/.test(requested.label))return undefined;
+  return variants.find(variant=>{
+    const stored=shoeSizeLabel(variant.size,shoeSystem);
+    return stored.system===requested.system&&stored.label.replace(',','.')===requested.label.replace(',','.');
+  });
+}

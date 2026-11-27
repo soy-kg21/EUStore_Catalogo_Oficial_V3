@@ -3,21 +3,22 @@
 import { Minus, Plus } from 'lucide-react';
 import { useState } from 'react';
 
-export default function QuantityControl({ quantity, name, onChange }: {
+export default function QuantityControl({ quantity, name, maximum = 100, onChange }: {
   quantity: number;
   name: string;
+  maximum?: number;
   onChange: (quantity: number) => void;
 }) {
   const [draft, setDraft] = useState<string | null>(null);
   const commit = () => {
     if (draft !== null && draft !== '') {
-      onChange(Math.min(100, Math.max(1, Number(draft))));
+      onChange(Math.min(maximum, Math.max(1, Number(draft))));
     }
     setDraft(null);
   };
   const step = (amount: number) => {
     setDraft(null);
-    onChange(Math.min(100, Math.max(1, quantity + amount)));
+    onChange(Math.min(maximum, Math.max(1, quantity + amount)));
   };
 
   return (
@@ -29,7 +30,7 @@ export default function QuantityControl({ quantity, name, onChange }: {
         role="spinbutton"
         aria-label={`Cantidad ${name}`}
         aria-valuemin={1}
-        aria-valuemax={100}
+        aria-valuemax={maximum}
         aria-valuenow={quantity}
         autoComplete="off"
         maxLength={3}
@@ -40,7 +41,7 @@ export default function QuantityControl({ quantity, name, onChange }: {
           if (!/^\d{0,3}$/.test(value)) return;
           setDraft(value);
           const next = Number(value);
-          if (value !== '' && next >= 1 && next <= 100) onChange(next);
+          if (value !== '' && next >= 1 && next <= maximum) onChange(next);
         }}
         onBlur={commit}
         onKeyDown={event => {
@@ -52,7 +53,7 @@ export default function QuantityControl({ quantity, name, onChange }: {
           }
         }}
       />
-      <button type="button" disabled={quantity >= 100} onClick={() => step(1)} aria-label={`Sumar una unidad de ${name}`}><Plus size={16} /></button>
+      <button type="button" disabled={quantity >= maximum} onClick={() => step(1)} aria-label={`Sumar una unidad de ${name}`}><Plus size={16} /></button>
     </div>
   );
 }

@@ -2,16 +2,16 @@
 .viewport{display:grid;width:min(100%,1440px);overflow:hidden;contain:paint;isolation:isolate}
 .group{grid-area:1/1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));visibility:hidden;pointer-events:none;min-width:0}
 .group[data-current=true]{visibility:visible;pointer-events:auto}
-.group[data-enter=true]{animation:service-enter 550ms cubic-bezier(.22,.68,0,1) both}
-.group[data-leave=true]{visibility:visible;animation:service-leave 550ms cubic-bezier(.22,.68,0,1) both}
+.group[data-enter=true]{animation:service-enter 780ms cubic-bezier(.25,.65,.3,1) both}
+.group[data-leave=true]{visibility:visible;animation:service-leave 780ms cubic-bezier(.25,.65,.3,1) both}
 .group>span{min-width:0;display:flex;justify-content:center;align-items:center;gap:13px;padding:8px 16px;text-transform:uppercase;text-align:center;font-size:clamp(10px,.85vw,14px);letter-spacing:.065em;line-height:1.5;overflow-wrap:anywhere}
 .group>span+span{border-left:1px solid var(--eu-border,#ffffff12)}
 .group svg{color:var(--eu-link,#ccff00);flex-shrink:0}
 .strip:focus-visible{outline:2px solid var(--eu-link,#ccff00);outline-offset:-4px}
 .strip[data-reduced=true] .viewport{gap:14px}
 .strip[data-reduced=true] .group{grid-area:auto;visibility:visible;pointer-events:auto}
-@keyframes service-enter{from{transform:translateX(100%)}to{transform:translateX(0)}}
-@keyframes service-leave{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+@keyframes service-enter{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes service-leave{from{opacity:1;transform:translateX(0)}45%,to{opacity:0;transform:translateX(-20px)}}
 @media(max-width:700px){.strip{padding:12px 4%;min-height:76px}.group{grid-template-columns:repeat(2,minmax(0,1fr))}.group>span{justify-content:center;text-align:left;padding:8px 10px;font-size:11px;letter-spacing:.02em;gap:8px;min-height:52px;line-height:1.5}.group>span+span{border-left:1px solid var(--eu-border,#ffffff12);border-top:0}.group svg{width:17px;height:17px}.strip[data-mobile=false] .group>span:nth-child(3){display:none}}
 @media(min-width:2000px){.strip{min-height:82px}.group>span{font-size:17px;gap:18px}.group svg{width:23px;height:23px}}
 @media(prefers-reduced-motion:reduce){.group[data-enter=true],.group[data-leave=true]{animation:none}}

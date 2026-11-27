@@ -4,7 +4,7 @@ import {useSearchParams} from 'next/navigation';
 export default function CatalogPageScroll({page}:{page:number}){
  const params=useSearchParams(),key=params.toString();
  useLayoutEffect(()=>{
-  if(!params.has('page'))return;
+  if(!params.has('page')||params.has('hasta'))return;
   const frame=requestAnimationFrame(()=>{
    const start=document.querySelector<HTMLElement>('[data-catalog-start]');if(!start)return;
    // Layout offsets exclude the route-entry animation, which otherwise moves the target after arrival.

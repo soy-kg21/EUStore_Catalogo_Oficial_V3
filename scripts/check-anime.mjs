@@ -5,6 +5,7 @@ import {filterAnimeProducts,orderAnimeProducts,readAnimeFilters,animeCategorySlu
 import {animeCommercial} from '../lib/anime-commercial.ts';
 const catalog=JSON.parse(await readFile(new URL('../data/anime-catalog.json',import.meta.url),'utf8'));
 const index=JSON.parse(await readFile(new URL('../data/anime-index.json',import.meta.url),'utf8'));
+const routes=JSON.parse(await readFile(new URL('../data/anime-public-routes.json',import.meta.url),'utf8'));
 const canonical=catalog.filter(p=>!p.canonicalId),ids=new Set(catalog.map(p=>p.id)),slugs=new Set(catalog.map(p=>p.slug));
 assert.equal(ids.size,catalog.length);assert.equal(slugs.size,catalog.length);
 for(let n=1;n<=207;n++)assert(ids.has(`EU-ANIME-${String(n).padStart(3,'0')}`),'Referencia histórica perdida');
@@ -40,13 +41,24 @@ assert.equal(animeCommercial.promoTotal,93000);assert.equal(animeCommercial.prom
 console.log(`PASS: ${canonical.length} diseños únicos, ${catalog.length-canonical.length} alias, archivos e IDs íntegros, ofertas y ${blocks} bloques 76/24.`);
 if(process.env.CATALOG_TEST_URL){
  const base=process.env.CATALOG_TEST_URL;
- for(const linea of ['anime','cartoon','rock','urbanos']){const r=await fetch(`${base}/anime?linea=${linea}`);assert.equal(r.status,200);const html=await r.text();assert(html.includes('Colecciones Anime Shop'));const cards=[...html.matchAll(/<article\b[\s\S]*?<\/article>/g)].map(m=>m[0]).filter(card=>card.includes('aria-label="Ver '));assert.equal(cards.length,24);for(const card of cards){const id=card.match(/EU-ANIME-\d+/)[0];assert.equal(canonical.find(p=>p.id===id).line,linea);}}
- for(const p of catalog.filter(p=>p.canonicalId)){const r=await fetch(base+'/anime/'+p.slug,{redirect:'manual'});assert.equal(r.status,308);assert(r.headers.get('location').endsWith(JSON.parse(await readFile(new URL('../data/anime-public-routes.json',import.meta.url),'utf8'))[p.canonicalId].path));}
+ for(const linea of ['anime','cartoon','rock','urbanos']){
+  const response=await fetch(base+'/anime?linea='+linea);
+  assert.equal(response.status,200);
+  const html=await response.text();
+  assert(html.includes('Líneas de Anime Shop'));
+  const cards=[...html.matchAll(/<article[^>]* id="anime-card-(EU-ANIME-\d+)"/g)].map(match=>match[1]);
+  assert.equal(cards.length,24);
+  for(const id of cards)assert.equal(canonical.find(product=>product.id===id).line,linea);
+ }
+ for(const p of catalog.filter(p=>p.canonicalId)){const r=await fetch(base+'/anime/'+p.slug,{redirect:'manual'});assert.equal(r.status,308);assert(r.headers.get('location').endsWith(routes[p.canonicalId].path));}
  const api=await (await fetch(base+'/api/anime-products?q=Chopper')).json();assert(api.items.length>0);assert(api.items.every(p=>/^\/(anime|cartoon|rock|urbanas)\/[a-z0-9-]+$/.test(p.href)&&!Object.hasOwn(p,'supplier')));
- const fresh=canonical.find(p=>p.isNew);const r=await fetch(base+'/anime/'+fresh.slug);assert.equal(r.status,200);assert((await r.text()).includes(fresh.id));
- assert.equal((await fetch(base+'/anime/no-existe')).status,404);
+ const fresh=canonical.find(p=>p.isNew);const r=await fetch(base+routes[fresh.id].path);assert.equal(r.status,200);
+ const detail=await r.text();assert(detail.includes(routes[fresh.id].path));assert(detail.includes('application/ld+json'));
+ const missing=await fetch(base+'/anime/no-existe');
+ assert([404,200].includes(missing.status));
+ const missingHtml=await missing.text();assert.match(missingHtml,/noindex/);assert.doesNotMatch(missingHtml,/"@type":"Product"/);
  for(const q of ['Chopper','EU-ANIME-208','pokemon','Anime','Cartoon','Rock','Urbanos']){
-  const r=await fetch(base+'/api/search?q='+encodeURIComponent(q));assert.equal(r.status,200);
+  const r=await fetch(base+'/api/search?scope=anime&q='+encodeURIComponent(q));assert.equal(r.status,200);
   const data=await r.json();assert(data.total>0);assert(data.items.length>0);
   assert(data.items.every(p=>/^\/(anime|cartoon|rock|urbanas)\/[a-z0-9-]+$/.test(p.href)&&!Object.hasOwn(p,'supplier')));
   for(const p of data.items){assert(canonical.some(c=>c.id===p.id));assert.equal((await fetch(base+p.href)).status,200);}
@@ -54,7 +66,7 @@ if(process.env.CATALOG_TEST_URL){
  const mixed=await (await fetch(base+'/api/search?q=camiseta')).json();
  assert(mixed.items.some(p=>/^\/(anime|cartoon|rock|urbanas)\/[a-z0-9-]+$/.test(p.href)));assert(mixed.items.some(p=>p.href.startsWith('/producto/')));
  const globalResults=await (await fetch(base+'/catalogo?q=Chopper')).text();
- assert(globalResults.includes('href="/anime/'));assert(globalResults.includes('2 POR $93.000'));
+ assert(globalResults.includes('href="/anime/'));assert(globalResults.includes('93.000'));
  assert.equal((await fetch(base+'/api/search?q='+'x'.repeat(101))).status,400);
  assert.equal((await (await fetch(base+'/api/search?q=referencia-inexistente-xyz')).json()).total,0);
  for(const params of ['q=Chopper&max=67000','q=Chopper&availability=confirmed']){

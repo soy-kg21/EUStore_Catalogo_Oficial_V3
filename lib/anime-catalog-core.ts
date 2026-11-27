@@ -15,7 +15,7 @@ export const animeCategorySlug=(s:string)=>normalizeAnimeText(s).replace(/[^a-z0
 export type AnimeFilters={linea:string;categoria:string;q:string;doble?:boolean};
 export function readAnimeFilters(search:string):AnimeFilters{
   const p=new URLSearchParams(search),linea=p.get('linea')||'';
-  return {linea:animeLines.some(l=>l.id===linea)?linea:'',categoria:p.get('categoria')||'',q:(p.get('q')||'').slice(0,100)};
+  return {linea:animeLines.some(l=>l.id===linea)?linea:'',categoria:p.get('categoria')||'',q:(p.get('q')||'').slice(0,100),...(p.get('estampado')==='doble'?{doble:true}:{})};
 }
 export function filterAnimeProducts<T extends AnimeClientProduct>(products:T[],filters:AnimeFilters):T[]{
   const q=normalizeAnimeText(filters.q);

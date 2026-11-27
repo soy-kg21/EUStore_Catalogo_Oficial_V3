@@ -64,13 +64,13 @@ export default function ServiceAnnouncements(){
 
  useEffect(()=>{
    if(!running)return;
-  const timer=window.setTimeout(()=>setSlide(old=>({current:(old.current+1)%displayGroups.length,previous:old.current})),compact?4000:3000);
+  const timer=window.setTimeout(()=>setSlide(old=>({current:(old.current+1)%displayGroups.length,previous:old.current})),compact?5200:4600);
   return()=>window.clearTimeout(timer);
  },[running,slide.current,compact,displayGroups.length]);
 
  useEffect(()=>{
   if(slide.previous===null)return;
-  const timer=window.setTimeout(()=>setSlide(old=>({...old,previous:null})),550);
+  const timer=window.setTimeout(()=>setSlide(old=>({...old,previous:null})),800);
   return()=>window.clearTimeout(timer);
  },[slide.previous]);
 

@@ -44,8 +44,8 @@ export default async function Home() {
       products:productsByCollection[1],detail:'Calzado de la línea nacional.'},
     {visual:'camisetas',name:'Oversize',href:catalogCollections.oversize.path,
       products:productsByCollection[0],detail:'Camisetas de corte amplio.'},
-    {visual:'conjuntos',name:'Conjuntos',href:'/categoria/conjuntos',
-      products:all.filter(product=>product.category==='conjuntos'),detail:'Arma tu look completo.'},
+    {visual:'conjuntos',name:'Conjuntos',href:catalogCollections['conjuntos-cortos'].path,
+      products:productsByCollection[2],detail:'Arma tu look completo.'},
   ].map(({products,...category})=>{
     const prices=products.filter(product=>!product.pricingPending && product.price>0).map(product=>product.price);
     return {...category,image:products[0]?.images[0] ?? '',from:prices.length ? Math.min(...prices) : null};
@@ -83,7 +83,7 @@ export default async function Home() {
       <div className="eu-material-legend">
         <div className="eu-material-copy"><p className="eu-label">Detalle de calzado</p>
           <h2 id="material-title" className="eu-display">Costuras<br /><em>y textura.</em></h2>
-          <Link prefetch={false} className="eu-text-link" href={shoe ? '/producto/'+shoe.slug : '/categoria/zapatillas'}>
+          <Link prefetch={false} className="eu-text-link" href={shoe ? '/producto/'+shoe.slug : catalogCollections.nacionales.path}>
             {shoe ? shoe.name : 'Ver zapatillas'} <ArrowUpRight size={17}/>
           </Link>
         </div>

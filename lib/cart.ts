@@ -11,6 +11,7 @@ export function parseCart(snapshot: string): CartLine[] {
       ? value.filter(
           (line): line is CartLine =>
             typeof line?.id === 'string' &&
+            line.id !== 'EU-IMP-001' &&
             typeof line?.size === 'string' &&
             Number.isInteger(line?.quantity) &&
             line.quantity > 0 &&

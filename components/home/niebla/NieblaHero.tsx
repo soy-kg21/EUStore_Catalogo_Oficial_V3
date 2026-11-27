@@ -28,7 +28,7 @@ export default function NieblaHero() {
         <a href="#categorias">Explora por categoría <ArrowDown size={15} /></a>
       </div>
       <div className="niebla-action niebla-opening">
-        <p>Camisetas oversize,<br />zapatillas y conjuntos.</p>
+        <p>Camisetas Oversize,<br />zapatillas y conjuntos.</p>
         <Link className="niebla-button" href="/catalogo">Ver catálogo <ArrowUpRight size={19} /></Link>
       </div>
       <div className="niebla-manifest">
